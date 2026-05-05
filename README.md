@@ -2,7 +2,7 @@
 
 > A curated, network-maintained inventory of open data sources for measuring distributed production at every scale — from a single fab lab to the planet.
 
-Maintained by the **Fab City** network. Organised by the [**Vivanco Full-Stack Metrics framework**](#the-taxonomy): four pillars — Environmental, Social, Economic, Governance — across five scales — Planet, Bioregion, Region, City, Community.
+Maintained by the **Fab City** network. Organised by the [**Full Stack Metrics Framework**](#the-taxonomy): four pillars — Environmental, Social, Economic, Governance — across five scales — Planet, Bioregion, Region, City, Community.
 
 This list exists because the gap between Earth-scale instruments (Copernicus, NOAA, Aurora) and community-scale instruments (Smart Citizen, repair cafés, fab-lab logs) is *not* well covered by general-purpose data registries. Awesome lists like [`awesome-public-datasets`](https://github.com/awesomedata/awesome-public-datasets) carry the planet end and the research-archive end; community-tier instruments and material-flow accounting fall through. This list fills that gap, from the perspective of people who actually deploy the instruments.
 
@@ -27,7 +27,7 @@ Entries live as YAML files under `data/{pillar}/{scale}/{slug}.yaml` — that's 
 
 ## The taxonomy
 
-The four pillars × five scales come from Laura Vivanco's *Full-Stack Metrics for Fab Cities* (2024–25), which operationalises Tomas Diez's *Fab City Full Stack* (Diez, Niaros, Ferro 2024). They are not a replacement for ESG, SDG, or doughnut economics — they are a way to organise *where measurement happens* in a distributed-production network.
+The four pillars × five scales come from the **Full Stack Metrics Framework** [Vivanco 2024, 2025], which operationalises *The Fab City Full Stack* [Diez, Niaros, Ferro 2024]. They are not a replacement for ESG, SDG, or doughnut economics — they are a way to organise *where measurement happens* in a distributed-production network.
 
 ```
                               ┌──────────────┐
@@ -206,6 +206,6 @@ The datasets *linked from* this list are governed by their own respective licens
 
 ## Acknowledgements
 
-This list is built on the shoulders of [`awesome-public-datasets`](https://github.com/awesomedata/awesome-public-datasets), the Fab City network's ten-plus years of metric-infrastructure work (Fab City Index 2018, 2024; Fab City Full Stack 2024; PLANETAI 2026), and the open-data communities of Barcelona, Boston, Santiago de Chile, and Bali. The Vivanco Full-Stack Metrics framework underpins the taxonomy.
+This list is built on the shoulders of [`awesome-public-datasets`](https://github.com/awesomedata/awesome-public-datasets), the Fab City network's ten-plus years of metric-infrastructure work (Fab City Index 2018, 2024; Fab City Full Stack 2024; PLANETAI 2026), and the open-data communities of Barcelona, Boston, Santiago de Chile, and Bali. The Full Stack Metrics Framework [Vivanco 2024] underpins the taxonomy.
 
 Maintained by [Fab City Foundation](https://fab.city/) and program contributors.

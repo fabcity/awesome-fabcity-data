@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/fab-city/awesome-fabcity-data/blob/main/schema/dataset.schema.json",
+  "$id": "https://github.com/fabcity/awesome-fabcity-data/blob/main/schema/dataset.schema.json",
   "title": "Fab City Dataset Entry",
   "description": "Canonical schema for a single dataset entry in the awesome-fabcity-data list. Each entry lives at data/{pillar}/{scale}/{slug}.yaml and is validated against this schema in CI.",
   "type": "object",
@@ -26,7 +26,7 @@
     },
     "pillar": {
       "enum": ["environmental", "social", "economic", "governance"],
-      "description": "Which Vivanco Full-Stack Metrics pillar this source primarily feeds."
+      "description": "Which Full Stack Metrics Framework pillar this source primarily feeds."
     },
     "scale": {
       "enum": ["planet", "bioregion", "region", "city", "community"],
