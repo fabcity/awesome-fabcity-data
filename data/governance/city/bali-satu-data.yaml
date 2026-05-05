@@ -1,0 +1,23 @@
+name: Bali Satu Data
+url: https://balisatudata.baliprov.go.id/
+description: |
+  Bali provincial open data hub. Cross-domain datasets for the
+  Bali pilot: demography, environment, economy, public services,
+  customary-village indicators.
+pillar: governance
+scale: city
+status: live
+license: public (Indonesian government)
+api: null
+pilot_relevance: [bali]
+tags: [open-data, bali, indonesia, provincial]
+added: 2026-05-04
+wired_in_planetai: true
+upstream_listed_in: []
+notes: |
+  Wired in PLANETAI Wave 28 panel. Combined with national
+  data.go.id and the WIPO GII (Global Innovation Index) gives
+  the Bali pilot a coherent City-tier governance signal.
+  Dataset coverage is uneven — environmental + demographic
+  is dense, economic is sparser. Update cadence varies by
+  publishing department.

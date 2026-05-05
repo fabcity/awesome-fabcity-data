@@ -1,0 +1,21 @@
+name: datos.gob.cl
+url: https://datos.gob.cl/
+description: |
+  Chilean national open data portal. Datasets from across central
+  government and many municipalities including Santiago. CKAN-based.
+pillar: governance
+scale: city
+status: live
+license: public domain (Chilean government)
+api: https://datos.gob.cl/api/3/
+pilot_relevance: [santiago]
+tags: [open-data, chile, ckan, national]
+added: 2026-05-04
+wired_in_planetai: false
+upstream_listed_in: []
+notes: |
+  Santiago pilot's open-data substrate. Combine with ChileCompra
+  for procurement and LAKLEMS for sectoral productivity. Coverage
+  of the Region Metropolitana is dense; rural Chile is patchier.
+  CKAN API supports bulk + filtered pulls; rate-limited but
+  generous for production observatory use.

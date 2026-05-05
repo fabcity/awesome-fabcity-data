@@ -1,0 +1,28 @@
+title: Smart Citizen
+homepage: https://smartcitizen.me/
+description: |
+  Open-hardware community sensor network maintained by Fab Lab Barcelona /
+  IAAC. ~25,000 kits deployed globally measuring PM2.5, sound, temperature,
+  humidity, light, and CO2. Public REST API at api.smartcitizen.me/v0
+  with no authentication required for reads. Hardware schematics and
+  firmware are FOSS (GPL-3.0); data is CC-BY-SA-4.0.
+keywords:
+  - air-quality
+  - citizen-science
+  - open-hardware
+  - environmental-sensing
+  - community-network
+  - iot
+license:
+  - CC-BY-SA-4.0
+  - GPL-3.0
+sources:
+  - name: Devices world map
+    url: https://api.smartcitizen.me/v0/devices/world_map
+  - name: Per-device readings
+    url: https://api.smartcitizen.me/v0/devices/{id}/readings
+  - name: Web platform
+    url: https://smartcitizen.me/
+  - name: Hardware repository
+    url: https://github.com/fablabbcn/smartcitizen-kit-21
+status: ok

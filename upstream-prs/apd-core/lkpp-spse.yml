@@ -1,0 +1,29 @@
+title: LKPP / SPSE — Indonesian National Procurement
+homepage: https://www.lkpp.go.id/
+description: |
+  Indonesian Lembaga Kebijakan Pengadaan Barang/Jasa Pemerintah
+  (LKPP) operates SPSE (Sistem Pengadaan Secara Elektronik), the
+  national e-procurement system. Public tender data spans central
+  government, ministries, and most regional bodies including the
+  ~500 kabupaten/kota administrations. Covered by Indonesia's
+  Open Government Partnership commitments. Per-tender pages expose
+  full lifecycle timestamps; a national bulk API is in active
+  development as of 2026 and the INA-Proc research consortium
+  publishes periodic dumps.
+keywords:
+  - indonesia
+  - public-procurement
+  - government-tender
+  - transparency
+  - action-latency
+  - open-government-partnership
+license:
+  - public-domain
+sources:
+  - name: LKPP institutional site
+    url: https://www.lkpp.go.id/
+  - name: SPSE national portal
+    url: https://lpse.lkpp.go.id/eproc4/
+  - name: INA-Proc research dumps
+    url: https://github.com/inaproc
+status: ok

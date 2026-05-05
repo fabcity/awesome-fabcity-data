@@ -1,0 +1,22 @@
+name: Analyze Boston
+url: https://data.boston.gov/
+description: |
+  City of Boston open data portal. ~200 datasets covering 311
+  service requests, building permits, employee earnings, food
+  inspections, traffic, public safety. CKAN-based.
+pillar: governance
+scale: city
+status: live
+license: public
+api: https://data.boston.gov/api/3/
+pilot_relevance: [boston]
+tags: [open-data, boston, ckan, municipal]
+added: 2026-05-04
+wired_in_planetai: false
+upstream_listed_in: []
+notes: |
+  Boston pilot's equivalent of Open Data BCN. 311 service
+  requests dataset is the H_0-A action-latency goldmine for
+  Boston: time-from-complaint-to-resolution at the address
+  level. Combine with MassGIS for spatial joining and with
+  ENTSO-E equivalent (US: PUDL) for energy-grid context.

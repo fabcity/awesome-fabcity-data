@@ -1,0 +1,24 @@
+title: Bali Satu Data
+homepage: https://balisatudata.baliprov.go.id/
+description: |
+  Open data portal of the Bali Provincial Government, Indonesia.
+  Cross-domain datasets on demography, environment, economy, public
+  services, customary villages, agriculture, and tourism. Catalogued
+  under Indonesia's national Satu Data programme. Indonesian
+  government open-data terms (free, public).
+keywords:
+  - indonesia
+  - bali
+  - regional-government
+  - open-data-portal
+  - demography
+  - environment
+  - economy
+license:
+  - public-domain
+sources:
+  - name: Bali provincial portal
+    url: https://balisatudata.baliprov.go.id/
+  - name: National Satu Data
+    url: https://data.go.id/
+status: ok

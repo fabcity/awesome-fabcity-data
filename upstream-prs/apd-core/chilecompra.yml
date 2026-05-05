@@ -1,0 +1,29 @@
+title: ChileCompra
+homepage: https://www.chilecompra.cl/
+description: |
+  Chilean national public-procurement portal. Every government
+  procurement lifecycle in Chile is published here: bases de
+  licitacion (tender notice), ofertas (bids), adjudicaciones
+  (awards), and contract execution. Public REST API with documented
+  endpoints, plus bulk dumps via datos.gob.cl. Strong methodological
+  fit for action-latency / policy-response research and circular-
+  procurement analysis. Indonesian, EU, and US procurement
+  registries are already represented in this list; LATAM is the
+  current gap this entry fills.
+keywords:
+  - chile
+  - latin-america
+  - public-procurement
+  - government-tender
+  - transparency
+  - action-latency
+license:
+  - public-domain
+sources:
+  - name: Portal
+    url: https://www.chilecompra.cl/
+  - name: Mercado Publico API
+    url: https://api.mercadopublico.cl/servicios/v1/publico
+  - name: Bulk dump via datos.gob.cl
+    url: https://datos.gob.cl/dataset?organization=chilecompra
+status: ok

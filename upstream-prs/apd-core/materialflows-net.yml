@@ -1,0 +1,27 @@
+title: materialflows.net (UN International Resource Panel)
+homepage: https://www.materialflows.net/
+description: |
+  Economy-wide material flow accounts published by the UN International
+  Resource Panel (UNEP-IRP). National-level material extraction,
+  imports, exports, and consumption disaggregated by category
+  (biomass, fossil fuels, metal ores, non-metallic minerals). Updated
+  annually, with downloadable CSV/Excel bulk dumps. The most globally
+  consistent MFA dataset and the methodological reference for
+  Eurostat EW-MFA and most national-level circular-economy
+  reporting.
+keywords:
+  - material-flow-accounts
+  - mfa
+  - circular-economy
+  - resource-extraction
+  - united-nations
+  - environmental-economics
+  - sustainability
+license:
+  - custom-open-un-irp
+sources:
+  - name: Visualisation portal
+    url: https://www.materialflows.net/
+  - name: UNEP-IRP database root
+    url: https://www.resourcepanel.org/global-material-flows-database
+status: ok

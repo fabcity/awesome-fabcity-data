@@ -1,0 +1,25 @@
+title: Open Data BCN
+homepage: https://opendata-ajuntament.barcelona.cat/
+description: |
+  Open data portal of the Barcelona City Council. ~600 datasets on
+  mobility, environment, demographics, economy, governance, urban
+  fabric, public health, and budget execution. CKAN-based with full
+  bulk + REST API, machine-readable metadata, and CC-BY-4.0 licensing
+  on most resources. Among the most mature municipal open-data
+  programmes in Europe.
+keywords:
+  - spain
+  - catalonia
+  - barcelona
+  - municipal-government
+  - open-data-portal
+  - ckan
+  - urban
+license:
+  - CC-BY-4.0
+sources:
+  - name: Portal
+    url: https://opendata-ajuntament.barcelona.cat/
+  - name: CKAN API v3
+    url: https://opendata-ajuntament.barcelona.cat/data/api/3/
+status: ok
