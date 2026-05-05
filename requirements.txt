@@ -1,0 +1,6 @@
+# Python deps for scripts/validate.py and scripts/build_readme.py
+# These run in CI (.github/workflows/validate.yml) and locally to validate
+# YAML entries against schema/dataset.schema.json and regenerate README.md.
+
+pyyaml>=6.0
+jsonschema>=4.0

@@ -16,9 +16,10 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
+          cache-dependency-path: requirements.txt
 
       - name: Install validation deps
-        run: pip install 'pyyaml' 'jsonschema>=4'
+        run: pip install -r requirements.txt
 
       - name: Validate entries against schema
         run: python scripts/validate.py
