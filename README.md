@@ -78,6 +78,11 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 - **[GBIF — Global Biodiversity Information Facility](https://www.gbif.org/)** — ✅ `live` · `CC-BY-4.0 (most records); some CC0; some CC-BY-NC` · _★_ · 🔌 wired in PLANETAI
   Aggregated species occurrence records from 2,000+ data publishers. ~3 billion records globally with a public REST API and bulk download via DOI. The de facto biodiversity backbone.
 
+### Region
+
+- **[Occitanie — Panorama des énergies renouvelables](https://www.data.gouv.fr/datasets/panorama-des-energies-renouvelables)** — ✅ `live` · `Licence Ouverte / Open Licence version 2.0`
+  Time series of renewable energy production in Occitanie, 2008-2024, compiled by the region from RTE, SDeS and ENEDIS sources. Fills the regional energy-mix cell of the FCI environmental pillar.
+
 ### City
 
 - **[Boston - Greenhouse Gas Emissions inventory](https://data.boston.gov/dataset/greenhouse-gas-emissions)** — ✅ `live` · `Open Data Commons Public Domain Dedication and License (PDDL)` · _BOS_
@@ -107,6 +112,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Real-time news event + tone time series in 100+ languages. Parses global news media to extract entities, themes, sentiment. ~150M events per year. Bulk download + BigQuery integration.
 - **[IHME Global Burden of Disease](https://ghdx.healthdata.org/gbd-2021)** — ✅ `live` · `custom open (registration required)` · _★_
   Mortality + morbidity by cause × geography × age × year for ~370 diseases and injuries across ~200 countries. The de facto global health-burden time series.
+- **[Occitanie — lycées et offre de formation](https://www.data.gouv.fr/organizations/region-occitanie)** — ✅ `live` · `Licence Ouverte / Open Licence version 2.0`
+  Occitanie's open datasets on its upper-secondary schools and their training offer, including the mapped school register, the 2025-26 school-year list and the evolution of vocational course provision.
 - **[WHO Open Data Repository](https://data.who.int/)** — ✅ `live` · `CC-BY-NC-SA-3.0-IGO` · _★_
   World Health Organization global health observatory + indicator repository. ~2,000 indicators across countries, themes, time.
 
@@ -134,10 +141,16 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 - **[Asian KLEMS](http://www.asiaklems.net/)** — ✅ `live` · `custom open` · _BLI_
   Sectoral productivity database for 12 Asian economies including Indonesia. Capital, Labour, Energy, Materials, Services at the industry level.
+- **[DGFiP — Balances comptables des régions depuis 2010](https://www.data.gouv.fr/datasets/balances-comptables-des-regions-depuis-2010)** — ✅ `live` · `Licence Ouverte / Open Licence version 2.0`
+  Accounting balances of every French region's principal and annexe budgets, 2010 onward, published by DGFiP. Fills the region rung of the public-budget ladder for all French Fab City members from one national file.
+- **[Fabriqué en Occitanie — artisans et entreprises affiliés](https://www.data.gouv.fr/datasets/artisans-et-entreprises-affilies-a-la-marque-fabrique-en-occitanie)** — ✅ `live` · `Licence Ouverte / Open Licence version 2.0`
+  Register of artisans and firms certified under Occitanie's regional made-here mark, with an accompanying product list. A rare open, named registry of locally manufacturing producers at regional scale.
 - **[LAKLEMS — Latin America KLEMS](http://www.iadb.org/research/latin-american-klems-database)** — ✅ `live` · `custom open (IDB terms)` · _SCL_
   Sectoral productivity database for 18 Latin American economies. Capital, Labour, Energy, Materials, Services inputs at industry level. Maintained by IDB and partner institutions.
 - **[Metroverse (Harvard Growth Lab)](https://metroverse.hks.harvard.edu/)** — ✅ `live` · `CC-BY-4.0` · _BCN · BOS · SCL_ · 🔌 wired in PLANETAI
   City-level economic-complexity dashboard covering ~1,200 metro areas. Industry employment, knowledge clusters, peer-city benchmarks, growth predictions.
+- **[Région Occitanie — budgets primitifs, supplémentaires et comptes administratifs](https://www.data.gouv.fr/organizations/region-occitanie)** — ✅ `live` · `Licence Ouverte / Open Licence version 2.0`
+  Occitanie's own voted budgets (primitif and supplémentaire) and executed comptes administratifs, published as M57 line-item files split between payment credits and multi-year programme authorisations.
 
 ### City
 
@@ -155,6 +168,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Full DGFiP accounting balances for every French commune, covering principal and ancillary budgets (budgets principaux et budgets annexes), published yearly by the French finance ministry as CSV, JSON and ZIP.
 - **[DGFiP Comptes individuels des communes (fichier global)](https://data.economie.gouv.fr/explore/dataset/comptes-individuels-des-communes-fichier-global-2023-2024/)** — ✅ `live` · `Licence Ouverte 2.0`
   DGFiP annual individual accounts for every French commune, published as one global file per year cohort on the Ministry of Finance open-data portal. Carries revenue, expenditure, debt and balance-sheet aggregates per commune.
+- **[DGFiP — Balances comptables des groupements à fiscalité propre depuis 2010](https://www.data.gouv.fr/datasets/balances-comptables-des-groupements-a-fiscalite-propre-depuis-2010)** — ✅ `live` · `Licence Ouverte / Open Licence version 2.0`
+  Accounting balances of French intercommunal groupings (EPCI — métropoles, communautés d'agglomération, communautés de communes), 2010 onward, from DGFiP. The only open source covering the EPCI fiscal tier nationally.
 - **[Kota Denpasar - APBD (Ringkasan dan konsistensi RKPD-APBD)](https://satudata.denpasarkota.go.id/dataset?q=APBD)** — ✅ `live` · `Lainnya (Domain Publik)` · _BLI_
   Kota Denpasar publishes its annual budget summaries and RKPD-to-APBD consistency documents as CKAN datasets, mostly from BPKAD, in CSV with a public-domain licence.
 - **[Paris - Budgets votes et comptes administratifs](https://opendata.paris.fr/api/explore/v2.1/catalog/datasets?where=theme%3D%22Administration%20et%20Finances%20Publiques%22)** — ✅ `live` · `Open Database License (ODbL)`
@@ -196,6 +211,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Catalan regional open data portal. Includes Estadistiques de residus municipals (per-capita waste, all 947 Catalan municipalities), Idescat IPC (consumer prices), Mercabarna figures, energy mix.
 - **[MassGIS](https://www.mass.gov/orgs/massgis-bureau-of-geographic-information)** — ✅ `live` · `public` · _BOS_
   Massachusetts state geospatial data: parcels, buildings, transit network, hydrography, environmental constraints, election districts. Bulk download via state portal + ArcGIS REST services.
+- **[Région Auvergne-Rhône-Alpes — données essentielles de la commande publique](https://www.data.gouv.fr/organizations/region-auvergne-rhone-alpes)** — ✅ `live` · `Licence Ouverte`
+  Auvergne-Rhône-Alpes' statutory public-procurement award register, published continuously as one small JSON record per notified contract following the Etalab commande-publique schema.
 
 ### City
 
