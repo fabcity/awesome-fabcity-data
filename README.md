@@ -80,6 +80,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 ### City
 
+- **[Boston - Greenhouse Gas Emissions inventory](https://data.boston.gov/dataset/greenhouse-gas-emissions)** — ✅ `live` · `Open Data Commons Public Domain Dedication and License (PDDL)` · _BOS_
+  Annual citywide greenhouse gas inventory for Boston covering 2005 to 2021, published as three CSVs: community-wide emissions, local government operations emissions, and local government fuels.
 - **[Google Air Quality API](https://developers.google.com/maps/documentation/air-quality)** — 💲 `paywalled` · `Google Maps Platform terms (free quota tier available)` · _★_ · 🔌 wired in PLANETAI
   500m-resolution PM2.5 + AQI grid derived from regulatory stations, satellite, and modelling. Global coverage with hourly updates.
 - **[OpenAQ](https://openaq.org/)** — ✅ `live` · `CC-BY-4.0` · _BCN · BOS · SCL · BLI · ★_ · 🔌 wired in PLANETAI
@@ -108,6 +110,11 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 - **[WHO Open Data Repository](https://data.who.int/)** — ✅ `live` · `CC-BY-NC-SA-3.0-IGO` · _★_
   World Health Organization global health observatory + indicator repository. ~2,000 indicators across countries, themes, time.
 
+### City
+
+- **[Barcelona - Resultats electorals per seccio censal](https://opendata-ajuntament.barcelona.cat/data/api/action/package_show?id=est-eleccions-locals-seccio-censal)** — ✅ `live` · `CC-BY-4.0` · _BCN_
+  Historical results for municipal, autonomic and general elections in Barcelona, published at census-section granularity - the finest official spatial unit below the district.
+
 
 ## Economic
 
@@ -131,6 +138,33 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Sectoral productivity database for 18 Latin American economies. Capital, Labour, Energy, Materials, Services inputs at industry level. Maintained by IDB and partner institutions.
 - **[Metroverse (Harvard Growth Lab)](https://metroverse.hks.harvard.edu/)** — ✅ `live` · `CC-BY-4.0` · _BCN · BOS · SCL_ · 🔌 wired in PLANETAI
   City-level economic-complexity dashboard covering ~1,200 metro areas. Industry employment, knowledge clusters, peer-city benchmarks, growth predictions.
+
+### City
+
+- **[Barcelona - Cens d'activitat economica i padro de l'IAE](https://opendata-ajuntament.barcelona.cat/data/api/action/package_show?id=cens-locals-planta-baixa-act-economica)** — ✅ `live` · `CC-BY-4.0` · _BCN_
+  Two complementary Barcelona business registers: a census of ground-floor commercial premises by activity, and the padro of the economic activities tax (IAE) by activity type. Together a business-density signal.
+- **[Barcelona - Pressupost municipal i execucio](https://opendata-ajuntament.barcelona.cat/data/api/action/package_show?id=evolucio-despeses-per-capitols-i-articles)** — ✅ `live` · `CC-BY-4.0` · _BCN_
+  Ajuntament de Barcelona publishes its municipal budget and its settled execution as annual CSV series - revenue and expenditure, planned (inicial) and liquidated, by chapter, article and programme.
+- **[Boston - Capital Plan](https://data.boston.gov/dataset/capital-budget)** — ✅ `live` · `Open Data Commons Public Domain Dedication and License (PDDL)` · _BOS_
+  City of Boston five-year capital investment plan, FY27-31, roughly 4.4 billion USD, published as bulk CSV with a PDF data dictionary and refreshed annually.
+- **[Boston - Checkbook Explorer](https://data.boston.gov/dataset/checkbook-explorer)** — ✅ `live` · `Open Data Commons Public Domain Dedication and License (PDDL)` · _BOS_
+  Actual executed City of Boston expenditure by vendor and department, transaction level, published as per-fiscal-year CSVs from FY2012 onward and refreshed monthly.
+- **[Boston - Operating and Revenue Budget](https://data.boston.gov/dataset/operating-budget)** — ✅ `live` · `Open Data Commons Public Domain Dedication and License (PDDL)` · _BOS_
+  City of Boston adopted operating budget and revenue budget, published as bulk CSV with a PDF data dictionary, by department and programme for the General Fund.
+- **[DGFiP Balances comptables des communes](https://www.data.gouv.fr/datasets/balances-comptables-des-communes-en-2024/)** — ✅ `live` · `Licence Ouverte / Open Licence version 2.0`
+  Full DGFiP accounting balances for every French commune, covering principal and ancillary budgets (budgets principaux et budgets annexes), published yearly by the French finance ministry as CSV, JSON and ZIP.
+- **[DGFiP Comptes individuels des communes (fichier global)](https://data.economie.gouv.fr/explore/dataset/comptes-individuels-des-communes-fichier-global-2023-2024/)** — ✅ `live` · `Licence Ouverte 2.0`
+  DGFiP annual individual accounts for every French commune, published as one global file per year cohort on the Ministry of Finance open-data portal. Carries revenue, expenditure, debt and balance-sheet aggregates per commune.
+- **[Kota Denpasar - APBD (Ringkasan dan konsistensi RKPD-APBD)](https://satudata.denpasarkota.go.id/dataset?q=APBD)** — ✅ `live` · `Lainnya (Domain Publik)` · _BLI_
+  Kota Denpasar publishes its annual budget summaries and RKPD-to-APBD consistency documents as CKAN datasets, mostly from BPKAD, in CSV with a public-domain licence.
+- **[Paris - Budgets votes et comptes administratifs](https://opendata.paris.fr/api/explore/v2.1/catalog/datasets?where=theme%3D%22Administration%20et%20Finances%20Publiques%22)** — ✅ `live` · `Open Database License (ODbL)`
+  The City of Paris finance corpus on its own open-data portal - voted budgets (planned) and comptes administratifs (executed) for principal and ancillary budgets, plus debt, fixed assets, grants paid and the balance sheet.
+- **[Paris - Etats speciaux d'arrondissement (sub-municipal budgets)](https://opendata.paris.fr/api/explore/v2.1/catalog/datasets?where=search%28%22etats%20speciaux%22%29)** — ✅ `live` · `Open Database License (ODbL)`
+  Paris publishes the etats speciaux d'arrondissement - the budget delegated to each of its arrondissements - as open data, both voted and executed. A rare case of public finance published BELOW the municipal tier.
+- **[Rennes - Budgets primitifs et comptes administratifs](https://data.rennesmetropole.fr/api/explore/v2.1/catalog/datasets?where=search%28%22budget%22%29)** — ✅ `live` · `Open Database License (ODbL)`
+  Ville de Rennes publishes its budget primitif (planned) and compte administratif (executed) as separate yearly datasets from 2008 onward, split into principal budget, annexes and grants to associations.
+- **[Toulouse Metropole - Budgets primitifs et comptes administratifs](https://data.toulouse-metropole.fr/api/explore/v2.1/catalog/datasets?where=theme%3D%22Finance%22)** — ✅ `live` · `Licence Ouverte v2.0 (Etalab)`
+  218 finance datasets on Toulouse Metropole's portal: budgets primitifs (planned) and comptes administratifs both alloue and realise (executed), for the city, the metropole and several member communes and their satellite budgets.
 
 ### Community
 
@@ -165,14 +199,28 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 ### City
 
-- **[Analyze Boston](https://data.boston.gov/)** — ✅ `live` · `public` · _BOS_
-  City of Boston open data portal. ~200 datasets covering 311 service requests, building permits, employee earnings, food inspections, traffic, public safety. CKAN-based.
-- **[Bali Satu Data](https://balisatudata.baliprov.go.id/)** — ✅ `live` · `public (Indonesian government)` · _BLI_ · 🔌 wired in PLANETAI
-  Bali provincial open data hub. Cross-domain datasets for the Bali pilot: demography, environment, economy, public services, customary-village indicators.
-- **[datos.gob.cl](https://datos.gob.cl/)** — ✅ `live` · `public domain (Chilean government)` · _SCL_
-  Chilean national open data portal. Datasets from across central government and many municipalities including Santiago. CKAN-based.
-- **[Open Data BCN](https://opendata-ajuntament.barcelona.cat/)** — ✅ `live` · `CC-BY-4.0` · _BCN_ · 🔌 wired in PLANETAI
-  Barcelona municipal open data portal. ~600 datasets covering mobility, environment, demographics, economy, governance, urban fabric. CKAN-based; full bulk + REST API.
+- **[Analyze Boston](https://data.boston.gov/dataset)** — ✅ `live` · `Open Data Commons Public Domain Dedication and License (PDDL)` · _BOS_
+  City of Boston open data portal, CKAN-based. 235 datasets covering 311 service requests, budget and spending, building permits, employee earnings, food inspections, traffic and public safety.
+- **[Bali Satu Data (provincial)](https://balisatudata.baliprov.go.id/search-data)** — ✅ `live` · `not stated` · _BLI_ · 🔌 wired in PLANETAI
+  Provinsi Bali's Satu Data portal. Reachable and responding, but its search returns an empty state with no datasets listed by default, so its actual holdings could not be established.
+- **[Barcelona - Perfil del contractant i relacio de contractistes](https://opendata-ajuntament.barcelona.cat/data/api/action/package_show?id=perfil-contractant)** — ✅ `live` · `CC-BY-4.0` · _BCN_
+  Barcelona's public procurement register: tenders, bids, awards and contract formalisations from the last five years, updated daily, plus a contractors list with tax identifiers and amounts running back to 2012.
+- **[Boston - Procurement and discretionary spending](https://data.boston.gov/dataset/city-of-boston-contract-award)** — ✅ `live` · `Open Data Commons Public Domain Dedication and License (PDDL)` · _BOS_
+  City of Boston procurement transparency set: awarded contracts with equitable procurement reporting, a forward-looking buying plan, and departmental discretionary spending.
+- **[datos.gob.cl](https://datos.gob.cl/)** — ✅ `live` · `not stated` · _SCL_
+  Chile's national open data portal, CKAN 2.10.4, publishing 3,211 datasets from 272 institutions including central government and many municipalities. Used as the Santiago pilot's open-data substrate.
+- **[Open Data BCN](https://opendata-ajuntament.barcelona.cat/data/api/action/package_search)** — ✅ `live` · `CC-BY-4.0` · _BCN_ · 🔌 wired in PLANETAI
+  Barcelona municipal open data portal, CKAN-based. 555 datasets covering mobility, environment, demographics, economy, governance and urban fabric, entirely under CC-BY-4.0.
+- **[Open Data Paris](https://opendata.paris.fr/api/explore/v2.1/catalog/datasets)** — ✅ `live` · `Open Database License (ODbL)`
+  The City of Paris open-data portal (OpenDataSoft), 476 datasets across eight themes, every one of them under an open licence. Carries the city's budgets, procurement, workforce, environment and mobility data.
+- **[Open Data Rennes Metropole](https://data.rennesmetropole.fr/api/explore/v2.1/catalog/datasets)** — ✅ `live` · `Open Database License (ODbL)`
+  Rennes and Rennes Metropole's open-data portal (OpenDataSoft), roughly 600 datasets, ODbL-dominant. One of the oldest French municipal open-data programmes and the source of the city's 2008-onward open budget series.
+- **[Open Data Toulouse Metropole](https://data.toulouse-metropole.fr/api/explore/v2.1/catalog/datasets)** — ✅ `live` · `Licence Ouverte v2.0 (Etalab)`
+  Toulouse Metropole's open-data portal (OpenDataSoft), 835 datasets and entirely openly licensed. The largest municipal catalogue found in the French wave, with a 218-dataset finance theme and a dedicated circular-economy theme.
+- **[Paris - Marches publics (procurement register)](https://opendata.paris.fr/api/explore/v2.1/catalog/datasets?where=search%28%22marches%22%29)** — ✅ `live` · `Open Database License (ODbL)`
+  Register of public contracts awarded by the Paris collectivite, plus the separate register for CASVP, the city's social-action agency. Published as open data on the city's own portal.
+- **[Portal Satu Data Denpasar](https://satudata.denpasarkota.go.id/dataset)** — ✅ `live` · `Lainnya (Domain Publik)` · _BLI_
+  Kota Denpasar's municipal open data portal, CKAN 2.8.3, roughly 1,028 datasets across departmental organisations, published almost entirely under a public-domain licence.
 
 <!-- END GENERATED -->
 
