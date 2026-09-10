@@ -143,6 +143,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 - **[Asian KLEMS](http://www.asiaklems.net/)** — ✅ `live` · `custom open` · _BLI_
   Sectoral productivity database for 12 Asian economies including Indonesia. Capital, Labour, Energy, Materials, Services at the industry level.
+- **[BMF Datenportal - Bundeshaushalt Gesamtuebersicht (S05)](https://www.bundesfinanzministerium.de/Datenportal/Daten/offene-daten/haushalt-oeffentliche-finanzen/s05-bundeshaushalt-Gesamtuebersicht/s05-bundeshaushalt-Gesamtuebersicht.html)** — ✅ `live` · `dl-de/by-2-0 (Datenlizenz Deutschland - Namensnennung - Version 2.0)`
+  The German federal budget overview as open data from the Federal Ministry of Finance: revenue, expenditure and their development over time, released as CSV and XLSX alongside the ministry's other fiscal series.
 - **[DGFiP — Balances comptables des régions depuis 2010](https://www.data.gouv.fr/datasets/balances-comptables-des-regions-depuis-2010)** — ✅ `live` · `Licence Ouverte / Open Licence version 2.0`
   Accounting balances of every French region's principal and annexe budgets, 2010 onward, published by DGFiP. Fills the region rung of the public-budget ladder for all French Fab City members from one national file.
 - **[Fabriqué en Occitanie — artisans et entreprises affiliés](https://www.data.gouv.fr/datasets/artisans-et-entreprises-affilies-a-la-marque-fabrique-en-occitanie)** — ✅ `live` · `Licence Ouverte / Open Licence version 2.0`
@@ -155,6 +157,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Occitanie's own voted budgets (primitif and supplémentaire) and executed comptes administratifs, published as M57 line-item files split between payment credits and multi-year programme authorisations.
 - **[SICONFI DCA - Declaracao de Contas Anuais (estados e municipios)](https://www.tesourotransparente.gov.br/ckan/dataset/api-extrato-entes)** — ✅ `live` · `Open Data Commons Open Database License (ODbL)`
   Brazil's National Treasury annual accounts declaration for states and municipalities as a JSON API, keyed on the IBGE code. Gives the state-tier budget rung - gross realised revenue, deductions and transfers down.
+- **[STATISTIK AUSTRIA open.data](https://data.statistik.gv.at/web/catalog.jsp)** — ✅ `live` · `CC-BY-4.0`
+  Statistics Austria's open data catalogue: national and regional statistics on labour, prices, trade, regional and national accounts, tourism, transport, demography, health and education, in CSV and JSON with some OGC services.
 - **[Yucatan Datos Abiertos - Egresos y Cuenta Publica del Estado](https://transparencia.yucatan.gob.mx/datos_abiertos.php)** — ✅ `live` · `Datos digitales puestos a disposicion de cualquier persona para ser usados, reutilizados y redistribuidos libremente`
   The State of Yucatan's expenditure data as open CSV: annual Cuenta Publica 2021-2024 and quarterly execution reports 2021-2025, each shipped with a data dictionary. Published by the state transparency office.
 
@@ -190,6 +194,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   The City of Paris finance corpus on its own open-data portal - voted budgets (planned) and comptes administratifs (executed) for principal and ancillary budgets, plus debt, fixed assets, grants paid and the balance sheet.
 - **[Paris - Etats speciaux d'arrondissement (sub-municipal budgets)](https://opendata.paris.fr/api/explore/v2.1/catalog/datasets?where=search%28%22etats%20speciaux%22%29)** — ✅ `live` · `Open Database License (ODbL)`
   Paris publishes the etats speciaux d'arrondissement - the budget delegated to each of its arrondissements - as open data, both voted and executed. A rare case of public finance published BELOW the municipal tier.
+- **[Regionaldatenbank Deutschland - Kommunale Kassenergebnisse (71517)](https://www.regionalstatistik.de/genesis/online?operation=statistic&code=71517)** — ✅ `live` · `dl-de/by-2-0 (Datenlizenz Deutschland - Namensnennung - Version 2.0)`
+  Cash results for German municipal government: gross revenue and gross expenditure of Gemeinden and Kreise, published at individual municipality resolution by the Laender statistical offices via IT.NRW.
 - **[Rennes - Budgets primitifs et comptes administratifs](https://data.rennesmetropole.fr/api/explore/v2.1/catalog/datasets?where=search%28%22budget%22%29)** — ✅ `live` · `Open Database License (ODbL)`
   Ville de Rennes publishes its budget primitif (planned) and compte administratif (executed) as separate yearly datasets from 2008 onward, split into principal budget, annexes and grants to associations.
 - **[SICONFI RREO - Relatorio Resumido da Execucao Orcamentaria (municipios)](https://www.tesourotransparente.gov.br/ckan/dataset/api-rreo-entes)** — ✅ `live` · `Open Data Commons Open Database License (ODbL)`
@@ -252,8 +258,12 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Belo Horizonte's municipal open data portal, CKAN 2.10.5. 606 datasets across planning, finance, mobility, health, education and environment, with a working CKAN action API and real-time consolidated revenue and expenditure feeds.
 - **[Dados Abertos Recife](http://dados.recife.pe.gov.br/dataset)** — ✅ `live` · `Open Data Commons Open Database License (ODbL)`
   Recife's municipal open data portal, CKAN 2.11.5. 222 datasets, every one of them under ODbL, weighted towards health, mobility and education, published by named municipal secretariats.
+- **[data.gv.at - Stadt Linz](https://data.linz.gv.at/)** — ✅ `live` · `CC-BY-4.0`
+  Linz publishes its open data as a publishing body on data.gv.at, Austria's national open government data portal, rather than on a portal of its own: 823 datasets covering mobility, statistics, planning, tourism and procurement.
 - **[datos.gob.cl](https://datos.gob.cl/)** — ✅ `live` · `not stated` · _SCL_
   Chile's national open data portal, CKAN 2.10.4, publishing 3,211 datasets from 272 institutions including central government and many municipalities. Used as the Santiago pilot's open-data substrate.
+- **[Offene Daten Wuppertal](https://offenedaten-wuppertal.de/)** — ✅ `live` · `CC-BY-4.0`
+  Wuppertal's municipal open data portal, run on DKAN and hosted for the city by Stadt Koeln. Around 290 datasets across geodata, population, budget, mobility, environment and elections for the largest city of the Bergisches Staedtedreieck.
 - **[Open Data BCN](https://opendata-ajuntament.barcelona.cat/data/api/action/package_search)** — ✅ `live` · `CC-BY-4.0` · _BCN_ · 🔌 wired in PLANETAI
   Barcelona municipal open data portal, CKAN-based. 555 datasets covering mobility, environment, demographics, economy, governance and urban fabric, entirely under CC-BY-4.0.
 - **[Open Data Paris](https://opendata.paris.fr/api/explore/v2.1/catalog/datasets)** — ✅ `live` · `Open Database License (ODbL)`
@@ -262,6 +272,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Rennes and Rennes Metropole's open-data portal (OpenDataSoft), roughly 600 datasets, ODbL-dominant. One of the oldest French municipal open-data programmes and the source of the city's 2008-onward open budget series.
 - **[Open Data Toulouse Metropole](https://data.toulouse-metropole.fr/api/explore/v2.1/catalog/datasets)** — ✅ `live` · `Licence Ouverte v2.0 (Etalab)`
   Toulouse Metropole's open-data portal (OpenDataSoft), 835 datasets and entirely openly licensed. The largest municipal catalogue found in the French wave, with a 218-dataset finance theme and a dedicated circular-economy theme.
+- **[open.bydata - Stadt Augsburg](https://augsburg.bydata.de/)** — ✅ `live` · `Declared per distribution in DCAT-AP.de; sampled distribution is CC0-1.0`
+  Augsburg's open data, published as two sub-catalogues of open.bydata, the Bavarian state open data portal: the city catalogue and the city statistics office catalogue, together the largest municipal holding on that portal.
 - **[Paris - Marches publics (procurement register)](https://opendata.paris.fr/api/explore/v2.1/catalog/datasets?where=search%28%22marches%22%29)** — ✅ `live` · `Open Database License (ODbL)`
   Register of public contracts awarded by the Paris collectivite, plus the separate register for CASVP, the city's social-action agency. Published as open data on the city's own portal.
 - **[Portal Satu Data Denpasar](https://satudata.denpasarkota.go.id/dataset)** — ✅ `live` · `Lainnya (Domain Publik)` · _BLI_
@@ -270,6 +282,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Full record of the City of Somerville participatory budgeting cycle: resident-submitted ideas with coordinates, voting results, and voter and submitter demographics.
 - **[Somerville Open Data](https://data.somervillema.gov/)** — ✅ `live` · `Open Data Commons Open Database License (ODbL)` · _BOS_
   City of Somerville, Massachusetts open data portal on Socrata: a small, 52-dataset catalogue licensed ODbL, notable for participatory budgeting and the long-running municipal wellbeing survey.
+- **[Transparenzportal Hamburg](https://suche.transparenz.hamburg.de/)** — ✅ `live` · `Datenlizenz Deutschland - Namensnennung - 2.0 (dl-de/by-2-0), declared per record`
+  The Free and Hanseatic City of Hamburg's transparency portal: a CKAN catalogue that publishes datasets and, unusually, the administrative documents the Hamburgisches Transparenzgesetz compels the city and its bodies to disclose.
 
 <!-- END GENERATED -->
 
