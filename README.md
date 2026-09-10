@@ -151,6 +151,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   City-level economic-complexity dashboard covering ~1,200 metro areas. Industry employment, knowledge clusters, peer-city benchmarks, growth predictions.
 - **[Région Occitanie — budgets primitifs, supplémentaires et comptes administratifs](https://www.data.gouv.fr/organizations/region-occitanie)** — ✅ `live` · `Licence Ouverte / Open Licence version 2.0`
   Occitanie's own voted budgets (primitif and supplémentaire) and executed comptes administratifs, published as M57 line-item files split between payment credits and multi-year programme authorisations.
+- **[SICONFI DCA - Declaracao de Contas Anuais (estados e municipios)](https://www.tesourotransparente.gov.br/ckan/dataset/api-extrato-entes)** — ✅ `live` · `Open Data Commons Open Database License (ODbL)`
+  Brazil's National Treasury annual accounts declaration for states and municipalities as a JSON API, keyed on the IBGE code. Gives the state-tier budget rung - gross realised revenue, deductions and transfers down.
 
 ### City
 
@@ -178,6 +180,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Paris publishes the etats speciaux d'arrondissement - the budget delegated to each of its arrondissements - as open data, both voted and executed. A rare case of public finance published BELOW the municipal tier.
 - **[Rennes - Budgets primitifs et comptes administratifs](https://data.rennesmetropole.fr/api/explore/v2.1/catalog/datasets?where=search%28%22budget%22%29)** — ✅ `live` · `Open Database License (ODbL)`
   Ville de Rennes publishes its budget primitif (planned) and compte administratif (executed) as separate yearly datasets from 2008 onward, split into principal budget, annexes and grants to associations.
+- **[SICONFI RREO - Relatorio Resumido da Execucao Orcamentaria (municipios)](https://www.tesourotransparente.gov.br/ckan/dataset/api-rreo-entes)** — ✅ `live` · `Open Data Commons Open Database License (ODbL)`
+  Brazil's National Treasury bimonthly budget-execution report for every one of the 5,570 municipalities, as a JSON API keyed on the IBGE municipality code. Carries planned and executed revenue and expenditure-by-function in one schema.
 - **[Toulouse Metropole - Budgets primitifs et comptes administratifs](https://data.toulouse-metropole.fr/api/explore/v2.1/catalog/datasets?where=theme%3D%22Finance%22)** — ✅ `live` · `Licence Ouverte v2.0 (Etalab)`
   218 finance datasets on Toulouse Metropole's portal: budgets primitifs (planned) and comptes administratifs both alloue and realise (executed), for the city, the metropole and several member communes and their satellite budgets.
 
@@ -224,6 +228,10 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Barcelona's public procurement register: tenders, bids, awards and contract formalisations from the last five years, updated daily, plus a contractors list with tax identifiers and amounts running back to 2012.
 - **[Boston - Procurement and discretionary spending](https://data.boston.gov/dataset/city-of-boston-contract-award)** — ✅ `live` · `Open Data Commons Public Domain Dedication and License (PDDL)` · _BOS_
   City of Boston procurement transparency set: awarded contracts with equitable procurement reporting, a forward-looking buying plan, and departmental discretionary spending.
+- **[Dados Abertos Belo Horizonte](https://dados.pbh.gov.br/dataset)** — ✅ `live` · `Creative Commons Attribution (564 of 606); Open Data Commons ODbL (23 of 606)`
+  Belo Horizonte's municipal open data portal, CKAN 2.10.5. 606 datasets across planning, finance, mobility, health, education and environment, with a working CKAN action API and real-time consolidated revenue and expenditure feeds.
+- **[Dados Abertos Recife](http://dados.recife.pe.gov.br/dataset)** — ✅ `live` · `Open Data Commons Open Database License (ODbL)`
+  Recife's municipal open data portal, CKAN 2.11.5. 222 datasets, every one of them under ODbL, weighted towards health, mobility and education, published by named municipal secretariats.
 - **[datos.gob.cl](https://datos.gob.cl/)** — ✅ `live` · `not stated` · _SCL_
   Chile's national open data portal, CKAN 2.10.4, publishing 3,211 datasets from 272 institutions including central government and many municipalities. Used as the Santiago pilot's open-data substrate.
 - **[Open Data BCN](https://opendata-ajuntament.barcelona.cat/data/api/action/package_search)** — ✅ `live` · `CC-BY-4.0` · _BCN_ · 🔌 wired in PLANETAI
