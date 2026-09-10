@@ -121,6 +121,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 - **[Barcelona - Resultats electorals per seccio censal](https://opendata-ajuntament.barcelona.cat/data/api/action/package_show?id=est-eleccions-locals-seccio-censal)** — ✅ `live` · `CC-BY-4.0` · _BCN_
   Historical results for municipal, autonomic and general elections in Barcelona, published at census-section granularity - the finest official spatial unit below the district.
+- **[Cambridge - Housing stock, permits and code violations](https://data.cambridgema.gov/Housing/Housing-Stock-and-Residential-Properties-by-Neighb/wiba-69ua)** — ✅ `live` · `Open Data Commons Public Domain Dedication and License (PDDL)` · _BOS_
+  City of Cambridge housing series: housing stock and residential properties by neighbourhood, residential permits from 1996, housing code violations, and foreclosure filings from 2003.
 
 
 ## Economic
@@ -168,6 +170,10 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Actual executed City of Boston expenditure by vendor and department, transaction level, published as per-fiscal-year CSVs from FY2012 onward and refreshed monthly.
 - **[Boston - Operating and Revenue Budget](https://data.boston.gov/dataset/operating-budget)** — ✅ `live` · `Open Data Commons Public Domain Dedication and License (PDDL)` · _BOS_
   City of Boston adopted operating budget and revenue budget, published as bulk CSV with a PDF data dictionary, by department and programme for the General Fund.
+- **[Cambridge - Capital budget](https://data.cambridgema.gov/d/9chi-2ed3)** — ✅ `live` · `Open Data Commons Public Domain Dedication and License (PDDL)` · _BOS_
+  City of Cambridge capital budget project funding by fiscal year, FY2020 to FY2031, with per-project latitude and longitude for each funded capital project.
+- **[Cambridge - Operating budget, revenues and expenditures](https://data.cambridgema.gov/d/ixyv-mje6)** — ✅ `live` · `Open Data Commons Public Domain Dedication and License (PDDL)` · _BOS_
+  City of Cambridge annual operating budget as two paired Socrata datasets - budgeted revenues by source and budgeted expenditures by department and division - covering FY2011 to FY2027.
 - **[DGFiP Balances comptables des communes](https://www.data.gouv.fr/datasets/balances-comptables-des-communes-en-2024/)** — ✅ `live` · `Licence Ouverte / Open Licence version 2.0`
   Full DGFiP accounting balances for every French commune, covering principal and ancillary budgets (budgets principaux et budgets annexes), published yearly by the French finance ministry as CSV, JSON and ZIP.
 - **[DGFiP Comptes individuels des communes (fichier global)](https://data.economie.gouv.fr/explore/dataset/comptes-individuels-des-communes-fichier-global-2023-2024/)** — ✅ `live` · `Licence Ouverte 2.0`
@@ -188,6 +194,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Ville de Rennes publishes its budget primitif (planned) and compte administratif (executed) as separate yearly datasets from 2008 onward, split into principal budget, annexes and grants to associations.
 - **[SICONFI RREO - Relatorio Resumido da Execucao Orcamentaria (municipios)](https://www.tesourotransparente.gov.br/ckan/dataset/api-rreo-entes)** — ✅ `live` · `Open Data Commons Open Database License (ODbL)`
   Brazil's National Treasury bimonthly budget-execution report for every one of the 5,570 municipalities, as a JSON API keyed on the IBGE municipality code. Carries planned and executed revenue and expenditure-by-function in one schema.
+- **[Somerville - Capital Investment Plan FY16-26](https://data.somervillema.gov/d/wz6k-gm5k)** — ⏳ `stale` · `Open Data Commons Open Database License (ODbL)` · _BOS_
+  City of Somerville ten-year capital investment plan - infrastructure, building improvements, park redesigns and equipment - with per-project addresses, coordinates, funding source and year-by-year amounts.
 - **[Toulouse Metropole - Budgets primitifs et comptes administratifs](https://data.toulouse-metropole.fr/api/explore/v2.1/catalog/datasets?where=theme%3D%22Finance%22)** — ✅ `live` · `Licence Ouverte v2.0 (Etalab)`
   218 finance datasets on Toulouse Metropole's portal: budgets primitifs (planned) and comptes administratifs both alloue and realise (executed), for the city, the metropole and several member communes and their satellite budgets.
 
@@ -236,6 +244,10 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Barcelona's public procurement register: tenders, bids, awards and contract formalisations from the last five years, updated daily, plus a contractors list with tax identifiers and amounts running back to 2012.
 - **[Boston - Procurement and discretionary spending](https://data.boston.gov/dataset/city-of-boston-contract-award)** — ✅ `live` · `Open Data Commons Public Domain Dedication and License (PDDL)` · _BOS_
   City of Boston procurement transparency set: awarded contracts with equitable procurement reporting, a forward-looking buying plan, and departmental discretionary spending.
+- **[Cambridge - Participatory budgeting](https://data.cambridgema.gov/d/54vd-wdqj)** — ✅ `live` · `Open Data Commons Public Domain Dedication and License (PDDL)` · _BOS_
+  Resident-submitted ideas and final ballot projects from the City of Cambridge participatory budgeting cycles, published as open datasets on the city Socrata portal.
+- **[Cambridge Open Data](https://data.cambridgema.gov/)** — ✅ `live` · `Open Data Commons Public Domain Dedication and License (PDDL)` · _BOS_
+  City of Cambridge, Massachusetts open data portal on Socrata, carrying 447 datasets across budget, housing, energy disclosure, inspections and participatory budgeting, with a full SODA API and discovery catalogue.
 - **[Dados Abertos Belo Horizonte](https://dados.pbh.gov.br/dataset)** — ✅ `live` · `Creative Commons Attribution (564 of 606); Open Data Commons ODbL (23 of 606)`
   Belo Horizonte's municipal open data portal, CKAN 2.10.5. 606 datasets across planning, finance, mobility, health, education and environment, with a working CKAN action API and real-time consolidated revenue and expenditure feeds.
 - **[Dados Abertos Recife](http://dados.recife.pe.gov.br/dataset)** — ✅ `live` · `Open Data Commons Open Database License (ODbL)`
@@ -254,6 +266,10 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Register of public contracts awarded by the Paris collectivite, plus the separate register for CASVP, the city's social-action agency. Published as open data on the city's own portal.
 - **[Portal Satu Data Denpasar](https://satudata.denpasarkota.go.id/dataset)** — ✅ `live` · `Lainnya (Domain Publik)` · _BLI_
   Kota Denpasar's municipal open data portal, CKAN 2.8.3, roughly 1,028 datasets across departmental organisations, published almost entirely under a public-domain licence.
+- **[Somerville - Participatory budgeting](https://data.somervillema.gov/d/brrj-v9a4)** — ✅ `live` · `Open Data Commons Open Database License (ODbL)` · _BOS_
+  Full record of the City of Somerville participatory budgeting cycle: resident-submitted ideas with coordinates, voting results, and voter and submitter demographics.
+- **[Somerville Open Data](https://data.somervillema.gov/)** — ✅ `live` · `Open Data Commons Open Database License (ODbL)` · _BOS_
+  City of Somerville, Massachusetts open data portal on Socrata: a small, 52-dataset catalogue licensed ODbL, notable for participatory budgeting and the long-running municipal wellbeing survey.
 
 <!-- END GENERATED -->
 
