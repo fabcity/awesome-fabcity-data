@@ -153,6 +153,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Occitanie's own voted budgets (primitif and supplémentaire) and executed comptes administratifs, published as M57 line-item files split between payment credits and multi-year programme authorisations.
 - **[SICONFI DCA - Declaracao de Contas Anuais (estados e municipios)](https://www.tesourotransparente.gov.br/ckan/dataset/api-extrato-entes)** — ✅ `live` · `Open Data Commons Open Database License (ODbL)`
   Brazil's National Treasury annual accounts declaration for states and municipalities as a JSON API, keyed on the IBGE code. Gives the state-tier budget rung - gross realised revenue, deductions and transfers down.
+- **[Yucatan Datos Abiertos - Egresos y Cuenta Publica del Estado](https://transparencia.yucatan.gob.mx/datos_abiertos.php)** — ✅ `live` · `Datos digitales puestos a disposicion de cualquier persona para ser usados, reutilizados y redistribuidos libremente`
+  The State of Yucatan's expenditure data as open CSV: annual Cuenta Publica 2021-2024 and quarterly execution reports 2021-2025, each shipped with a data dictionary. Published by the state transparency office.
 
 ### City
 
@@ -172,6 +174,10 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   DGFiP annual individual accounts for every French commune, published as one global file per year cohort on the Ministry of Finance open-data portal. Carries revenue, expenditure, debt and balance-sheet aggregates per commune.
 - **[DGFiP — Balances comptables des groupements à fiscalité propre depuis 2010](https://www.data.gouv.fr/datasets/balances-comptables-des-groupements-a-fiscalite-propre-depuis-2010)** — ✅ `live` · `Licence Ouverte / Open Licence version 2.0`
   Accounting balances of French intercommunal groupings (EPCI — métropoles, communautés d'agglomération, communautés de communes), 2010 onward, from DGFiP. The only open source covering the EPCI fiscal tier nationally.
+- **[INEGI DENUE - Directorio Estadistico Nacional de Unidades Economicas](https://www.inegi.org.mx/servicios/api_denue.html)** — ✅ `live` · `INEGI Terminos de Libre Uso de la Informacion`
+  Mexico's national business register as a geocoded REST API: over five million establishments with activity code, employee-size band, address and coordinates. Run by INEGI, free token required.
+- **[INEGI EFIPEM - Estadistica de Finanzas Publicas Estatales y Municipales](https://www.inegi.org.mx/programas/finanzas/)** — ✅ `live` · `INEGI Terminos de Libre Uso de la Informacion`
+  INEGI's annual revenue-and-expenditure series for every Mexican state government, municipality, Mexico City and its 16 demarcaciones, 1989-2025, keyed on the INEGI state and municipality clave.
 - **[Kota Denpasar - APBD (Ringkasan dan konsistensi RKPD-APBD)](https://satudata.denpasarkota.go.id/dataset?q=APBD)** — ✅ `live` · `Lainnya (Domain Publik)` · _BLI_
   Kota Denpasar publishes its annual budget summaries and RKPD-to-APBD consistency documents as CKAN datasets, mostly from BPKAD, in CSV with a public-domain licence.
 - **[Paris - Budgets votes et comptes administratifs](https://opendata.paris.fr/api/explore/v2.1/catalog/datasets?where=theme%3D%22Administration%20et%20Finances%20Publiques%22)** — ✅ `live` · `Open Database License (ODbL)`
@@ -209,6 +215,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 ### Region
 
+- **[Catalogo de Datos Abiertos del Estado de Nuevo Leon](http://catalogodatos.nl.gob.mx/dataset/)** — ✅ `live` · `Open Data Commons Attribution License (105 datasets) / Creative Commons Attribution (19)`
+  Nuevo Leon's state open data catalogue, CKAN 2.10, 127 datasets published by named state secretariats and agencies, every one of them under an open licence. The region rung for Monterrey.
 - **[ENTSO-E Transparency Platform](https://transparency.entsoe.eu/)** — ✅ `live` · `custom open (ENTSO-E terms; free for non-commercial)` · _BCN_
   European electricity grid data: generation by source, consumption, cross-border flows, balancing, day-ahead prices. Hourly resolution for all EU + UK + Norway + Switzerland.
 - **[Generalitat de Catalunya — Dades Obertes](https://analisi.transparenciacatalunya.cat/)** — ✅ `live` · `CC-BY-4.0` · _BCN_ · 🔌 wired in PLANETAI
