@@ -87,8 +87,12 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 - **[Boston - Greenhouse Gas Emissions inventory](https://data.boston.gov/dataset/greenhouse-gas-emissions)** — ✅ `live` · `Open Data Commons Public Domain Dedication and License (PDDL)` · _BOS_
   Annual citywide greenhouse gas inventory for Boston covering 2005 to 2021, published as three CSVs: community-wide emissions, local government operations emissions, and local government fuels.
+- **[Geoportal Kvaliteta zraka Grada Zagreba](https://data.gov.hr/ckan/dataset/geoportal-kvaliteta-zraka)** — ✅ `live` · `Otvorena dozvola (OD)`
+  Inventory of Zagreb's urban air-quality monitoring stations - location, substances measured, operating institution and competent authority - served as CSV, GeoJSON, KML and SHP from the city's ArcGIS Hub.
 - **[Google Air Quality API](https://developers.google.com/maps/documentation/air-quality)** — 💲 `paywalled` · `Google Maps Platform terms (free quota tier available)` · _★_ · 🔌 wired in PLANETAI
   500m-resolution PM2.5 + AQI grid derived from regulatory stations, satellite, and modelling. Global coverage with hourly updates.
+- **[Luchtmeetnet / Landelijk Meetnet Luchtkwaliteit (RIVM)](https://api-docs.luchtmeetnet.nl/)** — ✅ `live` · `CC-BY-4.0`
+  The Dutch national air quality monitoring network, run by RIVM with regional environment agencies. Open JSON API serving station metadata and hourly concentrations for NO2, PM10, PM2.5, O3 and more.
 - **[OpenAQ](https://openaq.org/)** — ✅ `live` · `CC-BY-4.0` · _BCN · BOS · SCL · BLI · ★_ · 🔌 wired in PLANETAI
   Reference-grade air quality aggregator. Pulls from ~10k+ regulatory monitoring stations globally and harmonises to a common schema. Free public API with optional auth for higher rate limits.
 - **[Sensor.Community](https://sensor.community/)** — ✅ `live` · `DbCL-1.0` · _BCN · ★_
@@ -123,6 +127,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Historical results for municipal, autonomic and general elections in Barcelona, published at census-section granularity - the finest official spatial unit below the district.
 - **[Cambridge - Housing stock, permits and code violations](https://data.cambridgema.gov/Housing/Housing-Stock-and-Residential-Properties-by-Neighb/wiba-69ua)** — ✅ `live` · `Open Data Commons Public Domain Dedication and License (PDDL)` · _BOS_
   City of Cambridge housing series: housing stock and residential properties by neighbourhood, residential permits from 1996, housing code violations, and foreclosure filings from 2003.
+- **[CBS Kerncijfers wijken en buurten](https://www.cbs.nl/nl-nl/cijfers/detail/85984NED)** — ✅ `live` · `Verveelvoudiging is toegestaan, mits het CBS als bron wordt vermeld (CC-BY-4.0 site-wide)`
+  Statistics Netherlands' core indicators for every Dutch municipality, district and neighbourhood - population, household composition, income, housing, cars, energy use, distance to services - via the StatLine OData API.
 
 
 ## Economic
@@ -145,6 +151,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Sectoral productivity database for 12 Asian economies including Indonesia. Capital, Labour, Energy, Materials, Services at the industry level.
 - **[BMF Datenportal - Bundeshaushalt Gesamtuebersicht (S05)](https://www.bundesfinanzministerium.de/Datenportal/Daten/offene-daten/haushalt-oeffentliche-finanzen/s05-bundeshaushalt-Gesamtuebersicht/s05-bundeshaushalt-Gesamtuebersicht.html)** — ✅ `live` · `dl-de/by-2-0 (Datenlizenz Deutschland - Namensnennung - Version 2.0)`
   The German federal budget overview as open data from the Federal Ministry of Finance: revenue, expenditure and their development over time, released as CSV and XLSX alongside the ministry's other fiscal series.
+- **[CBS Gemeentebegrotingen; baten en lasten naar regio en grootteklasse](https://www.cbs.nl/nl-nl/cijfers/detail/83641NED)** — ✅ `live` · `Verveelvoudiging is toegestaan, mits het CBS als bron wordt vermeld (CC-BY-4.0 site-wide)`
+  Budgeted revenue and expenditure of Dutch municipalities per taakveld (policy field), in millions of euro and euro per inhabitant, broken down by province and municipality size class. 2017-2026, annual, via StatLine OData.
 - **[DGFiP — Balances comptables des régions depuis 2010](https://www.data.gouv.fr/datasets/balances-comptables-des-regions-depuis-2010)** — ✅ `live` · `Licence Ouverte / Open Licence version 2.0`
   Accounting balances of every French region's principal and annexe budgets, 2010 onward, published by DGFiP. Fills the region rung of the public-budget ladder for all French Fab City members from one national file.
 - **[Fabriqué en Occitanie — artisans et entreprises affiliés](https://www.data.gouv.fr/datasets/artisans-et-entreprises-affilies-a-la-marque-fabrique-en-occitanie)** — ✅ `live` · `Licence Ouverte / Open Licence version 2.0`
@@ -198,6 +206,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Paris publishes the etats speciaux d'arrondissement - the budget delegated to each of its arrondissements - as open data, both voted and executed. A rare case of public finance published BELOW the municipal tier.
 - **[Presupuesto Abierto Chile — Pagos municipales](https://presupuestoabierto.gob.cl/municipalities)** — ✅ `live` · `CC-BY-SA-4.0` · _SCL_
   Transaction-level payments made by every Chilean municipality, keyed on the official comuna code (CUT). Run by DIPRES (Dirección de Presupuestos, Ministerio de Hacienda). Served as filterable CSV over a public REST API.
+- **[Proracun Grada Zagreba](https://data.zagreb.hr/dataset/proracun-grada-zagreba-2026)** — ✅ `live` · `Otvorena dozvola (OD)`
+  Consolidated City of Zagreb budget - planned revenue and expenditure by year, published as XLSX and CSV on the city open data portal. Two datasets cover 2026 (plus 2027-2028 projections) and 2022-2025.
 - **[Regionaldatenbank Deutschland - Kommunale Kassenergebnisse (71517)](https://www.regionalstatistik.de/genesis/online?operation=statistic&code=71517)** — ✅ `live` · `dl-de/by-2-0 (Datenlizenz Deutschland - Namensnennung - Version 2.0)`
   Cash results for German municipal government: gross revenue and gross expenditure of Gemeinden and Kreise, published at individual municipality resolution by the Laender statistical offices via IT.NRW.
 - **[Rennes - Budgets primitifs et comptes administratifs](https://data.rennesmetropole.fr/api/explore/v2.1/catalog/datasets?where=search%28%22budget%22%29)** — ✅ `live` · `Open Database License (ODbL)`
@@ -206,6 +216,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Brazil's National Treasury bimonthly budget-execution report for every one of the 5,570 municipalities, as a JSON API keyed on the IBGE municipality code. Carries planned and executed revenue and expenditure-by-function in one schema.
 - **[Somerville - Capital Investment Plan FY16-26](https://data.somervillema.gov/d/wz6k-gm5k)** — ⏳ `stale` · `Open Data Commons Open Database License (ODbL)` · _BOS_
   City of Somerville ten-year capital investment plan - infrastructure, building improvements, park redesigns and equipment - with per-project addresses, coordinates, funding source and year-by-year amounts.
+- **[Sredstva mjesne samouprave Grada Zagreba](https://data.zagreb.hr/dataset/sredstva-mjesne-samouprave-2001-2023)** — ✅ `live` · `Otvorena dozvola (OD)`
+  Funds allocated to Zagreb's sub-municipal self-government units (gradske cetvrti and mjesni odbori) for small communal works, 2001-2024, roughly EUR 1.094 billion in total. CSV and XLSX.
 - **[Toulouse Metropole - Budgets primitifs et comptes administratifs](https://data.toulouse-metropole.fr/api/explore/v2.1/catalog/datasets?where=theme%3D%22Finance%22)** — ✅ `live` · `Licence Ouverte v2.0 (Etalab)`
   218 finance datasets on Toulouse Metropole's portal: budgets primitifs (planned) and comptes administratifs both alloue and realise (executed), for the city, the metropole and several member communes and their satellite budgets.
 
@@ -235,6 +247,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 - **[Catalogo de Datos Abiertos del Estado de Nuevo Leon](http://catalogodatos.nl.gob.mx/dataset/)** — ✅ `live` · `Open Data Commons Attribution License (105 datasets) / Creative Commons Attribution (19)`
   Nuevo Leon's state open data catalogue, CKAN 2.10, 127 datasets published by named state secretariats and agencies, every one of them under an open licence. The region rung for Monterrey.
+- **[Data.overheid.nl](https://data.overheid.nl/)** — ✅ `live` · `CC0-1.0`
+  The Netherlands' national open data register, run by KOOP. CKAN-backed DCAT catalogue indexing datasets from ministries, provinces, water boards and municipalities, including ones with no portal of their own.
 - **[Datos Argentina (datos.gob.ar)](https://datos.gob.ar/)** — ✅ `live` · `Los datos publicados acá son públicos y se pueden reutilizar libremente citando la fuente.`
   Argentina's national open data portal, running CKAN 2.11.5. Indexes roughly 1,285 datasets from about 45 national organisations, including the budget classifiers and the geographic normalisation service.
 - **[ENTSO-E Transparency Platform](https://transparency.entsoe.eu/)** — ✅ `live` · `custom open (ENTSO-E terms; free for non-commercial)` · _BCN_
@@ -245,11 +259,17 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Argentina's official API for resolving and normalising administrative units — provincias, departamentos, municipios, localidades and addresses — to their national identifier codes. Run by Datos Argentina on IGN base data.
 - **[MassGIS](https://www.mass.gov/orgs/massgis-bureau-of-geographic-information)** — ✅ `live` · `public` · _BOS_
   Massachusetts state geospatial data: parcels, buildings, transit network, hydrography, environmental constraints, election districts. Bulk download via state portal + ArcGIS REST services.
+- **[Portal otvorenih podataka Republike Hrvatske (data.gov.hr)](https://data.gov.hr/ckan/dataset)** — ✅ `live` · `Otvorena dozvola (OD)`
+  Croatia's national open data portal, CKAN-based, run by Sredisnji drzavni ured za razvoj digitalnog drustva. 3,874 datasets from ministries, agencies, counties, towns and municipalities.
 - **[Région Auvergne-Rhône-Alpes — données essentielles de la commande publique](https://www.data.gouv.fr/organizations/region-auvergne-rhone-alpes)** — ✅ `live` · `Licence Ouverte`
   Auvergne-Rhône-Alpes' statutory public-procurement award register, published continuously as one small JSON record per notified contract following the Etalab commande-publique schema.
+- **[TenderNed - Aankondigingen van overheidsopdrachten](https://data.overheid.nl/dataset/aankondigingen-van-overheidsopdrachten---tenderned)** — ✅ `live` · `CC0-1.0`
+  Every Dutch public procurement notice - market consultations, contract notices, awards, modifications and early terminations - published by PIANOo via TenderNed, downloadable in bulk and available as feeds and a webservice.
 
 ### City
 
+- **[Amsterdam Open Data / DataPunt API](https://data.amsterdam.nl/catalogus/)** — ✅ `live` · `CC0-1.0`
+  Gemeente Amsterdam's data catalogue and its DataPunt REST API, which serves roughly 100 versioned dataset collections (BAG, trees, ecology, waste, gas-free zones) as JSON, plus WFS and MVT layers.
 - **[Analyze Boston](https://data.boston.gov/dataset)** — ✅ `live` · `Open Data Commons Public Domain Dedication and License (PDDL)` · _BOS_
   City of Boston open data portal, CKAN-based. 235 datasets covering 311 service requests, budget and spending, building permits, employee earnings, food inspections, traffic and public safety.
 - **[Bali Satu Data (provincial)](https://balisatudata.baliprov.go.id/search-data)** — ✅ `live` · `not stated` · _BLI_ · 🔌 wired in PLANETAI
@@ -284,6 +304,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Augsburg's open data, published as two sub-catalogues of open.bydata, the Bavarian state open data portal: the city catalogue and the city statistics office catalogue, together the largest municipal holding on that portal.
 - **[Paris - Marches publics (procurement register)](https://opendata.paris.fr/api/explore/v2.1/catalog/datasets?where=search%28%22marches%22%29)** — ✅ `live` · `Open Database License (ODbL)`
   Register of public contracts awarded by the Paris collectivite, plus the separate register for CASVP, the city's social-action agency. Published as open data on the city's own portal.
+- **[Portal otvorenih podataka Grada Zagreba](https://data.zagreb.hr/dataset)** — ✅ `live` · `Otvorena dozvola (OD)`
+  City of Zagreb open data portal, CKAN-based. 199 datasets covering city budget, local self-government funding, transport, utilities, kindergartens, air quality geodata and council composition.
 - **[Portal Satu Data Denpasar](https://satudata.denpasarkota.go.id/dataset)** — ✅ `live` · `Lainnya (Domain Publik)` · _BLI_
   Kota Denpasar's municipal open data portal, CKAN 2.8.3, roughly 1,028 datasets across departmental organisations, published almost entirely under a public-domain licence.
 - **[Somerville - Participatory budgeting](https://data.somervillema.gov/d/brrj-v9a4)** — ✅ `live` · `Open Data Commons Open Database License (ODbL)` · _BOS_
