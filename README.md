@@ -169,6 +169,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Brazil's National Treasury annual accounts declaration for states and municipalities as a JSON API, keyed on the IBGE code. Gives the state-tier budget rung - gross realised revenue, deductions and transfers down.
 - **[STATISTIK AUSTRIA open.data](https://data.statistik.gv.at/web/catalog.jsp)** — ✅ `live` · `CC-BY-4.0`
   Statistics Austria's open data catalogue: national and regional statistics on labour, prices, trade, regional and national accounts, tourism, transport, demography, health and education, in CSV and JSON with some OGC services.
+- **[vulekamali - South African Budget Data Portal](https://vulekamali.gov.za/datasets)** — ✅ `live` · `National Treasury Terms and Conditions - use, download, copy, publish, distribute and transmit freely including commercially; attribution to National Treasury plus date of publication and disclosure of modifications required`
+  National Treasury and Imali Yethu budget portal carrying national and provincial estimates of revenue and expenditure, budgeted-versus-actual spending, division of revenue and appropriation acts.
 - **[Yucatan Datos Abiertos - Egresos y Cuenta Publica del Estado](https://transparencia.yucatan.gob.mx/datos_abiertos.php)** — ✅ `live` · `Datos digitales puestos a disposicion de cualquier persona para ser usados, reutilizados y redistribuidos libremente`
   The State of Yucatan's expenditure data as open CSV: annual Cuenta Publica 2021-2024 and quarterly execution reports 2021-2025, each shipped with a data dictionary. Published by the state transparency office.
 
@@ -200,6 +202,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   INEGI's annual revenue-and-expenditure series for every Mexican state government, municipality, Mexico City and its 16 demarcaciones, 1989-2025, keyed on the INEGI state and municipality clave.
 - **[Kota Denpasar - APBD (Ringkasan dan konsistensi RKPD-APBD)](https://satudata.denpasarkota.go.id/dataset?q=APBD)** — ✅ `live` · `Lainnya (Domain Publik)` · _BLI_
   Kota Denpasar publishes its annual budget summaries and RKPD-to-APBD consistency documents as CKAN datasets, mostly from BPKAD, in CSV with a public-domain licence.
+- **[Municipal Money (South Africa National Treasury)](https://municipaldata.treasury.gov.za/)** — ✅ `live` · `National Treasury Terms of Use - free commercial and non-commercial reuse, redistribution permitted, attribution to National Treasury plus date of publication required`
+  National Treasury's municipal finance API for all 292 South African municipalities: budgeted and audited income, expenditure, cash flow, capital and grants, 2008-09 to 2025-26. Built with OpenUp.
 - **[Paris - Budgets votes et comptes administratifs](https://opendata.paris.fr/api/explore/v2.1/catalog/datasets?where=theme%3D%22Administration%20et%20Finances%20Publiques%22)** — ✅ `live` · `Open Database License (ODbL)`
   The City of Paris finance corpus on its own open-data portal - voted budgets (planned) and comptes administratifs (executed) for principal and ancillary budgets, plus debt, fixed assets, grants paid and the balance sheet.
 - **[Paris - Etats speciaux d'arrondissement (sub-municipal budgets)](https://opendata.paris.fr/api/explore/v2.1/catalog/datasets?where=search%28%22etats%20speciaux%22%29)** — ✅ `live` · `Open Database License (ODbL)`
@@ -263,6 +267,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Croatia's national open data portal, CKAN-based, run by Sredisnji drzavni ured za razvoj digitalnog drustva. 3,874 datasets from ministries, agencies, counties, towns and municipalities.
 - **[Région Auvergne-Rhône-Alpes — données essentielles de la commande publique](https://www.data.gouv.fr/organizations/region-auvergne-rhone-alpes)** — ✅ `live` · `Licence Ouverte`
   Auvergne-Rhône-Alpes' statutory public-procurement award register, published continuously as one small JSON record per notified contract following the Etalab commande-publique schema.
+- **[South African eTenders OCDS API](https://ocds-api.etenders.gov.za/)** — ✅ `live` · `CC-BY-4.0`
+  National Treasury procurement releases for South African national and provincial government in Open Contracting Data Standard format, drawn from the eTender portal, BAS and the Central Supplier Database.
 - **[TenderNed - Aankondigingen van overheidsopdrachten](https://data.overheid.nl/dataset/aankondigingen-van-overheidsopdrachten---tenderned)** — ✅ `live` · `CC0-1.0`
   Every Dutch public procurement notice - market consultations, contract notices, awards, modifications and early terminations - published by PIANOo via TenderNed, downloadable in bulk and available as feeds and a webservice.
 
