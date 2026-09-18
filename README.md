@@ -100,14 +100,53 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 - **[WRI Aqueduct 4.0 — Global Water Risk Atlas](https://www.wri.org/data/aqueduct-global-maps-40-data)** — ✅ `live` · `Creative Commons (variant not specified on the source page - verify before publishing derived values)` · _★_
   WRI's global water risk framework: 13 baseline annual and 3 baseline monthly indicators covering water stress, depletion, variability and quality, plus CMIP6-driven projections for 2030, 2050 and 2080.
 
+### Region
+
+- **[Bhutan 186 Watershed Boundaries (NSDI)](https://nsdi.systems.gov.bt/portal/sharing/rest/content/items/565e1b5cac0046e9b2f64b76d8c4bca0?f=json)** — ✅ `live` · `Open (Geo-Information Policy 2018 §6.3.1 open tier: "Open data shall be openly and freely accessible")`
+  The 186-unit watershed delineation of Bhutan published by the Department of Water. Finer-grained than basin boundaries and usable as a sub-dzongkhag environmental reporting unit.
+- **[Bhutan Land Use Land Cover 2020 (NSDI)](https://nsdi.systems.gov.bt/portal/sharing/rest/content/items/e9db104416b74226839b72b226cb3ae6?f=json)** — ✅ `live` · `Open (Geo-Information Policy 2018 §6.3.1 open tier: "Open data shall be openly and freely accessible")`
+  National land use and land cover for Bhutan derived from Sentinel-2 imagery with random-forest classification, 87% overall accuracy, showing 69% forest cover. Published by the National Land Commission Secretariat.
+- **[Bhutan National Solar Energy Roadmap Sites (NSDI)](https://nsdi.systems.gov.bt/portal/sharing/rest/content/items/3fdb11bd00d645ea9cd92ffdf708d4ce?f=json)** — ✅ `live` · `Open (Geo-Information Policy 2018 §6.3.1 open tier: "Open data shall be openly and freely accessible")`
+  Candidate and planned solar generation sites identified under Bhutan's National Solar Energy Roadmap, published by the Department of Energy. Points, so this is a renewable-capacity siting layer.
+- **[Bhutan River Basin Boundaries (NSDI)](https://nsdi.systems.gov.bt/portal/sharing/rest/content/items/547f76f1a5d54c5a9ddd6536baad7dd2?f=json)** — ✅ `live` · `Open (Geo-Information Policy 2018 §6.3.1 open tier: "Open data shall be openly and freely accessible")`
+  River basin boundary polygons for Bhutan published by the Department of Water on the national spatial data infrastructure. Provides the hydrological regional frame for water-resource indicators.
+- **[GeoStat Environment Statistics (PxWeb) - Georgia](https://pc-axis.geostat.ge/PXWeb/pxweb/en/Database/Environment%20Statistics)** — ✅ `live` · `GeoStat open terms of use - download, use, adapt, modify, create derivative works, disseminate and share for any purpose including commercial, without prior permission; attribution to GEOSTAT required`
+  Georgia's national environment statistics - air pollution, waste, water resources, forests, protected areas and environmental-economic accounts - queryable through a live PxWeb REST API run by GeoStat.
+- **[Occitanie — Panorama des énergies renouvelables](https://www.data.gouv.fr/datasets/panorama-des-energies-renouvelables)** — ✅ `live` · `Licence Ouverte / Open Licence version 2.0`
+  Time series of renewable energy production in Occitanie, 2008-2024, compiled by the region from RTE, SDeS and ENEDIS sources. Fills the regional energy-mix cell of the FCI environmental pillar.
+
 ### City
 
+- **[ARSO hourly air quality measurements (Slovenia)](http://www.arso.gov.si/xml/zrak/ones_zrak_urni_podatki_zadnji.xml)** — ✅ `live` · `CC-BY-4.0`
+  Hourly XML feed from Slovenia's national air quality network - 24 stations, three of them in Ljubljana, reporting PM10, PM2.5, NO2, O3, SO2, benzene, CO and NOx with coordinates and elevation.
+- **[Boston - Greenhouse Gas Emissions inventory](https://data.boston.gov/dataset/greenhouse-gas-emissions)** — ✅ `live` · `Open Data Commons Public Domain Dedication and License (PDDL)` · _BOS_
+  Annual citywide greenhouse gas inventory for Boston covering 2005 to 2021, published as three CSVs: community-wide emissions, local government operations emissions, and local government fuels.
+- **[Emissions de GES de la collectivite montrealaise (GPC)](https://donnees.montreal.ca/dataset/emissions-ges-collectivite-montrealaise)** — ✅ `live` · `CC-BY-4.0`
+  Community-scale greenhouse gas inventory for Montreal built on the GPC protocol, carrying GPC reference numbers and Scope 1/2/3 across stationary energy, transport, waste, IPPU and AFOLU.
+- **[Geoportal Kvaliteta zraka Grada Zagreba](https://data.gov.hr/ckan/dataset/geoportal-kvaliteta-zraka)** — ✅ `live` · `Otvorena dozvola (OD)`
+  Inventory of Zagreb's urban air-quality monitoring stations - location, substances measured, operating institution and competent authority - served as CSV, GeoJSON, KML and SHP from the city's ArcGIS Hub.
 - **[Google Air Quality API](https://developers.google.com/maps/documentation/air-quality)** — 💲 `paywalled` · `Google Maps Platform terms (free quota tier available)` · _★_ · 🔌 wired in PLANETAI
   500m-resolution PM2.5 + AQI grid derived from regulatory stations, satellite, and modelling. Global coverage with hourly updates.
+- **[Kamakura Waste and Recycling Open Data (鎌倉市 ごみ・資源オープンデータ)](https://www.city.kamakura.kanagawa.jp/gomi/shigen.html)** — ✅ `live` · `CC-BY-4.0`
+  Four CSV series on Kamakura's municipal waste system: incineration tonnage and waste generation split household/commercial, recycling rate, and resource collection volume. The recycling rate series runs FY2010-FY2024, rising 46.5% to 59.8%.
+- **[Local authority collected waste management - annual results (England)](https://www.gov.uk/government/statistics/local-authority-collected-waste-management-annual-results)** — ✅ `live` · `Open Government Licence v3.0`
+  Per-authority and regional waste tonnage, recycling rates and household waste per person for England, 2024/25 with a back-series to 2012-13, published as ODS spreadsheets from WasteDataFlow returns.
+- **[Luchtmeetnet / Landelijk Meetnet Luchtkwaliteit (RIVM)](https://api-docs.luchtmeetnet.nl/)** — ✅ `live` · `CC-BY-4.0`
+  The Dutch national air quality monitoring network, run by RIVM with regional environment agencies. Open JSON API serving station metadata and hourly concentrations for NO2, PM10, PM2.5, O3 and more.
 - **[OpenAQ](https://openaq.org/)** — ✅ `live` · `CC-BY-4.0` · _BCN · BOS · SCL · BLI · ★_ · 🔌 wired in PLANETAI
   Reference-grade air quality aggregator. Pulls from ~10k+ regulatory monitoring stations globally and harmonises to a common schema. Free public API with optional auth for higher rate limits.
+- **[RSQA - Indice de la qualite de l'air, temps reel (Montreal)](https://donnees.montreal.ca/dataset/rsqa-indice-qualite-air)** — ✅ `live` · `CC-BY-4.0`
+  Hourly air quality index per monitoring station from Montreal's RSQA network, covering SO2, CO, O3, NO2 and PM2.5. Published as a rolling daily CSV, updated about ten minutes past each hour.
 - **[Sensor.Community](https://sensor.community/)** — ✅ `live` · `DbCL-1.0` · _BCN · ★_
   Citizen-science air quality sensor network rooted in Germany, active across the EU. ~30k SDS011-based PM sensors with public API and bulk archive download.
+- **[Seoul Daily Average Air Environment Information (서울시 기간별 일평균 대기환경 정보)](https://data.seoul.go.kr/dataList/OA-2220/S/1/datasetView.do)** — ✅ `live` · `공공누리 1유형 : 출처표시 (상업적 이용 및 변경 가능) - KOGL Type 1`
+  Daily-average air quality index, PM10, ozone, NO2, CO and SO2 for Seoul, with a series running from 1987 to 2025. The ~38-year depth is exceptional for an urban air-quality record.
+- **[Seoul GHG Inventory by Direct/Indirect (서울시 온실가스 인벤토리 직간접별 현황)](https://data.seoul.go.kr/dataList/OA-21082/S/1/datasetView.do)** — ✅ `live` · `공공누리 1유형 : 출처표시 (상업적 이용 및 변경 가능) - KOGL Type 1`
+  Seoul's annual greenhouse gas inventory split by direct and indirect emissions, published by the city's Climate and Environment Bureau. Companion dataset OA-21081 gives the same inventory broken out by sector.
+- **[SYKE municipal and regional greenhouse gas emissions (ALas)](https://paastot.hiilineutraalisuomi.fi/)** — ✅ `live` · `CC-BY-4.0`
+  Per-municipality and per-region GHG emissions by sector for Finland under the ALas/Hinku model - electricity, heating, transport, industry, agriculture, waste - downloadable as Excel tables. Run by SYKE.
+- **[UK local authority and regional greenhouse gas emissions statistics](https://www.gov.uk/government/statistics/uk-local-authority-and-regional-greenhouse-gas-emissions-statistics-2005-to-2024)** — ✅ `live` · `Open Government Licence v3.0`
+  Annual territorial GHG emissions for every UK local authority and region, 2005-2024, as an 82.6 MB CSV plus Excel tables. Excludes aviation, shipping, military transport and fluorinated gases.
 
 ### Community
 
@@ -141,12 +180,31 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 ### Region
 
+- **[Bhutan Education Centers - Schools (NSDI)](https://nsdi.systems.gov.bt/portal/sharing/rest/content/items/4959d9acb1e141e0a363b8dd91ac803b?f=json)** — ✅ `live` · `Open (Geo-Information Policy 2018 §6.3.1 open tier: "Open data shall be openly and freely accessible")`
+  Point locations of schools and colleges across Bhutan published by the National Land Commission Secretariat. Supports education-access indicators when joined to gewog and dzongkhag boundaries.
 - **[GDELT — Global Database of Events, Language & Tone](https://www.gdeltproject.org/)** — ✅ `live` · `CC-BY-4.0` · _★_
   Real-time news event + tone time series in 100+ languages. Parses global news media to extract entities, themes, sentiment. ~150M events per year. Bulk download + BigQuery integration.
 - **[IHME Global Burden of Disease](https://ghdx.healthdata.org/gbd-2021)** — ✅ `live` · `custom open (registration required)` · _★_
   Mortality + morbidity by cause × geography × age × year for ~370 diseases and injuries across ~200 countries. The de facto global health-burden time series.
+- **[Japan 2020 Census Workplace/School Location Tabulation (従業地・通学地集計)](https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&lid=000001296018)** — ✅ `live` · `政府標準利用規約（第2.0版）- explicitly CC BY 4.0 compatible`
+  The 2020 Census tabulation of population by place of residence cross-tabulated against place of work or school at municipality level - a true municipality-to-municipality origin-destination commuting matrix, plus daytime and night-time population.
+- **[Occitanie — lycées et offre de formation](https://www.data.gouv.fr/organizations/region-occitanie)** — ✅ `live` · `Licence Ouverte / Open Licence version 2.0`
+  Occitanie's open datasets on its upper-secondary schools and their training offer, including the mapped school register, the 2025-26 school-year list and the evolution of vocational course provision.
 - **[WHO Open Data Repository](https://data.who.int/)** — ✅ `live` · `CC-BY-NC-SA-3.0-IGO` · _★_
   World Health Organization global health observatory + indicator repository. ~2,000 indicators across countries, themes, time.
+
+### City
+
+- **[Barcelona - Resultats electorals per seccio censal](https://opendata-ajuntament.barcelona.cat/data/api/action/package_show?id=est-eleccions-locals-seccio-censal)** — ✅ `live` · `CC-BY-4.0` · _BCN_
+  Historical results for municipal, autonomic and general elections in Barcelona, published at census-section granularity - the finest official spatial unit below the district.
+- **[Cambridge - Housing stock, permits and code violations](https://data.cambridgema.gov/Housing/Housing-Stock-and-Residential-Properties-by-Neighb/wiba-69ua)** — ✅ `live` · `Open Data Commons Public Domain Dedication and License (PDDL)` · _BOS_
+  City of Cambridge housing series: housing stock and residential properties by neighbourhood, residential permits from 1996, housing code violations, and foreclosure filings from 2003.
+- **[CBS Kerncijfers wijken en buurten](https://www.cbs.nl/nl-nl/cijfers/detail/85984NED)** — ✅ `live` · `Verveelvoudiging is toegestaan, mits het CBS als bron wordt vermeld (CC-BY-4.0 site-wide)`
+  Statistics Netherlands' core indicators for every Dutch municipality, district and neighbourhood - population, household composition, income, housing, cars, energy use, distance to services - via the StatLine OData API.
+- **[Seoul Employment Indicators (서울시 고용지표 통계)](https://data.seoul.go.kr/dataList/OA-475/S/1/datasetView.do)** — ✅ `live` · `공공누리 1유형 : 출처표시 (상업적 이용 및 변경 가능) - KOGL Type 1`
+  Monthly unemployment rate, employment rate and labour-force participation rate for Seoul, broken out by sex. Sourced from KOSIS and republished by the city on its open data portal.
+- **[Seoul Living Population by Administrative Dong (행정동 단위 서울 생활인구)](https://data.seoul.go.kr/dataList/OA-14991/S/1/datasetView.do)** — ✅ `live` · `공공누리 1유형 : 출처표시 (상업적 이용 및 변경 가능) - KOGL Type 1`
+  Hourly estimates of the population actually present in each Seoul administrative dong, built by fusing city administrative data with telecom data. Daily updates from 2017 to the present.
 
 
 ## Economic
@@ -191,10 +249,133 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 - **[Asian KLEMS](http://www.asiaklems.net/)** — ✅ `live` · `custom open` · _BLI_
   Sectoral productivity database for 12 Asian economies including Indonesia. Capital, Labour, Energy, Materials, Services at the industry level.
+- **[BMF Datenportal - Bundeshaushalt Gesamtuebersicht (S05)](https://www.bundesfinanzministerium.de/Datenportal/Daten/offene-daten/haushalt-oeffentliche-finanzen/s05-bundeshaushalt-Gesamtuebersicht/s05-bundeshaushalt-Gesamtuebersicht.html)** — ✅ `live` · `dl-de/by-2-0 (Datenlizenz Deutschland - Namensnennung - Version 2.0)`
+  The German federal budget overview as open data from the Federal Ministry of Finance: revenue, expenditure and their development over time, released as CSV and XLSX alongside the ministry's other fiscal series.
+- **[Budget de depenses du Quebec - Secretariat du Conseil du tresor](https://www.donneesquebec.ca/recherche/dataset/budget-de-depenses)** — ✅ `live` · `CC-BY-4.0`
+  Quebec's annual expenditure budget tabled at the Assemblee nationale, as CSV - ministry credits, transfer credits by project and beneficiary, special funds and non-budgetary bodies. 2021-22 to 2026-27.
+- **[CBS Gemeentebegrotingen; baten en lasten naar regio en grootteklasse](https://www.cbs.nl/nl-nl/cijfers/detail/83641NED)** — ✅ `live` · `Verveelvoudiging is toegestaan, mits het CBS als bron wordt vermeld (CC-BY-4.0 site-wide)`
+  Budgeted revenue and expenditure of Dutch municipalities per taakveld (policy field), in millions of euro and euro per inhabitant, broken down by province and municipality size class. 2017-2026, annual, via StatLine OData.
+- **[Core Responsibilities as per Public Accounts of Canada](https://open.canada.ca/data/en/dataset/c9675417-100a-433a-92d4-79b710408def)** — ✅ `live` · `Open Government Licence - Canada`
+  Canadian federal expenditure broken out by departmental core responsibility in CSV and XML - the closest published analogue to a functional or COFOG-style classification of federal spending.
+- **[DGFiP — Balances comptables des régions depuis 2010](https://www.data.gouv.fr/datasets/balances-comptables-des-regions-depuis-2010)** — ✅ `live` · `Licence Ouverte / Open Licence version 2.0`
+  Accounting balances of every French region's principal and annexe budgets, 2010 onward, published by DGFiP. Fills the region rung of the public-budget ladder for all French Fab City members from one national file.
+- **[Fabriqué en Occitanie — artisans et entreprises affiliés](https://www.data.gouv.fr/datasets/artisans-et-entreprises-affilies-a-la-marque-fabrique-en-occitanie)** — ✅ `live` · `Licence Ouverte / Open Licence version 2.0`
+  Register of artisans and firms certified under Occitanie's regional made-here mark, with an accompanying product list. A rare open, named registry of locally manufacturing producers at regional scale.
+- **[GeoStat National Accounts (PxWeb) - Georgia](https://pc-axis.geostat.ge/PXWeb/pxweb/en/Database/National%20Accounts)** — ✅ `live` · `GeoStat open terms of use - download, use, adapt, modify, create derivative works, disseminate and share for any purpose including commercial, without prior permission; attribution to GEOSTAT required`
+  Georgia's national accounts database, split by methodology into SNA 1993 and SNA 2008 branches, served through GeoStat's live PxWeb REST API under an open attribution licence.
+- **[Kanagawa Prefectural Economic Accounts (神奈川県県民経済計算)](https://catalog.opendata.pref.kanagawa.jp/dataset/e73a198f6ebb90f4ef6c570a995fc8ff)** — ✅ `live` · `CC-BY-4.0`
+  Kanagawa's SNA-consistent regional accounts: gross prefectural product by economic activity (nominal and real chain-linked), income distribution, expenditure-side GDP, integrated accounts, and employment by economic activity.
+- **[Kanagawa Prefecture Transaction-Level Expenditure (神奈川県 1件ごとの支出情報)](https://catalog.opendata.pref.kanagawa.jp/dataset/92b4932f5f41d4ba0750bde96b6b1bdf)** — ✅ `live` · `CC-BY-4.0`
+  Transaction-level expenditure records for Kanagawa Prefecture's general and special accounts, published monthly as XLSX by the prefectural Accounting Bureau under CC BY 4.0. Individual payments, not aggregates.
+- **[Korea Local Finance Yearbook - Budget (지방재정365 지방재정연감(예산))](https://www.data.go.kr/data/15138678/fileData.do)** — ✅ `live` · `이용허락범위 제한 없음 (no restriction on scope of use)`
+  Annual budget totals and itemised detail for every Korean local government, explicitly including 특별·광역시도, 도, 시, 군 and 자치구, so Seoul and all 25 of its districts are in scope. The bulk route to the gu tier.
+- **[Korea Local Fiscal Independence Ratio, Final (지방재정365 재정자립도(최종))](https://www.data.go.kr/data/15058102/openapi.do)** — ✅ `live` · `이용허락범위 제한 없음 (no restriction on scope of use)`
+  The share of each Korean local authority's budget it can fund from its own revenue sources, computed on the year-end final budget. A direct fiscal-autonomy indicator comparable across all Korean municipalities from FY2010.
+- **[Korea National Revenue/Expenditure Settlement by Account (회계별 세입/세출결산 현황)](https://www.data.go.kr/data/15056702/openapi.do)** — ✅ `live` · `이용허락범위 제한 없음 (no restriction on scope of use)`
+  Korean central-government revenue and expenditure settlement by accounting type, alongside national bond status, tax revenue, tax burden ratio and supplementary budget trends. The national rung of the Korean budget ladder.
+- **[KOSIS Indicator Information API (국가데이터처 KOSIS 지표정보 조회 서비스)](https://www.data.go.kr/data/15127763/openapi.do)** — ✅ `live` · `공공저작물 : 출처표시 (제 1유형) - KOGL Type 1, attribution only`
+  REST access to the KOSIS 100 major national indicators spanning population, employment, economic trends and prices, plus North Korea and G20 series. The general-purpose route into Korea's national statistics database.
 - **[LAKLEMS — Latin America KLEMS](http://www.iadb.org/research/latin-american-klems-database)** — ✅ `live` · `custom open (IDB terms)` · _SCL_
   Sectoral productivity database for 18 Latin American economies. Capital, Labour, Energy, Materials, Services inputs at industry level. Maintained by IDB and partner institutions.
+- **[Main Estimates - Treasury Board of Canada Secretariat](https://open.canada.ca/data/en/dataset)** — ✅ `live` · `Open Government Licence - Canada`
+  Canada's annual appropriation estimates by department and vote, published as CSV per fiscal year running 1 April to 31 March. Each year is a separate CKAN package, discoverable through the open API.
 - **[Metroverse (Harvard Growth Lab)](https://metroverse.hks.harvard.edu/)** — ✅ `live` · `CC-BY-4.0` · _BCN · BOS · SCL_ · 🔌 wired in PLANETAI
   City-level economic-complexity dashboard covering ~1,200 metro areas. Industry employment, knowledge clusters, peer-city benchmarks, growth predictions.
+- **[Presupuesto Abierto Argentina](https://www.presupuestoabierto.gob.ar/sici/datos-abiertos)** — ✅ `live` · `CC-BY-4.0`
+  Argentina's national budget credit, revenue, physical execution and cross-cutting financial analysis, published by the Secretaría de Hacienda. Queryable through a documented v1 REST API and as bulk open data.
+- **[Profil financier des municipalites locales - MAMH Quebec](https://www.donneesquebec.ca/recherche/dataset/profil-financier-des-municipalites-locales)** — ✅ `live` · `Creative Commons 4.0 Attribution (CC-BY) licence - Quebec (qc-cc-by)`
+  Derived financial and fiscal profiles with computed ratios for Quebec municipalities, pre-aggregated to municipality, MRC, administrative region, population class and province. CSV and XLSX, 2018-2025.
+- **[Public Expenditure Statistical Analyses (PESA) - HM Treasury](https://www.gov.uk/government/statistics/public-expenditure-statistical-analyses-2026)** — ✅ `live` · `Open Government Licence v3.0`
+  HM Treasury's annual analysis of UK public spending by function, department and economic category, published as chapter and annex Excel tables plus a 246-page report. The UK national budget rung.
+- **[Rapport financier des organismes municipaux - MAMH Quebec](https://www.donneesquebec.ca/recherche/dataset/rapport-financier-des-organismes-municipaux-et-autres-documents)** — ✅ `live` · `Creative Commons 4.0 Attribution (CC-BY) licence - Quebec (qc-cc-by)`
+  Annual financial returns filed by every Quebec municipality, MRC, metropolitan community, transit body and regie, keyed on COD_GEO. 189 resources in XLSX and CSV covering 2015-2026.
+- **[Région Occitanie — budgets primitifs, supplémentaires et comptes administratifs](https://www.data.gouv.fr/organizations/region-occitanie)** — ✅ `live` · `Licence Ouverte / Open Licence version 2.0`
+  Occitanie's own voted budgets (primitif and supplémentaire) and executed comptes administratifs, published as M57 line-item files split between payment credits and multi-year programme authorisations.
+- **[SICONFI DCA - Declaracao de Contas Anuais (estados e municipios)](https://www.tesourotransparente.gov.br/ckan/dataset/api-extrato-entes)** — ✅ `live` · `Open Data Commons Open Database License (ODbL)`
+  Brazil's National Treasury annual accounts declaration for states and municipalities as a JSON API, keyed on the IBGE code. Gives the state-tier budget rung - gross realised revenue, deductions and transfers down.
+- **[StatFin - General government expenditure by function (COFOG)](https://pxdata.stat.fi/PxWeb/api/v1/en/StatFin/jmete)** — ✅ `live` · `CC-BY-4.0`
+  Finnish general government expenditure classified by COFOG function, served through Statistics Finland's PxWeb REST API. The only verified COFOG-coded public spending series for Finland.
+- **[StatFin - Regional accounts (altp)](https://pxdata.stat.fi/PxWeb/api/v1/en/StatFin/altp)** — ✅ `live` · `CC-BY-4.0`
+  Finnish regional accounts - GDP, gross value added and industry composition at maakunta level, including Pohjois-Pohjanmaa (code 17), the region containing Oulu. Served via Statistics Finland's PxWeb API.
+- **[STATISTIK AUSTRIA open.data](https://data.statistik.gv.at/web/catalog.jsp)** — ✅ `live` · `CC-BY-4.0`
+  Statistics Austria's open data catalogue: national and regional statistics on labour, prices, trade, regional and national accounts, tourism, transport, demography, health and education, in CSV and JSON with some OGC services.
+- **[vulekamali - South African Budget Data Portal](https://vulekamali.gov.za/datasets)** — ✅ `live` · `National Treasury Terms and Conditions - use, download, copy, publish, distribute and transmit freely including commercially; attribution to National Treasury plus date of publication and disclosure of modifications required`
+  National Treasury and Imali Yethu budget portal carrying national and provincial estimates of revenue and expenditure, budgeted-versus-actual spending, division of revenue and appropriation acts.
+- **[Yucatan Datos Abiertos - Egresos y Cuenta Publica del Estado](https://transparencia.yucatan.gob.mx/datos_abiertos.php)** — ✅ `live` · `Datos digitales puestos a disposicion de cualquier persona para ser usados, reutilizados y redistribuidos libremente`
+  The State of Yucatan's expenditure data as open CSV: annual Cuenta Publica 2021-2024 and quarterly execution reports 2021-2025, each shipped with a data dictionary. Published by the state transparency office.
+
+### City
+
+- **[Barcelona - Cens d'activitat economica i padro de l'IAE](https://opendata-ajuntament.barcelona.cat/data/api/action/package_show?id=cens-locals-planta-baixa-act-economica)** — ✅ `live` · `CC-BY-4.0` · _BCN_
+  Two complementary Barcelona business registers: a census of ground-floor commercial premises by activity, and the padro of the economic activities tax (IAE) by activity type. Together a business-density signal.
+- **[Barcelona - Pressupost municipal i execucio](https://opendata-ajuntament.barcelona.cat/data/api/action/package_show?id=evolucio-despeses-per-capitols-i-articles)** — ✅ `live` · `CC-BY-4.0` · _BCN_
+  Ajuntament de Barcelona publishes its municipal budget and its settled execution as annual CSV series - revenue and expenditure, planned (inicial) and liquidated, by chapter, article and programme.
+- **[Boston - Capital Plan](https://data.boston.gov/dataset/capital-budget)** — ✅ `live` · `Open Data Commons Public Domain Dedication and License (PDDL)` · _BOS_
+  City of Boston five-year capital investment plan, FY27-31, roughly 4.4 billion USD, published as bulk CSV with a PDF data dictionary and refreshed annually.
+- **[Boston - Checkbook Explorer](https://data.boston.gov/dataset/checkbook-explorer)** — ✅ `live` · `Open Data Commons Public Domain Dedication and License (PDDL)` · _BOS_
+  Actual executed City of Boston expenditure by vendor and department, transaction level, published as per-fiscal-year CSVs from FY2012 onward and refreshed monthly.
+- **[Boston - Operating and Revenue Budget](https://data.boston.gov/dataset/operating-budget)** — ✅ `live` · `Open Data Commons Public Domain Dedication and License (PDDL)` · _BOS_
+  City of Boston adopted operating budget and revenue budget, published as bulk CSV with a PDF data dictionary, by department and programme for the General Fund.
+- **[Budget de fonctionnement - Ville de Montreal](https://donnees.montreal.ca/dataset/budget)** — ✅ `live` · `CC-BY-4.0`
+  Annual operating budget for the Ville de Montreal and the agglomeration, tabled each autumn for the following calendar year. XLSX series 2013-2026, published by the Service des finances.
+- **[Cambridge - Capital budget](https://data.cambridgema.gov/d/9chi-2ed3)** — ✅ `live` · `Open Data Commons Public Domain Dedication and License (PDDL)` · _BOS_
+  City of Cambridge capital budget project funding by fiscal year, FY2020 to FY2031, with per-project latitude and longitude for each funded capital project.
+- **[Cambridge - Operating budget, revenues and expenditures](https://data.cambridgema.gov/d/ixyv-mje6)** — ✅ `live` · `Open Data Commons Public Domain Dedication and License (PDDL)` · _BOS_
+  City of Cambridge annual operating budget as two paired Socrata datasets - budgeted revenues by source and budgeted expenditures by department and division - covering FY2011 to FY2027.
+- **[DGFiP Balances comptables des communes](https://www.data.gouv.fr/datasets/balances-comptables-des-communes-en-2024/)** — ✅ `live` · `Licence Ouverte / Open Licence version 2.0`
+  Full DGFiP accounting balances for every French commune, covering principal and ancillary budgets (budgets principaux et budgets annexes), published yearly by the French finance ministry as CSV, JSON and ZIP.
+- **[DGFiP Comptes individuels des communes (fichier global)](https://data.economie.gouv.fr/explore/dataset/comptes-individuels-des-communes-fichier-global-2023-2024/)** — ✅ `live` · `Licence Ouverte 2.0`
+  DGFiP annual individual accounts for every French commune, published as one global file per year cohort on the Ministry of Finance open-data portal. Carries revenue, expenditure, debt and balance-sheet aggregates per commune.
+- **[DGFiP — Balances comptables des groupements à fiscalité propre depuis 2010](https://www.data.gouv.fr/datasets/balances-comptables-des-groupements-a-fiscalite-propre-depuis-2010)** — ✅ `live` · `Licence Ouverte / Open Licence version 2.0`
+  Accounting balances of French intercommunal groupings (EPCI — métropoles, communautés d'agglomération, communautés de communes), 2010 onward, from DGFiP. The only open source covering the EPCI fiscal tier nationally.
+- **[INEGI DENUE - Directorio Estadistico Nacional de Unidades Economicas](https://www.inegi.org.mx/servicios/api_denue.html)** — ✅ `live` · `INEGI Terminos de Libre Uso de la Informacion`
+  Mexico's national business register as a geocoded REST API: over five million establishments with activity code, employee-size band, address and coordinates. Run by INEGI, free token required.
+- **[INEGI EFIPEM - Estadistica de Finanzas Publicas Estatales y Municipales](https://www.inegi.org.mx/programas/finanzas/)** — ✅ `live` · `INEGI Terminos de Libre Uso de la Informacion`
+  INEGI's annual revenue-and-expenditure series for every Mexican state government, municipality, Mexico City and its 16 demarcaciones, 1989-2025, keyed on the INEGI state and municipality clave.
+- **[Japan 2021 Economic Census for Business Activity (経済センサス-活動調査)](https://www.e-stat.go.jp/stat-search/files?tstat=000001145590)** — ✅ `live` · `政府標準利用規約（第2.0版）- explicitly CC BY 4.0 compatible`
+  Japan's full-coverage census of every business establishment and enterprise, giving number of establishments, employees and sales by industry down to municipality level. Survey reference June 2021, published 2023-06-27, updated through December 2025.
+- **[Kamakura City Budget and Settlement Open Data (鎌倉市 予算・決算オープンデータ)](https://www.city.kamakura.kanagawa.jp/zaisei/yosan.html)** — ✅ `live` · `CC-BY-4.0`
+  Kamakura City publishes initial budget and final settlement, each split into revenue and expenditure, as annual CSV files covering FY2004-FY2024 under CC BY 4.0. Classified by the Japanese statutory 目的別 (purpose) and 性質別 (nature) schemes.
+- **[Kota Denpasar - APBD (Ringkasan dan konsistensi RKPD-APBD)](https://satudata.denpasarkota.go.id/dataset?q=APBD)** — ✅ `live` · `Lainnya (Domain Publik)` · _BLI_
+  Kota Denpasar publishes its annual budget summaries and RKPD-to-APBD consistency documents as CKAN datasets, mostly from BPKAD, in CSV with a public-domain licence.
+- **[Local authority revenue expenditure and financing England - Revenue Outturn multi-year data set](https://www.gov.uk/government/statistics/local-authority-revenue-expenditure-and-financing-england-revenue-outturn-multi-year-data-set)** — ✅ `live` · `Open Government Licence v3.0`
+  Per-authority English local government revenue expenditure and financing from statutory RO returns, 2017-18 to 2024-25, as one CSV time series on CIPFA SeRCOP service lines. Covers Plymouth.
+- **[Local Government Finance Survey, Japan (地方財政状況調査)](https://www.e-stat.go.jp/stat-search/files?toukei=00200251&tstat=000001077755)** — ✅ `live` · `政府標準利用規約（第2.0版）- explicitly CC BY 4.0 compatible`
+  Japan's standardised annual fiscal survey of every local authority, FY1990-FY2025, with 4,973 tables in the municipal section alone, keyed on 団体コード so municipalities are directly comparable. The federatable cross-municipal fiscal series for Japan.
+- **[Municipal Money (South Africa National Treasury)](https://municipaldata.treasury.gov.za/)** — ✅ `live` · `National Treasury Terms of Use - free commercial and non-commercial reuse, redistribution permitted, attribution to National Treasury plus date of publication required`
+  National Treasury's municipal finance API for all 292 South African municipalities: budgeted and audited income, expenditure, cash flow, capital and grants, 2008-09 to 2025-26. Built with OpenUp.
+- **[Municipal Settlement Status Survey, Japan (市町村別決算状況調)](https://www.soumu.go.jp/iken/zaisei/r06_shichouson.html)** — ✅ `live` · `公共データ利用規約（第1.0版）PDL1.0 - explicitly CC BY 4.0 compatible`
+  MIC's pre-tabulated annual settlement tables for all Japanese municipalities, FY2002-FY2024, as ten Excel files per year split 市部/町村 covering summary, revenue breakdown, expenditure by purpose and by nature, and outstanding local debt.
+- **[ONS Regional gross domestic product - local authorities](https://www.ons.gov.uk/economy/grossdomesticproductgdp/datasets/regionalgrossdomesticproductlocalauthorities)** — ✅ `live` · `Open Government Licence v3.0`
+  Balanced UK regional GDP 1998-2023 in current prices and chained volume measures for local authority districts, unitary authorities, Scottish council areas and ITL regions. Excel.
+- **[Paris - Budgets votes et comptes administratifs](https://opendata.paris.fr/api/explore/v2.1/catalog/datasets?where=theme%3D%22Administration%20et%20Finances%20Publiques%22)** — ✅ `live` · `Open Database License (ODbL)`
+  The City of Paris finance corpus on its own open-data portal - voted budgets (planned) and comptes administratifs (executed) for principal and ancillary budgets, plus debt, fixed assets, grants paid and the balance sheet.
+- **[Paris - Etats speciaux d'arrondissement (sub-municipal budgets)](https://opendata.paris.fr/api/explore/v2.1/catalog/datasets?where=search%28%22etats%20speciaux%22%29)** — ✅ `live` · `Open Database License (ODbL)`
+  Paris publishes the etats speciaux d'arrondissement - the budget delegated to each of its arrondissements - as open data, both voted and executed. A rare case of public finance published BELOW the municipal tier.
+- **[Poslovni register Slovenije (AJPES business register)](https://podatki.gov.si/publisher/agencija_republike_slovenije_za_javnopravne_evidence_in_storitve)** — ✅ `live` · `CC-BY-4.0`
+  Slovenia's national business register from AJPES - every registered entity with its seat municipality, giving business density and sector composition for Ljubljana. CSV, XML and a programmatic interface.
+- **[Presupuesto Abierto Chile — Pagos municipales](https://presupuestoabierto.gob.cl/municipalities)** — ✅ `live` · `CC-BY-SA-4.0` · _SCL_
+  Transaction-level payments made by every Chilean municipality, keyed on the official comuna code (CUT). Run by DIPRES (Dirección de Presupuestos, Ministerio de Hacienda). Served as filterable CSV over a public REST API.
+- **[Proracun Grada Zagreba](https://data.zagreb.hr/dataset/proracun-grada-zagreba-2026)** — ✅ `live` · `Otvorena dozvola (OD)`
+  Consolidated City of Zagreb budget - planned revenue and expenditure by year, published as XLSX and CSV on the city open data portal. Two datasets cover 2026 (plus 2027-2028 projections) and 2022-2025.
+- **[Reddition de comptes financiere - Ville de Montreal](https://donnees.montreal.ca/dataset/reddition-comptes-financiere)** — ✅ `live` · `CC-BY-4.0`
+  Budget-versus-actual financial accountability reporting for Montreal, allowing comparison of fiscal and budgetary data for the same year. Eight annual XLSX files covering 2018-2025.
+- **[Regionaldatenbank Deutschland - Kommunale Kassenergebnisse (71517)](https://www.regionalstatistik.de/genesis/online?operation=statistic&code=71517)** — ✅ `live` · `dl-de/by-2-0 (Datenlizenz Deutschland - Namensnennung - Version 2.0)`
+  Cash results for German municipal government: gross revenue and gross expenditure of Gemeinden and Kreise, published at individual municipality resolution by the Laender statistical offices via IT.NRW.
+- **[Rennes - Budgets primitifs et comptes administratifs](https://data.rennesmetropole.fr/api/explore/v2.1/catalog/datasets?where=search%28%22budget%22%29)** — ✅ `live` · `Open Database License (ODbL)`
+  Ville de Rennes publishes its budget primitif (planned) and compte administratif (executed) as separate yearly datasets from 2008 onward, split into principal budget, annexes and grants to associations.
+- **[SCB Rakenskapssammandrag - municipal costs and revenues by function](https://api.scb.se/OV0104/v1/doris/sv/ssd/OE/OE0107/OE0107B/KostnDR)** — ✅ `live` · `CC0-1.0`
+  Costs and revenues for all 290 Swedish municipalities across 65 functional areas, 2011-2025, in thousands of SEK at current prices, via Statistics Sweden's PxWeb API. Lund is kommunkod 1281.
+- **[Seoul Expenditure Operations - Projects and Budget (서울시 세출운용 사업 및 예산 정보)](https://data.seoul.go.kr/dataList/OA-13269/S/1/datasetView.do)** — ✅ `live` · `이용허락범위 제한 없음 (no restriction on scope of use)`
+  Project-level Seoul metropolitan expenditure showing current available budget, amount spent and unexecuted balance side by side, classified by 분야/부문 (functional field and sector) and by department. Updated daily.
+- **[SICONFI RREO - Relatorio Resumido da Execucao Orcamentaria (municipios)](https://www.tesourotransparente.gov.br/ckan/dataset/api-rreo-entes)** — ✅ `live` · `Open Data Commons Open Database License (ODbL)`
+  Brazil's National Treasury bimonthly budget-execution report for every one of the 5,570 municipalities, as a JSON API keyed on the IBGE municipality code. Carries planned and executed revenue and expenditure-by-function in one schema.
+- **[Somerville - Capital Investment Plan FY16-26](https://data.somervillema.gov/d/wz6k-gm5k)** — ⏳ `stale` · `Open Data Commons Open Database License (ODbL)` · _BOS_
+  City of Somerville ten-year capital investment plan - infrastructure, building improvements, park redesigns and equipment - with per-project addresses, coordinates, funding source and year-by-year amounts.
+- **[Sredstva mjesne samouprave Grada Zagreba](https://data.zagreb.hr/dataset/sredstva-mjesne-samouprave-2001-2023)** — ✅ `live` · `Otvorena dozvola (OD)`
+  Funds allocated to Zagreb's sub-municipal self-government units (gradske cetvrti and mjesni odbori) for small communal works, 2001-2024, roughly EUR 1.094 billion in total. CSV and XLSX.
+- **[Toulouse Metropole - Budgets primitifs et comptes administratifs](https://data.toulouse-metropole.fr/api/explore/v2.1/catalog/datasets?where=theme%3D%22Finance%22)** — ✅ `live` · `Licence Ouverte v2.0 (Etalab)`
+  218 finance datasets on Toulouse Metropole's portal: budgets primitifs (planned) and comptes administratifs both alloue and realise (executed), for the city, the metropole and several member communes and their satellite budgets.
 
 ### Community
 
@@ -236,23 +417,117 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 ### Region
 
+- **[Bhutan NSDI Geospatial Catalogue (ArcGIS Portal API)](https://nsdi.systems.gov.bt/portal/sharing/rest/search?q=type%3A%22Feature%20Service%22&f=json&num=25)** — ✅ `live` · `Open (Geo-Information Policy 2018 §6.3.1 open tier: "Open data shall be openly and freely accessible")`
+  The anonymous ArcGIS Enterprise catalogue API for Bhutan's National Spatial Data Infrastructure, returning 193 feature services with per-item licence category across 22 contributing agencies. The only machine-readable government data catalogue in Bhutan.
+- **[Catalogo de Datos Abiertos del Estado de Nuevo Leon](http://catalogodatos.nl.gob.mx/dataset/)** — ✅ `live` · `Open Data Commons Attribution License (105 datasets) / Creative Commons Attribution (19)`
+  Nuevo Leon's state open data catalogue, CKAN 2.10, 127 datasets published by named state secretariats and agencies, every one of them under an open licence. The region rung for Monterrey.
+- **[Data.overheid.nl](https://data.overheid.nl/)** — ✅ `live` · `CC0-1.0`
+  The Netherlands' national open data register, run by KOOP. CKAN-backed DCAT catalogue indexing datasets from ministries, provinces, water boards and municipalities, including ones with no portal of their own.
+- **[Datos Argentina (datos.gob.ar)](https://datos.gob.ar/)** — ✅ `live` · `Los datos publicados acá son públicos y se pueden reutilizar libremente citando la fuente.`
+  Argentina's national open data portal, running CKAN 2.11.5. Indexes roughly 1,285 datasets from about 45 national organisations, including the budget classifiers and the geographic normalisation service.
+- **[Donnees Quebec](https://www.donneesquebec.ca/recherche/dataset)** — ✅ `live` · `CC-BY-4.0`
+  Quebec's CKAN 2.11.3 provincial catalogue, federating state and municipal publishers - 1609 datasets with 1549 under CC BY 4.0. Its largest single publisher is a municipality, Ville de Montreal.
+- **[e-Gov Data Portal (e-Govデータポータル), Japan national open data catalogue](https://data.e-gov.go.jp/data/api/3/action/package_list)** — ✅ `live` · `公共データ利用規約（第1.0版）PDL1.0 - explicitly CC BY 4.0 compatible`
+  Japan's national CKAN open data catalogue, successor to data.go.jp, exposing roughly 2,800 government datasets through a working CKAN Action API under the Public Data License 1.0.
 - **[ENTSO-E Transparency Platform](https://transparency.entsoe.eu/)** — ✅ `live` · `custom open (ENTSO-E terms; free for non-commercial)` · _BCN_
   European electricity grid data: generation by source, consumption, cross-border flows, balancing, day-ahead prices. Hourly resolution for all EU + UK + Norway + Switzerland.
+- **[Find a Tender Service - OCDS API (UK)](https://www.find-tender.service.gov.uk/Developer/Documentation)** — ✅ `live` · `Open Government Licence v3.0`
+  UK national procurement notice register under the Procurement Act 2023, from 24 February 2025, serving OCDS 1.1.5 JSON release and record packages. Also carries a payments transparency register.
 - **[Generalitat de Catalunya — Dades Obertes](https://analisi.transparenciacatalunya.cat/)** — ✅ `live` · `CC-BY-4.0` · _BCN_ · 🔌 wired in PLANETAI
   Catalan regional open data portal. Includes Estadistiques de residus municipals (per-capita waste, all 947 Catalan municipalities), Idescat IPC (consumer prices), Mercabarna figures, energy mix.
+- **[Georef — Servicio de Normalización de Datos Geográficos (Argentina)](https://datosgobar.github.io/georef-ar-api/)** — ✅ `live` · `CC-BY-4.0`
+  Argentina's official API for resolving and normalising administrative units — provincias, departamentos, municipios, localidades and addresses — to their national identifier codes. Run by Datos Argentina on IGN base data.
+- **[Georgia State Procurement Agency OCDS feed](https://data.open-contracting.org/en/publication/24)** — ⛔ `deprecated` · `CC0-1.0`
+  Open Contracting Data Standard release of Georgia's unified e-procurement system - 275,439 tender records across planning, tender, award and contract stages, CC0 licensed, but frozen at June 2019.
+- **[Kanagawa Open Data Catalogue (神奈川県オープンデータカタログサイト)](https://catalog.opendata.pref.kanagawa.jp/dataset)** — ✅ `live` · `CC-BY-4.0 (763 datasets); CC-BY-NC (24 datasets)`
+  Kanagawa Prefecture's CKAN open data catalogue and the regional data-sharing platform for the Kamakura administrative chain, holding 811 datasets of which 763 are CC-BY and 24 are CC-BY-NC.
+- **[KONEPS Open Data Standard Service (나라장터 공공데이터개방표준서비스)](https://www.data.go.kr/data/15058815/openapi.do)** — ✅ `live` · `이용허락범위 제한 없음 (no restriction on scope of use)`
+  Bid, award and contract records from KONEPS, Korea's national e-procurement system, structured to the Ministry of the Interior and Safety open-data standard. The spend-side counterpart to the Korean budget ladder.
+- **[KONEPS Tender Notice Information Service (나라장터 입찰공고정보서비스)](https://www.data.go.kr/data/15129394/openapi.do)** — ✅ `live` · `이용허락범위 제한 없음 (no restriction on scope of use); 무료`
+  Tender announcements across goods, services, construction and foreign procurement in Korea, with base amounts, licence restrictions and eligible-region information. Regional filtering is possible via 참가가능지역정보.
+- **[Korea Administrative Standard Code - Legal Dong Code (행정표준코드 법정동코드)](https://www.data.go.kr/data/15077871/openapi.do)** — ✅ `live` · `이용허락범위 제한 없음 (no restriction on scope of use)`
+  The authoritative Korean administrative code register, resolving the full chain from 시도 through 시군구 to 읍면동. The canonical join key for every other Korean dataset in the Fab City Index matrix.
+- **[Korea Local Government Fiscal Disclosure Index (지방재정365 우리 지자체 재정공시)](https://www.data.go.kr/data/15138709/openapi.do)** — ✅ `live` · `이용허락범위 제한 없음 (no restriction on scope of use)`
+  A machine-readable index of every Korean local authority's statutory fiscal disclosure, covering revenue, expenditure, local bonds, funds and investment projects. It harmonises where to look across municipalities rather than publishing the figures.
 - **[MassGIS](https://www.mass.gov/orgs/massgis-bureau-of-geographic-information)** — ✅ `live` · `public` · _BOS_
   Massachusetts state geospatial data: parcels, buildings, transit network, hydrography, environmental constraints, election districts. Bulk download via state portal + ArcGIS REST services.
+- **[Open Government Portal - Government of Canada](https://open.canada.ca/data/en/dataset)** — ✅ `live` · `Open Government Licence - Canada`
+  Canada's federal CKAN catalogue, uniformly licensed under the Open Government Licence - Canada, with a fully open API. Over 1200 budget-related datasets and the reference source for federal fiscal data.
+- **[Portal otvorenih podataka Republike Hrvatske (data.gov.hr)](https://data.gov.hr/ckan/dataset)** — ✅ `live` · `Otvorena dozvola (OD)`
+  Croatia's national open data portal, CKAN-based, run by Sredisnji drzavni ured za razvoj digitalnog drustva. 3,874 datasets from ministries, agencies, counties, towns and municipalities.
+- **[Région Auvergne-Rhône-Alpes — données essentielles de la commande publique](https://www.data.gouv.fr/organizations/region-auvergne-rhone-alpes)** — ✅ `live` · `Licence Ouverte`
+  Auvergne-Rhône-Alpes' statutory public-procurement award register, published continuously as one small JSON record per notified contract following the Etalab commande-publique schema.
+- **[South African eTenders OCDS API](https://ocds-api.etenders.gov.za/)** — ✅ `live` · `CC-BY-4.0`
+  National Treasury procurement releases for South African national and provincial government in Open Contracting Data Standard format, drawn from the eTender portal, BAS and the Central Supplier Database.
+- **[Systeme electronique d'appel d'offres (SEAO) - Quebec](https://www.donneesquebec.ca/recherche/dataset/systeme-electronique-dappel-doffres-seao)** — ✅ `live` · `CC-BY-4.0`
+  Quebec's public tender and awarded-contract register, covering government, health, education and municipal bodies. Weekly and monthly files, XML from 2009 and JSON from March 2021.
+- **[TenderNed - Aankondigingen van overheidsopdrachten](https://data.overheid.nl/dataset/aankondigingen-van-overheidsopdrachten---tenderned)** — ✅ `live` · `CC0-1.0`
+  Every Dutch public procurement notice - market consultations, contract notices, awards, modifications and early terminations - published by PIANOo via TenderNed, downloadable in bulk and available as feeds and a webservice.
 
 ### City
 
-- **[Analyze Boston](https://data.boston.gov/)** — ✅ `live` · `public` · _BOS_
-  City of Boston open data portal. ~200 datasets covering 311 service requests, building permits, employee earnings, food inspections, traffic, public safety. CKAN-based.
-- **[Bali Satu Data](https://balisatudata.baliprov.go.id/)** — ✅ `live` · `public (Indonesian government)` · _BLI_ · 🔌 wired in PLANETAI
-  Bali provincial open data hub. Cross-domain datasets for the Bali pilot: demography, environment, economy, public services, customary-village indicators.
-- **[datos.gob.cl](https://datos.gob.cl/)** — ✅ `live` · `public domain (Chilean government)` · _SCL_
-  Chilean national open data portal. Datasets from across central government and many municipalities including Santiago. CKAN-based.
-- **[Open Data BCN](https://opendata-ajuntament.barcelona.cat/)** — ✅ `live` · `CC-BY-4.0` · _BCN_ · 🔌 wired in PLANETAI
-  Barcelona municipal open data portal. ~600 datasets covering mobility, environment, demographics, economy, governance, urban fabric. CKAN-based; full bulk + REST API.
+- **[Amsterdam Open Data / DataPunt API](https://data.amsterdam.nl/catalogus/)** — ✅ `live` · `CC0-1.0`
+  Gemeente Amsterdam's data catalogue and its DataPunt REST API, which serves roughly 100 versioned dataset collections (BAG, trees, ecology, waste, gas-free zones) as JSON, plus WFS and MVT layers.
+- **[Analyze Boston](https://data.boston.gov/dataset)** — ✅ `live` · `Open Data Commons Public Domain Dedication and License (PDDL)` · _BOS_
+  City of Boston open data portal, CKAN-based. 235 datasets covering 311 service requests, budget and spending, building permits, employee earnings, food inspections, traffic and public safety.
+- **[Bali Satu Data (provincial)](https://balisatudata.baliprov.go.id/search-data)** — ✅ `live` · `not stated` · _BLI_ · 🔌 wired in PLANETAI
+  Provinsi Bali's Satu Data portal. Reachable and responding, but its search returns an empty state with no datasets listed by default, so its actual holdings could not be established.
+- **[Barcelona - Perfil del contractant i relacio de contractistes](https://opendata-ajuntament.barcelona.cat/data/api/action/package_show?id=perfil-contractant)** — ✅ `live` · `CC-BY-4.0` · _BCN_
+  Barcelona's public procurement register: tenders, bids, awards and contract formalisations from the last five years, updated daily, plus a contractors list with tax identifiers and amounts running back to 2012.
+- **[Boston - Procurement and discretionary spending](https://data.boston.gov/dataset/city-of-boston-contract-award)** — ✅ `live` · `Open Data Commons Public Domain Dedication and License (PDDL)` · _BOS_
+  City of Boston procurement transparency set: awarded contracts with equitable procurement reporting, a forward-looking buying plan, and departmental discretionary spending.
+- **[Cambridge - Participatory budgeting](https://data.cambridgema.gov/d/54vd-wdqj)** — ✅ `live` · `Open Data Commons Public Domain Dedication and License (PDDL)` · _BOS_
+  Resident-submitted ideas and final ballot projects from the City of Cambridge participatory budgeting cycles, published as open datasets on the city Socrata portal.
+- **[Cambridge Open Data](https://data.cambridgema.gov/)** — ✅ `live` · `Open Data Commons Public Domain Dedication and License (PDDL)` · _BOS_
+  City of Cambridge, Massachusetts open data portal on Socrata, carrying 447 datasets across budget, housing, energy disclosure, inspections and participatory budgeting, with a full SODA API and discovery catalogue.
+- **[Dados Abertos Belo Horizonte](https://dados.pbh.gov.br/dataset)** — ✅ `live` · `Creative Commons Attribution (564 of 606); Open Data Commons ODbL (23 of 606)`
+  Belo Horizonte's municipal open data portal, CKAN 2.10.5. 606 datasets across planning, finance, mobility, health, education and environment, with a working CKAN action API and real-time consolidated revenue and expenditure feeds.
+- **[Dados Abertos Recife](http://dados.recife.pe.gov.br/dataset)** — ✅ `live` · `Open Data Commons Open Database License (ODbL)`
+  Recife's municipal open data portal, CKAN 2.11.5. 222 datasets, every one of them under ODbL, weighted towards health, mobility and education, published by named municipal secretariats.
+- **[Data Place Plymouth](https://plymouth.thedata.place/dataset)** — ✅ `live` · `Open Government Licence v3.0`
+  Plymouth's CKAN open data portal - 174 datasets from 10 publishers including the city council, public health, a CCG, the police and Plymouth Marine Laboratory. 144 under OGL, the rest CC-BY and ODbL.
+- **[data.gv.at - Stadt Linz](https://data.linz.gv.at/)** — ✅ `live` · `CC-BY-4.0`
+  Linz publishes its open data as a publishing body on data.gv.at, Austria's national open government data portal, rather than on a portal of its own: 823 datasets covering mobility, statistics, planning, tourism and procurement.
+- **[datos.gob.cl](https://datos.gob.cl/)** — ✅ `live` · `not stated` · _SCL_
+  Chile's national open data portal, CKAN 2.10.4, publishing 3,211 datasets from 272 institutions including central government and many municipalities. Used as the Santiago pilot's open-data substrate.
+- **[Donnees ouvertes - Ville de Montreal](https://donnees.montreal.ca/dataset)** — ✅ `live` · `CC-BY-4.0`
+  Montreal's CKAN 2.11.5 open data catalogue - 404 datasets, 394 under CC BY 4.0 and 284 carrying a CSV. Hosts non-municipal publishers alongside the city. Catalogue breadth and licence openness are themselves governance indicators.
+- **[Kolada v3 - Swedish municipal and regional KPI database](https://www.kolada.se/om-oss/api/)** — ✅ `live` · `Free of charge, no agreement required, commercial use permitted; attribution "Kalla, Kolada" required unless the data has been substantially processed`
+  Sweden's municipal KPI database - roughly 6000 indicators across finance, schools, care, environment and governance for every kommun and region, with an open JSON API. Lund is municipality_id 1281.
+- **[Odprti podatki Mestne obcine Ljubljana (ArcGIS Hub)](https://mol-ljubljana.hub.arcgis.com/)** — ✅ `live` · `CC-BY-4.0`
+  Ljubljana's municipal open data portal on ArcGIS Hub - geospatial layers for roads, cycle paths, parking, sports, schools, health network and heritage, downloadable as CSV, GeoJSON and KML.
+- **[Offene Daten Wuppertal](https://offenedaten-wuppertal.de/)** — ✅ `live` · `CC-BY-4.0`
+  Wuppertal's municipal open data portal, run on DKAN and hosted for the city by Stadt Koeln. Around 290 datasets across geodata, population, budget, mobility, environment and elections for the largest city of the Bergisches Staedtedreieck.
+- **[ONS Open Geography Portal - ArcGIS REST services](https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services)** — ✅ `live` · `Open Government Licence v3.0`
+  Queryable ArcGIS FeatureServers for UK statistical geography, serving vintaged GSS codes and boundaries from output area to country. Around 600 vintage-suffixed services, no key, no authentication.
+- **[Open Data BCN](https://opendata-ajuntament.barcelona.cat/data/api/action/package_search)** — ✅ `live` · `CC-BY-4.0` · _BCN_ · 🔌 wired in PLANETAI
+  Barcelona municipal open data portal, CKAN-based. 555 datasets covering mobility, environment, demographics, economy, governance and urban fabric, entirely under CC-BY-4.0.
+- **[Open Data Paris](https://opendata.paris.fr/api/explore/v2.1/catalog/datasets)** — ✅ `live` · `Open Database License (ODbL)`
+  The City of Paris open-data portal (OpenDataSoft), 476 datasets across eight themes, every one of them under an open licence. Carries the city's budgets, procurement, workforce, environment and mobility data.
+- **[Open Data Rennes Metropole](https://data.rennesmetropole.fr/api/explore/v2.1/catalog/datasets)** — ✅ `live` · `Open Database License (ODbL)`
+  Rennes and Rennes Metropole's open-data portal (OpenDataSoft), roughly 600 datasets, ODbL-dominant. One of the oldest French municipal open-data programmes and the source of the city's 2008-onward open budget series.
+- **[Open Data Toulouse Metropole](https://data.toulouse-metropole.fr/api/explore/v2.1/catalog/datasets)** — ✅ `live` · `Licence Ouverte v2.0 (Etalab)`
+  Toulouse Metropole's open-data portal (OpenDataSoft), 835 datasets and entirely openly licensed. The largest municipal catalogue found in the French wave, with a 218-dataset finance theme and a dedicated circular-economy theme.
+- **[open.bydata - Stadt Augsburg](https://augsburg.bydata.de/)** — ✅ `live` · `Declared per distribution in DCAT-AP.de; sampled distribution is CC0-1.0`
+  Augsburg's open data, published as two sub-catalogues of open.bydata, the Bavarian state open data portal: the city catalogue and the city statistics office catalogue, together the largest municipal holding on that portal.
+- **[Paris - Marches publics (procurement register)](https://opendata.paris.fr/api/explore/v2.1/catalog/datasets?where=search%28%22marches%22%29)** — ✅ `live` · `Open Database License (ODbL)`
+  Register of public contracts awarded by the Paris collectivite, plus the separate register for CASVP, the city's social-action agency. Published as open data on the city's own portal.
+- **[Plymouth City Council spend over 500 pounds (2015 archive)](https://www.data.gov.uk/dataset/9e9b0128-9095-4bde-b24b-d04e60789016/plymouth-spend-over-f500-2015)** — ⛔ `deprecated` · `Open Government Licence v3.0`
+  Transaction-level council payments above 500 pounds for four months of 2015, as CSV. Statutory transparency data, but the open-data publication stopped in 2015 while the council kept publishing elsewhere.
+- **[Portal otvorenih podataka Grada Zagreba](https://data.zagreb.hr/dataset)** — ✅ `live` · `Otvorena dozvola (OD)`
+  City of Zagreb open data portal, CKAN-based. 199 datasets covering city budget, local self-government funding, transport, utilities, kindergartens, air quality geodata and council composition.
+- **[Portal Satu Data Denpasar](https://satudata.denpasarkota.go.id/dataset)** — ✅ `live` · `Lainnya (Domain Publik)` · _BLI_
+  Kota Denpasar's municipal open data portal, CKAN 2.8.3, roughly 1,028 datasets across departmental organisations, published almost entirely under a public-domain licence.
+- **[Seoul Participatory Budget - Project Execution (서울시 시민참여예산사업 예산집행 정보)](https://data.seoul.go.kr/dataList/OA-15413/S/1/datasetView.do)** — ✅ `live` · `이용허락범위 제한 없음 (no restriction on scope of use)`
+  Links each citizen-proposed Seoul project to its allocated amount, its actual expenditure and its execution date, with plan documents and result reports attached. Covers proposal through allocation to spend in one table.
+- **[Somerville - Participatory budgeting](https://data.somervillema.gov/d/brrj-v9a4)** — ✅ `live` · `Open Data Commons Open Database License (ODbL)` · _BOS_
+  Full record of the City of Somerville participatory budgeting cycle: resident-submitted ideas with coordinates, voting results, and voter and submitter demographics.
+- **[Somerville Open Data](https://data.somervillema.gov/)** — ✅ `live` · `Open Data Commons Open Database License (ODbL)` · _BOS_
+  City of Somerville, Massachusetts open data portal on Socrata: a small, 52-dataset catalogue licensed ODbL, notable for participatory budgeting and the long-running municipal wellbeing survey.
+- **[Statistics Finland Classification API](https://data.stat.fi/api/classifications/v2/)** — ✅ `live` · `CC-BY-4.0`
+  Authoritative register of Finnish administrative codes as a REST API, versioned by year - kuntanumero (municipality), maakunta (region) and their correspondence tables. Returns per-code items as JSON.
+- **[Transparenzportal Hamburg](https://suche.transparenz.hamburg.de/)** — ✅ `live` · `Datenlizenz Deutschland - Namensnennung - 2.0 (dl-de/by-2-0), declared per record`
+  The Free and Hanseatic City of Hamburg's transparency portal: a CKAN catalogue that publishes datasets and, unusually, the administrative documents the Hamburgisches Transparenzgesetz compels the city and its bodies to disclose.
 
 <!-- END GENERATED -->
 
