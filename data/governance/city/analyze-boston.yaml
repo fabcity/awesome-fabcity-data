@@ -12,8 +12,8 @@ api: null
 pilot_relevance: [boston]
 tags: [open-data, boston, ckan, municipal]
 added: 2026-05-04
-updated: 2026-09-09
-wired_in_planetai: false
+updated: 2026-09-18
+wired_in_planetai: true
 upstream_listed_in: []
 notes: |
   Re-verified 2026-09-09 in the FCI Regime 1 harvest (wave 1). Three
