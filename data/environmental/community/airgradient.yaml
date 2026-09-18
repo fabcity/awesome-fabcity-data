@@ -13,7 +13,8 @@ api: https://api.airgradient.com/public/api/v1
 pilot_relevance: [global]
 tags: [air-quality, citizen-science, open-hardware, indoor-air]
 added: 2026-05-04
-wired_in_planetai: false
+updated: 2026-09-18
+wired_in_planetai: true
 upstream_listed_in: []
 notes: |
   Strong fit for the Community-tier indoor environment signal that

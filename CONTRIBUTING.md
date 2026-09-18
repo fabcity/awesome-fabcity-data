@@ -53,8 +53,13 @@ This walks `data/` and validates each YAML against `schema/dataset.schema.json`.
 ### 3. Regenerate the README
 
 ```bash
-python scripts/build_readme.py > README.md
+python scripts/build_readme.py
 ```
+
+The script rewrites `README.md` IN PLACE, between the `<!-- BEGIN GENERATED -->` and
+`<!-- END GENERATED -->` sentinels, and prints a one-line summary to stdout. Do **not**
+redirect it into `README.md` — the shell truncates the file before the script runs and
+the hand-maintained intro and outro are destroyed.
 
 Don't hand-edit README sections that come from YAML — they'll be overwritten. The intro, taxonomy, contributing pointer, and footer are the only hand-maintained parts.
 
