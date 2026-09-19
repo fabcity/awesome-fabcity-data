@@ -50,6 +50,23 @@ python scripts/validate.py
 
 This walks `data/` and validates each YAML against `schema/dataset.schema.json`. CI runs the same check on every PR.
 
+### 2b. Check `wired_in_planetai` against the node
+
+```bash
+python scripts/wired.py            # report
+python scripts/wired.py --check    # what CI runs
+```
+
+`wired_in_planetai` is a claim about another repository, so it is checked against that repository
+rather than trusted. Every `packs/*/pack.yaml` in `planetai-node` declares `sources: [...]` using
+the ids in this list; if a pack reads a source whose entry here says otherwise, CI fails.
+
+The reverse — an entry flagged `true` that no pack declares — is **printed, not failed**. The node
+also reads sources through `config/channels.yml` and `app/bootstrap.py` without naming an id, and
+nothing here can see the Index side at all. Sixteen entries are in that state today. Which means the
+field is carrying two claims under one name, and the definition is still owed: node packs only, or
+anything downstream of this registry?
+
 ### 3. Regenerate the README
 
 ```bash
