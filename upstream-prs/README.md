@@ -23,7 +23,7 @@ For each entry:
 
 1. Fork [`awesomedata/apd-core`](https://github.com/awesomedata/apd-core).
 2. Copy the YAML from `apd-core/{slug}.yml` to `core/{Category}/{slug}.yml` in your fork.
-3. Open a PR with title `Add: {Source Name}` and a body explaining the source's significance in 2-3 sentences. Cross-link from the PR back to the matching entry in `fab-city/awesome-fabcity-data` as evidence the source is in production use.
+3. Open a PR with title `Add: {Source Name}` and a body explaining the source's significance in 2-3 sentences. Cross-link from the PR back to the matching entry in `fabcity/awesome-fabcity-data` as evidence the source is in production use.
 
 Each PR should be independent — apd-core reviewers prefer atomic, single-source PRs over batch contributions.
 
