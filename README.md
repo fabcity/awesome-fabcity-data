@@ -149,9 +149,9 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Hourly air quality index per monitoring station from Montreal's RSQA network, covering SO2, CO, O3, NO2 and PM2.5. Published as a rolling daily CSV, updated about ten minutes past each hour.
 - **[Sensor.Community](https://sensor.community/)** — ✅ `live` · `DbCL-1.0` · _BCN · ★_
   Citizen-science air quality sensor network rooted in Germany, active across the EU. ~30k SDS011-based PM sensors with public API and bulk archive download.
-- **[Seoul Daily Average Air Environment Information (서울시 기간별 일평균 대기환경 정보)](https://data.seoul.go.kr/dataList/OA-2220/S/1/datasetView.do)** — ✅ `live` · `공공누리 1유형 : 출처표시 (상업적 이용 및 변경 가능) - KOGL Type 1`
+- **[Seoul Daily Average Air Environment Information (서울시 기간별 일평균 대기환경 정보)](https://data.seoul.go.kr/dataList/OA-2220/S/1/datasetView.do)** — ⛔ `deprecated` · `공공누리 1유형 : 출처표시 (상업적 이용 및 변경 가능) - KOGL Type 1`
   Daily-average air quality index, PM10, ozone, NO2, CO and SO2 for Seoul, with a series running from 1987 to 2025. The ~38-year depth is exceptional for an urban air-quality record.
-- **[Seoul GHG Inventory by Direct/Indirect (서울시 온실가스 인벤토리 직간접별 현황)](https://data.seoul.go.kr/dataList/OA-21082/S/1/datasetView.do)** — ✅ `live` · `공공누리 1유형 : 출처표시 (상업적 이용 및 변경 가능) - KOGL Type 1`
+- **[Seoul GHG Inventory by Direct/Indirect (서울시 온실가스 인벤토리 직간접별 현황)](https://data.seoul.go.kr/dataList/OA-21082/S/1/datasetView.do)** — ⛔ `deprecated` · `공공누리 1유형 : 출처표시 (상업적 이용 및 변경 가능) - KOGL Type 1`
   Seoul's annual greenhouse gas inventory split by direct and indirect emissions, published by the city's Climate and Environment Bureau. Companion dataset OA-21081 gives the same inventory broken out by sector.
 - **[SYKE municipal and regional greenhouse gas emissions (ALas)](https://paastot.hiilineutraalisuomi.fi/)** — ✅ `live` · `CC-BY-4.0`
   Per-municipality and per-region GHG emissions by sector for Finland under the ALas/Hinku model - electricity, heating, transport, industry, agriculture, waste - downloadable as Excel tables. Run by SYKE.
@@ -213,9 +213,9 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   City of Cambridge housing series: housing stock and residential properties by neighbourhood, residential permits from 1996, housing code violations, and foreclosure filings from 2003.
 - **[CBS Kerncijfers wijken en buurten](https://www.cbs.nl/nl-nl/cijfers/detail/85984NED)** — ✅ `live` · `Verveelvoudiging is toegestaan, mits het CBS als bron wordt vermeld (CC-BY-4.0 site-wide)`
   Statistics Netherlands' core indicators for every Dutch municipality, district and neighbourhood - population, household composition, income, housing, cars, energy use, distance to services - via the StatLine OData API.
-- **[Seoul Employment Indicators (서울시 고용지표 통계)](https://data.seoul.go.kr/dataList/OA-475/S/1/datasetView.do)** — ✅ `live` · `공공누리 1유형 : 출처표시 (상업적 이용 및 변경 가능) - KOGL Type 1`
+- **[Seoul Employment Indicators (서울시 고용지표 통계)](https://data.seoul.go.kr/dataList/OA-475/S/1/datasetView.do)** — ⛔ `deprecated` · `공공누리 1유형 : 출처표시 (상업적 이용 및 변경 가능) - KOGL Type 1`
   Monthly unemployment rate, employment rate and labour-force participation rate for Seoul, broken out by sex. Sourced from KOSIS and republished by the city on its open data portal.
-- **[Seoul Living Population by Administrative Dong (행정동 단위 서울 생활인구)](https://data.seoul.go.kr/dataList/OA-14991/S/1/datasetView.do)** — ✅ `live` · `공공누리 1유형 : 출처표시 (상업적 이용 및 변경 가능) - KOGL Type 1`
+- **[Seoul Living Population by Administrative Dong (행정동 단위 서울 생활인구)](https://data.seoul.go.kr/dataList/OA-14991/S/1/datasetView.do)** — ⛔ `deprecated` · `공공누리 1유형 : 출처표시 (상업적 이용 및 변경 가능) - KOGL Type 1`
   Hourly estimates of the population actually present in each Seoul administrative dong, built by fusing city administrative data with telecom data. Daily updates from 2017 to the present.
 
 
@@ -223,7 +223,7 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 ### Planet
 
-- **[Atlas of Economic Complexity (Harvard Growth Lab)](https://atlas.cid.harvard.edu/)** — ✅ `live` · `CC-BY-4.0` · _★_ · 🔌 wired in PLANETAI
+- **[Atlas of Economic Complexity (Harvard Growth Lab)](https://atlas.hks.harvard.edu/)** — ✅ `live` · `CC-BY-4.0` · _★_ · 🔌 wired in PLANETAI
   Global trade + economic-complexity indicators (ECI, product-space, diversification metrics) for ~250 countries × ~6,000 products. Bulk download via Dataverse; interactive web tool for exploration.
 - **[Climate Funds Update](https://climatefundsupdate.org/data-dashboard/)** — ✅ `live` · `Not stated on the source page — freely downloadable, licence UNDECLARED` · _★_
   Independent monitor of multilateral climate finance run by ODI and Heinrich Boell Stiftung. Tracks money pledged, deposited and approved by fund, contributor country and recipient country, downloadable as Excel.
@@ -287,9 +287,9 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Korean central-government revenue and expenditure settlement by accounting type, alongside national bond status, tax revenue, tax burden ratio and supplementary budget trends. The national rung of the Korean budget ladder.
 - **[KOSIS Indicator Information API (국가데이터처 KOSIS 지표정보 조회 서비스)](https://www.data.go.kr/data/15127763/openapi.do)** — ✅ `live` · `공공저작물 : 출처표시 (제 1유형) - KOGL Type 1, attribution only`
   REST access to the KOSIS 100 major national indicators spanning population, employment, economic trends and prices, plus North Korea and G20 series. The general-purpose route into Korea's national statistics database.
-- **[LAKLEMS — Latin America KLEMS](http://www.iadb.org/research/latin-american-klems-database)** — ✅ `live` · `custom open (IDB terms)` · _SCL_
+- **[LAKLEMS — Latin America KLEMS](http://www.iadb.org/research/latin-american-klems-database)** — ⏳ `stale` · `custom open (IDB terms)` · _SCL_
   Sectoral productivity database for 18 Latin American economies. Capital, Labour, Energy, Materials, Services inputs at industry level. Maintained by IDB and partner institutions.
-- **[Main Estimates - Treasury Board of Canada Secretariat](https://open.canada.ca/data/en/dataset)** — ✅ `live` · `Open Government Licence - Canada`
+- **[Main Estimates - Treasury Board of Canada Secretariat](https://search.open.canada.ca/opendata/)** — ✅ `live` · `Open Government Licence - Canada`
   Canada's annual appropriation estimates by department and vote, published as CSV per fiscal year running 1 April to 31 March. Each year is a separate CKAN package, discoverable through the open API.
 - **[Metroverse (Harvard Growth Lab)](https://metroverse.hks.harvard.edu/)** — ✅ `live` · `CC-BY-4.0` · _BCN · BOS · SCL_ · 🔌 wired in PLANETAI
   City-level economic-complexity dashboard covering ~1,200 metro areas. Industry employment, knowledge clusters, peer-city benchmarks, growth predictions.
@@ -378,7 +378,7 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Ville de Rennes publishes its budget primitif (planned) and compte administratif (executed) as separate yearly datasets from 2008 onward, split into principal budget, annexes and grants to associations.
 - **[SCB Rakenskapssammandrag - municipal costs and revenues by function](https://api.scb.se/OV0104/v1/doris/sv/ssd/OE/OE0107/OE0107B/KostnDR)** — ✅ `live` · `CC0-1.0`
   Costs and revenues for all 290 Swedish municipalities across 65 functional areas, 2011-2025, in thousands of SEK at current prices, via Statistics Sweden's PxWeb API. Lund is kommunkod 1281.
-- **[Seoul Expenditure Operations - Projects and Budget (서울시 세출운용 사업 및 예산 정보)](https://data.seoul.go.kr/dataList/OA-13269/S/1/datasetView.do)** — ✅ `live` · `이용허락범위 제한 없음 (no restriction on scope of use)`
+- **[Seoul Expenditure Operations - Projects and Budget (서울시 세출운용 사업 및 예산 정보)](https://data.seoul.go.kr/dataList/OA-13269/S/1/datasetView.do)** — ⛔ `deprecated` · `이용허락범위 제한 없음 (no restriction on scope of use)`
   Project-level Seoul metropolitan expenditure showing current available budget, amount spent and unexecuted balance side by side, classified by 분야/부문 (functional field and sector) and by department. Updated daily.
 - **[SICONFI RREO - Relatorio Resumido da Execucao Orcamentaria (municipios)](https://www.tesourotransparente.gov.br/ckan/dataset/api-rreo-entes)** — ✅ `live` · `Open Data Commons Open Database License (ODbL)`
   Brazil's National Treasury bimonthly budget-execution report for every one of the 5,570 municipalities, as a JSON API keyed on the IBGE municipality code. Carries planned and executed revenue and expenditure-by-function in one schema.
@@ -465,7 +465,7 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   A machine-readable index of every Korean local authority's statutory fiscal disclosure, covering revenue, expenditure, local bonds, funds and investment projects. It harmonises where to look across municipalities rather than publishing the figures.
 - **[MassGIS](https://www.mass.gov/orgs/massgis-bureau-of-geographic-information)** — ✅ `live` · `public` · _BOS_
   Massachusetts state geospatial data: parcels, buildings, transit network, hydrography, environmental constraints, election districts. Bulk download via state portal + ArcGIS REST services.
-- **[Open Government Portal - Government of Canada](https://open.canada.ca/data/en/dataset)** — ✅ `live` · `Open Government Licence - Canada`
+- **[Open Government Portal - Government of Canada](https://search.open.canada.ca/opendata/)** — ✅ `live` · `Open Government Licence - Canada`
   Canada's federal CKAN catalogue, uniformly licensed under the Open Government Licence - Canada, with a fully open API. Over 1200 budget-related datasets and the reference source for federal fiscal data.
 - **[Portal otvorenih podataka Republike Hrvatske (data.gov.hr)](https://data.gov.hr/ckan/dataset)** — ✅ `live` · `Otvorena dozvola (OD)`
   Croatia's national open data portal, CKAN-based, run by Sredisnji drzavni ured za razvoj digitalnog drustva. 3,874 datasets from ministries, agencies, counties, towns and municipalities.
@@ -532,7 +532,7 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   City of Zagreb open data portal, CKAN-based. 199 datasets covering city budget, local self-government funding, transport, utilities, kindergartens, air quality geodata and council composition.
 - **[Portal Satu Data Denpasar](https://satudata.denpasarkota.go.id/dataset)** — ✅ `live` · `Lainnya (Domain Publik)` · _BLI_
   Kota Denpasar's municipal open data portal, CKAN 2.8.3, roughly 1,028 datasets across departmental organisations, published almost entirely under a public-domain licence.
-- **[Seoul Participatory Budget - Project Execution (서울시 시민참여예산사업 예산집행 정보)](https://data.seoul.go.kr/dataList/OA-15413/S/1/datasetView.do)** — ✅ `live` · `이용허락범위 제한 없음 (no restriction on scope of use)`
+- **[Seoul Participatory Budget - Project Execution (서울시 시민참여예산사업 예산집행 정보)](https://data.seoul.go.kr/dataList/OA-15413/S/1/datasetView.do)** — ⛔ `deprecated` · `이용허락범위 제한 없음 (no restriction on scope of use)`
   Links each citizen-proposed Seoul project to its allocated amount, its actual expenditure and its execution date, with plan documents and result reports attached. Covers proposal through allocation to spend in one table.
 - **[Somerville - Participatory budgeting](https://data.somervillema.gov/d/brrj-v9a4)** — ✅ `live` · `Open Data Commons Open Database License (ODbL)` · _BOS_
   Full record of the City of Somerville participatory budgeting cycle: resident-submitted ideas with coordinates, voting results, and voter and submitter demographics.

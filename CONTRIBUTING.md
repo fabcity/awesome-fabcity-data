@@ -95,6 +95,27 @@ Entries decay. APIs migrate, organisations rebrand, licenses change. If you spot
 
 If a source is deprecated or paywalled, **mark it but don't remove it** — preserving the history is part of the curation. Removal is for entries that genuinely don't belong (off-topic, never were a fit).
 
+### Finding the drift
+
+```bash
+python scripts/linkcheck.py                      # every entry's url and api
+python scripts/linkcheck.py --only status=live   # just the ones claiming to be alive
+```
+
+It asks each URL whether it answers and sorts the replies into categories. **It reports; it does not
+judge**, and it is deliberately not in CI: 317 requests to 163 third parties on every pull request
+would be rude, and the answers are too ambiguous to gate on.
+
+Read the output with that ambiguity in mind. On the 19 September 2026 run, 41 URLs returned 404 and
+**most of them were fine** — an API base path 404s by design, and `datacatalog.worldbank.org` serves a
+404 to anything without Javascript while rendering the dataset perfectly in a browser. Six were real:
+the `data.seoul.go.kr` pages now render the portal's own 서비스 종료 안내, a termination notice, which no
+status code revealed. `blocked` (401/403) is usually a bot check in front of a healthy site, and a
+timeout from one laptop is not evidence about a server.
+
+So: only `dns` and `gone` are worth opening, every one of them is worth opening **in a browser**, and
+nothing should be marked `deprecated` on a status code alone.
+
 ## Pillar / scale judgment calls
 
 A few that come up often:
