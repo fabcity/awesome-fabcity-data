@@ -30,3 +30,18 @@ jobs:
             git --no-pager diff README.md | head -200
             exit 1
           fi
+
+      # The node declares what it reads. `wired_in_planetai` is typed by hand here, so the two drift;
+      # this fails only on the half that is checkable — a pack reads a source and its entry says
+      # otherwise. The other half is printed, see scripts/wired.py.
+      - name: Check out planetai-node (public) to read what its packs declare
+        uses: actions/checkout@v5
+        with:
+          repository: fabcity/planetai-node
+          path: .planetai-node
+          fetch-depth: 0
+
+      - name: wired_in_planetai agrees with the node's packs
+        env:
+          PLANETAI_NODE_REPO: .planetai-node
+        run: python scripts/wired.py --check
