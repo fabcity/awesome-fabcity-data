@@ -8,7 +8,7 @@ pillar: economic
 scale: planet
 status: live
 license: CC-BY-SA-4.0 (content); MIT (code); third-party assets under their own terms
-api: null
+api: https://ttw.fab.city/data.json
 pilot_relevance: [global]
 tags: [open-design, repair, resilience, appropriate-technology, fab-city, act]
 added: 2026-09-20
@@ -24,13 +24,15 @@ notes: |
   terms, including the 3D-printable splint files by Ostec3D. This is one of the
   few entries in this list whose licence needed no chasing.
 
-  `api: null` — AND THAT IS THE GAP. Checked in this session: ttw.fab.city serves
-  the built HTML and nothing machine-readable. /data.json, /dataset.json,
-  /index.json and /api/solutions all return 404. The repository builds a
-  dist/data.json and does not publish it. Until that file is served, a node can
-  link a person to the site but cannot read it, which is the difference between an
-  act source and a bookmark. Publishing the file that is already built is the
-  smallest unblocking change in this list.
+  API VERIFIED LIVE 2026-09-20: /data.json returns 200, 4,122,959 bytes,
+  `content-type: application/json` and `access-control-allow-origin: *`, so
+  browser-side readers are not blocked either. One document carries meta, the
+  taxonomy, 1,594 entries, 147 Whole Earth issues and 31 crisis records — the
+  taxonomy travelling with the entries is what makes them interpretable.
+
+  Published on the day this entry was written: the pages inline their data at
+  build time, so dist/data.json was rebuilt on every run and served on none, and
+  every candidate path 404'd until build.sh copied it into deploy/.
 
   WHAT IT CARRIES, measured from the repo on 2026-09-20: 2,853 records across
   Appropedia (2,565), Field Ready (193), OLIVE, MSF, the Cuban manuals and Whole
@@ -45,5 +47,4 @@ notes: |
   against 499 for water and 260 for power. Strong where a node reads a portal or a
   heat cell, thin on the thing a node measures best.
 
-  No `adapter`: nothing in planetai-node reads it yet, and nothing can until the
-  dataset is published.
+  No `adapter`: nothing in planetai-node reads it yet. Nothing now stops one.
