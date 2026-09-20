@@ -96,13 +96,18 @@ def render_entry(entry: Dict[str, Any]) -> str:
     status = fmt_status(entry["status"])
     license_ = entry["license"]
     pilots = fmt_pilots(entry.get("pilot_relevance", []))
-    wired = "🔌 wired in PLANETAI" if entry.get("wired_in_planetai") else ""
+    # The 🔌 badge is drawn from `adapter`, not from `wired_in_planetai`: a pointer at the code that
+    # reads the source can be checked against that code, and the boolean never could. See CONTRIBUTING §2b.
+    adapter = entry.get("adapter")
+    act_kind = entry.get("act_kind")
 
     parts = [f"**[{name}]({url})** — {status} · `{license_}`"]
     if pilots:
         parts.append(f"_{pilots}_")
-    if wired:
-        parts.append(wired)
+    if adapter:
+        parts.append(f"🔌 `{adapter}`")
+    if act_kind:
+        parts.append(f"🛠 {act_kind}")
 
     head = " · ".join(parts)
     return f"- {head}\n  {desc}"

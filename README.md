@@ -66,19 +66,19 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 - **[GLODAP v2.2023 — Global Ocean Data Analysis Project](https://glodap.info/index.php/merged-and-adjusted-data-product-v2-2023/)** — ✅ `live` · `Website content CC-BY-4.0; the data product is gated behind a Data Use Statement — data license UNCONFIRMED` · _★_
   Uniformly calibrated global open-ocean data product of inorganic carbon variables including DIC, total alkalinity and pH, merged from research cruises. Maintained by GEOMAR and the ICOS Ocean Thematic Centre, archived at NOAA NCEI.
-- **[Google Flood Hub](https://sites.research.google/floods/)** — ✅ `live` · `Google Maps Platform terms (free tier)` · _BLI · BCN · SCL · ★_ · 🔌 wired in PLANETAI
+- **[Google Flood Hub](https://sites.research.google/floods/)** — ✅ `live` · `Google Maps Platform terms (free tier)` · _BLI · BCN · SCL · ★_
   Riverine flood forecasts up to 7 days ahead for ~80 countries including Indonesia, Spain, Chile. Inundation maps + alerts via free public API (rate-limited).
-- **[Microsoft Aurora](https://microsoft.github.io/aurora/)** — ✅ `live` · `MIT (model weights); CDS license for ERA5 training inputs` · _★_ · 🔌 wired in PLANETAI
+- **[Microsoft Aurora](https://microsoft.github.io/aurora/)** — ✅ `live` · `MIT (model weights); CDS license for ERA5 training inputs` · _★_
   Earth-system foundation model from Microsoft Research. Hourly forecasts to 14 days for atmosphere, ocean wave, and air quality state. Model weights released under MIT.
 - **[NASA GISTEMP v4 — surface temperature analysis](https://data.giss.nasa.gov/gistemp/)** — ✅ `live` · `No formal license — acknowledgement expected; credit NASA GISS/GISTEMP` · _★_
   NASA GISS land-ocean surface temperature anomaly analysis. Global, hemispheric and zonal CSV tables plus 2x2 degree gridded NetCDF and Zarr anomaly fields relative to a 1951-1980 baseline.
-- **[NASA POWER](https://power.larc.nasa.gov/)** — ✅ `live` · `US Government work (public domain); NASA POWER asks for citation` · _★_ · 🔌 wired in PLANETAI
+- **[NASA POWER](https://power.larc.nasa.gov/)** — ✅ `live` · `US Government work (public domain); NASA POWER asks for citation` · _★_ · 🔌 `core:power_climatology`
   NASA Langley's Prediction Of Worldwide Energy Resources: solar and meteorological parameters from MERRA-2 and CERES, hourly to climatology, for any point on Earth since 1981, via a key-free REST API.
 - **[NOAA Global Monitoring Laboratory — CO2 trends](https://gml.noaa.gov/ccgg/trends/data.html)** — ✅ `live` · `No formal license — freely available to the public and the scientific community; citation requested` · _★_
   NOAA GML's canonical atmospheric CO2 record: Mauna Loa daily, weekly and monthly means plus the globally averaged marine surface annual mean, from the NOAA cooperative air sampling network.
-- **[Open-Meteo](https://open-meteo.com/)** — ✅ `live` · `CC-BY-4.0` · _★_ · 🔌 wired in PLANETAI
+- **[Open-Meteo](https://open-meteo.com/)** — ✅ `live` · `CC-BY-4.0` · _★_ · 🔌 `core:openmeteo`
   Free weather + climate API with no auth required. Backed by ECMWF + GFS + DWD + KNMI. Hourly forecasts to 14 days, historical reanalysis, climate projections, marine forecasts.
-- **[Open-Meteo Air Quality API (Copernicus CAMS)](https://open-meteo.com/en/docs/air-quality-api)** — ✅ `live` · `CC-BY-4.0 (Open-Meteo) with mandatory attribution to CAMS / Copernicus as data provider` · _★_ · 🔌 wired in PLANETAI
+- **[Open-Meteo Air Quality API (Copernicus CAMS)](https://open-meteo.com/en/docs/air-quality-api)** — ✅ `live` · `CC-BY-4.0 (Open-Meteo) with mandatory attribution to CAMS / Copernicus as data provider` · _★_ · 🔌 `core:openmeteo_air`
   Key-free hourly air-quality forecasts and 92 days of history from the Copernicus CAMS global (0.4 deg) and European (0.1 deg) models: PM2.5, PM10, O3, NO2, SO2, CO, dust, aerosol optical depth, UV index, pollen (EU).
 - **[UNEP IRP Global Material Flows Database](https://energydata.info/en/dataset/world-unep-irp-global-material-flows-database)** — ✅ `live` · `CC-BY-4.0` · _★_
   UNEP International Resource Panel material flow accounts: domestic extraction, direct trade and material footprint in raw-material equivalents by material category for 200+ countries. Compiled with CSIRO and WU Vienna.
@@ -89,7 +89,7 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Community-curated large-sample hydrology benchmark dataset. Daily streamflow + meteorological forcing for ~7,000 catchments globally. Underlies most modern deep-learning hydrology research.
 - **[ESA WorldCover](https://esa-worldcover.org/en/data-access)** — ✅ `live` · `CC-BY-4.0` · _★_
   ESA's 10 m global land cover map from Sentinel-1/2 with 11 classes including tree cover, shrubland, grassland, cropland and wetland. Delivered as Cloud-Optimized GeoTIFFs on a 1-degree grid.
-- **[GBIF — Global Biodiversity Information Facility](https://www.gbif.org/)** — ✅ `live` · `CC-BY-4.0 (most records); some CC0; some CC-BY-NC` · _★_ · 🔌 wired in PLANETAI
+- **[GBIF — Global Biodiversity Information Facility](https://www.gbif.org/)** — ✅ `live` · `CC-BY-4.0 (most records); some CC0; some CC-BY-NC` · _★_
   Aggregated species occurrence records from 2,000+ data publishers. ~3 billion records globally with a public REST API and bulk download via DOI. The de facto biodiversity backbone.
 - **[Global Footprint Network — National Footprint & Biocapacity Accounts](https://www.footprintnetwork.org/licenses/public-data-package-free/)** — ✅ `live` · `CC-BY-SA-4.0 (registration and source acknowledgement required)` · _★_
   Free public data package of Ecological Footprint and biocapacity accounts for 195+ countries, run by Global Footprint Network. Carries per-capita gha footprint and biocapacity, land-type breakdown and data- quality scores.
@@ -99,7 +99,7 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Global vector polygons of sub-basin boundaries, hierarchically nested across 12 levels with Pfafstetter coding and upstream/downstream topology. About 1.0 million sub-basin polygons covering 135 million square kilometres.
 - **[ISRIC SoilGrids 2.0](https://www.isric.org/explore/soilgrids)** — ✅ `live` · `CC-BY-4.0` · _★_
   ISRIC World Soil Information's global digital soil mapping system. Machine-learned predictions of pH, organic carbon, bulk density, nitrogen, CEC and texture at 250 m across six standard depths.
-- **[Open-Meteo Marine Weather API](https://open-meteo.com/en/docs/marine-weather-api)** — ✅ `live` · `CC-BY-4.0 (Open-Meteo) with mandatory attribution to the model providers (DWD, ECMWF, Meteo-France, NCEP)` · _BLI · BCN · BOS · SCL · ★_ · 🔌 wired in PLANETAI
+- **[Open-Meteo Marine Weather API](https://open-meteo.com/en/docs/marine-weather-api)** — ✅ `live` · `CC-BY-4.0 (Open-Meteo) with mandatory attribution to the model providers (DWD, ECMWF, Meteo-France, NCEP)` · _BLI · BCN · BOS · SCL · ★_ · 🔌 `pack:coast`
   Key-free hourly marine forecasts to 16 days: wave height, period and direction (wind, swell, secondary swell), sea surface temperature, sea level with tides, ocean current. Backed by MFWAM, ECMWF WAM, GFS Wave, EWAM.
 - **[UNEP GEMS/Water Global Freshwater Quality Archive](https://zenodo.org/records/14230628)** — ✅ `live` · `CC-BY-4.0 (open archive; additional data available under CC-BY-NC-4.0)` · _★_
   UNEP GEMS/Water's global freshwater quality archive: over 20 million measurements across 608 parameters from 13,660 monitoring stations. Hosted by the International Centre for Water Resources and Global Change at the German Federal Institute of Hydrology.
@@ -116,7 +116,7 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Candidate and planned solar generation sites identified under Bhutan's National Solar Energy Roadmap, published by the Department of Energy. Points, so this is a renewable-capacity siting layer.
 - **[Bhutan River Basin Boundaries (NSDI)](https://nsdi.systems.gov.bt/portal/sharing/rest/content/items/547f76f1a5d54c5a9ddd6536baad7dd2?f=json)** — ✅ `live` · `Open (Geo-Information Policy 2018 §6.3.1 open tier: "Open data shall be openly and freely accessible")`
   River basin boundary polygons for Bhutan published by the Department of Water on the national spatial data infrastructure. Provides the hydrological regional frame for water-resource indicators.
-- **[BMKG Prakiraan Cuaca (Indonesia public weather forecast API)](https://data.bmkg.go.id/prakiraan-cuaca/)** — ✅ `live` · `BMKG terms of use; attribution "Sumber: BMKG" mandatory; repackaging into third-party applications and commercial use require written permission from BMKG (Ketentuan Penggunaan s.9.3)` · _BLI_ · 🔌 wired in PLANETAI
+- **[BMKG Prakiraan Cuaca (Indonesia public weather forecast API)](https://data.bmkg.go.id/prakiraan-cuaca/)** — ✅ `live` · `BMKG terms of use; attribution "Sumber: BMKG" mandatory; repackaging into third-party applications and commercial use require written permission from BMKG (Ketentuan Penggunaan s.9.3)` · _BLI_ · 🔌 `pack:forecast`
   Indonesia's meteorological agency publishes a three-day, 3-hourly forecast for every kelurahan and desa in the country, keyed by the level-IV administrative code, refreshed twice daily. Key-free JSON, 60 req/min/IP.
 - **[GeoStat Environment Statistics (PxWeb) - Georgia](https://pc-axis.geostat.ge/PXWeb/pxweb/en/Database/Environment%20Statistics)** — ✅ `live` · `GeoStat open terms of use - download, use, adapt, modify, create derivative works, disseminate and share for any purpose including commercial, without prior permission; attribution to GEOSTAT required`
   Georgia's national environment statistics - air pollution, waste, water resources, forests, protected areas and environmental-economic accounts - queryable through a live PxWeb REST API run by GeoStat.
@@ -125,7 +125,7 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 ### City
 
-- **[AlphaEarth Foundations - Satellite Embedding V1 (Google DeepMind)](https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_SATELLITE_EMBEDDING_V1_ANNUAL)** — ✅ `live` · `CC-BY-4.0 (attribution required)` · _★_ · 🔌 wired in PLANETAI
+- **[AlphaEarth Foundations - Satellite Embedding V1 (Google DeepMind)](https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_SATELLITE_EMBEDDING_V1_ANNUAL)** — ✅ `live` · `CC-BY-4.0 (attribution required)` · _★_ · 🔌 `pack:earth`
   Annual 10 m global embeddings (64 dimensions per pixel) learned from Sentinel-1/2, Landsat, GEDI, ERA5 and more, 2017-2024. A general-purpose land representation: change, similarity and classification without labels.
 - **[ARSO hourly air quality measurements (Slovenia)](http://www.arso.gov.si/xml/zrak/ones_zrak_urni_podatki_zadnji.xml)** — ✅ `live` · `CC-BY-4.0`
   Hourly XML feed from Slovenia's national air quality network - 24 stations, three of them in Ljubljana, reporting PM10, PM2.5, NO2, O3, SO2, benzene, CO and NOx with coordinates and elevation.
@@ -135,7 +135,7 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Community-scale greenhouse gas inventory for Montreal built on the GPC protocol, carrying GPC reference numbers and Scope 1/2/3 across stationary energy, transport, waste, IPPU and AFOLU.
 - **[Geoportal Kvaliteta zraka Grada Zagreba](https://data.gov.hr/ckan/dataset/geoportal-kvaliteta-zraka)** — ✅ `live` · `Otvorena dozvola (OD)`
   Inventory of Zagreb's urban air-quality monitoring stations - location, substances measured, operating institution and competent authority - served as CSV, GeoJSON, KML and SHP from the city's ArcGIS Hub.
-- **[Google Air Quality API](https://developers.google.com/maps/documentation/air-quality)** — 💲 `paywalled` · `Google Maps Platform terms (free quota tier available)` · _★_ · 🔌 wired in PLANETAI
+- **[Google Air Quality API](https://developers.google.com/maps/documentation/air-quality)** — 💲 `paywalled` · `Google Maps Platform terms (free quota tier available)` · _★_
   500m-resolution PM2.5 + AQI grid derived from regulatory stations, satellite, and modelling. Global coverage with hourly updates.
 - **[Kamakura Waste and Recycling Open Data (鎌倉市 ごみ・資源オープンデータ)](https://www.city.kamakura.kanagawa.jp/gomi/shigen.html)** — ✅ `live` · `CC-BY-4.0`
   Four CSV series on Kamakura's municipal waste system: incineration tonnage and waste generation split household/commercial, recycling rate, and resource collection volume. The recycling rate series runs FY2010-FY2024, rising 46.5% to 59.8%.
@@ -143,7 +143,7 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Per-authority and regional waste tonnage, recycling rates and household waste per person for England, 2024/25 with a back-series to 2012-13, published as ODS spreadsheets from WasteDataFlow returns.
 - **[Luchtmeetnet / Landelijk Meetnet Luchtkwaliteit (RIVM)](https://api-docs.luchtmeetnet.nl/)** — ✅ `live` · `CC-BY-4.0`
   The Dutch national air quality monitoring network, run by RIVM with regional environment agencies. Open JSON API serving station metadata and hourly concentrations for NO2, PM10, PM2.5, O3 and more.
-- **[OpenAQ](https://openaq.org/)** — ✅ `live` · `CC-BY-4.0` · _BCN · BOS · SCL · BLI · ★_ · 🔌 wired in PLANETAI
+- **[OpenAQ](https://openaq.org/)** — ✅ `live` · `CC-BY-4.0` · _BCN · BOS · SCL · BLI · ★_
   Reference-grade air quality aggregator. Pulls from ~10k+ regulatory monitoring stations globally and harmonises to a common schema. Free public API with optional auth for higher rate limits.
 - **[RSQA - Indice de la qualite de l'air, temps reel (Montreal)](https://donnees.montreal.ca/dataset/rsqa-indice-qualite-air)** — ✅ `live` · `CC-BY-4.0`
   Hourly air quality index per monitoring station from Montreal's RSQA network, covering SO2, CO, O3, NO2 and PM2.5. Published as a rolling daily CSV, updated about ten minutes past each hour.
@@ -160,13 +160,13 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 ### Community
 
-- **[AirGradient](https://www.airgradient.com/)** — ✅ `live` · `CC-BY-4.0 (data) + custom open (hardware)` · _★_ · 🔌 wired in PLANETAI
+- **[AirGradient](https://www.airgradient.com/)** — ✅ `live` · `CC-BY-4.0 (data) + custom open (hardware)` · _★_ · 🔌 `core:airgradient`
   Open-hardware indoor + outdoor air quality monitoring network with public REST API. PM2.5, PM10, CO2, TVOC, NOx, temperature, humidity. ~10k+ devices deployed globally; transparent pricing for the open variant.
-- **[Bali Air Dispatch](https://baliairdispatch.com/)** — ✅ `live` · `Public-interest archive; redistribution encouraged with attribution to Bali Air Dispatch and to the originating network named in each row. Upstream readings remain under their networks' terms.` · _BLI_ · 🔌 wired in PLANETAI
+- **[Bali Air Dispatch](https://baliairdispatch.com/)** — ✅ `live` · `Public-interest archive; redistribution encouraged with attribution to Bali Air Dispatch and to the originating network named in each row. Upstream readings remain under their networks' terms.` · _BLI_ · 🔌 `core:baliairdispatch`
   Island-wide PM2.5 archive for Bali aggregating eight sensor networks (Nafas, IQAir, PurpleAir, AQICN, OpenAQ, AirGradient, Smart Citizen, Airly) into one key-free, read-only API with raw and humidity-corrected values.
-- **[iNaturalist](https://www.inaturalist.org/)** — ✅ `live` · `CC-BY-NC (default per-observation; varies by uploader)` · _★_ · 🔌 wired in PLANETAI
+- **[iNaturalist](https://www.inaturalist.org/)** — ✅ `live` · `CC-BY-NC (default per-observation; varies by uploader)` · _★_
   Community species observation platform. ~200M+ research-grade observations globally with photo verification by community identifiers. Used as the de facto biodiversity citizen-science layer.
-- **[Smart Citizen](https://smartcitizen.me/)** — ✅ `live` · `CC-BY-SA-4.0 (data) + GPL-3.0 (firmware/hardware)` · _BCN · ★_ · 🔌 wired in PLANETAI
+- **[Smart Citizen](https://smartcitizen.me/)** — ✅ `live` · `CC-BY-SA-4.0 (data) + GPL-3.0 (firmware/hardware)` · _BCN · ★_ · 🔌 `core:smartcitizen`
   Open-hardware community sensor network from Fab Lab Barcelona / IAAC. ~25k kits deployed globally measuring PM2.5, sound, temperature, humidity, light, CO2. FOSS hardware + firmware, public REST API.
 
 
@@ -223,13 +223,13 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 ### Planet
 
-- **[Atlas of Economic Complexity (Harvard Growth Lab)](https://atlas.hks.harvard.edu/)** — ✅ `live` · `CC-BY-4.0` · _★_ · 🔌 wired in PLANETAI
+- **[Atlas of Economic Complexity (Harvard Growth Lab)](https://atlas.hks.harvard.edu/)** — ✅ `live` · `CC-BY-4.0` · _★_
   Global trade + economic-complexity indicators (ECI, product-space, diversification metrics) for ~250 countries × ~6,000 products. Bulk download via Dataverse; interactive web tool for exploration.
 - **[Climate Funds Update](https://climatefundsupdate.org/data-dashboard/)** — ✅ `live` · `Not stated on the source page — freely downloadable, licence UNDECLARED` · _★_
   Independent monitor of multilateral climate finance run by ODI and Heinrich Boell Stiftung. Tracks money pledged, deposited and approved by fund, contributor country and recipient country, downloadable as Excel.
 - **[Our World in Data — grapher CSV endpoints](https://ourworldindata.org/grapher/food-supply-kcal.csv)** — ✅ `live` · `CC-BY-4.0 for OWID's processing; upstream licences still apply to underlying values` · _★_
   OWID republishes FAOSTAT, World Bank and other series as clean, tidy, versioned CSVs at a stable URL pattern. Useful as the machine-readable escape hatch when an upstream agency's own API is unreachable.
-- **[World Bank What a Waste 2.0](https://datacatalog.worldbank.org/search/dataset/0039597)** — ✅ `live` · `CC-BY-4.0` · _★_ · 🔌 wired in PLANETAI
+- **[World Bank What a Waste 2.0](https://datacatalog.worldbank.org/search/dataset/0039597)** — ✅ `live` · `CC-BY-4.0` · _★_
   National-level municipal solid waste accounts: per-capita generation, composition, collection, treatment. Coverage for ~217 economies.
 - **[World Bank World Development Indicators](https://datacatalog.worldbank.org/search/dataset/0037712/World-Development-Indicators)** — ✅ `live` · `CC-BY-4.0` · _★_
   The World Bank's flagship cross-country indicator database served through a free unauthenticated REST API. Carries global and national GDP, value added by sector, adjusted net savings and natural-resource depletion rents.
@@ -244,7 +244,7 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Global multi-regional environmentally extended input-output database covering 44 countries plus 5 rest-of-world regions and 163 industries, with employment, material, land and emissions satellite accounts alongside monetary flows.
 - **[FAOSTAT Food Balance Sheets](https://www.fao.org/faostat/en/#data/FBS)** — ✅ `live` · `CC-BY-4.0 (FAO standard database licence — not confirmable from the pages fetched; verify at download)` · _★_
   FAO Food Balance Sheets: production, imports, exports, stock change, feed, seed, losses and food supply per commodity per country. The canonical basis for any food self-sufficiency ratio.
-- **[materialflows.net (UN International Resource Panel)](https://www.materialflows.net/)** — ✅ `live` · `custom open (UN IRP terms)` · _★_ · 🔌 wired in PLANETAI
+- **[materialflows.net (UN International Resource Panel)](https://www.materialflows.net/)** — ✅ `live` · `custom open (UN IRP terms)` · _★_
   Economy-wide material flow accounts published by the UN International Resource Panel. National-level material extraction, imports, exports, consumption by category.
 - **[OECD Green Growth Indicators (SDMX)](https://sdmx.oecd.org/public/rest/dataflow/OECD.ENV.EPI/all/latest)** — ✅ `live` · `OECD terms — CC-BY-4.0 for most OECD statistical data, not restated on the SDMX endpoint; verify per dataflow` · _★_
   OECD's green growth indicator set delivered over a public SDMX REST API with no key. Carries green jobs, environmental goods and services trade, environmental taxation, fossil-fuel support and resource productivity for OECD and partner economies.
@@ -291,7 +291,7 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Sectoral productivity database for 18 Latin American economies. Capital, Labour, Energy, Materials, Services inputs at industry level. Maintained by IDB and partner institutions.
 - **[Main Estimates - Treasury Board of Canada Secretariat](https://search.open.canada.ca/opendata/)** — ✅ `live` · `Open Government Licence - Canada`
   Canada's annual appropriation estimates by department and vote, published as CSV per fiscal year running 1 April to 31 March. Each year is a separate CKAN package, discoverable through the open API.
-- **[Metroverse (Harvard Growth Lab)](https://metroverse.hks.harvard.edu/)** — ✅ `live` · `CC-BY-4.0` · _BCN · BOS · SCL_ · 🔌 wired in PLANETAI
+- **[Metroverse (Harvard Growth Lab)](https://metroverse.hks.harvard.edu/)** — ✅ `live` · `CC-BY-4.0` · _BCN · BOS · SCL_
   City-level economic-complexity dashboard covering ~1,200 metro areas. Industry employment, knowledge clusters, peer-city benchmarks, growth predictions.
 - **[Presupuesto Abierto Argentina](https://www.presupuestoabierto.gob.ar/sici/datos-abiertos)** — ✅ `live` · `CC-BY-4.0`
   Argentina's national budget credit, revenue, physical execution and cross-cutting financial analysis, published by the Secretaría de Hacienda. Queryable through a documented v1 REST API and as bulk open data.
@@ -391,9 +391,9 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 ### Community
 
-- **[Fab Lab Activity Index (Boeing 2024)](https://link.springer.com/chapter/10.1007/978-3-658-44114-2_9)** — ✅ `live` · `CC-BY-4.0 (chapter, Open Access)` · _★_ · 🔌 wired in PLANETAI
+- **[Fab Lab Activity Index (Boeing 2024)](https://link.springer.com/chapter/10.1007/978-3-658-44114-2_9)** — ✅ `live` · `CC-BY-4.0 (chapter, Open Access)` · _★_
   Per-lab activity baseline derived from the Fab Lab Census and fablabs.io registry. The first peer-reviewed quantitative index of distributed-production capacity at the community tier.
-- **[OpenStreetMap (Overpass API)](https://www.openstreetmap.org/)** — ✅ `live` · `ODbL-1.0` · _★_ · 🔌 wired in PLANETAI
+- **[OpenStreetMap (Overpass API)](https://www.openstreetmap.org/)** — ✅ `live` · `ODbL-1.0` · _★_ · 🔌 `pack:place`
   The collaborative world map: buildings, roads, land use, shops, workshops, amenities, with a free query API (Overpass). The densest open record of what a neighbourhood physically contains, edited by the people who live in it.
 
 
@@ -447,7 +447,7 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   European electricity grid data: generation by source, consumption, cross-border flows, balancing, day-ahead prices. Hourly resolution for all EU + UK + Norway + Switzerland.
 - **[Find a Tender Service - OCDS API (UK)](https://www.find-tender.service.gov.uk/Developer/Documentation)** — ✅ `live` · `Open Government Licence v3.0`
   UK national procurement notice register under the Procurement Act 2023, from 24 February 2025, serving OCDS 1.1.5 JSON release and record packages. Also carries a payments transparency register.
-- **[Generalitat de Catalunya — Dades Obertes](https://analisi.transparenciacatalunya.cat/)** — ✅ `live` · `CC-BY-4.0` · _BCN_ · 🔌 wired in PLANETAI
+- **[Generalitat de Catalunya — Dades Obertes](https://analisi.transparenciacatalunya.cat/)** — ✅ `live` · `CC-BY-4.0` · _BCN_
   Catalan regional open data portal. Includes Estadistiques de residus municipals (per-capita waste, all 947 Catalan municipalities), Idescat IPC (consumer prices), Mercabarna figures, energy mix.
 - **[Georef — Servicio de Normalización de Datos Geográficos (Argentina)](https://datosgobar.github.io/georef-ar-api/)** — ✅ `live` · `CC-BY-4.0`
   Argentina's official API for resolving and normalising administrative units — provincias, departamentos, municipios, localidades and addresses — to their national identifier codes. Run by Datos Argentina on IGN base data.
@@ -482,9 +482,9 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 - **[Amsterdam Open Data / DataPunt API](https://data.amsterdam.nl/catalogus/)** — ✅ `live` · `CC0-1.0`
   Gemeente Amsterdam's data catalogue and its DataPunt REST API, which serves roughly 100 versioned dataset collections (BAG, trees, ecology, waste, gas-free zones) as JSON, plus WFS and MVT layers.
-- **[Analyze Boston](https://data.boston.gov/dataset)** — ✅ `live` · `Open Data Commons Public Domain Dedication and License (PDDL)` · _BOS_ · 🔌 wired in PLANETAI
+- **[Analyze Boston](https://data.boston.gov/dataset)** — ✅ `live` · `Open Data Commons Public Domain Dedication and License (PDDL)` · _BOS_ · 🔌 `core:ckan`
   City of Boston open data portal, CKAN-based. 235 datasets covering 311 service requests, budget and spending, building permits, employee earnings, food inspections, traffic and public safety.
-- **[Bali Satu Data (provincial)](https://balisatudata.baliprov.go.id/search-data)** — ✅ `live` · `not stated` · _BLI_ · 🔌 wired in PLANETAI
+- **[Bali Satu Data (provincial)](https://balisatudata.baliprov.go.id/search-data)** — ✅ `live` · `not stated` · _BLI_ · 🔌 `core:ckan`
   Provinsi Bali's Satu Data portal. Reachable and responding, but its search returns an empty state with no datasets listed by default, so its actual holdings could not be established.
 - **[Barcelona - Perfil del contractant i relacio de contractistes](https://opendata-ajuntament.barcelona.cat/data/api/action/package_show?id=perfil-contractant)** — ✅ `live` · `CC-BY-4.0` · _BCN_
   Barcelona's public procurement register: tenders, bids, awards and contract formalisations from the last five years, updated daily, plus a contractors list with tax identifiers and amounts running back to 2012.
@@ -502,7 +502,7 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Plymouth's CKAN open data portal - 174 datasets from 10 publishers including the city council, public health, a CCG, the police and Plymouth Marine Laboratory. 144 under OGL, the rest CC-BY and ODbL.
 - **[data.gv.at - Stadt Linz](https://data.linz.gv.at/)** — ✅ `live` · `CC-BY-4.0`
   Linz publishes its open data as a publishing body on data.gv.at, Austria's national open government data portal, rather than on a portal of its own: 823 datasets covering mobility, statistics, planning, tourism and procurement.
-- **[datos.gob.cl](https://datos.gob.cl/)** — ✅ `live` · `not stated` · _SCL_ · 🔌 wired in PLANETAI
+- **[datos.gob.cl](https://datos.gob.cl/)** — ✅ `live` · `not stated` · _SCL_ · 🔌 `core:ckan`
   Chile's national open data portal, CKAN 2.10.4, publishing 3,211 datasets from 272 institutions including central government and many municipalities. Used as the Santiago pilot's open-data substrate.
 - **[Donnees ouvertes - Ville de Montreal](https://donnees.montreal.ca/dataset)** — ✅ `live` · `CC-BY-4.0`
   Montreal's CKAN 2.11.5 open data catalogue - 404 datasets, 394 under CC BY 4.0 and 284 carrying a CSV. Hosts non-municipal publishers alongside the city. Catalogue breadth and licence openness are themselves governance indicators.
@@ -514,7 +514,7 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Wuppertal's municipal open data portal, run on DKAN and hosted for the city by Stadt Koeln. Around 290 datasets across geodata, population, budget, mobility, environment and elections for the largest city of the Bergisches Staedtedreieck.
 - **[ONS Open Geography Portal - ArcGIS REST services](https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services)** — ✅ `live` · `Open Government Licence v3.0`
   Queryable ArcGIS FeatureServers for UK statistical geography, serving vintaged GSS codes and boundaries from output area to country. Around 600 vintage-suffixed services, no key, no authentication.
-- **[Open Data BCN](https://opendata-ajuntament.barcelona.cat/data/api/action/package_search)** — ✅ `live` · `CC-BY-4.0` · _BCN_ · 🔌 wired in PLANETAI
+- **[Open Data BCN](https://opendata-ajuntament.barcelona.cat/data/api/action/package_search)** — ✅ `live` · `CC-BY-4.0` · _BCN_ · 🔌 `core:ckan`
   Barcelona municipal open data portal, CKAN-based. 555 datasets covering mobility, environment, demographics, economy, governance and urban fabric, entirely under CC-BY-4.0.
 - **[Open Data Paris](https://opendata.paris.fr/api/explore/v2.1/catalog/datasets)** — ✅ `live` · `Open Database License (ODbL)`
   The City of Paris open-data portal (OpenDataSoft), 476 datasets across eight themes, every one of them under an open licence. Carries the city's budgets, procurement, workforce, environment and mobility data.
