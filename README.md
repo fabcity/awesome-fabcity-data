@@ -403,6 +403,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 - **[Fab Lab Activity Index (Boeing 2024)](https://link.springer.com/chapter/10.1007/978-3-658-44114-2_9)** — ✅ `live` · `CC-BY-4.0 (chapter, Open Access)` · _★_
   Per-lab activity baseline derived from the Fab Lab Census and fablabs.io registry. The first peer-reviewed quantitative index of distributed-production capacity at the community tier.
+- **[Fab Lab Network Data — the labs.json archive](https://gitlab.fabcloud.org/fl-management/fablab-network-data)** — ✅ `live` · `No licence published — the repository has none, and the records are fablabs.io's, under its Terms of Use. See economic/community/fablabs-io.` · _★_ · 🛠 facility
+  Forty-eight dated freezes of the fablabs.io lab directory, monthly since 2025, kept in a public Fab Foundation repository. The same records as the live endpoint, but pinnable: a dated file instead of a moving target.
 - **[fablabs.io — Fab Lab Network directory](https://www.fablabs.io/)** — ✅ `live` · `NOT OPEN — no data licence published. Platform ToS §7.4 restricts mass harvesting, §7.5 restricts commercial use, §8.1 leaves copyright with each lab. See notes.` · _★_ · 🛠 facility
   The Fab Foundation's directory of fab labs: name, coordinates, activity status and a six-token capability vocabulary, self-entered by the labs themselves. The closest thing the network has to a census of where things can be made.
 - **[OpenStreetMap (Overpass API)](https://www.openstreetmap.org/)** — ✅ `live` · `ODbL-1.0` · _★_ · 🔌 `pack:place`
@@ -518,6 +520,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Chile's national open data portal, CKAN 2.10.4, publishing 3,211 datasets from 272 institutions including central government and many municipalities. Used as the Santiago pilot's open-data substrate.
 - **[Donnees ouvertes - Ville de Montreal](https://donnees.montreal.ca/dataset)** — ✅ `live` · `CC-BY-4.0`
   Montreal's CKAN 2.11.5 open data catalogue - 404 datasets, 394 under CC BY 4.0 and 284 carrying a CSV. Hosts non-municipal publishers alongside the city. Catalogue breadth and licence openness are themselves governance indicators.
+- **[Fab City pledged cities](https://gitlab.fabcloud.org/fl-management/fablab-network-data/-/blob/main/data/fabcity.xlsx)** — ✅ `live` · `No licence published — the repository carries none. The Foundation's own list, and the one source here it could license with a sentence.` · _★_ · 🛠 network
+  The cities, regions and countries that have pledged to produce most of what they consume by 2054, with the year each one signed. The Fab City commitment as a list rather than a map on a website.
 - **[Kolada v3 - Swedish municipal and regional KPI database](https://www.kolada.se/om-oss/api/)** — ✅ `live` · `Free of charge, no agreement required, commercial use permitted; attribution "Kalla, Kolada" required unless the data has been substantially processed`
   Sweden's municipal KPI database - roughly 6000 indicators across finance, schools, care, environment and governance for every kommun and region, with an open JSON API. Lund is municipality_id 1281.
 - **[Odprti podatki Mestne obcine Ljubljana (ArcGIS Hub)](https://mol-ljubljana.hub.arcgis.com/)** — ✅ `live` · `CC-BY-4.0`
