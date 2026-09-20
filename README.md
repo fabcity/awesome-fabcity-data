@@ -223,12 +223,20 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 ### Planet
 
+- **[Appropedia](https://www.appropedia.org/)** — ✅ `live` · `CC-BY-SA-4.0 (site default; proprietary licences allowed only on approval)` · _★_ · 🛠 design
+  The wiki of appropriate technology and sustainable development: build instructions, project pages and research for tools people make and repair locally. The largest openly licensed body of practical how-to on the web.
 - **[Atlas of Economic Complexity (Harvard Growth Lab)](https://atlas.hks.harvard.edu/)** — ✅ `live` · `CC-BY-4.0` · _★_
   Global trade + economic-complexity indicators (ECI, product-space, diversification metrics) for ~250 countries × ~6,000 products. Bulk download via Dataverse; interactive web tool for exploration.
 - **[Climate Funds Update](https://climatefundsupdate.org/data-dashboard/)** — ✅ `live` · `Not stated on the source page — freely downloadable, licence UNDECLARED` · _★_
   Independent monitor of multilateral climate finance run by ODI and Heinrich Boell Stiftung. Tracks money pledged, deposited and approved by fund, contributor country and recipient country, downloadable as Excel.
+- **[Open Know-How Search (Internet of Production Alliance)](https://search.openknowhow.org/)** — ✅ `live` · `Creative Commons — version and variant not stated by the publisher (see notes)` · _★_ · 🛠 design
+  A federated index of Open Know-How manifests — machine-readable descriptions of hardware designs, each naming its own files, processes and licence. The closest thing open hardware has to a card catalogue.
+- **[OSHWA Open Source Hardware Certification](https://certification.oshwa.org/)** — ✅ `live` · `CC-BY-SA-4.0` · _★_ · 🛠 design
+  The register of hardware certified as open source by the Open Source Hardware Association — each entry a project that has committed to publishing its design files under an open licence, with a certification UID to cite.
 - **[Our World in Data — grapher CSV endpoints](https://ourworldindata.org/grapher/food-supply-kcal.csv)** — ✅ `live` · `CC-BY-4.0 for OWID's processing; upstream licences still apply to underlying values` · _★_
   OWID republishes FAOSTAT, World Bank and other series as clean, tidy, versioned CSVs at a stable URL pattern. Useful as the machine-readable escape hatch when an upstream agency's own API is unreachable.
+- **[Things That Work (Fab City Foundation)](https://ttw.fab.city/)** — ✅ `live` · `CC-BY-SA-4.0 (content); MIT (code); third-party assets under their own terms` · _★_ · 🛠 design
+  A curated index of solutions for when services fail — drinkable water when the tap is cut, light in a blackout, a part to print when the supply chain is gone. Tagged by what each one does and which scarcity it answers.
 - **[World Bank What a Waste 2.0](https://datacatalog.worldbank.org/search/dataset/0039597)** — ✅ `live` · `CC-BY-4.0` · _★_
   National-level municipal solid waste accounts: per-capita generation, composition, collection, treatment. Coverage for ~217 economies.
 - **[World Bank World Development Indicators](https://datacatalog.worldbank.org/search/dataset/0037712/World-Development-Indicators)** — ✅ `live` · `CC-BY-4.0` · _★_
