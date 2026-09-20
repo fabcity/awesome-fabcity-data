@@ -63,6 +63,36 @@ def node_declares() -> tuple[set[str], str]:
     return ids, "working tree"
 
 
+def node_offers() -> tuple[set[str], set[str]]:
+    """What `adapter:` is allowed to name: every pack directory under packs/, and every top-level
+    function in app/sources.py and app/bootstrap.py. Read from the node's published main, same as
+    node_declares(), so a laptop's half-finished branch cannot make this pass or fail."""
+    packs: set[str] = set()
+    funcs: set[str] = set()
+    ls = git(NODE, "ls-tree", "-r", "--name-only", REF, "packs")
+    if ls.returncode == 0 and ls.stdout.strip():
+        packs = {n.split("/")[1] for n in ls.stdout.split() if n.startswith("packs/") and "/" in n[6:]}
+        for mod in ("app/sources.py", "app/bootstrap.py"):
+            funcs |= set(re.findall(r"^def ([a-z_]+)\(", git(NODE, "show", f"{REF}:{mod}").stdout, re.M))
+    else:
+        packs = {d.name for d in sorted(NODE.glob("packs/*")) if d.is_dir()}
+        for mod in ("app/sources.py", "app/bootstrap.py"):
+            f = NODE / mod
+            if f.exists():
+                funcs |= set(re.findall(r"^def ([a-z_]+)\(", f.read_text(), re.M))
+    return packs, {f for f in funcs if not f.startswith("_")}
+
+
+def adapters() -> dict[str, str]:
+    """Every entry's `adapter:` value, keyed by registry id. Read as text, like flagged()."""
+    out = {}
+    for p in sorted((ROOT / "data").rglob("*.yaml")):
+        m = re.search(r"^adapter:\s*[\"']?([a-z_:0-9-]+)[\"']?\s*$", p.read_text(), re.M)
+        if m:
+            out[str(p.relative_to(ROOT / "data"))[: -len(".yaml")]] = m.group(1)
+    return out
+
+
 def flagged() -> set[str]:
     """Entries claiming a wiring. Read as text: the file is one flat mapping and this is one key."""
     out = set()
@@ -96,7 +126,25 @@ def main(argv: list[str]) -> int:
         for i in unbacked:
             print(f"      data/{i}.yaml")
 
-    return 1 if (missing and "--check" in argv) else 0
+    # `adapter` is the replacement for that boolean, and its whole justification is that a pointer can be
+    # dereferenced. So dereference it: pack:<id> must be a directory under packs/, core:<fn> a function in
+    # app/sources.py or app/bootstrap.py. Both directions are errors — there is no second half this cannot see.
+    packs, funcs = node_offers()
+    dangling = []
+    for rid, a in sorted(adapters().items()):
+        kind, _, name = a.partition(":")
+        known = packs if kind == "pack" else funcs
+        if known and name not in known:
+            dangling.append((rid, a, "no such pack" if kind == "pack" else "no such function"))
+
+    if dangling:
+        print(f"  x {len(dangling)} adapter{'' if len(dangling) == 1 else 's'} naming something the node does not have:")
+        for rid, a, why in dangling:
+            print(f"      data/{rid}.yaml — adapter: {a} ({why} on {at})")
+    elif adapters():
+        print(f"  {len(adapters())} adapters all resolve in the node ({at})")
+
+    return 1 if ((missing or dangling) and "--check" in argv) else 0
 
 
 if __name__ == "__main__":

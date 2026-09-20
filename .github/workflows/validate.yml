@@ -19,6 +19,9 @@ jobs:
       - name: Install validation deps
         run: pip install -r requirements.txt
 
+      - name: Schema tests (the cases that must fail)
+        run: python tests/test_schema.py
+
       - name: Validate entries against schema
         run: python scripts/validate.py
 
@@ -33,7 +36,8 @@ jobs:
 
       # The node declares what it reads. `wired_in_planetai` is typed by hand here, so the two drift;
       # this fails only on the half that is checkable — a pack reads a source and its entry says
-      # otherwise. The other half is printed, see scripts/wired.py.
+      # otherwise. The other half is printed, see scripts/wired.py. `adapter`, which replaces that
+      # boolean, is checkable in both directions and the same step fails on a dangling one.
       - name: Check out planetai-node (public) to read what its packs declare
         uses: actions/checkout@v5
         with:

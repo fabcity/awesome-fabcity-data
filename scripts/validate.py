@@ -51,6 +51,14 @@ def _coerce_dates(obj):
     return obj
 
 
+def _message(err) -> str:
+    """jsonschema renders a failed `not` by printing the whole instance back at you. The only `not` in
+    this schema is act_kind-without-act, so say that instead of dumping 2 kB of YAML into CI's log."""
+    if err.validator == "not" and err.validator_value == {"required": ["act_kind"]}:
+        return "act_kind is set but role does not contain 'act' — act_kind belongs only to an act source"
+    return err.message
+
+
 def main() -> int:
     schema = json.loads(SCHEMA_PATH.read_text(encoding="utf-8"))
     validator = Validator(schema)
@@ -61,6 +69,7 @@ def main() -> int:
         return 1
 
     failures = 0
+    warnings = []
     seen_slugs = {}
     for path in yaml_files:
         rel = path.relative_to(ROOT)
@@ -84,7 +93,7 @@ def main() -> int:
         if errors:
             for err in errors:
                 loc = ".".join(str(p) for p in err.path) or "<root>"
-                print(f"[FAIL] {rel} :: {loc} — {err.message}")
+                print(f"[FAIL] {rel} :: {loc} — {_message(err)}")
             failures += 1
             continue
 
@@ -109,7 +118,19 @@ def main() -> int:
             continue
         seen_slugs[key] = rel
 
+        if entry.get("wired_in_planetai") and not entry.get("adapter"):
+            warnings.append(rel)
+
         print(f"[ ok ] {rel}")
+
+    if warnings:
+        print(
+            f"\n[warn] {len(warnings)} entr{'y' if len(warnings) == 1 else 'ies'} say "
+            f"wired_in_planetai: true and name no `adapter`. That boolean is deprecated and "
+            f"unverifiable — say which code reads the source, or drop the claim:"
+        )
+        for rel in warnings:
+            print(f"       {rel}")
 
     if failures:
         print(f"\n{failures} file(s) failed validation.", file=sys.stderr)

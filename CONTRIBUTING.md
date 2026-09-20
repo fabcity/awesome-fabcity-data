@@ -33,7 +33,12 @@ api: https://api.example.org/v1
 pilot_relevance: [barcelona, boston]
 tags: [air-quality, citizen-science]
 added: 2026-05-04
-wired_in_planetai: false
+adapter: pack:coast      # core:<fn> in the node's app/sources.py or app/bootstrap.py, or pack:<id>.
+                         # Omit it if nothing reads this source yet — that is the honest majority.
+feeds_cells: [Environmental|Bioregion]   # Index cells a node fills from it. Pillar|Scale, capitalised.
+auth: none               # none | key-free-rate-limited | api-key | registration | paid
+role: [observe]          # observe | act. Omit = [observe]. `act` requires act_kind.
+wired_in_planetai: false # deprecated, derived — set `adapter` instead, and leave this off new entries
 upstream_listed_in: []
 notes: |
   Optional longer-form notes: API quirks, rate limits, citation
@@ -50,22 +55,68 @@ python scripts/validate.py
 
 This walks `data/` and validates each YAML against `schema/dataset.schema.json`. CI runs the same check on every PR.
 
-### 2b. Check `wired_in_planetai` against the node
+### 2b. What reads it: `adapter`, not `wired_in_planetai`
+
+`wired_in_planetai` was a boolean typed in this repository asserting runtime state in another one. It
+drifted the way such a claim always drifts: sixteen of thirty-two were ticked in September, one of them
+a `paywalled` source no node can call, and three were simply wrong until someone read the code. The fix
+is not a better boolean. It is a pointer.
+
+**`adapter`** names the thing that reads this source: `core:<fn>` for a function in the node's
+`app/sources.py` or `app/bootstrap.py` (`core:ckan`, `core:power_climatology`), `pack:<id>` for a pack
+directory (`pack:coast`, `pack:earth`). It is a string, not a list, on purpose — a source with several
+readers names its primary one here and the rest in `notes`, because a list invites the fiction that
+this file tracks the node's call graph. It does not. It answers one question: is there code, and where
+do I start reading it.
+
+**`feeds_cells`** names the Index cells a node fills from this source, in the node's own spelling —
+`Environmental|Bioregion`, capitalised, pipe-separated. This is not the entry's own `pillar`/`scale`,
+which say where the source publishes its strongest signal. A source filed under `economic/community`
+can feed `Economic|Community` and nothing else, or feed three cells, or feed none. An empty list says
+something a missing one does not: *code reads this, and no Index cell comes out of it.* Several of the
+node's own sources are in exactly that state — a model point sample is a boundary condition, not a cell.
+
+Together they let a node compute what a person used to count by hand: which cells of the 4×5 matrix
+have a registered source, which of those have an adapter, and which have neither. `planetai sources
+--cell "Social|City"` is that query.
+
+Unlike the boolean, both halves of `adapter` are checkable, and CI checks them:
 
 ```bash
 python scripts/wired.py            # report
 python scripts/wired.py --check    # what CI runs
 ```
 
-`wired_in_planetai` is a claim about another repository, so it is checked against that repository
-rather than trusted. Every `packs/*/pack.yaml` in `planetai-node` declares `sources: [...]` using
-the ids in this list; if a pack reads a source whose entry here says otherwise, CI fails.
+A pack that reads a source this list calls unwired fails. An `adapter` naming a pack the node does not
+have, or a function that is not in `app/sources.py` or `app/bootstrap.py`, fails. There is no half this
+cannot see, which is the entire argument for replacing the boolean rather than repairing it.
 
-The reverse — an entry flagged `true` that no pack declares — is **printed, not failed**. The node
-also reads sources through `config/channels.yml` and `app/bootstrap.py` without naming an id, and
-nothing here can see the Index side at all. Sixteen entries are in that state today. Which means the
-field is carrying two claims under one name, and the definition is still owed: node packs only, or
-anything downstream of this registry?
+`wired_in_planetai` stays for now — the Airtable Data Sources mirror still reads it — and
+`scripts/validate.py` prints a warning for every entry that says `true` and names no `adapter`. Do not
+set it on a new entry. It is removed in the release after the mirror reads `adapter` instead.
+
+### 2c. Observe or act: `role` and `act_kind`
+
+Every one of the first 209 entries answers the same question — *what is happening here*. None of them
+answers *where do I go about it*. A fab lab and a PM2.5 model are both a name, a URL and a pillar ×
+scale, and nothing in the file tells them apart.
+
+**`role`** does. `observe` means the source tells a node what is happening. `act` means it tells a
+person where to go and do something. Some sources are both: a registry of fab labs is `[observe, act]`
+— an activity index measures *from* it, and a person can walk into one of the labs it lists. Absent
+means `[observe]`; the validator does not fill it in, and you should not type it on a measurement
+source just to be explicit.
+
+**`act_kind`** says what kind of thing to act with, and is required whenever `role` contains `act` — an
+act source that cannot say what it offers is a link, not an entry. `facility` is a place with machines;
+`design` is a commons of things to build; `repair` is somewhere to fix what you have; `match` is a
+matcher over the other two; `network` is a set of places bound by a commitment rather than by
+capability; `material` is a stock or a stream of stuff. `equipment` is held back deliberately — it is
+for the day one facility's own OKW machine record is an entry, which is not what a directory of
+thousands of facilities is.
+
+Act sources do **not** get a directory of their own. They stay in the pillar × scale tree where they
+belong, and `role` is the only thing that marks them. See "Pillar / scale judgment calls" below.
 
 ### 3. Regenerate the README
 
