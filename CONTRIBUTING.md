@@ -175,6 +175,8 @@ A few that come up often:
 - **Sensor networks at the community tier** (Smart Citizen, Sensor.Community, AirGradient) belong at `community` scale even though they aggregate up. We classify by where the *atomic measurement* happens.
 - **City open-data portals** are governance at city scale, not a multi-pillar entry, even though a portal carries datasets that touch all four pillars. Add specific datasets within the portal as separate entries when they're material.
 - **Earth-system models** (Aurora, GraphCast, GenCast, AlphaEarth) are environmental at planet scale. Their model weights are infrastructure; their forecasts are the data we list.
+- **Act sources stay in the tree.** A directory of fab labs, a commons of designs, a repair-café map — these are not a sixth pillar or a parallel directory. They are filed by pillar and scale like everything else and marked with `role: [act]`. A fab lab is `economic/community`: production capacity where people are. A design commons is `economic/planet`: the library has no location, only the thing built from it does. A register of regional manufacturers is `economic/region`. One tree, so the measurement of a thing and the thing itself can sit next to each other — the Fab Lab Activity Index and fablabs.io are the same subject seen from the observe and act sides.
+- **A design library is `planet` scale, always.** The temptation is to file it where its users are. Resist it: scale here means where the source publishes its strongest signal, and a commons publishes globally. What is local is the making, not the library.
 
 ## What we won't accept
 

@@ -223,12 +223,22 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 ### Planet
 
+- **[Appropedia](https://www.appropedia.org/)** — ✅ `live` · `CC-BY-SA-4.0 (site default; proprietary licences allowed only on approval)` · _★_ · 🛠 design
+  The wiki of appropriate technology and sustainable development: build instructions, project pages and research for tools people make and repair locally. The largest openly licensed body of practical how-to on the web.
 - **[Atlas of Economic Complexity (Harvard Growth Lab)](https://atlas.hks.harvard.edu/)** — ✅ `live` · `CC-BY-4.0` · _★_
   Global trade + economic-complexity indicators (ECI, product-space, diversification metrics) for ~250 countries × ~6,000 products. Bulk download via Dataverse; interactive web tool for exploration.
 - **[Climate Funds Update](https://climatefundsupdate.org/data-dashboard/)** — ✅ `live` · `Not stated on the source page — freely downloadable, licence UNDECLARED` · _★_
   Independent monitor of multilateral climate finance run by ODI and Heinrich Boell Stiftung. Tracks money pledged, deposited and approved by fund, contributor country and recipient country, downloadable as Excel.
+- **[Field Ready — humanitarian supply solutions](https://www.fieldready.org/)** — ✅ `live` · `CERN-OHL variant per catalogue metadata on 156 of 193 items — the organisation's own site says All rights reserved. Confirmation pending, see notes.` · _★_ · 🛠 design
+  Designs for parts and tools made where they are needed instead of shipped: medical fittings, water and sanitation parts, shelter hardware. Built for aid contexts where the supply chain is the failure.
+- **[Open Know-How Search (Internet of Production Alliance)](https://search.openknowhow.org/)** — ✅ `live` · `Creative Commons — version and variant not stated by the publisher (see notes)` · _★_ · 🛠 design
+  A federated index of Open Know-How manifests — machine-readable descriptions of hardware designs, each naming its own files, processes and licence. The closest thing open hardware has to a card catalogue.
+- **[OSHWA Open Source Hardware Certification](https://certification.oshwa.org/)** — ✅ `live` · `CC-BY-SA-4.0` · _★_ · 🛠 design
+  The register of hardware certified as open source by the Open Source Hardware Association — each entry a project that has committed to publishing its design files under an open licence, with a certification UID to cite.
 - **[Our World in Data — grapher CSV endpoints](https://ourworldindata.org/grapher/food-supply-kcal.csv)** — ✅ `live` · `CC-BY-4.0 for OWID's processing; upstream licences still apply to underlying values` · _★_
   OWID republishes FAOSTAT, World Bank and other series as clean, tidy, versioned CSVs at a stable URL pattern. Useful as the machine-readable escape hatch when an upstream agency's own API is unreachable.
+- **[Things That Work (Fab City Foundation)](https://ttw.fab.city/)** — ✅ `live` · `CC-BY-SA-4.0 (content); MIT (code); third-party assets under their own terms` · _★_ · 🛠 design
+  A curated index of solutions for when services fail — drinkable water when the tap is cut, light in a blackout, a part to print when the supply chain is gone. Tagged by what each one does and which scarcity it answers.
 - **[World Bank What a Waste 2.0](https://datacatalog.worldbank.org/search/dataset/0039597)** — ✅ `live` · `CC-BY-4.0` · _★_
   National-level municipal solid waste accounts: per-capita generation, composition, collection, treatment. Coverage for ~217 economies.
 - **[World Bank World Development Indicators](https://datacatalog.worldbank.org/search/dataset/0037712/World-Development-Indicators)** — ✅ `live` · `CC-BY-4.0` · _★_
@@ -393,6 +403,10 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 - **[Fab Lab Activity Index (Boeing 2024)](https://link.springer.com/chapter/10.1007/978-3-658-44114-2_9)** — ✅ `live` · `CC-BY-4.0 (chapter, Open Access)` · _★_
   Per-lab activity baseline derived from the Fab Lab Census and fablabs.io registry. The first peer-reviewed quantitative index of distributed-production capacity at the community tier.
+- **[Fab Lab Network Data — the labs.json archive](https://gitlab.fabcloud.org/fl-management/fablab-network-data)** — ✅ `live` · `No licence published — the repository has none, and the records are fablabs.io's, under its Terms of Use. See economic/community/fablabs-io.` · _★_ · 🛠 facility
+  Forty-eight dated freezes of the fablabs.io lab directory, monthly since 2025, kept in a public Fab Foundation repository. The same records as the live endpoint, but pinnable: a dated file instead of a moving target.
+- **[fablabs.io — Fab Lab Network directory](https://www.fablabs.io/)** — ✅ `live` · `NOT OPEN — no data licence published. Platform ToS §7.4 restricts mass harvesting, §7.5 restricts commercial use, §8.1 leaves copyright with each lab. See notes.` · _★_ · 🛠 facility
+  The Fab Foundation's directory of fab labs: name, coordinates, activity status and a six-token capability vocabulary, self-entered by the labs themselves. The closest thing the network has to a census of where things can be made.
 - **[OpenStreetMap (Overpass API)](https://www.openstreetmap.org/)** — ✅ `live` · `ODbL-1.0` · _★_ · 🔌 `pack:place`
   The collaborative world map: buildings, roads, land use, shops, workshops, amenities, with a free query API (Overpass). The densest open record of what a neighbourhood physically contains, edited by the people who live in it.
 
@@ -506,6 +520,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Chile's national open data portal, CKAN 2.10.4, publishing 3,211 datasets from 272 institutions including central government and many municipalities. Used as the Santiago pilot's open-data substrate.
 - **[Donnees ouvertes - Ville de Montreal](https://donnees.montreal.ca/dataset)** — ✅ `live` · `CC-BY-4.0`
   Montreal's CKAN 2.11.5 open data catalogue - 404 datasets, 394 under CC BY 4.0 and 284 carrying a CSV. Hosts non-municipal publishers alongside the city. Catalogue breadth and licence openness are themselves governance indicators.
+- **[Fab City pledged cities](https://gitlab.fabcloud.org/fl-management/fablab-network-data/-/blob/main/data/fabcity.xlsx)** — ✅ `live` · `No licence published — the repository carries none. The Foundation's own list, and the one source here it could license with a sentence.` · _★_ · 🛠 network
+  The cities, regions and countries that have pledged to produce most of what they consume by 2054, with the year each one signed. The Fab City commitment as a list rather than a map on a website.
 - **[Kolada v3 - Swedish municipal and regional KPI database](https://www.kolada.se/om-oss/api/)** — ✅ `live` · `Free of charge, no agreement required, commercial use permitted; attribution "Kalla, Kolada" required unless the data has been substantially processed`
   Sweden's municipal KPI database - roughly 6000 indicators across finance, schools, care, environment and governance for every kommun and region, with an open JSON API. Lund is municipality_id 1281.
 - **[Odprti podatki Mestne obcine Ljubljana (ArcGIS Hub)](https://mol-ljubljana.hub.arcgis.com/)** — ✅ `live` · `CC-BY-4.0`
