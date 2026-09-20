@@ -229,6 +229,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Global trade + economic-complexity indicators (ECI, product-space, diversification metrics) for ~250 countries × ~6,000 products. Bulk download via Dataverse; interactive web tool for exploration.
 - **[Climate Funds Update](https://climatefundsupdate.org/data-dashboard/)** — ✅ `live` · `Not stated on the source page — freely downloadable, licence UNDECLARED` · _★_
   Independent monitor of multilateral climate finance run by ODI and Heinrich Boell Stiftung. Tracks money pledged, deposited and approved by fund, contributor country and recipient country, downloadable as Excel.
+- **[Field Ready — humanitarian supply solutions](https://www.fieldready.org/)** — ✅ `live` · `CERN-OHL variant per catalogue metadata on 156 of 193 items — the organisation's own site says All rights reserved. Confirmation pending, see notes.` · _★_ · 🛠 design
+  Designs for parts and tools made where they are needed instead of shipped: medical fittings, water and sanitation parts, shelter hardware. Built for aid contexts where the supply chain is the failure.
 - **[Open Know-How Search (Internet of Production Alliance)](https://search.openknowhow.org/)** — ✅ `live` · `Creative Commons — version and variant not stated by the publisher (see notes)` · _★_ · 🛠 design
   A federated index of Open Know-How manifests — machine-readable descriptions of hardware designs, each naming its own files, processes and licence. The closest thing open hardware has to a card catalogue.
 - **[OSHWA Open Source Hardware Certification](https://certification.oshwa.org/)** — ✅ `live` · `CC-BY-SA-4.0` · _★_ · 🛠 design
