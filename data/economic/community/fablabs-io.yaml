@@ -1,0 +1,55 @@
+name: fablabs.io — Fab Lab Network directory
+url: https://www.fablabs.io/
+description: |
+  The Fab Foundation's directory of fab labs: name, coordinates, activity status
+  and a six-token capability vocabulary, self-entered by the labs themselves. The
+  closest thing the network has to a census of where things can be made.
+pillar: economic
+scale: community
+status: live
+license: "NOT OPEN — no data licence published. Platform ToS §7.4 restricts mass harvesting, §7.5 restricts commercial use, §8.1 leaves copyright with each lab. See notes."
+api: https://api.fablabs.io/0/labs.json
+pilot_relevance: [global]
+tags: [fab-lab, directory, production-capacity, distributed-manufacturing, act]
+added: 2026-09-20
+auth: none
+role: [observe, act]
+act_kind: facility
+wired_in_planetai: false
+upstream_listed_in: []
+notes: |
+  NOT OPEN. Carried flagged, because the gap IS the finding; criterion 1 unmet.
+
+  github.com/fablabbcn/fablabs.io is AGPL-3.0 — that is the Rails app. Neither
+  LICENSE, README nor /about mentions the lab records. Those are governed by the
+  Terms of Use, read live 2026-09-20 at https://fablabs.io/tos (www identical):
+
+    7.4  forbids anyone to "massively collect or harvest" platform data, UNLESS
+         they keep all generated analysis sets open on the Platform.
+    7.5  forbids commercial use without prior written approval.
+    8.1  each contributor retains copyright. 8.2 gives fablabs.io a licence
+         "solely for the purpose of providing Platform's services".
+    8.3  content a user elects to publish via "a feed of information, or ... a
+         webservice" lets permitted users "access, use, display, perform,
+         distribute and modify" it.
+
+  8.3 and 7.4/7.5 pull opposite ways; the document resolves neither. Scanned in
+  full: no open-data provision anywhere — its one "open" is "free/open source
+  software", the code.
+
+  8.1 means this is NOT the Foundation's to relicense alone: each lab owns its
+  record, and a ToS change binds future submissions only. The fix needing nobody's
+  consent is a statement scoped to the directory FACTS — name, coordinates,
+  capabilities, status — as against authored text. 7.4's exception agrees.
+
+  ENDPOINT: api.fablabs.io/ says "Legacy API ... has now been removed. A new API
+  will soon be available", and /0/labs.json returns 200 and 5.38 MB anyway. Both
+  true 2026-09-20. `live` says it works today, not that it will.
+
+  MEASURED: 2,864 records, 5.38 MB, 6.3 s; 1,998 active, 1,819 with coordinates.
+  Every query parameter is ignored, so filtering is client-side only. Contact
+  details are in the payload (email 2,756, phone 2,608) — do not store them.
+
+  fab-lab-activity-index is this subject from the observe side. No `adapter`: the
+  node must not read this until the licence is settled, since a scheduled pull is
+  exactly 7.4's "massively collect".
