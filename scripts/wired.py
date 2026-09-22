@@ -11,8 +11,10 @@ checkable, and this checks it.
 
 **Two directions, and only one of them is an error.**
 
-- A pack declares a source and the entry says `wired_in_planetai: false` (or says nothing). That is
-  this list being wrong about a fact it can see, and `--check` fails on it.
+- A pack declares a source and the entry names neither an `adapter` nor the old boolean. That is this
+  list being wrong about a fact it can see, and `--check` fails on it. Either field answers it:
+  `adapter` is the one CONTRIBUTING §2b tells you to write, and it says *do not* set the boolean on a
+  new entry, so this check must accept the field it asks for or the two documents contradict.
 - An entry says `true` and no pack declares it. That is *reported, not failed*, because this script
   cannot see the other half of the node — `config/channels.yml` and `app/bootstrap.py` read sources
   (AirGradient, PurpleAir, Smart Citizen, NASA POWER, CAMS) without naming a registry id anywhere —
@@ -109,15 +111,16 @@ def main(argv: list[str]) -> int:
 
     declared, at = node_declares()
     claims = flagged()
-    missing = sorted(declared - claims)          # a pack reads it; this list does not say so
-    unbacked = sorted(claims - declared)         # this list says so; no pack declares it
+    ad = adapters()
+    missing = sorted(declared - claims - set(ad))  # a pack reads it; neither field here says so
+    unbacked = sorted(claims - declared)           # the boolean says so; no pack declares it
 
     print(f"  {len(declared)} sources declared by node packs ({at}); {len(claims)} entries flagged wired")
 
     if missing:
         print(f"  x {len(missing)} entr{'y' if len(missing) == 1 else 'ies'} a pack reads and this list calls unwired:")
         for i in missing:
-            print(f"      data/{i}.yaml — set wired_in_planetai: true")
+            print(f"      data/{i}.yaml — name what reads it: adapter: pack:<id> (CONTRIBUTING §2b)")
 
     if unbacked:
         print(f"  · {len(unbacked)} flagged wired with no pack declaring them. Not an error: the node also reads")
@@ -131,7 +134,7 @@ def main(argv: list[str]) -> int:
     # app/sources.py or app/bootstrap.py. Both directions are errors — there is no second half this cannot see.
     packs, funcs = node_offers()
     dangling = []
-    for rid, a in sorted(adapters().items()):
+    for rid, a in sorted(ad.items()):
         kind, _, name = a.partition(":")
         known = packs if kind == "pack" else funcs
         if known and name not in known:
@@ -141,8 +144,8 @@ def main(argv: list[str]) -> int:
         print(f"  x {len(dangling)} adapter{'' if len(dangling) == 1 else 's'} naming something the node does not have:")
         for rid, a, why in dangling:
             print(f"      data/{rid}.yaml — adapter: {a} ({why} on {at})")
-    elif adapters():
-        print(f"  {len(adapters())} adapters all resolve in the node ({at})")
+    elif ad:
+        print(f"  {len(ad)} adapters all resolve in the node ({at})")
 
     return 1 if ((missing or dangling) and "--check" in argv) else 0
 
