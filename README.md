@@ -345,6 +345,11 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 - **[Yucatan Datos Abiertos - Egresos y Cuenta Publica del Estado](https://transparencia.yucatan.gob.mx/datos_abiertos.php)** — ✅ `live` · `Datos digitales puestos a disposicion de cualquier persona para ser usados, reutilizados y redistribuidos libremente`
   The State of Yucatan's expenditure data as open CSV: annual Cuenta Publica 2021-2024 and quarterly execution reports 2021-2025, each shipped with a data dictionary. Published by the state transparency office.
 
+#### Candidates — verified, not yet reviewed by anyone in the network
+
+- **[OECD Regional and Metropolitan Database](https://data-explorer.oecd.org/)** — 🌱 `candidate` · `OECD Terms and Conditions (last updated 1 July 2024) — reuse for any purpose including commercial, with attribution that must be passed on to sub-licensees. An open permission, not a named licence. See notes.` · _BCN · BOS · SCL · ★_
+  OECD's sub-national statistics: GDP, labour, demography and climate exposure for regions (TL2/TL3) and functional urban areas across member and partner countries, served as SDMX.
+
 ### City
 
 - **[Barcelona - Cens d'activitat economica i padro de l'IAE](https://opendata-ajuntament.barcelona.cat/data/api/action/package_show?id=cens-locals-planta-baixa-act-economica)** — ✅ `live` · `CC-BY-4.0` · _BCN_
