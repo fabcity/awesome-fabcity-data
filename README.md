@@ -414,6 +414,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Forty-eight dated freezes of the fablabs.io lab directory, monthly since 2025, kept in a public Fab Foundation repository. The same records as the live endpoint, but pinnable: a dated file instead of a moving target.
 - **[fablabs.io — Fab Lab Network directory](https://www.fablabs.io/)** — ✅ `live` · `NOT OPEN — no data licence published. Platform ToS §7.4 restricts mass harvesting, §7.5 restricts commercial use, §8.1 leaves copyright with each lab. See notes.` · _★_ · 🔌 `pack:make` · 🛠 facility
   The Fab Foundation's directory of fab labs: name, coordinates, activity status and a six-token capability vocabulary, self-entered by the labs themselves. The closest thing the network has to a census of where things can be made.
+- **[HackerspaceWiki — List of ALL Hacker Spaces](https://wiki.hackerspaces.org/List_of_ALL_Hacker_Spaces)** — ✅ `live` · `not stated` · _★_ · 🛠 facility
+  The hackerspace movement's own wiki: 2,601 space pages with structured coordinates, member counts, equipment and a status vocabulary that records closures as well as openings. Queryable through Semantic MediaWiki.
 - **[Maps of Making](https://mapsofmaking.org/)** — ✅ `live` · `not stated` · _★_ · 🛠 facility
   A map of 3,193 workshops, fab labs and open workshops aggregated from the fab lab network, the German Verbund Offener Werkstaetten and the SpaceAPI Directory, served as one static GeoJSON. A v0.2 demo, and the records are harvested rather than contributed.
 - **[OpenStreetMap (Overpass API)](https://www.openstreetmap.org/)** — ✅ `live` · `ODbL-1.0` · _★_ · 🔌 `pack:place`
