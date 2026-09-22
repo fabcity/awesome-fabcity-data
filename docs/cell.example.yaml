@@ -1,0 +1,42 @@
+# A worked example of an Index cell definition. THIS IS DOCUMENTATION, NOT A RECORD.
+#
+# Real cells live at cells/{pillar}-{scale}.yaml (lowercase, matching their own `cell` key) and are
+# validated by `python scripts/validate.py` against schema/cell.schema.json. This file sits in
+# docs/ because the cell map is the network's to fill, not this PR's — validate.py does not walk
+# docs/, and copying this file to cells/environmental-city.yaml would make it a claim about what
+# the Index means, which is a decision, not a paste.
+#
+# An entry says what a source carries. A cell says what the Index claims when this cell is filled,
+# what the floor is, and what it must never be read as saying.
+
+cell: Environmental|City        # Pillar|Scale, capitalised, pipe-separated — the node's own
+                                # spelling, the same strings an entry's `feeds_cells` uses.
+                                # The filename must be the lowercase, hyphenated form of this.
+
+indicator_categories:           # The families of indicator this cell is for, in words a person
+  - air quality                 # uses. An entry is filed against a named row; this is the list of
+  - water quality               # rows that exist here.
+  - urban heat
+  - energy demand
+
+minimum_indicators:             # The floor. Below this the cell is not filled, it is decorated.
+  - name: PM2.5 annual mean
+    unit: ug/m3
+    aggregation: mean           # How readings become the cell's number. The half of an index that
+  - name: PM2.5 exceedance days #   is usually left implicit, written down here on purpose.
+    unit: count
+    aggregation: annual-total
+  - name: Summer land surface temperature anomaly
+    unit: degC
+    aggregation: p95
+
+does_not_claim: |
+  Reference-station air quality at city scale does not claim neighbourhood exposure. Three
+  stations for a city of a million describe the city's regulatory compliance, not where a child
+  walks to school — that is the Community cell, and it needs a different kind of source. Nor does
+  a filled cell claim a trend: two annual means are two numbers, and this cell reports levels.
+
+notes: |
+  Optional. Which territories have a candidate source for this cell, where the aggregation is
+  contested, what the known gap is. For this cell the gap is water quality: the category is named
+  above because the cell is for it, and no entry in this list is filed against that row yet.
