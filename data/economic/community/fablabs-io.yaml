@@ -21,13 +21,13 @@ act_kind: facility
 wired_in_planetai: false
 upstream_listed_in: []
 notes: |
-  NOT OPEN, and read anyway by decision. Criterion 1 is unmet; the basis is
-  recorded so it is auditable.
+  NOT OPEN, read anyway by decision. Criterion 1 is unmet; the basis is
+  recorded and auditable.
 
   DECISION 2026-09-20 — Tomas Diez, co-founder of fablabs.io and of Fab City
   Foundation, decided PLANETAI may read this directory and accepted
   responsibility, pending the Terms of Use clause drafted the same day. That
-  covers the Foundation. It does NOT extend to every operator who installs a
+  covers the Foundation. It does NOT extend to every operator installing a
   node: each is a separate party to the ToS. Until the clause lands, a node
   reading this relies on one organisation's position, not on a licence.
 
@@ -38,19 +38,21 @@ notes: |
   analysis sets open on the Platform; 7.5 forbids commercial use without written
   approval; 8.1 leaves copyright with each lab; 8.3 says content published as a
   feed lets permitted users use and redistribute it. 8.3 and 7.4/7.5 pull
-  opposite ways and nothing resolves them — the document has no open-data
-  provision at all.
+  opposite ways; the document has no open-data provision at all.
 
   8.1 is why a footer edit cannot fix this. The fix needing nobody's consent is
   scoped to the directory FACTS — name, coordinates, capabilities, status — and
   7.4's own exception points there: a node network keeping its analysis open sits
-  inside it, which is the ground the decision above stands on.
+  inside it, the ground the decision above stands on.
 
-  ENDPOINT: api.fablabs.io/ says "Legacy API ... has now been removed. A new API
-  will soon be available", and /0/labs.json returns 200 and 5.38 MB anyway. Both
-  true 2026-09-20. Prefer economic/community/fablabs-network-data-archive: the
-  same records as dated monthly files that can be pinned.
+  ENDPOINT: api.fablabs.io/ says the legacy API "has now been removed"; /0/labs.json
+  returns 200 and 5.38 MB anyway. Both true 2026-09-20. Prefer
+  economic/community/fablabs-network-data-archive: the same records as pinnable
+  monthly files.
+
+  PRIOR USE: the v0.30 observatory called it from the browser, and
+  fab-lab-activity-index measures from these records.
 
   MEASURED: 2,864 records, 5.38 MB, 6.3 s; 1,998 active, 1,819 with coordinates.
-  Query parameters are ignored, so filtering is client-side. Contact details are
+  Query parameters are ignored, so filter client-side. Contact details are
   in the payload (email 2,756, phone 2,608) — do not store them.

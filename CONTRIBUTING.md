@@ -43,6 +43,40 @@ makes it a failure, for when the network decides to flip it.
 If criteria 1 and 2 hold but you have no reading and no code, that is not a reason to stay out of
 the list — it is a `candidate`. If **1 or 2** fails, open an issue rather than a PR.
 
+### When you cannot read the licence
+
+Criterion 1 asks for an open licence. Sometimes there is none to read — not a restrictive licence,
+just no statement anywhere. Say exactly that, in exactly this string:
+
+```yaml
+license: not stated
+```
+
+Then `notes` must name **every page you checked and what it did not say**: the homepage, the
+repository, the API response, the terms page if one exists. "No licence" is a finding, and a finding
+needs its method — otherwise the next person cannot tell whether you looked or guessed. Set
+`status: live` only if the endpoint is key-free and public, and say in `notes` that the status rests
+on that test alone and claims nothing else.
+
+An entry like that does **not** meet criterion 1. It is still worth carrying, and the PR adding it
+lists it under *licence pending* so somebody can chase the publisher — one sentence from them
+usually settles it.
+
+Two traps, both of which this list has walked into:
+
+- **A code licence is not a data licence.** A repository's `LICENSE` covers the software. The
+  records it serves are a separate question and usually an unanswered one. fablabs.io is AGPL-3.0
+  and its 2,864 lab records are not licensed at all; OHM is GPL-3.0 and its facility records are not
+  its own. See `economic/community/fablabs-io` and `economic/planet/open-hardware-manager`.
+- **A licence does not travel downstream.** When a source republishes somebody else's records, the
+  licence question belongs to the origin, and an aggregator's silence is not permission. Check the
+  provenance before you trust it — see `economic/community/maps-of-making`, where 2,412 of 3,193
+  records were harvested from a source that restricts harvesting.
+
+Entries added before this convention (September 2026) carry a descriptive sentence in `license:`
+instead — `"No licence published — …"`. Both say the same thing; new entries use the short string,
+because it is greppable.
+
 ## Adding an entry
 
 Every entry is a single YAML file under `data/{pillar}/{scale}/{slug}.yaml`. The slug is lowercase-hyphenated and unique within its directory.

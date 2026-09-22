@@ -232,8 +232,14 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Independent monitor of multilateral climate finance run by ODI and Heinrich Boell Stiftung. Tracks money pledged, deposited and approved by fund, contributor country and recipient country, downloadable as Excel.
 - **[Field Ready — humanitarian supply solutions](https://www.fieldready.org/)** — ✅ `live` · `CERN-OHL variant per catalogue metadata on 156 of 193 items — the organisation's own site says All rights reserved. Confirmation pending, see notes.` · _★_ · 🛠 design
   Designs for parts and tools made where they are needed instead of shipped: medical fittings, water and sanitation parts, shelter hardware. Built for aid contexts where the supply chain is the failure.
+- **[OHM — Open Hardware Manager](https://www.openhardwaremanager.org/)** — ✅ `live` · `not stated` · _★_ · 🛠 match
+  A matcher between open hardware designs and the workshops that could build them: pick a design, rank facilities by capability with a domain-aware match, export the chosen workshops' contact details. It holds no facilities of its own — it reads them from Maps of Making.
+- **[OKH-LOSH — Library of Open Source Hardware](https://github.com/iop-alliance/OpenKnowHow)** — 📋 `planned` · `not stated` · _★_ · 🛠 design
+  The Linked-Data successor to Open Know-How v1: an ontology and graph database for open hardware design metadata, maintained by Open Source Ecology Germany and re-integrated into the Internet of Production Alliance in May 2024.
 - **[Open Know-How Search (Internet of Production Alliance)](https://search.openknowhow.org/)** — ✅ `live` · `Creative Commons — version and variant not stated by the publisher (see notes)` · _★_ · 🛠 design
   A federated index of Open Know-How manifests — machine-readable descriptions of hardware designs, each naming its own files, processes and licence. The closest thing open hardware has to a card catalogue.
+- **[Open Lab Starter Kit (OLSK)](https://www.inmachines.net/open-lab-starter-kit)** — ✅ `live` · `CERN-OHL-W-2.0 on eight of the nine repositories; OLSK-Large-3D-Printer is GPL-3.0. Per-repository, verified 2026-09-22 — see notes.` · _★_ · 🛠 design
+  Eight open-source digital fabrication machines with full build files — two lasers, two CNC mills, two 3D printers, a vinyl cutter and a 3D scanner, plus shared electronics. How a lab gets its machines rather than buys them.
 - **[OSHWA Open Source Hardware Certification](https://certification.oshwa.org/)** — ✅ `live` · `CC-BY-SA-4.0` · _★_ · 🛠 design
   The register of hardware certified as open source by the Open Source Hardware Association — each entry a project that has committed to publishing its design files under an open licence, with a certification UID to cite.
 - **[Our World in Data — grapher CSV endpoints](https://ourworldindata.org/grapher/food-supply-kcal.csv)** — ✅ `live` · `CC-BY-4.0 for OWID's processing; upstream licences still apply to underlying values` · _★_
@@ -408,8 +414,18 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Forty-eight dated freezes of the fablabs.io lab directory, monthly since 2025, kept in a public Fab Foundation repository. The same records as the live endpoint, but pinnable: a dated file instead of a moving target.
 - **[fablabs.io — Fab Lab Network directory](https://www.fablabs.io/)** — ✅ `live` · `NOT OPEN — no data licence published. Platform ToS §7.4 restricts mass harvesting, §7.5 restricts commercial use, §8.1 leaves copyright with each lab. See notes.` · _★_ · 🔌 `pack:make` · 🛠 facility
   The Fab Foundation's directory of fab labs: name, coordinates, activity status and a six-token capability vocabulary, self-entered by the labs themselves. The closest thing the network has to a census of where things can be made.
+- **[HackerspaceWiki — List of ALL Hacker Spaces](https://wiki.hackerspaces.org/List_of_ALL_Hacker_Spaces)** — ✅ `live` · `not stated` · _★_ · 🛠 facility
+  The hackerspace movement's own wiki: 2,601 space pages with structured coordinates, member counts, equipment and a status vocabulary that records closures as well as openings. Queryable through Semantic MediaWiki.
+- **[Maps of Making](https://mapsofmaking.org/)** — ✅ `live` · `not stated` · _★_ · 🛠 facility
+  A map of 3,193 workshops, fab labs and open workshops aggregated from the fab lab network, the German Verbund Offener Werkstaetten and the SpaceAPI Directory, served as one static GeoJSON. A v0.2 demo, and the records are harvested rather than contributed.
 - **[OpenStreetMap (Overpass API)](https://www.openstreetmap.org/)** — ✅ `live` · `ODbL-1.0` · _★_ · 🔌 `pack:place`
   The collaborative world map: buildings, roads, land use, shops, workshops, amenities, with a free query API (Overpass). The densest open record of what a neighbourhood physically contains, edited by the people who live in it.
+- **[Precious Plastic Community map](https://community.preciousplastic.com/map)** — ✅ `live` · `NOT OPEN — the Terms reserve database rights to Precious Plastic. The MIT licence covers the platform code only. See notes.` · _★_ · 🛠 facility
+  The Precious Plastic movement's map of distributed plastic-recycling: 1,203 workspaces, collection points, community points and machine builders, plus 2,502 individual members, each a self-entered profile with coordinates.
+- **[Repair Café International directory](https://www.repaircafe.org/en/visit/)** — 📋 `planned` · `not stated` · _★_ · 🛠 repair
+  The International Repair Café Foundation's directory of 4,015 repair cafés: name and street address for each, worldwide. The only network-scale record of where a person can take a broken thing and be helped to fix it.
+- **[SpaceAPI Directory](https://spaceapi.io/)** — ✅ `live` · `not stated` · _★_ · 🛠 facility
+  A curated list of 251 hacker-, maker- and fab spaces that publish a SpaceAPI JSON endpoint. The Directory itself is a name-to-URL map; each space's own endpoint carries its location, contact details and whether it is open right now.
 
 
 ## Governance
