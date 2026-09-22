@@ -1,0 +1,46 @@
+# A worked example of a source review. THIS IS DOCUMENTATION, NOT A RECORD.
+#
+# Real reviews live at reviews/{pillar}/{scale}/{slug}/{date}-{reviewer-slug}.yaml and are
+# validated by `python scripts/validate.py` against schema/review.schema.json. This file sits in
+# docs/ because an example is not a record: nobody reviewed anything by writing it, and the
+# validator does not walk docs/.
+#
+# The `entry` below names a source that deliberately DOES NOT EXIST. Copy this file into reviews/
+# unedited and validate.py fails on the dangling pointer — which is the correct outcome. A worked
+# example that silently becomes somebody's testimony is worse than no example.
+
+entry: environmental/city/example-city-air-portal   # {pillar}/{scale}/{slug} — the entry's path
+                                                    # under data/, minus the .yaml. Must resolve,
+                                                    # and this file must live under reviews/<that>/.
+
+by: A. Reviewer                 # A person. The point of a review is that somebody can be asked
+                                # about it in six months.
+org: Example Fab Lab            # Whose hands it passed through.
+date: 2026-09-18                # When the reading happened, not when the file was committed.
+                                # check_review.py warns at 365 days, fails at 730.
+territory: Example City         # The real place it was read FOR. Not "global", not the source's
+                                # own coverage claim.
+
+checked:                        # Closed list, so reviews are comparable. One box is honest;
+  - licence                     #   the terms permit what this list implies
+  - endpoint                    #   the URL answered, with data in it
+  - admin-code                  #   its administrative ids join to the territory's own
+  - vintage                     #   how old the newest record is, and how often it moves
+  # - field-fit                 #   left unchecked: not a failure, a thing the next reviewer can do
+
+verdict: usable-with-caveats    # usable | usable-with-caveats | unusable.
+                                # Only the first two make an entry `live`.
+
+self_declared: false            # true when the reviewer's org also publishes the source. Not
+                                # disqualifying — publishers know their own licence best — but a
+                                # reader is entitled to see which kind of evidence this is.
+issue: 0                        # The issue this arrived on, when it came through the review form.
+                                # Omit it on a review committed by hand. 0 here because this is an
+                                # example and no issue exists.
+
+note: |
+  The caveat behind the verdict, and the most valuable field in the file. Worked example of what
+  belongs here: the portal's station identifiers are its own, not the national ones, so the join
+  to the territory's districts had to be built by hand from a lookup published as a PDF. Hourly
+  data is 40 minutes behind wall clock. Two of the five stations stopped reporting PM2.5 in March
+  and the portal does not say so — the series simply ends, which a naive reader will read as zero.

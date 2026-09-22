@@ -1,0 +1,141 @@
+name: Source review
+description: You read one of these sources for a real place. Say so, and it becomes evidence.
+title: "review: "
+labels: ["source-review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **What this is for.** An entry in this list says `candidate` until somebody has read the
+        source for somewhere real. This form is how that reading gets recorded: it becomes a file
+        under `reviews/`, and if your verdict is `usable` the entry flips from `candidate` to
+        `live` in the same pull request.
+
+        You do not need write access, and you do not need to touch YAML — a workflow opens the PR
+        and a maintainer merges it. Every field below is one key of
+        [`schema/review.schema.json`](../blob/main/schema/review.schema.json). The issue number
+        is filled in for you.
+
+        **You are reviewing a source, not approving it.** `unusable` is a useful answer and is
+        recorded exactly like the others. So is `usable-with-caveats` — that one writes the review
+        and deliberately leaves the entry as it is, because a caveat is a thing a person should
+        read before the list says `live`.
+
+  - type: input
+    id: entry
+    attributes:
+      label: Entry
+      description: >-
+        The registry id: `{pillar}/{scale}/{slug}` — matching `^[a-z]+/[a-z]+/[a-z0-9-]+$`. It is
+        the entry's path under `data/` with the `.yaml` removed, and it must already exist. Copy it
+        from the file path, e.g. `data/environmental/city/openaq.yaml` → `environmental/city/openaq`.
+      placeholder: environmental/city/openaq
+    validations:
+      required: true
+
+  - type: input
+    id: by
+    attributes:
+      label: Your name
+      description: A person. The point of a review is that somebody can be asked about it in six months.
+      placeholder: Lars Taylor
+    validations:
+      required: true
+
+  - type: input
+    id: org
+    attributes:
+      label: Organisation
+      description: The lab, city, foundation or institution you did this as.
+      placeholder: Fab City Foundation
+    validations:
+      required: true
+
+  - type: input
+    id: date
+    attributes:
+      label: Date you read it
+      description: >-
+        ISO date, `YYYY-MM-DD` — the day you actually read the source, which may not be today.
+        Leave it blank and the day you opened this issue is used.
+      placeholder: "2026-09-18"
+    validations:
+      required: false
+
+  - type: input
+    id: territory
+    attributes:
+      label: Territory you read it for
+      description: >-
+        The real place. A city, region, island, bioregion — somewhere with a name. Not "global",
+        and not the source's own coverage claim: the question a review answers is whether this
+        works for somewhere.
+      placeholder: Barcelona
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        **The five checks.** Tick what you actually verified. A short list is honest; an unticked
+        box is not a failure, it is a thing the next reviewer can do.
+
+        - **licence** — the terms permit the use this list implies, and you read them
+        - **endpoint** — the URL or API answered, with data in it, from your machine
+        - **admin-code** — the source's administrative identifiers join to your territory's own
+        - **vintage** — how old the newest record is, and how often it moves
+        - **field-fit** — the fields carry the indicator row this entry is filed against
+
+  - type: checkboxes
+    id: checked
+    attributes:
+      label: What you checked
+      description: At least one. These become the `checked` list in the review file, in this order.
+      options:
+        - label: licence
+        - label: endpoint
+        - label: admin-code
+        - label: vintage
+        - label: field-fit
+
+  - type: dropdown
+    id: verdict
+    attributes:
+      label: Verdict
+      description: >-
+        `usable` — a node or a city can read this for your territory as it stands, and this
+        promotes a candidate to live. `usable-with-caveats` — it works, and the notes below say
+        what a reader must know first; the entry's status is left alone for a person to decide.
+        `unusable` — it does not work for your territory, and the notes say why.
+      options:
+        - usable
+        - usable-with-caveats
+        - unusable
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: self_declared
+    attributes:
+      label: Self-declared
+      description: >-
+        Tick this if your organisation is also the source's publisher. It is not disqualifying —
+        publishers know their own licence and vintage best — but it is a different kind of
+        evidence, and a reader is entitled to see which kind this is.
+      options:
+        - label: My organisation publishes this source
+
+  - type: textarea
+    id: note
+    attributes:
+      label: Notes for the next reader
+      description: >-
+        Required by nothing and worth more than everything else in the file. The caveat behind
+        `usable-with-caveats`, the reason behind `unusable`, the rate limit, the join you had to
+        build by hand, the series that ends without saying so.
+      placeholder: >-
+        Station ids are the portal's own, not the national ones, so the join to districts had to be
+        built from a lookup published as a PDF. Hourly data is 40 minutes behind wall clock.
+    validations:
+      required: false

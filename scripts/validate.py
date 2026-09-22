@@ -1,9 +1,21 @@
 #!/usr/bin/env python3
 """
-Validate every YAML entry under data/ against schema/dataset.schema.json.
+Validate this repository's three kinds of file, and then the one join between them.
 
 Run from repo root:
     python scripts/validate.py
+    python scripts/validate.py --strict     # the join fails instead of warning
+
+    pass 1  data/**/*.yaml      dataset entries, against schema/dataset.schema.json
+    pass 2  reviews/**/*.yaml   source reviews, against schema/review.schema.json
+    pass 3  cells/*.yaml        Index cells,    against schema/cell.schema.json
+    join    every `status: live` entry must carry a usable review or an `adapter`
+
+The join is the point of the whole thing, and today it is a warning. 189 of the 203 live entries
+name no adapter and no reviewer — that is the debt criterion 3 of CONTRIBUTING was hiding, and
+printing it is what makes it payable. It does not fail CI, because a gate that turns 189 files red
+on the day it lands gets deleted rather than paid. `--strict` is the same check as a failure, for
+the day the network decides to flip it.
 
 Exits 0 on success, 1 on validation failure. CI uses this exit code.
 
@@ -34,7 +46,16 @@ except ImportError:
 
 ROOT = Path(__file__).resolve().parent.parent
 SCHEMA_PATH = ROOT / "schema" / "dataset.schema.json"
+REVIEW_SCHEMA_PATH = ROOT / "schema" / "review.schema.json"
+CELL_SCHEMA_PATH = ROOT / "schema" / "cell.schema.json"
 DATA_DIR = ROOT / "data"
+REVIEWS_DIR = ROOT / "reviews"
+CELLS_DIR = ROOT / "cells"
+
+USABLE = ("usable", "usable-with-caveats")
+
+PILLARS = ["Environmental", "Social", "Economic", "Governance"]
+SCALES = ["Planet", "Bioregion", "Region", "City", "Community"]
 
 
 def _coerce_dates(obj):
@@ -59,41 +80,66 @@ def _message(err) -> str:
     return err.message
 
 
-def main() -> int:
-    schema = json.loads(SCHEMA_PATH.read_text(encoding="utf-8"))
-    validator = Validator(schema)
+def _validator(path: Path):
+    return Validator(json.loads(path.read_text(encoding="utf-8")))
 
+
+def _read(path: Path, rel: Path):
+    """Load one YAML mapping. Returns (mapping, None) or (None, printable reason)."""
+    try:
+        doc = yaml.safe_load(path.read_text(encoding="utf-8"))
+    except yaml.YAMLError as e:
+        return None, f"invalid YAML — {e}"
+    if not isinstance(doc, dict):
+        return None, "top-level must be a mapping (dict)"
+    return _coerce_dates(doc), None
+
+
+def _schema_errors(validator, doc, rel) -> int:
+    """Print every schema error for one document. Returns 1 if any, else 0."""
+    errors = sorted(validator.iter_errors(doc), key=lambda e: e.path)
+    for err in errors:
+        loc = ".".join(str(p) for p in err.path) or "<root>"
+        print(f"[FAIL] {rel} :: {loc} — {_message(err)}")
+    return 1 if errors else 0
+
+
+def candidate_needs_notes(entry: dict) -> str | None:
+    """A `candidate` is a claim that somebody verified the licence and the endpoint and that nobody
+    has read it for a real territory. Unqualified, that claim is indistinguishable from a link
+    somebody liked, so `notes` carries what was checked and what is still missing. Not expressible
+    in the schema: minLength cannot see the value of another key. tests/test_schema.py calls this."""
+    if entry.get("status") != "candidate":
+        return None
+    notes = entry.get("notes")
+    if not isinstance(notes, str) or not notes.strip():
+        return ("status is candidate and `notes` is empty — say what was verified (licence, "
+                "endpoint, which indicator row) and what nobody has done yet")
+    return None
+
+
+def pass_entries() -> tuple[int, dict]:
+    """Pass 1: data/**/*.yaml. Returns (failures, {registry id: entry})."""
+    validator = _validator(SCHEMA_PATH)
     yaml_files = sorted(DATA_DIR.rglob("*.yaml"))
     if not yaml_files:
         print(f"No YAML files found under {DATA_DIR}", file=sys.stderr)
-        return 1
+        return 1, {}
 
     failures = 0
     warnings = []
     seen_slugs = {}
+    entries: dict[str, dict] = {}
     for path in yaml_files:
         rel = path.relative_to(ROOT)
-        try:
-            entry = yaml.safe_load(path.read_text(encoding="utf-8"))
-        except yaml.YAMLError as e:
-            print(f"[FAIL] {rel}: invalid YAML — {e}")
+        entry, why = _read(path, rel)
+        if why:
+            print(f"[FAIL] {rel}: {why}")
             failures += 1
             continue
-
-        if not isinstance(entry, dict):
-            print(f"[FAIL] {rel}: top-level must be a mapping (dict)")
-            failures += 1
-            continue
-
-        # Coerce datetime.date / datetime.datetime to ISO strings for schema
-        entry = _coerce_dates(entry)
 
         # Schema validation
-        errors = sorted(validator.iter_errors(entry), key=lambda e: e.path)
-        if errors:
-            for err in errors:
-                loc = ".".join(str(p) for p in err.path) or "<root>"
-                print(f"[FAIL] {rel} :: {loc} — {_message(err)}")
+        if _schema_errors(validator, entry, rel):
             failures += 1
             continue
 
@@ -118,9 +164,17 @@ def main() -> int:
             continue
         seen_slugs[key] = rel
 
+        # `candidate` without notes — validator logic, not schema. See candidate_needs_notes().
+        why = candidate_needs_notes(entry)
+        if why:
+            print(f"[FAIL] {rel}: {why}")
+            failures += 1
+            continue
+
         if entry.get("wired_in_planetai") and not entry.get("adapter"):
             warnings.append(rel)
 
+        entries[path.relative_to(DATA_DIR).with_suffix("").as_posix()] = entry
         print(f"[ ok ] {rel}")
 
     if warnings:
@@ -132,12 +186,146 @@ def main() -> int:
         for rel in warnings:
             print(f"       {rel}")
 
+    print(f"\n{len(yaml_files)} entr{'y' if len(yaml_files) == 1 else 'ies'} checked.")
+    return failures, entries
+
+
+def pass_reviews(entry_ids) -> tuple[int, dict]:
+    """Pass 2: reviews/**/*.yaml. Returns (failures, {registry id: [review, ...]}).
+
+    Two pointers have to hold: the `entry` key must name a source this list actually carries, and
+    the file must live in that source's own directory. Either one alone is forgeable by a typo."""
+    validator = _validator(REVIEW_SCHEMA_PATH)
+    files = sorted(REVIEWS_DIR.rglob("*.yaml"))
+    failures = 0
+    reviews: dict[str, list] = {}
+    for path in files:
+        rel = path.relative_to(ROOT)
+        review, why = _read(path, rel)
+        if why:
+            print(f"[FAIL] {rel}: {why}")
+            failures += 1
+            continue
+        if _schema_errors(validator, review, rel):
+            failures += 1
+            continue
+
+        rid = review["entry"]
+        if rid not in entry_ids:
+            print(f"[FAIL] {rel}: entry {rid!r} has no file at data/{rid}.yaml — "
+                  f"a review of a source this list does not carry is not a review of anything")
+            failures += 1
+            continue
+
+        expected_dir = REVIEWS_DIR / rid
+        if path.parent.resolve() != expected_dir.resolve():
+            print(f"[FAIL] {rel}: lives in {path.parent.relative_to(ROOT).as_posix()}/ but "
+                  f"reviews {rid} — move it to reviews/{rid}/")
+            failures += 1
+            continue
+
+        reviews.setdefault(rid, []).append(review)
+        print(f"[ ok ] {rel} — {review['verdict']} for {review['territory']}, {review['by']}")
+
+    print(f"\n{len(files)} review{'' if len(files) == 1 else 's'} checked.")
+    return failures, reviews
+
+
+def pass_cells() -> int:
+    """Pass 3: cells/*.yaml. The filename is the cell key, lowercased and hyphenated; a cell whose
+    name and key disagree is two cells, and the second one is invisible."""
+    validator = _validator(CELL_SCHEMA_PATH)
+    files = sorted(CELLS_DIR.glob("*.yaml"))
+    failures = 0
+    for path in files:
+        rel = path.relative_to(ROOT)
+        cell, why = _read(path, rel)
+        if why:
+            print(f"[FAIL] {rel}: {why}")
+            failures += 1
+            continue
+        if _schema_errors(validator, cell, rel):
+            failures += 1
+            continue
+
+        pillar, _, scale = cell["cell"].partition("|")
+        expected = f"{pillar.lower()}-{scale.lower()}.yaml"
+        if path.name != expected:
+            print(f"[FAIL] {rel}: cell is {cell['cell']!r}, so the file must be "
+                  f"cells/{expected} — filename and key must agree")
+            failures += 1
+            continue
+
+        print(f"[ ok ] {rel} — {len(cell['minimum_indicators'])} minimum indicator(s)")
+
+    print(f"\n{len(files)} cell{'' if len(files) == 1 else 's'} checked "
+          f"of the {len(PILLARS) * len(SCALES)} in the matrix.")
+    return failures
+
+
+def join(entries: dict, reviews: dict, strict: bool) -> int:
+    """The join: `status: live` has to be backed by something. Either a named person read this
+    source for a real territory and said it was usable, or code reads it and `adapter` says where.
+
+    Not a failure in this commit. 189 of the 203 live entries have neither, and that is the honest
+    state of a list whose criterion 3 asked for use-or-audit and had nowhere to record either. A
+    gate that turns 189 files red on the day it lands gets deleted; a counted warning gets paid
+    down. `--strict` is the flip, for when the count is small enough to be an error."""
+    unbacked = []
+    for rid, entry in entries.items():
+        if entry["status"] != "live":
+            continue
+        if entry.get("adapter"):
+            continue
+        if any(r["verdict"] in USABLE for r in reviews.get(rid, [])):
+            continue
+        unbacked.append(rid)
+
+    live = sum(1 for e in entries.values() if e["status"] == "live")
+    backed = live - len(unbacked)
+    print(f"\n{backed} of {live} live entries carry a usable review or an adapter.")
+
+    if not unbacked:
+        return 0
+
+    label = "[FAIL]" if strict else "[warn]"
+    print(f"\n{label} {len(unbacked)} live entries carry neither a review nor an adapter. "
+          f"Each one asserts that somebody in the network uses or has audited this source "
+          f"(CONTRIBUTING criterion 3) with nothing in the repository behind the claim. Two ways "
+          f"to settle one: open a source-review issue so a named person's reading lands in "
+          f"reviews/, or — if nothing has read it for a real territory — set `status: candidate` "
+          f"and say so in `notes`.")
+    for rid in unbacked:
+        print(f"       data/{rid}.yaml")
+    if strict:
+        print(f"\n--strict: the join is a failure.", file=sys.stderr)
+        return len(unbacked)
+    return 0
+
+
+def main(argv: list[str]) -> int:
+    strict = "--strict" in argv
+
+    print("== pass 1: data/ — dataset entries")
+    failures, entries = pass_entries()
+
+    print("\n== pass 2: reviews/ — who read what, for where")
+    f2, reviews = pass_reviews(set(entries))
+    failures += f2
+
+    print("\n== pass 3: cells/ — what the Index claims, and what it does not")
+    failures += pass_cells()
+
+    print("\n== join: does `live` mean anything on each entry that claims it")
+    failures += join(entries, reviews, strict)
+
     if failures:
         print(f"\n{failures} file(s) failed validation.", file=sys.stderr)
         return 1
-    print(f"\n{len(yaml_files)} file(s) passed.")
+    print(f"\n{len(entries)} entries, {sum(len(v) for v in reviews.values())} reviews, "
+          f"{len(sorted(CELLS_DIR.glob('*.yaml')))} cells: all passed.")
     return 0
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    sys.exit(main(sys.argv[1:]))

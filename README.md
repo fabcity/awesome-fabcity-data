@@ -16,12 +16,13 @@ Every entry carries:
 
 | Field | What it tells you |
 | --- | --- |
-| **Status** | `live` · `stale` · `paywalled` · `deprecated` · `planned` |
+| **Status** | `candidate` · `live` · `stale` · `paywalled` · `deprecated` · `planned` — `candidate` means verified but not yet read by anyone for a real place; `live` means a review file or an `adapter` exists. See [CONTRIBUTING](CONTRIBUTING.md#criterion-3-is-two-states). |
 | **Pillar** | environmental · social · economic · governance |
 | **Scale** | planet · bioregion · region · city · community |
 | **License** | SPDX where possible (CC-BY-4.0, ODbL-1.0, CC0, MIT) |
 | **Pilots** | which PLANETAI pilots have non-trivial coverage |
 | **Wired** | whether a connector is currently live in the [PLANETAI observatory](https://planetai.fab.city/observatory/) |
+| **Reviewed** | `reviewed AB 2026-09` — initials and month of the newest usable review in [`reviews/`](reviews/) |
 
 Entries live as YAML files under `data/{pillar}/{scale}/{slug}.yaml` — that's the source of truth. This README is generated from them by `scripts/build_readme.py`.
 

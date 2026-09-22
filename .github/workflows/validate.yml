@@ -22,8 +22,21 @@ jobs:
       - name: Schema tests (the cases that must fail)
         run: python tests/test_schema.py
 
+      # The only code here that writes to data/. Its selftest covers the issue-body parse, the
+      # filename collision suffix and the one-line promotion, and asserts that the labels it looks
+      # for still exist in .github/ISSUE_TEMPLATE/source-review.yml.
+      - name: Review-from-issue selftest
+        run: python scripts/review_from_issue.py --selftest
+
       - name: Validate entries against schema
         run: python scripts/validate.py
+
+      # A review is evidence about a source at a moment. Past 365 days this warns; past 730 it
+      # fails, and prints the exact `status:` line to flip back to `candidate`. Entries standing on
+      # an `adapter` are not failed — the code is the evidence there, and wired.py checks it
+      # resolves. Zero reviews exist today, so this is a no-op until the first one lands.
+      - name: Reviews have not decayed past two years
+        run: python scripts/check_review.py
 
       - name: Verify README is up to date
         run: |
