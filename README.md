@@ -84,6 +84,11 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 - **[UNEP IRP Global Material Flows Database](https://energydata.info/en/dataset/world-unep-irp-global-material-flows-database)** — ✅ `live` · `CC-BY-4.0` · _★_
   UNEP International Resource Panel material flow accounts: domestic extraction, direct trade and material footprint in raw-material equivalents by material category for 200+ countries. Compiled with CSIRO and WU Vienna.
 
+#### Candidates — verified, not yet reviewed by anyone in the network
+
+- **[EDGAR — Emissions Database for Global Atmospheric Research](https://edgar.jrc.ec.europa.eu/)** — 🌱 `candidate` · `SPLIT, and one half is not open. EDGAR CH4, N2O and F-gases are CC-BY-4.0. The IEA-EDGAR CO2 component is CC BY-NC-ND 4.0 — non-commercial AND no-derivatives, which fails criterion 1 and cannot back a derived Index. See notes.` · _★_
+  The JRC's global greenhouse-gas inventory: CO2, CH4, N2O and F-gases by country and sector back to 1970, plus 0.1° gridded maps. The reference emissions dataset when a national inventory does not exist.
+
 ### Bioregion
 
 - **[Caravan — large-sample hydrology](https://github.com/kratzert/Caravan)** — ✅ `live` · `CC-BY-4.0` · _BLI · BCN · BOS · SCL_
