@@ -129,6 +129,10 @@ Reviewing is the other way to contribute, and it needs no write access, no fork 
 for a maintainer to merge. If your verdict is `usable`, the same PR flips the entry's one `status:`
 line from `candidate` to `live`.
 
+*Maintainers, on a fork or a fresh clone:* the `source-review` label has to exist before any of that
+happens. An issue form cannot create a label, so without it the issue opens unlabelled and the
+workflow never fires — it looks broken when it has only never been triggered.
+
 What a review is:
 
 - **One source, one territory, one person.** Not a batch and not a team. The point is that somebody

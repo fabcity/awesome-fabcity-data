@@ -6,7 +6,14 @@
 # `status: candidate` to `status: live`. Then it opens a PR for a maintainer to merge. Nobody needs
 # write access to add evidence to this list, and nobody has to touch YAML.
 #
-# Two things worth knowing before you debug this:
+# Three things worth knowing before you debug this:
+#
+# 0. THE `source-review` LABEL MUST EXIST IN THE REPOSITORY. An issue form's `labels:` field is
+#    silently ignored for a label that does not exist — issue templates cannot create labels — so
+#    the issue opens unlabelled, `issues: [labeled]` never fires, and this workflow appears to be
+#    broken when it has simply never been triggered. It was exactly this, not a token or a setting,
+#    that made the path dead on arrival; the label was created on 2026-09-22. On a fork, create it
+#    first: `gh label create source-review --color 0E8A16`.
 #
 # 1. GITHUB_TOKEN is all it needs, and `contents: write` + `pull-requests: write` below is all it
 #    is given. It does need the repository setting *Actions → General → Allow GitHub Actions to
