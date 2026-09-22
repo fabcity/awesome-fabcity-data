@@ -84,6 +84,11 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 - **[UNEP IRP Global Material Flows Database](https://energydata.info/en/dataset/world-unep-irp-global-material-flows-database)** — ✅ `live` · `CC-BY-4.0` · _★_
   UNEP International Resource Panel material flow accounts: domestic extraction, direct trade and material footprint in raw-material equivalents by material category for 200+ countries. Compiled with CSIRO and WU Vienna.
 
+#### Candidates — verified, not yet reviewed by anyone in the network
+
+- **[EDGAR — Emissions Database for Global Atmospheric Research](https://edgar.jrc.ec.europa.eu/)** — 🌱 `candidate` · `SPLIT, and one half is not open. EDGAR CH4, N2O and F-gases are CC-BY-4.0. The IEA-EDGAR CO2 component is CC BY-NC-ND 4.0 — non-commercial AND no-derivatives, which fails criterion 1 and cannot back a derived Index. See notes.` · _★_
+  The JRC's global greenhouse-gas inventory: CO2, CH4, N2O and F-gases by country and sector back to 1970, plus 0.1° gridded maps. The reference emissions dataset when a national inventory does not exist.
+
 ### Bioregion
 
 - **[Caravan — large-sample hydrology](https://github.com/kratzert/Caravan)** — ✅ `live` · `CC-BY-4.0` · _BLI · BCN · BOS · SCL_
@@ -159,6 +164,11 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 - **[UK local authority and regional greenhouse gas emissions statistics](https://www.gov.uk/government/statistics/uk-local-authority-and-regional-greenhouse-gas-emissions-statistics-2005-to-2024)** — ✅ `live` · `Open Government Licence v3.0`
   Annual territorial GHG emissions for every UK local authority and region, 2005-2024, as an 82.6 MB CSV plus Excel tables. Excludes aviation, shipping, military transport and fluorinated gases.
 
+#### Candidates — verified, not yet reviewed by anyone in the network
+
+- **[CDP–ICLEI Track open data (CDP Open Data Portal)](https://data.cdp.net/)** — 🌱 `candidate` · `CDP Open Database License (27 Nov 2014) — NON-COMMERCIAL. Despite the name it is not ODbL: it is ODbL with commercial use removed, so criterion 1 is NOT met. Derivatives ARE permitted, non-commercially. See notes.` · _★_
+  What cities, states and regions report to CDP through the unified CDP–ICLEI Track: emissions inventories, climate hazards, adaptation plans, targets and renewable energy, self-reported and published annually.
+
 ### Community
 
 - **[AirGradient](https://www.airgradient.com/)** — ✅ `live` · `CC-BY-4.0 (data) + custom open (hardware)` · _★_ · 🔌 `core:airgradient`
@@ -206,6 +216,13 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 - **[WHO Open Data Repository](https://data.who.int/)** — ✅ `live` · `CC-BY-NC-SA-3.0-IGO` · _★_
   World Health Organization global health observatory + indicator repository. ~2,000 indicators across countries, themes, time.
 
+#### Candidates — verified, not yet reviewed by anyone in the network
+
+- **[ILOSTAT](https://ilostat.ilo.org/)** — 🌱 `candidate` · `CC-BY-4.0 for databases and datasets published from 3 May 2023. Anything produced before that date is NOT automatically Creative Commons and must be checked per work; microdata is excluded entirely. See notes.` · _BLI · SCL · ★_
+  The ILO's labour statistics: employment, unemployment, informality, working time and wages for some 190 countries, by sex and age, with a key-free query API returning CSV or JSON.
+- **[WorldPop](https://hub.worldpop.org/)** — 🌱 `candidate` · `CC-BY-4.0` · _★_
+  Gridded population estimates for every country at 100 m, 2000–2020, built by dasymetric redistribution of census counts. The open population denominator for places whose census is a decade old.
+
 ### City
 
 - **[Barcelona - Resultats electorals per seccio censal](https://opendata-ajuntament.barcelona.cat/data/api/action/package_show?id=est-eleccions-locals-seccio-censal)** — ✅ `live` · `CC-BY-4.0` · _BCN_
@@ -218,6 +235,13 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Monthly unemployment rate, employment rate and labour-force participation rate for Seoul, broken out by sex. Sourced from KOSIS and republished by the city on its open data portal.
 - **[Seoul Living Population by Administrative Dong (행정동 단위 서울 생활인구)](https://data.seoul.go.kr/dataList/OA-14991/S/1/datasetView.do)** — ⛔ `deprecated` · `공공누리 1유형 : 출처표시 (상업적 이용 및 변경 가능) - KOGL Type 1`
   Hourly estimates of the population actually present in each Seoul administrative dong, built by fusing city administrative data with telecom data. Daily updates from 2017 to the present.
+
+#### Candidates — verified, not yet reviewed by anyone in the network
+
+- **[Eurostat Urban Audit (urb_* — cities and greater cities)](https://ec.europa.eu/eurostat/web/cities)** — 🌱 `candidate` · `Commission Decision 2011/833/EU — reuse for commercial or non-commercial purposes authorised with the source acknowledged. NOT CC-BY-4.0, which covers the site's editorial content only. See notes for the non-commercial exception.` · _BCN · ★_
+  Eurostat's city-level statistics: population, living conditions, labour, housing and environment for 969 European cities and greater cities, each with an official Urban Audit code that joins to LAU.
+- **[JRC Global Human Settlement Layer (GHSL)](https://human-settlement.emergency.copernicus.eu/)** — 🌱 `candidate` · `CC-BY-4.0` · _★_
+  The European Commission's global record of where people and buildings are: population, built-up surface and a settlement classification on a 100 m grid from 1975 to 2030, plus a city-by-city Urban Centre Database.
 
 
 ## Economic
@@ -333,6 +357,13 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 - **[Yucatan Datos Abiertos - Egresos y Cuenta Publica del Estado](https://transparencia.yucatan.gob.mx/datos_abiertos.php)** — ✅ `live` · `Datos digitales puestos a disposicion de cualquier persona para ser usados, reutilizados y redistribuidos libremente`
   The State of Yucatan's expenditure data as open CSV: annual Cuenta Publica 2021-2024 and quarterly execution reports 2021-2025, each shipped with a data dictionary. Published by the state transparency office.
 
+#### Candidates — verified, not yet reviewed by anyone in the network
+
+- **[Eurostat Structural Business Statistics by NUTS 2 region](https://ec.europa.eu/eurostat/web/structural-business-statistics)** — 🌱 `candidate` · `Commission Decision 2011/833/EU — reuse for commercial or non-commercial purposes authorised with the source acknowledged. NOT CC-BY-4.0, which covers the site's editorial content only. See notes.` · _BCN · ★_
+  Enterprises, local units and persons employed by NUTS 2 region and NACE activity: how much manufacturing capacity a European region actually has, and how many people it employs.
+- **[OECD Regional and Metropolitan Database](https://data-explorer.oecd.org/)** — 🌱 `candidate` · `OECD Terms and Conditions (last updated 1 July 2024) — reuse for any purpose including commercial, with attribution that must be passed on to sub-licensees. An open permission, not a named licence. See notes.` · _BCN · BOS · SCL · ★_
+  OECD's sub-national statistics: GDP, labour, demography and climate exposure for regions (TL2/TL3) and functional urban areas across member and partner countries, served as SDMX.
+
 ### City
 
 - **[Barcelona - Cens d'activitat economica i padro de l'IAE](https://opendata-ajuntament.barcelona.cat/data/api/action/package_show?id=cens-locals-planta-baixa-act-economica)** — ✅ `live` · `CC-BY-4.0` · _BCN_
@@ -442,6 +473,11 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   OGP's commitment-level databases covering national and local action plans, with Independent Reporting Mechanism assessments of ambition, completion and early results. Run by the OGP Support Unit.
 - **[Sustainable Development Report / SDG Index (SDSN)](https://dashboards.sdgindex.org/downloads)** — ✅ `live` · `Not stated on the downloads page — licensing questions directed to info@sdgindex.org; UNCONFIRMED` · _★_
   SDSN and Bertelsmann's annual index scoring 193 UN member states on all 17 SDGs, with per-indicator values, goal scores and trend arrows indicating whether a country is on track to meet each goal by 2030.
+
+#### Candidates — verified, not yet reviewed by anyone in the network
+
+- **[World Bank Worldwide Governance Indicators (WGI)](https://datacatalog.worldbank.org/search/dataset/0038026)** — 🌱 `candidate` · `CC-BY-4.0` · _★_
+  Six governance dimensions — voice and accountability, political stability, government effectiveness, regulatory quality, rule of law, control of corruption — for over 200 economies, 1996 to 2024, with confidence intervals.
 
 ### Bioregion
 
