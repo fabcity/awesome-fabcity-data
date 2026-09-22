@@ -206,6 +206,11 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 - **[WHO Open Data Repository](https://data.who.int/)** — ✅ `live` · `CC-BY-NC-SA-3.0-IGO` · _★_
   World Health Organization global health observatory + indicator repository. ~2,000 indicators across countries, themes, time.
 
+#### Candidates — verified, not yet reviewed by anyone in the network
+
+- **[WorldPop](https://hub.worldpop.org/)** — 🌱 `candidate` · `CC-BY-4.0` · _★_
+  Gridded population estimates for every country at 100 m, 2000–2020, built by dasymetric redistribution of census counts. The open population denominator for places whose census is a decade old.
+
 ### City
 
 - **[Barcelona - Resultats electorals per seccio censal](https://opendata-ajuntament.barcelona.cat/data/api/action/package_show?id=est-eleccions-locals-seccio-censal)** — ✅ `live` · `CC-BY-4.0` · _BCN_
