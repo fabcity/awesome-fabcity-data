@@ -164,6 +164,11 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 - **[UK local authority and regional greenhouse gas emissions statistics](https://www.gov.uk/government/statistics/uk-local-authority-and-regional-greenhouse-gas-emissions-statistics-2005-to-2024)** — ✅ `live` · `Open Government Licence v3.0`
   Annual territorial GHG emissions for every UK local authority and region, 2005-2024, as an 82.6 MB CSV plus Excel tables. Excludes aviation, shipping, military transport and fluorinated gases.
 
+#### Candidates — verified, not yet reviewed by anyone in the network
+
+- **[CDP–ICLEI Track open data (CDP Open Data Portal)](https://data.cdp.net/)** — 🌱 `candidate` · `CDP Open Database License (27 Nov 2014) — NON-COMMERCIAL. Despite the name it is not ODbL: it is ODbL with commercial use removed, so criterion 1 is NOT met. Derivatives ARE permitted, non-commercially. See notes.` · _★_
+  What cities, states and regions report to CDP through the unified CDP–ICLEI Track: emissions inventories, climate hazards, adaptation plans, targets and renewable energy, self-reported and published annually.
+
 ### Community
 
 - **[AirGradient](https://www.airgradient.com/)** — ✅ `live` · `CC-BY-4.0 (data) + custom open (hardware)` · _★_ · 🔌 `core:airgradient`
