@@ -240,8 +240,16 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 - **[Eurostat Urban Audit (urb_* — cities and greater cities)](https://ec.europa.eu/eurostat/web/cities)** — 🌱 `candidate` · `Commission Decision 2011/833/EU — reuse for commercial or non-commercial purposes authorised with the source acknowledged. NOT CC-BY-4.0, which covers the site's editorial content only. See notes for the non-commercial exception.` · _BCN · ★_
   Eurostat's city-level statistics: population, living conditions, labour, housing and environment for 969 European cities and greater cities, each with an official Urban Audit code that joins to LAU.
+- **[IBGE SIDRA / servicodados API (Brazil)](https://servicodados.ibge.gov.br/api/docs)** — 🌱 `candidate` · `No named licence. Open by Decreto nº 8.777/2016, the Brazilian federal Open Data Policy, which IBGE's own Dados Abertos page cites and under which it publishes its Plano de Dados Abertos. No Creative Commons statement anywhere on that page or the API docs.` · _★_
+  Brazil's statistics institute: population, census, agriculture and economic aggregates for all 5,570 municipalities through a key-free API, with the official municipal code and its full territorial hierarchy on every row.
+- **[INE Spain — Tempus3 JSON API](https://www.ine.es/)** — 🌱 `candidate` · `CC-BY-4.0` · _BCN · ★_
+  Spain's national statistics office: official municipal population, census, labour and price statistics for all 8,000-plus municipalities, through a key-free JSON API.
+- **[INEGI Censo de Población y Vivienda 2020 — ITER (Mexico)](https://www.inegi.org.mx/programas/ccpv/2020/)** — 🌱 `candidate` · `Términos de Libre Uso de la Información del INEGI — copying, distribution, adaptation and commercial exploitation are all permitted with attribution. An open permission governed by Mexican law, not a named licence; no SPDX id exists for it.` · _★_
+  Mexico's 2020 census, published down to the locality: population, housing, education and services for every locality in the country, with official geostatistical codes and coordinates, as open CSV.
 - **[JRC Global Human Settlement Layer (GHSL)](https://human-settlement.emergency.copernicus.eu/)** — 🌱 `candidate` · `CC-BY-4.0` · _★_
   The European Commission's global record of where people and buildings are: population, built-up surface and a settlement classification on a 100 m grid from 1975 to 2030, plus a city-by-city Urban Centre Database.
+- **[US Census Bureau American Community Survey (ACS) API](https://www.census.gov/data/developers/data-sets/acs-5year.html)** — 🌱 `candidate` · `No named licence. Published as open data under OMB M-10-06 and EO 13642; the API terms require a specific attribution notice, quoted in notes. US federal works carry no domestic copyright, which is the usual basis — but the Bureau names no licence of its own.` · _BOS · ★_
+  The United States' rolling household survey: population, income, housing, commuting and employment down to block group, five-year estimates, queried by FIPS geography through a public API.
 
 
 ## Economic
