@@ -208,6 +208,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 #### Candidates — verified, not yet reviewed by anyone in the network
 
+- **[ILOSTAT](https://ilostat.ilo.org/)** — 🌱 `candidate` · `CC-BY-4.0 for databases and datasets published from 3 May 2023. Anything produced before that date is NOT automatically Creative Commons and must be checked per work; microdata is excluded entirely. See notes.` · _BLI · SCL · ★_
+  The ILO's labour statistics: employment, unemployment, informality, working time and wages for some 190 countries, by sex and age, with a key-free query API returning CSV or JSON.
 - **[WorldPop](https://hub.worldpop.org/)** — 🌱 `candidate` · `CC-BY-4.0` · _★_
   Gridded population estimates for every country at 100 m, 2000–2020, built by dasymetric redistribution of census counts. The open population denominator for places whose census is a decade old.
 
