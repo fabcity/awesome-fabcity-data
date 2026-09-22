@@ -125,7 +125,7 @@ def main(argv: list[str]) -> int:
         # never a failure — flipping a source the node reads to `candidate` would be a lie.
         fails.append(row) if verdict == "fail" and not entry.get("adapter") else warns.append(row)
 
-    print(f"{checked} live entr{'y' if checked == 1 else 'ies'} carry a usable review; "
+    print(f"{checked} live entr{'y carries' if checked == 1 else 'ies carry'} a usable review; "
           f"{len(warns)} past {WARN_DAYS} days, {len(fails)} past {FAIL_DAYS}.")
 
     for rid, path, rpath, review, when, days in warns:

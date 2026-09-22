@@ -22,6 +22,12 @@ jobs:
       - name: Schema tests (the cases that must fail)
         run: python tests/test_schema.py
 
+      # The only code here that writes to data/. Its selftest covers the issue-body parse, the
+      # filename collision suffix and the one-line promotion, and asserts that the labels it looks
+      # for still exist in .github/ISSUE_TEMPLATE/source-review.yml.
+      - name: Review-from-issue selftest
+        run: python scripts/review_from_issue.py --selftest
+
       - name: Validate entries against schema
         run: python scripts/validate.py
 

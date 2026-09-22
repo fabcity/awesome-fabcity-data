@@ -1,0 +1,163 @@
+# A source-review issue becomes a pull request.
+#
+# Somebody read one of these sources for a real place and said so through
+# .github/ISSUE_TEMPLATE/source-review.yml. This turns that issue into a file under reviews/, and
+# — if the verdict is `usable` and the entry is a candidate — flips one line of the entry from
+# `status: candidate` to `status: live`. Then it opens a PR for a maintainer to merge. Nobody needs
+# write access to add evidence to this list, and nobody has to touch YAML.
+#
+# Two things worth knowing before you debug this:
+#
+# 1. GITHUB_TOKEN is all it needs, and `contents: write` + `pull-requests: write` below is all it
+#    is given. It does need the repository setting *Actions → General → Allow GitHub Actions to
+#    create and approve pull requests* to be on. That is a setting, not a token: if it is off,
+#    `gh pr create` fails, and the last step comments the branch name on the issue so a person can
+#    open the PR by hand rather than losing the review.
+#
+# 2. A pull request opened with GITHUB_TOKEN does not trigger `on: pull_request` workflows — that
+#    is GitHub's loop guard, not a bug here. So validate.yml will not run on the review PR by
+#    itself. This workflow therefore runs the gates itself before it pushes, and says in the PR
+#    body that it did. To get the real check run on a PR, push any commit to its branch.
+name: Source review to PR
+
+on:
+  issues:
+    types: [labeled]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  review:
+    if: github.event.label.name == 'source-review'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install validation deps
+        run: pip install -r requirements.txt
+
+      # The issue body is untrusted input, so it never reaches a shell as text: it goes through an
+      # environment variable into a file, and the parser reads the file.
+      - name: Write the review file, and promote the entry if the review earned it
+        id: review
+        env:
+          BODY: ${{ github.event.issue.body }}
+          CREATED_AT: ${{ github.event.issue.created_at }}
+          NUMBER: ${{ github.event.issue.number }}
+        run: |
+          printf '%s' "$BODY" > "$RUNNER_TEMP/body.md"
+          set +e
+          python scripts/review_from_issue.py \
+            --issue "$NUMBER" \
+            --body-file "$RUNNER_TEMP/body.md" \
+            --created "${CREATED_AT:0:10}"
+          code=$?
+          set -e
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+
+      # Exit 3 = no such entry. Exit 4 = the body is missing something. Either way nothing was
+      # written, and the only right move is to say so on the issue and stop.
+      - name: Nothing to review — comment and stop
+        if: steps.review.outputs.code == '3' || steps.review.outputs.code == '4'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NUMBER: ${{ github.event.issue.number }}
+          MSG: ${{ steps.review.outputs.message }}
+        run: gh issue comment "$NUMBER" --body "$MSG"
+
+      - name: Stop here if nothing was written
+        if: steps.review.outputs.code != '0'
+        run: |
+          echo "::notice::review_from_issue.py exited ${{ steps.review.outputs.code }}; the issue has been commented on and nothing was committed."
+          exit 0
+
+      # The PR this opens will not get an automatic check run (see the header), so the gates run
+      # here instead, against the tree that is about to be pushed.
+      - name: The gates, before the push rather than after
+        if: steps.review.outputs.code == '0'
+        run: |
+          python tests/test_schema.py
+          python scripts/review_from_issue.py --selftest
+          python scripts/validate.py
+          python scripts/check_review.py
+          python scripts/build_readme.py
+
+      - name: Commit, push, and open the PR
+        if: steps.review.outputs.code == '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NUMBER: ${{ github.event.issue.number }}
+          BRANCH: ${{ steps.review.outputs.branch }}
+          ENTRY: ${{ steps.review.outputs.entry }}
+          VERDICT: ${{ steps.review.outputs.verdict }}
+          TERRITORY: ${{ steps.review.outputs.territory }}
+          BY: ${{ steps.review.outputs.by }}
+          ORG: ${{ steps.review.outputs.org }}
+          DATE: ${{ steps.review.outputs.date }}
+          REVIEW_PATH: ${{ steps.review.outputs.review_path }}
+          ENTRY_PATH: ${{ steps.review.outputs.entry_path }}
+          PROMOTED: ${{ steps.review.outputs.promoted }}
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add reviews README.md "$ENTRY_PATH"
+
+          if [ "$PROMOTED" = "true" ]; then
+            headline="reviewed by $BY and promoted from candidate to live"
+            status_note="**Promoted.** \`$ENTRY_PATH\` had \`status: candidate\` on exactly one line; that one line now reads \`status: live\`. Nothing else in the file was touched — the edit is a text substitution, not a YAML load-and-dump."
+          else
+            headline="reviewed by $BY"
+            case "$VERDICT" in
+              usable) status_note="**Status unchanged.** The verdict is \`usable\`, but \`$ENTRY_PATH\` does not carry \`status: candidate\` on exactly one line, so nothing was flipped. If it should be \`live\`, say so in a review comment and change that line here." ;;
+              usable-with-caveats) status_note="**Status unchanged, on purpose.** \`usable-with-caveats\` records the reading and leaves the entry alone: a caveat is a thing a person should read before this list says \`live\`. The flip is one line away if you agree with it." ;;
+              *) status_note="**Status unchanged.** The verdict is \`unusable\`, so this PR adds the reading and nothing else. The review is worth keeping either way — it is the record of somebody having tried." ;;
+            esac
+          fi
+
+          git commit -m "review: $ENTRY — $VERDICT ($TERRITORY)" -m "$BY, $ORG, read it for $TERRITORY on $DATE.
+
+          From #$NUMBER via .github/ISSUE_TEMPLATE/source-review.yml." \
+            -m "Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>"
+          git push -u origin "$BRANCH"
+
+          body="$(cat <<EOF
+          **$ENTRY** — $headline.
+
+          | | |
+          | --- | --- |
+          | Reviewer | $BY, $ORG |
+          | Territory | $TERRITORY |
+          | Read on | $DATE |
+          | Verdict | \`$VERDICT\` |
+          | Review file | \`$REVIEW_PATH\` |
+
+          $status_note
+
+          The gates ran in the workflow that opened this PR — schema tests, the two selftests,
+          \`validate.py\`, \`check_review.py\` and a README regeneration — because a PR opened with
+          \`GITHUB_TOKEN\` does not get its own automatic check run. Push any commit to this branch
+          to see the real one.
+
+          Closes #$NUMBER
+
+          🤖 Generated with [Claude Code](https://claude.com/claude-code)
+          EOF
+          )"
+
+          if ! gh pr create \
+            --title "review: $ENTRY — $VERDICT ($TERRITORY)" \
+            --body "$body" \
+            --base main \
+            --head "$BRANCH" \
+            --label source-review
+          then
+            gh issue comment "$NUMBER" --body "The review file is committed and pushed to \`$BRANCH\`, but I could not open the pull request. That is usually the repository setting *Actions → General → Allow GitHub Actions to create and approve pull requests* being off. The work is not lost — open the PR from that branch: https://github.com/${GITHUB_REPOSITORY}/compare/main...${BRANCH}?expand=1"
+            exit 1
+          fi
