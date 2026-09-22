@@ -50,12 +50,6 @@ notes: |
   file uses an underscore, and two files use a `YYYYMMDD_HHMM` form. Anything
   globbing this directory must expect both.
 
-  AN ADAPTER NOW EXISTS, AND IT IS STILL OFF. This entry said "no `adapter`: the
-  node must not read this until the licence is settled" when it was written on
-  2026-09-20. planetai-node v0.70 (2026-09-22) shipped `packs/make`, so the first
-  half is now false and `adapter` names it; the second half is unchanged. The
-  pack ships `MAKE_ENABLED=0` and needs `PACKS_ALLOW_CODE=1`, so no default node
-  reads this, and `MAKE_SOURCE=archive` means this file — not the live endpoint —
-  is what it would read when an operator turns it on. Reading a frozen copy is
-  still no more permitted than reading the live one: the switch is the licence.
-  `wired_in_planetai` is deliberately absent, per CONTRIBUTING §2b.
+  `adapter: pack:make` since node v0.70, and that pack ships `MAKE_ENABLED=0`: it
+  must stay off until the licence is settled. Reading a frozen copy is no more
+  permitted than reading the live one.

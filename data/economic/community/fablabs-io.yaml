@@ -51,16 +51,6 @@ notes: |
   true 2026-09-20. Prefer economic/community/fablabs-network-data-archive: the
   same records as dated monthly files that can be pinned.
 
-  WHAT READS IT, AND WHETHER IT RUNS. planetai-node v0.70 (2026-09-22) ships
-  `packs/make`, which is why `adapter` names it. The pack ships `MAKE_ENABLED=0`
-  and needs `PACKS_ALLOW_CODE=1` as well, so on a default node nothing here is
-  fetched: the adapter says code exists and where to read it, not that a
-  connector is live. `wired_in_planetai` stays `false` for exactly that reason.
-  The switch is the licence, not caution about code — node #1 read this directory
-  on 2026-09-20 because an empty `PACKS_ENABLED` enables every pack, which is the
-  bug that switch now closes. `feeds_cells: []` is deliberate: the pack stores
-  facilities as places and no Index cell comes out of them.
-
   MEASURED: 2,864 records, 5.38 MB, 6.3 s; 1,998 active, 1,819 with coordinates.
   Query parameters are ignored, so filtering is client-side. Contact details are
   in the payload (email 2,756, phone 2,608) — do not store them.
