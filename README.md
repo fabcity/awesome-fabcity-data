@@ -349,6 +349,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 #### Candidates — verified, not yet reviewed by anyone in the network
 
+- **[Eurostat Structural Business Statistics by NUTS 2 region](https://ec.europa.eu/eurostat/web/structural-business-statistics)** — 🌱 `candidate` · `Commission Decision 2011/833/EU — reuse for commercial or non-commercial purposes authorised with the source acknowledged. NOT CC-BY-4.0, which covers the site's editorial content only. See notes.` · _BCN · ★_
+  Enterprises, local units and persons employed by NUTS 2 region and NACE activity: how much manufacturing capacity a European region actually has, and how many people it employs.
 - **[OECD Regional and Metropolitan Database](https://data-explorer.oecd.org/)** — 🌱 `candidate` · `OECD Terms and Conditions (last updated 1 July 2024) — reuse for any purpose including commercial, with attribution that must be passed on to sub-licensees. An open permission, not a named licence. See notes.` · _BCN · BOS · SCL · ★_
   OECD's sub-national statistics: GDP, labour, demography and climate exposure for regions (TL2/TL3) and functional urban areas across member and partner countries, served as SDMX.
 
