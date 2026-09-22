@@ -219,6 +219,11 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 - **[Seoul Living Population by Administrative Dong (행정동 단위 서울 생활인구)](https://data.seoul.go.kr/dataList/OA-14991/S/1/datasetView.do)** — ⛔ `deprecated` · `공공누리 1유형 : 출처표시 (상업적 이용 및 변경 가능) - KOGL Type 1`
   Hourly estimates of the population actually present in each Seoul administrative dong, built by fusing city administrative data with telecom data. Daily updates from 2017 to the present.
 
+#### Candidates — verified, not yet reviewed by anyone in the network
+
+- **[JRC Global Human Settlement Layer (GHSL)](https://human-settlement.emergency.copernicus.eu/)** — 🌱 `candidate` · `CC-BY-4.0` · _★_
+  The European Commission's global record of where people and buildings are: population, built-up surface and a settlement classification on a 100 m grid from 1975 to 2030, plus a city-by-city Urban Centre Database.
+
 
 ## Economic
 
