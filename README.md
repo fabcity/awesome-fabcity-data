@@ -232,6 +232,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Independent monitor of multilateral climate finance run by ODI and Heinrich Boell Stiftung. Tracks money pledged, deposited and approved by fund, contributor country and recipient country, downloadable as Excel.
 - **[Field Ready — humanitarian supply solutions](https://www.fieldready.org/)** — ✅ `live` · `CERN-OHL variant per catalogue metadata on 156 of 193 items — the organisation's own site says All rights reserved. Confirmation pending, see notes.` · _★_ · 🛠 design
   Designs for parts and tools made where they are needed instead of shipped: medical fittings, water and sanitation parts, shelter hardware. Built for aid contexts where the supply chain is the failure.
+- **[OHM — Open Hardware Manager](https://www.openhardwaremanager.org/)** — ✅ `live` · `not stated` · _★_ · 🛠 match
+  A matcher between open hardware designs and the workshops that could build them: pick a design, rank facilities by capability with a domain-aware match, export the chosen workshops' contact details. It holds no facilities of its own — it reads them from Maps of Making.
 - **[Open Know-How Search (Internet of Production Alliance)](https://search.openknowhow.org/)** — ✅ `live` · `Creative Commons — version and variant not stated by the publisher (see notes)` · _★_ · 🛠 design
   A federated index of Open Know-How manifests — machine-readable descriptions of hardware designs, each naming its own files, processes and licence. The closest thing open hardware has to a card catalogue.
 - **[OSHWA Open Source Hardware Certification](https://certification.oshwa.org/)** — ✅ `live` · `CC-BY-SA-4.0` · _★_ · 🛠 design
@@ -408,8 +410,12 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Forty-eight dated freezes of the fablabs.io lab directory, monthly since 2025, kept in a public Fab Foundation repository. The same records as the live endpoint, but pinnable: a dated file instead of a moving target.
 - **[fablabs.io — Fab Lab Network directory](https://www.fablabs.io/)** — ✅ `live` · `NOT OPEN — no data licence published. Platform ToS §7.4 restricts mass harvesting, §7.5 restricts commercial use, §8.1 leaves copyright with each lab. See notes.` · _★_ · 🔌 `pack:make` · 🛠 facility
   The Fab Foundation's directory of fab labs: name, coordinates, activity status and a six-token capability vocabulary, self-entered by the labs themselves. The closest thing the network has to a census of where things can be made.
+- **[Maps of Making](https://mapsofmaking.org/)** — ✅ `live` · `not stated` · _★_ · 🛠 facility
+  A map of 3,193 workshops, fab labs and open workshops aggregated from the fab lab network, the German Verbund Offener Werkstaetten and the SpaceAPI Directory, served as one static GeoJSON. A v0.2 demo, and the records are harvested rather than contributed.
 - **[OpenStreetMap (Overpass API)](https://www.openstreetmap.org/)** — ✅ `live` · `ODbL-1.0` · _★_ · 🔌 `pack:place`
   The collaborative world map: buildings, roads, land use, shops, workshops, amenities, with a free query API (Overpass). The densest open record of what a neighbourhood physically contains, edited by the people who live in it.
+- **[SpaceAPI Directory](https://spaceapi.io/)** — ✅ `live` · `not stated` · _★_ · 🛠 facility
+  A curated list of 251 hacker-, maker- and fab spaces that publish a SpaceAPI JSON endpoint. The Directory itself is a name-to-URL map; each space's own endpoint carries its location, contact details and whether it is open right now.
 
 
 ## Governance
