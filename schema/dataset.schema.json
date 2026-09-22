@@ -108,8 +108,8 @@
     },
     "notes": {
       "type": "string",
-      "maxLength": 2000,
-      "description": "Longer-form notes: API quirks, rate limits, licensing edge cases, recommended usage patterns, citation requirements."
+      "maxLength": 4000,
+      "description": "Longer-form notes: API quirks, rate limits, licensing edge cases, recommended usage patterns, citation requirements. Raised from 2000 to 4000 on 2026-09-22: the sources whose licensing is genuinely unresolved need to quote the clauses they turn on, and at 2000 the fablabs.io entry was full and losing a sentence for every one gained. Nothing renders this field \u2014 build_readme.py ignores it \u2014 so the ceiling only ever cost accuracy."
     }
   },
   "allOf": [
