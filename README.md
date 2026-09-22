@@ -242,6 +242,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Eurostat's city-level statistics: population, living conditions, labour, housing and environment for 969 European cities and greater cities, each with an official Urban Audit code that joins to LAU.
 - **[JRC Global Human Settlement Layer (GHSL)](https://human-settlement.emergency.copernicus.eu/)** — 🌱 `candidate` · `CC-BY-4.0` · _★_
   The European Commission's global record of where people and buildings are: population, built-up surface and a settlement classification on a 100 m grid from 1975 to 2030, plus a city-by-city Urban Centre Database.
+- **[US Census Bureau American Community Survey (ACS) API](https://www.census.gov/data/developers/data-sets/acs-5year.html)** — 🌱 `candidate` · `No named licence. Published as open data under OMB M-10-06 and EO 13642; the API terms require a specific attribution notice, quoted in notes. US federal works carry no domestic copyright, which is the usual basis — but the Bureau names no licence of its own.` · _BOS · ★_
+  The United States' rolling household survey: population, income, housing, commuting and employment down to block group, five-year estimates, queried by FIPS geography through a public API.
 
 
 ## Economic
