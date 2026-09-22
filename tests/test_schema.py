@@ -98,6 +98,11 @@ CASES = [
     ("role make-believe verb",          {"role": ["decide"]}, False),
     ("act_kind make-believe kind",      {"role": ["act"], "act_kind": "vibe"}, False),
 
+    # --- notes: long enough to quote the clause a licence turns on ----------------------------
+    ("notes at the 4000 ceiling",       {"notes": "x" * 4000}, True),
+    ("notes one over",                  {"notes": "x" * 4001}, False),
+    ("notes at the old 2000 limit",     {"notes": "x" * 2000}, True),
+
     # --- the closed door ----------------------------------------------------------------------
     ("an invented key",                 {"adapters": "core:ckan"}, False),
 
