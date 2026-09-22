@@ -12,6 +12,9 @@ api: https://api.fablabs.io/0/labs.json
 pilot_relevance: [global]
 tags: [fab-lab, directory, production-capacity, distributed-manufacturing, act]
 added: 2026-09-20
+updated: 2026-09-22
+adapter: pack:make
+feeds_cells: []
 auth: none
 role: [observe, act]
 act_kind: facility
