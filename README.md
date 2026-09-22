@@ -469,6 +469,11 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 - **[Sustainable Development Report / SDG Index (SDSN)](https://dashboards.sdgindex.org/downloads)** — ✅ `live` · `Not stated on the downloads page — licensing questions directed to info@sdgindex.org; UNCONFIRMED` · _★_
   SDSN and Bertelsmann's annual index scoring 193 UN member states on all 17 SDGs, with per-indicator values, goal scores and trend arrows indicating whether a country is on track to meet each goal by 2030.
 
+#### Candidates — verified, not yet reviewed by anyone in the network
+
+- **[World Bank Worldwide Governance Indicators (WGI)](https://datacatalog.worldbank.org/search/dataset/0038026)** — 🌱 `candidate` · `CC-BY-4.0` · _★_
+  Six governance dimensions — voice and accountability, political stability, government effectiveness, regulatory quality, rule of law, control of corruption — for over 200 economies, 1996 to 2024, with confidence intervals.
+
 ### Bioregion
 
 - **[ChileCompra](https://www.chilecompra.cl/)** — ✅ `live` · `public domain` · _SCL_
