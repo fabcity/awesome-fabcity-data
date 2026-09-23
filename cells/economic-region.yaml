@@ -1,0 +1,18 @@
+cell: Economic|Region
+indicator_categories:
+- manufacturing and enterprise capacity
+- regional accounts
+- public finance
+minimum_indicators:
+- name: Persons employed in manufacturing local units
+  unit: count
+  aggregation: latest
+- name: Enterprises per 1000 inhabitants
+  unit: rate
+  aggregation: latest
+does_not_claim: Enterprise counts measure registration, not production — a region can register many
+  firms and make little, and informal production appears in neither number. Regional accounts locate
+  activity by the reporting unit's address, which for a multi-site firm is a headquarters and not
+  a workshop.
+notes: 30 entries filed, mostly public-finance series. Eurostat SBS by NUTS 2 is the one that reaches
+  manufacturing capacity directly.

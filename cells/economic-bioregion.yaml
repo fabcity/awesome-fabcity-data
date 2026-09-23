@@ -1,0 +1,17 @@
+cell: Economic|Bioregion
+indicator_categories:
+- material flow accounting
+- circularity
+- food balance
+minimum_indicators:
+- name: Domestic material consumption
+  unit: t/capita/yr
+  aggregation: annual-total
+- name: Circular material use rate
+  unit: percent
+  aggregation: latest
+does_not_claim: 'A material-flow account is an accounting boundary, not a physical measurement: it
+  is built from trade and production statistics, and its resolution is the statistical unit, never
+  the watershed. A per-capita figure assigns material to where people live, which is not where it
+  was extracted or used. Neither is a measure of what any place could make locally.'
+notes: 10 entries filed. EXIOBASE, materialflows.net and the UNEP IRP accounts are the backbone.
