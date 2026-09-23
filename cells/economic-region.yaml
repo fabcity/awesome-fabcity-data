@@ -10,6 +10,9 @@ minimum_indicators:
 - name: Enterprises per 1000 inhabitants
   unit: rate
   aggregation: latest
+- name: Subnational government expenditure, executed
+  unit: currency/yr
+  aggregation: annual-total
 does_not_claim: Enterprise counts measure registration, not production — a region can register many
   firms and make little, and informal production appears in neither number. Regional accounts locate
   activity by the reporting unit's address, which for a multi-site firm is a headquarters and not
