@@ -12,6 +12,7 @@ api: null
 pilot_relevance: [boston]
 tags: [ghg-inventory, climate, emissions, united-states]
 added: 2026-09-09
+feeds_cells: [Environmental|City]
 wired_in_planetai: false
 upstream_listed_in: []
 notes: |

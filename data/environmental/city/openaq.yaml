@@ -13,6 +13,7 @@ pilot_relevance: [barcelona, boston, santiago, bali, global]
 tags: [air-quality, regulatory-monitoring, harmonised]
 added: 2026-05-04
 auth: key-free-rate-limited
+feeds_cells: [Environmental|City]
 wired_in_planetai: true
 upstream_listed_in: [awesome-public-datasets]
 notes: |
