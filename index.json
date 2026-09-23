@@ -3863,11 +3863,13 @@
     "energy-mix"
    ],
    "pilot_relevance": [],
-   "feeds_cells": [],
+   "feeds_cells": [
+    "Environmental|Region"
+   ],
    "added": "2026-09-09",
    "updated": "2026-09-09",
-   "description": "Time series of renewable energy production in Occitanie, 2008-2024, compiled by the region\nfrom RTE, SDeS and ENEDIS sources. Fills the regional energy-mix cell of the FCI\nenvironmental pillar.\n",
-   "notes": "Verified 2026-09-09: dataset page opened, HTTP 200. Last update 2025-10-20. CSV (10.7 KB and\n12.1 KB), JSON (26.6 KB), plus PDF companions. Sixteen-year series, 2008-2024.\nPROVENANCE CAVEAT THE PAGE STATES ITSELF: the region compiles this from RTE, SDeS, ENEDIS\nand other producers, and some figures are estimates. It is a regional aggregation of\nnational operator data, not a primary measurement, so it should be cited as Occitanie's\ncompilation rather than as an independent observation — and it will not always reconcile\nagainst the operators' own published series.\nMetadata quality self-rated 44%: update frequency, temporal coverage and spatial scope\nundocumented. Cadence appears roughly annual from resource dates; treat as annual until\nconfirmed.\nRelated but separate: \"Initiatives « Région à énergie positive »\" (same publisher, lov2),\na project register rather than a production series — not entered here.\n",
+   "description": "Time series of renewable energy production in Occitanie, 2008-2024, compiled by the region\nfrom RTE, SDeS and ENEDIS sources. Serves the renewable generation row of the FCI\nEnvironmental|Region cell.\n",
+   "notes": "UNITS, read from the export on 2026-09-23, and the reason this entry can feed the cell at all.\nThe CSV is Energie;Categorie;Type;Annee;Valeur and the Type column reads GWh in every one of\nits 221 rows. There is no MW anywhere in it. So this is generation, not installed capacity, and\nit cannot answer a capacity question however the page is titled. Environmental|Region asked for\nMW until the same day and now asks for GWh/yr, because generation is what regions publish.\nVerified 2026-09-09: dataset page opened, HTTP 200. Last update 2025-10-20. CSV (10.7 KB and\n12.1 KB), JSON (26.6 KB), plus PDF companions. Sixteen-year series, 2008-2024.\nPROVENANCE CAVEAT THE PAGE STATES ITSELF: the region compiles this from RTE, SDeS, ENEDIS\nand other producers, and some figures are estimates. It is a regional aggregation of\nnational operator data, not a primary measurement, so it should be cited as Occitanie's\ncompilation rather than as an independent observation — and it will not always reconcile\nagainst the operators' own published series.\nMetadata quality self-rated 44%: update frequency, temporal coverage and spatial scope\nundocumented. Cadence appears roughly annual from resource dates; treat as annual until\nconfirmed.\nRelated but separate: \"Initiatives « Région à énergie positive »\" (same publisher, lov2),\na project register rather than a production series — not entered here.\n",
    "reviews": []
   },
   {
@@ -6565,9 +6567,9 @@
    ],
    "minimum_indicators": [
     {
-     "name": "Renewable electricity generation capacity",
-     "unit": "MW",
-     "aggregation": "latest"
+     "name": "Renewable electricity generation",
+     "unit": "GWh/yr",
+     "aggregation": "annual-total"
     },
     {
      "name": "Land under each land-use class",
@@ -6575,8 +6577,8 @@
      "aggregation": "latest"
     }
    ],
-   "does_not_claim": "A regional total conceals where within the region anything is. Renewable capacity sited in one valley is not access for the whole region, and land-use area says nothing about condition or tenure. Nothing here is a measure of energy actually consumed locally.",
-   "notes": "7 entries filed and it is the thinnest environmental cell — four of the seven are Bhutan NSDI layers and one is an Indonesian forecast feed. Treat the minimum set as provisional: it was written from what exists rather than from what the tier needs, and it is the cell most likely to be wrong."
+   "does_not_claim": "A regional total conceals where within the region anything is. Generation in one valley is not access for the whole region, and land-use area says nothing about condition or tenure. Nothing here is a measure of energy actually consumed locally. Generation is also not capacity — a wet year and a new dam move this number the same way, so a rise is not evidence that anything was built, and reading it as installed capacity is unsupported.",
+   "notes": "7 entries filed and it is the thinnest environmental cell — four of the seven are Bhutan NSDI layers and one is an Indonesian forecast feed. The energy row asked for installed capacity in MW until 2026-09-23. No source in this list published that at region scale, while the one that exists (Occitanie) publishes generation in GWh — 221 rows, every one GWh, 2008-2024 — so the minimum was one nothing could meet. Changed to match what regions actually publish. Capacity stays in indicator_categories because it is still the thing you would rather know."
   },
   {
    "cell": "Governance|Bioregion",

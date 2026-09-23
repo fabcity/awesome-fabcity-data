@@ -127,7 +127,7 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 - **[GeoStat Environment Statistics (PxWeb) - Georgia](https://pc-axis.geostat.ge/PXWeb/pxweb/en/Database/Environment%20Statistics)** — ✅ `live` · `GeoStat open terms of use - download, use, adapt, modify, create derivative works, disseminate and share for any purpose including commercial, without prior permission; attribution to GEOSTAT required`
   Georgia's national environment statistics - air pollution, waste, water resources, forests, protected areas and environmental-economic accounts - queryable through a live PxWeb REST API run by GeoStat.
 - **[Occitanie — Panorama des énergies renouvelables](https://www.data.gouv.fr/datasets/panorama-des-energies-renouvelables)** — ✅ `live` · `Licence Ouverte / Open Licence version 2.0`
-  Time series of renewable energy production in Occitanie, 2008-2024, compiled by the region from RTE, SDeS and ENEDIS sources. Fills the regional energy-mix cell of the FCI environmental pillar.
+  Time series of renewable energy production in Occitanie, 2008-2024, compiled by the region from RTE, SDeS and ENEDIS sources. Serves the renewable generation row of the FCI Environmental|Region cell.
 
 ### City
 
