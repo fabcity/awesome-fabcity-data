@@ -16,6 +16,10 @@ body:
         [`schema/review.schema.json`](../blob/main/schema/review.schema.json). The issue number
         is filled in for you.
 
+        **First time?** [`REVIEWING.md`](../blob/main/REVIEWING.md) walks through one real review
+        end to end — what each of the five checks actually catches, and why `HTTP 200` is not the
+        endpoint check.
+
         **You are reviewing a source, not approving it.** `unusable` is a useful answer and is
         recorded exactly like the others. So is `usable-with-caveats` — that one writes the review
         and deliberately leaves the entry as it is, because a caveat is a thing a person should
