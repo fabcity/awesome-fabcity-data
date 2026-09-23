@@ -13,6 +13,9 @@ minimum_indicators:
 - name: Catalogued things with a repair route
   unit: percent
   aggregation: latest
+- name: Gross domestic product
+  unit: USD PPP
+  aggregation: annual-total
 does_not_claim: 'Budget execution measures administrative throughput, not outcomes: a city that spends
   its budget has spent its budget. A register of businesses omits informal work, which in many partner
   cities is most of the economy, so a low count is as likely to mean weak registration as weak activity.'

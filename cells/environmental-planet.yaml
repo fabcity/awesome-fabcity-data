@@ -14,6 +14,9 @@ minimum_indicators:
 - name: Global domestic material extraction
   unit: Gt/yr
   aggregation: annual-total
+- name: Greenhouse gas emissions by country and gas
+  unit: ktCO2e/yr
+  aggregation: annual-total
 does_not_claim: 'A planetary number is not any territory''s number. Nothing here apportions a share
   of global CO2 or global extraction to a city, a region or a person, and an Index that displays a
   planetary figure on a local page is inviting exactly that reading. Nor is a forecast an observation:

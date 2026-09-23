@@ -17,6 +17,9 @@ minimum_indicators:
 - name: Municipal solid waste generated per capita
   unit: kg/capita/yr
   aggregation: annual-total
+- name: Annual urban land change
+  unit: mean per-pixel cosine distance 0-1
+  aggregation: annual-mean
 does_not_claim: Reference-station air quality describes a city's regulatory compliance, not where
   a child walks to school — neighbourhood exposure is `Environmental|Community` and needs a different
   kind of source. A municipal GHG inventory is an accounting exercise with a declared scope, so two
