@@ -208,6 +208,22 @@ cannot see, which is the entire argument for replacing the boolean rather than r
 `scripts/validate.py` prints a warning for every entry that says `true` and names no `adapter`. Do not
 set it on a new entry. It is removed in the release after the mirror reads `adapter` instead.
 
+`scripts/sync_airtable.py` is what makes that release possible: it pushes the registry into the
+mirror one way, writes `adapter` and `feeds_cells`, and deliberately does not write `wired`. Run
+`--plan` to see the records with no key and no network; `--check` to compare; `--write` to upsert.
+
+**The mirror was synced on 2026-09-23** — 237 of 237 rows, with `adapter` in its own column, and
+`--check` exits 0. So the first half of the condition is met. What is left is the second half:
+somebody has to confirm nothing still reads the `wired` checkbox — a view, an interface, an
+automation — and then `wired_in_planetai` can be deleted from the schema, the entries and the base.
+The sync stopped writing that field; it did not delete it, because deleting a column somebody may
+be reading is not a script's decision to make.
+
+The same script syncs `REVIEWERS.md` into a **Reviewers** table, keyed on name, and for a sharper
+reason than convenience: each row in that file belongs to the person named in it, so a shared base
+where a third party could edit somebody's *will not review* is exactly the thing one-way prevents.
+An empty cell there means nobody has declared anything — not that the person will review anything.
+
 ### 2c. Observe or act: `role` and `act_kind`
 
 Every one of the first 209 entries answers the same question — *what is happening here*. None of them
