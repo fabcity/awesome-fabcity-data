@@ -12,6 +12,7 @@ api: null
 pilot_relevance: [boston]
 tags: [budget-execution, municipal-finance, spending, united-states]
 added: 2026-09-09
+feeds_cells: [Economic|City]
 wired_in_planetai: false
 upstream_listed_in: []
 notes: |

@@ -12,6 +12,7 @@ api: https://open.canada.ca/data/api/3/action/package_show?id=c9675417-100a-433a
 pilot_relevance: []
 tags: [expenditure-by-function, core-responsibilities, public-accounts, canada, csv]
 added: 2026-09-11
+feeds_cells: []
 updated: 2026-09-11
 wired_in_planetai: false
 upstream_listed_in: []

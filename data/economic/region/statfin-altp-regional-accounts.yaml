@@ -12,6 +12,7 @@ api: https://pxdata.stat.fi/PxWeb/api/v1/en/StatFin/altp
 pilot_relevance: []
 tags: [gdp, regional-accounts, pxweb, finland, pohjois-pohjanmaa]
 added: 2026-09-11
+feeds_cells: [Economic|Region]
 updated: 2026-09-11
 wired_in_planetai: false
 upstream_listed_in: []

@@ -12,6 +12,7 @@ api: https://open.canada.ca/data/api/3/action/package_search?q=%22Main%20Estimat
 pilot_relevance: []
 tags: [national-budget, estimates, appropriations, canada, csv, fiscal-year]
 added: 2026-09-11
+feeds_cells: []
 updated: '2026-09-19'
 wired_in_planetai: false
 upstream_listed_in: []

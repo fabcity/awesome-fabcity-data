@@ -12,6 +12,7 @@ api: https://data360api.worldbank.org/data360/data?DATABASE_ID=WB_CWON
 pilot_relevance: [global]
 tags: [world-bank, natural-capital, wealth-accounts, cwon, data360]
 added: 2026-09-09
+feeds_cells: []
 wired_in_planetai: false
 upstream_listed_in: []
 notes: |

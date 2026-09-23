@@ -17,6 +17,7 @@ tags:
 - korea
 - gu-tier
 added: '2026-09-11'
+feeds_cells: [Economic|Region, Economic|City]
 updated: '2026-09-11'
 wired_in_planetai: false
 upstream_listed_in: []

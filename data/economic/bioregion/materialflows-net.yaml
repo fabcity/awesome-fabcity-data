@@ -12,6 +12,7 @@ api: null
 pilot_relevance: [global]
 tags: [material-flow, mfa, un, resource-extraction, circular-economy]
 added: 2026-05-04
+feeds_cells: [Economic|Bioregion]
 wired_in_planetai: true
 upstream_listed_in: []
 notes: |

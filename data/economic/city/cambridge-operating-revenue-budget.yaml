@@ -12,6 +12,7 @@ api: https://data.cambridgema.gov/resource/ixyv-mje6.json
 pilot_relevance: [boston]
 tags: [budget, municipal-finance, revenue, expenditure, united-states]
 added: 2026-09-10
+feeds_cells: []
 wired_in_planetai: false
 upstream_listed_in: []
 notes: |

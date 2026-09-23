@@ -13,6 +13,7 @@ pilot_relevance: []
 tags: [budget, municipal-finance, south-africa, public-finance, api]
 added: 2026-09-11
 auth: none
+feeds_cells: [Economic|City]
 wired_in_planetai: false
 upstream_listed_in: []
 notes: |
