@@ -12,6 +12,9 @@ committee — a review is one reading of one source for one territory, recorded 
 do not need to touch YAML: open a [source review](.github/ISSUE_TEMPLATE/source-review.yml) issue
 and a workflow turns it into a pull request. Being listed here just means people can find you.
 
+Never done one? [`REVIEWING.md`](REVIEWING.md) walks through a real review end to end — about twenty
+minutes, and it shows what each of the five checks actually catches.
+
 ## What the columns mean
 
 - **Territories** — the places this person can actually judge a source for. A review is always

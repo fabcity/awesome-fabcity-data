@@ -124,6 +124,10 @@ This walks `data/` and validates each YAML against `schema/dataset.schema.json`.
 
 Reviewing is the other way to contribute, and it needs no write access, no fork and no YAML.
 
+**If you are the one doing the reading, start at [`REVIEWING.md`](REVIEWING.md)** — the walkthrough,
+with the five checks made concrete and a worked example that finds a real trap. What follows here is
+the reference: what the fields mean and where reviews live.
+
 **Open a [source review](.github/ISSUE_TEMPLATE/source-review.yml) issue.** One field per key of
 `schema/review.schema.json`; a workflow parses it, writes the review file, and opens a pull request
 for a maintainer to merge. If your verdict is `usable`, the same PR flips the entry's one `status:`

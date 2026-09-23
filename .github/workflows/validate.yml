@@ -38,6 +38,12 @@ jobs:
       - name: Reviews have not decayed past two years
         run: python scripts/check_review.py
 
+      # index.json is the whole registry as one file, because a browser fetching 257 YAMLs to
+      # find twelve candidates is a rate limit, not a page. --check ignores only `generated`,
+      # which is a date and would otherwise fail every day for no reason.
+      - name: Verify index.json is up to date
+        run: python scripts/build_index.py --check
+
       - name: Verify README is up to date
         run: |
           python scripts/build_readme.py
