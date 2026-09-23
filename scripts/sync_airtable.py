@@ -1,15 +1,21 @@
 #!/usr/bin/env python3
-"""Push the registry into the Airtable `Data Sources` mirror. One way, git wins.
+"""Push the registry into the Airtable mirror. One way, git wins.
 
     python scripts/sync_airtable.py --plan     # what the repo produces. No key, no network.
     python scripts/sync_airtable.py --check    # compare against Airtable; exit 1 if stale
-    python scripts/sync_airtable.py --write    # upsert, keyed on slug
+    python scripts/sync_airtable.py --write    # upsert, keyed on slug / on name
 
-`data/{pillar}/{scale}/{slug}.yaml` is the source of record and this script only ever writes in
-that direction. The Airtable table says so in its own description, and the reason is the one
-`wired_in_planetai` taught: a hand-typed claim in one system about another drifts, and by September
-2026 sixteen of thirty-two flags were wrong. A mirror that anybody can edit is the same mistake with
-a nicer interface, so nothing here reads Airtable back into the repo.
+Two tables, both one-way:
+
+    data/{pillar}/{scale}/{slug}.yaml  ->  Data Sources   keyed on `slug`
+    REVIEWERS.md                       ->  Reviewers      keyed on `name`
+
+Both directions are deliberate. The reason is the one `wired_in_planetai` taught: a hand-typed
+claim in one system about another drifts, and by September 2026 sixteen of thirty-two flags were
+wrong. A mirror that anybody can edit is the same mistake with a nicer interface, so nothing here
+reads Airtable back into the repo. For REVIEWERS.md the rule is sharper still — each row belongs
+to the person named in it, and a third party editing somebody's "will not review" in a shared base
+is precisely what one-way prevents.
 
 **What Airtable is for, and what it is not.** It is for coordination — who could review what, which
 territory is next, what is stuck. It is NOT where a review lives. A review is testimony with an
@@ -17,17 +23,18 @@ author, a date and a place, and it lives at `reviews/{entry}/{date}-{reviewer}.y
 dereferenced. This script carries a *summary* of that testimony (how many, by whom, when) so a
 queue can be built on it; the testimony itself stays in git.
 
-WHY THIS EXISTS NOW. The mirror was last synced 2026-07-04 with 32 of what are now 238 entries, and
-it still carries a `wired` checkbox. CONTRIBUTING §2b says `wired_in_planetai` is "removed in the
+WHY THIS EXISTS NOW. The mirror was last synced 2026-07-04 with 32 of what are now 237 entries, and
+it still carries a `wired` checkbox. CONTRIBUTING 2b says `wired_in_planetai` is "removed in the
 release after the mirror reads `adapter` instead" — so this script is the gate on deleting that
 field. It writes `adapter` and `feeds_cells` and does not write `wired`.
 
 Standard library only, deliberately: the repo's dependencies are pyyaml and jsonschema, and one
 more for an HTTP POST is not a trade worth making. PyYAML is already here.
 
-    AIRTABLE_API_KEY    required for --check and --write (a personal access token)
-    AIRTABLE_BASE       default appmNQaDGEFE9VcYh  (FCI Observations)
-    AIRTABLE_TABLE      default Data Sources
+    AIRTABLE_API_KEY          required for --check and --write (a personal access token)
+    AIRTABLE_BASE             default appmNQaDGEFE9VcYh  (FCI Observations)
+    AIRTABLE_TABLE            default Data Sources
+    AIRTABLE_REVIEWERS_TABLE  default Reviewers
 """
 from __future__ import annotations
 
@@ -49,9 +56,11 @@ except ImportError:
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 REVIEWS = ROOT / "reviews"
+REVIEWERS_MD = ROOT / "REVIEWERS.md"
 
 BASE = os.environ.get("AIRTABLE_BASE", "appmNQaDGEFE9VcYh")
 TABLE = os.environ.get("AIRTABLE_TABLE", "Data Sources")
+REVIEWERS_TABLE = os.environ.get("AIRTABLE_REVIEWERS_TABLE", "Reviewers")
 API = "https://api.airtable.com/v0"
 USABLE = ("usable", "usable-with-caveats")
 BATCH = 10          # Airtable's per-request record limit
@@ -115,6 +124,59 @@ def build() -> list[dict]:
     return rows
 
 
+def _declared(cell: str) -> str | None:
+    """`*not declared*` is not a value. An empty cell means nobody has said anything, and copying
+    the words into Airtable would turn a silence into a claim somebody did not make."""
+    c = cell.strip().strip("*_").strip()
+    return None if c.lower() in ("", "not declared", "none") else cell.strip()
+
+
+def build_reviewers() -> list[dict]:
+    """The markdown table in REVIEWERS.md, one record per row.
+
+    REVIEWERS.md is the source of record and this only ever reads it, because each row there
+    belongs to the person named in it — "open a PR that changes it, and do not wait for
+    permission" is the file's own instruction, and a shared base cannot honour that.
+    """
+    if not REVIEWERS_MD.is_file():
+        return []
+    written: dict[str, int] = {}
+    for rs in reviews_by_entry().values():
+        for r in rs:
+            if r.get("by"):
+                written[r["by"]] = written.get(r["by"], 0) + 1
+
+    today = date.today().isoformat()
+    rows, in_table = [], False
+    for raw in REVIEWERS_MD.read_text(encoding="utf-8").splitlines():
+        line = raw.strip()
+        if not line.startswith("|"):
+            in_table = False
+            continue
+        cells = [c.strip() for c in line.strip("|").split("|")]
+        if len(cells) != 4:
+            continue
+        if cells[0] == "Name":              # the header names the columns
+            in_table = True
+            continue
+        if not in_table:
+            continue
+        if set("".join(cells)) <= set("-: "):   # the | --- | separator
+            continue
+        name, org, terr, wont = (_declared(c) for c in cells)
+        if not name:
+            continue
+        rows.append({
+            "name": name,
+            "org": org,
+            "territories": [t.strip() for t in terr.split(",") if t.strip()] if terr else [],
+            "will_not_review": wont,
+            "reviews_written": written.get(name, 0),
+            "last_synced": today,
+        })
+    return rows
+
+
 # ---------------------------------------------------------------- Airtable
 def _req(method: str, url: str, payload: dict | None = None) -> dict:
     key = os.environ.get("AIRTABLE_API_KEY")
@@ -138,6 +200,7 @@ def _req(method: str, url: str, payload: dict | None = None) -> dict:
 # OPTION inside an existing select; it cannot invent a FIELD, so an upsert naming one that does not
 # exist fails the whole batch with UNKNOWN_FIELD_NAME. --check therefore looks at the table's schema
 # first and says which are missing, because that is the error somebody would otherwise hit at record 1.
+# They were created in the FCI Observations base on 2026-09-23; this list is what a fresh base needs.
 NEW_FIELDS = {
     "adapter":       "singleLineText   — core:<fn> or pack:<id>; replaces the `wired` checkbox",
     "feeds_cells":   "multipleSelects  — the Index cells a node fills from this source",
@@ -162,16 +225,16 @@ def table_fields() -> set[str] | None:
     return None
 
 
-def fetch() -> dict[str, dict]:
-    """Every record in the table, keyed on slug."""
-    url = f"{API}/{BASE}/{urllib.request.quote(TABLE)}"
+def fetch(table: str, key: str) -> dict[str, dict]:
+    """Every record in a table, keyed on the field the upsert merges on."""
+    url = f"{API}/{BASE}/{urllib.request.quote(table)}"
     out, offset = {}, None
     while True:
         page = _req("GET", url + (f"?offset={offset}" if offset else ""))
         for rec in page.get("records", []):
             f = rec.get("fields", {})
-            if f.get("slug"):
-                out[f["slug"]] = f
+            if f.get(key):
+                out[f[key]] = f
         offset = page.get("offset")
         if not offset:
             return out
@@ -193,8 +256,70 @@ def differs(want: dict, have: dict) -> list[str]:
     return bad
 
 
+def push(table: str, rows: list[dict], key: str, argv: list[str]) -> int:
+    """Report the difference between `rows` and `table`, and with --write close it.
+
+    Returns 1 when --check finds the mirror behind, so this can be a scheduled alarm.
+    """
+    try:
+        have = fetch(table, key)
+    except urllib.error.HTTPError as ex:
+        if ex.code == 404:
+            print(f"\n{table}: no such table in base {BASE}. Skipped.")
+            return 0
+        raise
+
+    add = [r for r in rows if r[key] not in have]
+    upd = [(r, differs(r, have[r[key]])) for r in rows if r[key] in have]
+    upd = [(r, d) for r, d in upd if d]
+    gone = sorted(set(have) - {r[key] for r in rows})
+
+    print(f"\n{table}: Airtable has {len(have)}; the repo has {len(rows)}.")
+    print(f"  {len(add)} to add, {len(upd)} to update, "
+          f"{len(rows) - len(add) - len(upd)} already current.")
+    for r in add[:10]:
+        print(f"      + {r[key]}")
+    if len(add) > 10:
+        print(f"      + … and {len(add) - 10} more")
+    for r, d in upd[:10]:
+        print(f"      ~ {r[key]}: {', '.join(d)}")
+    if len(upd) > 10:
+        print(f"      ~ … and {len(upd) - 10} more")
+    if gone:
+        print(f"  {len(gone)} rows in Airtable are not in the repo. This script never deletes; "
+              f"they are listed so somebody can decide:")
+        for s in gone[:10]:
+            print(f"      ? {s}")
+
+    if "--check" in argv:
+        if add or upd:
+            print(f"  {table} is behind. Run with --write.", file=sys.stderr)
+            return 1
+        print(f"  {table} matches the repo.")
+        return 0
+    if "--write" not in argv:
+        return 0
+
+    url = f"{API}/{BASE}/{urllib.request.quote(table)}"
+    sent = 0
+    for i in range(0, len(rows), BATCH):
+        chunk = rows[i:i + BATCH]
+        _req("PATCH", url, {
+            "performUpsert": {"fieldsToMergeOn": [key]},
+            "records": [{"fields": r} for r in chunk],
+            "typecast": True,   # lets a new `status` or `feeds_cells` option create itself
+        })
+        sent += len(chunk)
+        print(f"  upserted {sent}/{len(rows)}")
+        time.sleep(PAUSE)
+    print(f"  {sent} records upserted, keyed on {key}. git remains the source of record.")
+    return 0
+
+
 def main(argv: list[str]) -> int:
     rows = build()
+    people = build_reviewers()
+
     if "--plan" in argv:
         print(f"{len(rows)} records from {DATA.relative_to(ROOT)}/ -> base {BASE}, table {TABLE!r}\n")
         counts = {}
@@ -204,7 +329,25 @@ def main(argv: list[str]) -> int:
         print(f"  with adapter:   {sum(1 for r in rows if r['adapter'])}")
         print(f"  feeding a cell: {sum(1 for r in rows if r['feeds_cells'])}")
         print(f"  with a review:  {sum(1 for r in rows if r['reviews_count'])}")
-        print(f"\n  `wired` is NOT written: this sync replaces it with `adapter` (CONTRIBUTING 2b).")
+        # The same three tiers the `needs_review` formula computes in Airtable. A flat "has nobody
+        # read this" flag returns 221 of 237, which is not a queue, it is the list.
+        q = {1: 0, 2: 0, 3: 0}
+        for r in rows:
+            if r["status"] == "candidate":
+                q[1] += 1
+            elif r["adapter"] or r["reviews_count"]:
+                continue
+            elif [x for x in r["pilots"] if x != "global"]:
+                q[2] += 1
+            else:
+                q[3] += 1
+        print(f"  review queue:   {q[1]} candidate · {q[2]} a pilot city depends on it · {q[3]} unread")
+        print("\n  `wired` is NOT written: this sync replaces it with `adapter` (CONTRIBUTING 2b).")
+        print(f"\n{len(people)} reviewers from REVIEWERS.md -> table {REVIEWERS_TABLE!r}")
+        for p in people:
+            print(f"      {p['name']:18} {p['org'] or '—'}")
+            print(f"      {'':18} territories: {', '.join(p['territories']) or 'not declared'}"
+                  f" · will not review: {p['will_not_review'] or 'not declared'}")
         print(f"\n  sample record:\n{json.dumps(rows[0], indent=4, ensure_ascii=False)}")
         return 0
 
@@ -216,62 +359,20 @@ def main(argv: list[str]) -> int:
         for f in missing:
             print(f"      {f:15} {NEW_FIELDS[f]}")
         print()
+        if "--write" in argv:
+            print("  refusing to write: the fields above do not exist and the batch would fail.",
+                  file=sys.stderr)
+            return 1
     if present is not None and "wired" in present:
         print("  note: the table still has a `wired` checkbox. This sync stops writing it; it can be")
-        print("        deleted once nothing reads it, which is what CONTRIBUTING 2b is waiting for.\n")
+        print("        deleted once nothing reads it, which is what CONTRIBUTING 2b is waiting for.")
 
-    have = fetch()
-    add = [r for r in rows if r["slug"] not in have]
-    upd = [(r, differs(r, have[r["slug"]])) for r in rows if r["slug"] in have]
-    upd = [(r, d) for r, d in upd if d]
-    gone = sorted(set(have) - {r["slug"] for r in rows})
+    code = push(TABLE, rows, "slug", argv)
+    code = max(code, push(REVIEWERS_TABLE, people, "name", argv))
 
-    print(f"  Airtable has {len(have)}; the repo has {len(rows)}.")
-    print(f"  {len(add)} to add, {len(upd)} to update, {len(rows) - len(add) - len(upd)} already current.")
-    for r in add[:10]:
-        print(f"      + {r['slug']}")
-    if len(add) > 10:
-        print(f"      + … and {len(add) - 10} more")
-    for r, d in upd[:10]:
-        print(f"      ~ {r['slug']}: {', '.join(d)}")
-    if len(upd) > 10:
-        print(f"      ~ … and {len(upd) - 10} more")
-    if gone:
-        print(f"  {len(gone)} rows in Airtable are not in the repo. This script never deletes; "
-              f"they are listed so somebody can decide:")
-        for s in gone[:10]:
-            print(f"      ? {s}")
-
-    if "--check" in argv:
-        if add or upd:
-            print("\n  the mirror is behind. Run with --write.", file=sys.stderr)
-            return 1
-        print("\n  the mirror matches the repo.")
-        return 0
-
-    if missing and "--write" in argv:
-        print("\n  refusing to write: the fields above do not exist and the batch would fail.",
-              file=sys.stderr)
-        return 1
-
-    if "--write" not in argv:
+    if "--check" not in argv and "--write" not in argv:
         print("\n  nothing written. Pass --write to upsert, or --plan to see the records offline.")
-        return 0
-
-    url = f"{API}/{BASE}/{urllib.request.quote(TABLE)}"
-    sent = 0
-    for i in range(0, len(rows), BATCH):
-        chunk = rows[i:i + BATCH]
-        _req("PATCH", url, {
-            "performUpsert": {"fieldsToMergeOn": ["slug"]},
-            "records": [{"fields": r} for r in chunk],
-            "typecast": True,   # lets a new `status` or `feeds_cells` option create itself
-        })
-        sent += len(chunk)
-        print(f"  upserted {sent}/{len(rows)}")
-        time.sleep(PAUSE)
-    print(f"\n  {sent} records upserted, keyed on slug. git remains the source of record.")
-    return 0
+    return code
 
 
 if __name__ == "__main__":
