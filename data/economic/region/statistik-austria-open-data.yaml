@@ -12,6 +12,7 @@ api: null
 pilot_relevance: []
 tags: [official-statistics, regional-accounts, labour-market, austria]
 added: 2026-09-10
+feeds_cells: [Economic|Region]
 wired_in_planetai: false
 upstream_listed_in: []
 notes: |

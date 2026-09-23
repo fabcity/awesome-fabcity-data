@@ -231,12 +231,13 @@ def pass_reviews(entry_ids) -> tuple[int, dict]:
     return failures, reviews
 
 
-def pass_cells() -> int:
-    """Pass 3: cells/*.yaml. The filename is the cell key, lowercased and hyphenated; a cell whose
-    name and key disagree is two cells, and the second one is invisible."""
+def pass_cells() -> tuple[int, dict]:
+    """Pass 3: cells/*.yaml. Returns (failures, {cell key: cell}). The filename is the cell key,
+    lowercased and hyphenated; a cell whose name and key disagree is two cells, and the second one
+    is invisible."""
     validator = _validator(CELL_SCHEMA_PATH)
     files = sorted(CELLS_DIR.glob("*.yaml"))
-    failures = 0
+    failures, cells = 0, {}
     for path in files:
         rel = path.relative_to(ROOT)
         cell, why = _read(path, rel)
@@ -256,11 +257,71 @@ def pass_cells() -> int:
             failures += 1
             continue
 
+        cells[cell["cell"]] = cell
         print(f"[ ok ] {rel} — {len(cell['minimum_indicators'])} minimum indicator(s)")
 
     print(f"\n{len(files)} cell{'' if len(files) == 1 else 's'} checked "
           f"of the {len(PILLARS) * len(SCALES)} in the matrix.")
-    return failures
+    return failures, cells
+
+
+def cell_join(entries: dict, cells: dict, strict: bool) -> int:
+    """Does the map close? `feeds_cells` and `cells/` are two halves of one claim — the entry says
+    it can fill a cell, the cell says what filling it means — and nothing has been checking that
+    they agree.
+
+    The failure mode here is specific: a mistyped cell key is not a broken reference that blows up,
+    it is an entry that looks mapped and feeds nothing, and a cell nothing feeds is a column of the
+    Index that cannot be filled. Neither is visible to a schema, because both halves are valid on
+    their own. That is exactly the shape of `wired_in_planetai`, and the lesson is the same one:
+    check the join, not the two sides.
+    """
+    fed: dict[str, int] = {}
+    dangling = []
+    for rid, entry in sorted(entries.items()):
+        for c in entry.get("feeds_cells") or []:
+            fed[c] = fed.get(c, 0) + 1
+            if c not in cells:
+                dangling.append((rid, c))
+
+    # A typo, and an invisible one. There are none today, which is the cheapest possible moment to
+    # close it: a gate that lands at zero costs nothing and never lets the first one through.
+    for rid, c in dangling:
+        print(f"[FAIL] data/{rid}.yaml: feeds_cells names {c!r}, and cells/ has no such cell")
+
+    # A cell nothing feeds. NOT a failure: some cells are computed by the core at any scale and
+    # carry no registry entry on purpose — their `notes` say so, and that is a real answer.
+    empty = sorted(k for k in cells if not fed.get(k))
+    if empty:
+        print(f"\n[warn] {len(empty)} cell(s) have no source feeding them. Check each one's "
+              f"`notes` says why — a cell the core computes needs no entry, a cell nobody can "
+              f"fill is a column of the Index that stays blank:")
+        for k in empty:
+            print(f"       cells/{k.split('|')[0].lower()}-{k.split('|')[1].lower()}.yaml")
+
+    # Observe-side entries feeding nothing. Counted, not failed: a public budget line and a fab lab
+    # directory are both legitimately in this list without filling a pillar × scale cell, and
+    # forcing a reason onto every one of them would be 80 edits to say "not applicable".
+    def observes(e: dict) -> bool:
+        # Absent `role` means [observe] — schema 2c. A source that is both still observes, so it
+        # belongs on this side of the count; only a pure `[act]` entry does not.
+        return "observe" in (e.get("role") or ["observe"])
+
+    unmapped = sorted(rid for rid, e in entries.items()
+                      if e["status"] == "live" and observes(e) and not e.get("feeds_cells"))
+    observed = sum(1 for e in entries.values() if e["status"] == "live" and observes(e))
+    if unmapped:
+        print(f"\n[warn] {len(unmapped)} of {observed} live observe-side entries feed no Index "
+              f"cell. Not wrong on its own — budget lines and directories belong in this list "
+              f"without filling a pillar × scale cell — but it is the number that says how much "
+              f"of what is collected the Index can actually read.")
+
+    print(f"\n{len(cells) - len(empty)} of {len(cells)} cells have at least one source; "
+          f"{sum(fed.values())} feeds_cells entries across {len(cells)} cells.")
+
+    if dangling and strict:
+        print("\n--strict: a feeds_cells value naming no cell is a failure.", file=sys.stderr)
+    return len(dangling)
 
 
 def join(entries: dict, reviews: dict, strict: bool) -> int:
@@ -314,10 +375,14 @@ def main(argv: list[str]) -> int:
     failures += f2
 
     print("\n== pass 3: cells/ — what the Index claims, and what it does not")
-    failures += pass_cells()
+    f3, cells = pass_cells()
+    failures += f3
 
     print("\n== join: does `live` mean anything on each entry that claims it")
     failures += join(entries, reviews, strict)
+
+    print("\n== join: does the cell map close")
+    failures += cell_join(entries, cells, strict)
 
     if failures:
         print(f"\n{failures} file(s) failed validation.", file=sys.stderr)

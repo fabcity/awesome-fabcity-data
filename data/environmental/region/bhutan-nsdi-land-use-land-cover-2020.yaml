@@ -21,6 +21,7 @@ tags:
 added: '2026-09-11'
 updated: '2026-09-11'
 auth: none
+feeds_cells: [Environmental|Region]
 wired_in_planetai: false
 upstream_listed_in: []
 notes: 'Verified 2026-09-11 in the FCI Regime 1 harvest (wave 12). Item id

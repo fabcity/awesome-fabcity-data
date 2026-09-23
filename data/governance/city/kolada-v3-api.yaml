@@ -12,6 +12,7 @@ api: https://api.kolada.se/v3
 pilot_relevance: []
 tags: [kpi, municipal-benchmarking, sweden, api, kolada, attribution-required]
 added: 2026-09-11
+feeds_cells: []
 updated: 2026-09-11
 wired_in_planetai: false
 upstream_listed_in: []

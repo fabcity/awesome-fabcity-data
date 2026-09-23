@@ -12,6 +12,7 @@ api: https://pc-axis.geostat.ge/PXWeb/api/v1/en/Database/National%20Accounts
 pilot_relevance: []
 tags: [georgia, geostat, pxweb, gdp, national-accounts, sna2008]
 added: 2026-09-11
+feeds_cells: []
 updated: 2026-09-11
 wired_in_planetai: false
 upstream_listed_in: []

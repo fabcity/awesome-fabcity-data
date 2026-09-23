@@ -13,6 +13,7 @@ pilot_relevance: [global]
 tags: [owid, mirror, csv, food-supply, tidy-data]
 added: 2026-09-09
 auth: none
+feeds_cells: []
 wired_in_planetai: false
 upstream_listed_in: []
 notes: |

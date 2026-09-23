@@ -12,6 +12,7 @@ api: null
 pilot_relevance: [bali]
 tags: [productivity, klems, sectoral, asia, indonesia]
 added: 2026-05-04
+feeds_cells: []
 wired_in_planetai: false
 upstream_listed_in: [awesome-public-datasets]
 notes: |

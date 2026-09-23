@@ -15,6 +15,7 @@ tags: [open-data-portal, ckan, transparency, catalogue, canada]
 added: 2026-09-11
 updated: '2026-09-19'
 auth: none
+feeds_cells: [Governance|Region]
 wired_in_planetai: false
 upstream_listed_in: []
 notes: |

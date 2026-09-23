@@ -12,6 +12,7 @@ api: https://opendata.cbs.nl/ODataApi/odata/83641NED
 pilot_relevance: []
 tags: [budget, public-finance, netherlands, cbs, statline, odata, iv3]
 added: 2026-09-11
+feeds_cells: [Economic|City]
 updated: 2026-09-11
 wired_in_planetai: false
 upstream_listed_in: []

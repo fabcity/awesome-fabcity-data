@@ -1,0 +1,25 @@
+cell: Environmental|Bioregion
+indicator_categories:
+- freshwater and water stress
+- land cover
+- biodiversity
+- coastal and marine condition
+- soil
+minimum_indicators:
+- name: Tree-cover fraction
+  unit: fraction 0-1
+  aggregation: mean
+- name: Sea surface temperature
+  unit: degC
+  aggregation: 7d-mean
+- name: Baseline water stress
+  unit: ratio
+  aggregation: latest
+does_not_claim: A bioregion is not the sum of its cities, and a figure here must not be presented
+  as one. A satellite land-cover class is a model's guess at what a pixel contains, not a survey —
+  tree cover from Dynamic World and tree cover from a forest inventory disagree, and the disagreement
+  is real. A point sample from a global model, which is what the node's coast and earth-engine packs
+  take, is a boundary condition for this place and not a measurement of the bioregion.
+notes: '10 entries filed. The node computes three things here today, all `partial` on purpose: sea
+  surface temperature (packs/coast), tree-cover fraction (packs/earth-engine) and Posidonia thermal-stress
+  days (packs/posidonia). None is a measurement made here, which is why none is `live`.'

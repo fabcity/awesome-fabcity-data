@@ -1,0 +1,19 @@
+cell: Environmental|Region
+indicator_categories:
+- renewable energy capacity
+- land use
+- watershed condition
+- regional emissions
+minimum_indicators:
+- name: Renewable electricity generation capacity
+  unit: MW
+  aggregation: latest
+- name: Land under each land-use class
+  unit: km2
+  aggregation: latest
+does_not_claim: A regional total conceals where within the region anything is. Renewable capacity
+  sited in one valley is not access for the whole region, and land-use area says nothing about condition
+  or tenure. Nothing here is a measure of energy actually consumed locally.
+notes: '7 entries filed and it is the thinnest environmental cell — four of the seven are Bhutan NSDI
+  layers and one is an Indonesian forecast feed. Treat the minimum set as provisional: it was written
+  from what exists rather than from what the tier needs, and it is the cell most likely to be wrong.'

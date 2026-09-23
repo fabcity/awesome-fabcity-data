@@ -12,6 +12,7 @@ api: https://ocds-api.etenders.gov.za/
 pilot_relevance: []
 tags: [procurement, open-contracting, ocds, south-africa, transparency]
 added: 2026-09-11
+feeds_cells: [Governance|Region]
 wired_in_planetai: false
 upstream_listed_in: []
 notes: |

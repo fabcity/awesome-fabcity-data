@@ -12,6 +12,7 @@ api: https://opendata-ajuntament.barcelona.cat/data/api/action/package_search
 pilot_relevance: [barcelona]
 tags: [procurement, tenders, transparency, spain]
 added: 2026-09-09
+feeds_cells: [Governance|City]
 wired_in_planetai: false
 upstream_listed_in: []
 notes: |

@@ -12,6 +12,7 @@ api: https://opendata.paris.fr/api/explore/v2.1/catalog/datasets?where=search%28
 pilot_relevance: []
 tags: [procurement, transparency, public-contracts, france]
 added: 2026-09-09
+feeds_cells: [Governance|City]
 wired_in_planetai: false
 upstream_listed_in: []
 notes: |

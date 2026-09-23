@@ -12,6 +12,7 @@ api: null
 pilot_relevance: []
 tags: [air-quality, pm25, monitoring-stations, real-time, montreal]
 added: 2026-09-11
+feeds_cells: [Environmental|City]
 updated: 2026-09-11
 wired_in_planetai: false
 upstream_listed_in: []

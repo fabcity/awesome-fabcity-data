@@ -12,6 +12,7 @@ api: https://gis.massdot.state.ma.us/arcgis/rest/services/
 pilot_relevance: [boston]
 tags: [gis, massachusetts, geospatial, parcels, transit]
 added: 2026-05-04
+feeds_cells: [Governance|Region]
 wired_in_planetai: false
 upstream_listed_in: [awesome-public-datasets]
 notes: |

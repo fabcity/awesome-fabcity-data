@@ -12,6 +12,7 @@ api: https://pc-axis.geostat.ge/PXWeb/api/v1/en/Database/Environment%20Statistic
 pilot_relevance: []
 tags: [georgia, geostat, pxweb, waste, water, air-pollution, seea, forests]
 added: 2026-09-11
+feeds_cells: []
 updated: 2026-09-11
 wired_in_planetai: false
 upstream_listed_in: []

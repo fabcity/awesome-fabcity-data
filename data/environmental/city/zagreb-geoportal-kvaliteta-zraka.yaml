@@ -12,6 +12,7 @@ api: https://opendata.arcgis.com/api/v3/datasets/ed9898e63ec94770a8fb37713c36f8c
 pilot_relevance: []
 tags: [air-quality, zagreb, croatia, arcgis-hub, monitoring-stations, geojson]
 added: 2026-09-11
+feeds_cells: []
 updated: 2026-09-11
 wired_in_planetai: false
 upstream_listed_in: []

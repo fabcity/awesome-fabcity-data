@@ -13,6 +13,7 @@ api: https://donnees.montreal.ca/api/3/action/package_search
 pilot_relevance: []
 tags: [open-data-portal, ckan, transparency, catalogue, montreal]
 added: 2026-09-11
+feeds_cells: [Governance|City]
 updated: 2026-09-11
 wired_in_planetai: false
 upstream_listed_in: []

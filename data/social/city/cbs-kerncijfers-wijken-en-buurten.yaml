@@ -12,6 +12,7 @@ api: https://opendata.cbs.nl/ODataApi/odata/85984NED
 pilot_relevance: []
 tags: [social-indicators, netherlands, cbs, statline, odata, neighbourhood]
 added: 2026-09-11
+feeds_cells: [Social|City]
 updated: 2026-09-11
 wired_in_planetai: false
 upstream_listed_in: []

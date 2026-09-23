@@ -13,6 +13,7 @@ pilot_relevance: [global]
 tags: [undp, hdr, hdi, gender-inequality-index, life-expectancy, csv]
 added: 2026-09-09
 auth: api-key
+feeds_cells: []
 wired_in_planetai: false
 upstream_listed_in: []
 notes: |

@@ -12,6 +12,7 @@ api: null
 pilot_relevance: []
 tags: [open-data, recife, brazil, ckan, municipal]
 added: 2026-09-10
+feeds_cells: [Governance|City]
 updated: 2026-09-10
 wired_in_planetai: false
 upstream_listed_in: []

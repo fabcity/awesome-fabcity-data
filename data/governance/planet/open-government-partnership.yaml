@@ -12,6 +12,7 @@ api: null
 pilot_relevance: [global]
 tags: [open-government, ogp, commitments, irm, transparency, csv]
 added: 2026-09-09
+feeds_cells: []
 wired_in_planetai: false
 upstream_listed_in: []
 notes: |

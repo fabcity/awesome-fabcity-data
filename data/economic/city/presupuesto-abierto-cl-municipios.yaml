@@ -12,6 +12,7 @@ api: https://api.presupuestoabierto.gob.cl/api/v1/data/municipios.csv
 pilot_relevance: [santiago]
 tags: [public-finance, municipal-budget, expenditure, chile, comuna]
 added: 2026-09-10
+feeds_cells: [Economic|City]
 wired_in_planetai: false
 upstream_listed_in: []
 notes: |

@@ -12,6 +12,7 @@ api: https://opendata.paris.fr/api/explore/v2.1/catalog/datasets?where=theme%3D%
 pilot_relevance: []
 tags: [public-budget, municipal-finance, budget-execution, open-budget, france]
 added: 2026-09-09
+feeds_cells: [Economic|City]
 wired_in_planetai: false
 upstream_listed_in: []
 notes: |

@@ -12,6 +12,7 @@ api: https://api.us.socrata.com/api/catalog/v1?domains=data.cambridgema.gov
 pilot_relevance: [boston]
 tags: [open-data-portal, socrata, transparency, united-states]
 added: 2026-09-10
+feeds_cells: [Governance|City]
 wired_in_planetai: false
 upstream_listed_in: []
 notes: |

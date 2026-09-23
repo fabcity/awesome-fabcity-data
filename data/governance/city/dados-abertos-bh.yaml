@@ -12,6 +12,7 @@ api: https://dados.pbh.gov.br/api/3/action
 pilot_relevance: []
 tags: [open-data, belo-horizonte, brazil, ckan, municipal, budget-execution, procurement]
 added: 2026-09-10
+feeds_cells: [Governance|City]
 updated: 2026-09-10
 wired_in_planetai: false
 upstream_listed_in: []
