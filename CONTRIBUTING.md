@@ -208,6 +208,11 @@ cannot see, which is the entire argument for replacing the boolean rather than r
 `scripts/validate.py` prints a warning for every entry that says `true` and names no `adapter`. Do not
 set it on a new entry. It is removed in the release after the mirror reads `adapter` instead.
 
+`scripts/sync_airtable.py` is what makes that release possible: it pushes the registry into the
+mirror one way, writes `adapter` and `feeds_cells`, and deliberately does not write `wired`. Run
+`--plan` to see the records with no key and no network; `--check` to compare; `--write` to upsert.
+Once the mirror has been synced and nothing reads the checkbox, `wired_in_planetai` can go.
+
 ### 2c. Observe or act: `role` and `act_kind`
 
 Every one of the first 209 entries answers the same question — *what is happening here*. None of them
