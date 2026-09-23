@@ -86,8 +86,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 #### Candidates — verified, not yet reviewed by anyone in the network
 
-- **[EDGAR — Emissions Database for Global Atmospheric Research](https://edgar.jrc.ec.europa.eu/)** — 🌱 `candidate` · `SPLIT, and one half is not open. EDGAR CH4, N2O and F-gases are CC-BY-4.0. The IEA-EDGAR CO2 component is CC BY-NC-ND 4.0 — non-commercial AND no-derivatives, which fails criterion 1 and cannot back a derived Index. See notes.` · _★_
-  The JRC's global greenhouse-gas inventory: CO2, CH4, N2O and F-gases by country and sector back to 1970, plus 0.1° gridded maps. The reference emissions dataset when a national inventory does not exist.
+- **[EDGAR non-CO2 greenhouse gases (CH4, N2O, F-gases)](https://edgar.jrc.ec.europa.eu/dataset_ghg2024)** — 🌱 `candidate` · `CC-BY-4.0` · _★_
+  The JRC's global inventory of methane, nitrous oxide and fluorinated gases by country and sector, 1970–2023, plus 0.1° gridded maps. Scoped deliberately to the gases the European Union owns and licenses openly.
 
 ### Bioregion
 
@@ -163,11 +163,6 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Per-municipality and per-region GHG emissions by sector for Finland under the ALas/Hinku model - electricity, heating, transport, industry, agriculture, waste - downloadable as Excel tables. Run by SYKE.
 - **[UK local authority and regional greenhouse gas emissions statistics](https://www.gov.uk/government/statistics/uk-local-authority-and-regional-greenhouse-gas-emissions-statistics-2005-to-2024)** — ✅ `live` · `Open Government Licence v3.0`
   Annual territorial GHG emissions for every UK local authority and region, 2005-2024, as an 82.6 MB CSV plus Excel tables. Excludes aviation, shipping, military transport and fluorinated gases.
-
-#### Candidates — verified, not yet reviewed by anyone in the network
-
-- **[CDP–ICLEI Track open data (CDP Open Data Portal)](https://data.cdp.net/)** — 🌱 `candidate` · `CDP Open Database License (27 Nov 2014) — NON-COMMERCIAL. Despite the name it is not ODbL: it is ODbL with commercial use removed, so criterion 1 is NOT met. Derivatives ARE permitted, non-commercially. See notes.` · _★_
-  What cities, states and regions report to CDP through the unified CDP–ICLEI Track: emissions inventories, climate hazards, adaptation plans, targets and renewable energy, self-reported and published annually.
 
 ### Community
 
