@@ -337,6 +337,10 @@ def main(argv: list[str]) -> int:
                 q[1] += 1
             elif r["adapter"] or r["reviews_count"]:
                 continue
+            elif r["status"] != "live":
+                # deprecated, stale, planned, paywalled: not review work. Asking a volunteer to
+                # read a source this list already calls deprecated wastes the scarcest thing here.
+                continue
             elif [x for x in r["pilots"] if x != "global"]:
                 q[2] += 1
             else:
