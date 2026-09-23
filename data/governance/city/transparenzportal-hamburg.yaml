@@ -12,6 +12,7 @@ api: https://suche.transparenz.hamburg.de/api/3/action/package_search
 pilot_relevance: []
 tags: [open-data-portal, transparency, ckan, public-budget, germany]
 added: 2026-09-10
+feeds_cells: [Governance|City]
 wired_in_planetai: false
 upstream_listed_in: []
 notes: |

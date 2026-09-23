@@ -14,6 +14,7 @@ pilot_relevance: [global]
 tags: [data-governance, transparency-index, csv, download-only, partial-country-coverage]
 added: 2026-09-09
 auth: none
+feeds_cells: [Governance|Planet]
 wired_in_planetai: false
 upstream_listed_in: []
 notes: |

@@ -12,6 +12,7 @@ api: https://opendata.paris.fr/api/explore/v2.1/catalog/datasets
 pilot_relevance: []
 tags: [open-data-portal, transparency, opendatasoft, france]
 added: 2026-09-09
+feeds_cells: [Governance|City]
 wired_in_planetai: false
 upstream_listed_in: []
 notes: |

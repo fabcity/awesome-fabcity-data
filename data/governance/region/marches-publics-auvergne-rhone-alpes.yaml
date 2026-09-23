@@ -12,6 +12,7 @@ api: https://www.data.gouv.fr/api/1/datasets/?organization=60784425bed18cfaefe5e
 pilot_relevance: []
 tags: [procurement, transparency, france, auvergne-rhone-alpes, region, commande-publique]
 added: 2026-09-09
+feeds_cells: [Governance|Region]
 updated: 2026-09-09
 wired_in_planetai: false
 upstream_listed_in: []

@@ -12,6 +12,7 @@ api: https://data.stat.fi/api/classifications/v2/classifications/kunta_1_2026010
 pilot_relevance: []
 tags: [admin-codes, classification, crosswalk, finland, api]
 added: 2026-09-11
+feeds_cells: []
 updated: 2026-09-11
 wired_in_planetai: false
 upstream_listed_in: []

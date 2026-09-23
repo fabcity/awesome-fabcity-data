@@ -12,6 +12,7 @@ api: https://analisi.transparenciacatalunya.cat/resource/
 pilot_relevance: [barcelona]
 tags: [open-data, catalonia, regional, generalitat, waste]
 added: 2026-05-04
+feeds_cells: [Governance|Region]
 wired_in_planetai: true
 upstream_listed_in: []
 notes: |

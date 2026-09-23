@@ -12,6 +12,7 @@ api: null
 pilot_relevance: []
 tags: [open-data-portal, arcgis-hub, geospatial, ljubljana, catalogue]
 added: 2026-09-11
+feeds_cells: [Governance|City]
 updated: 2026-09-11
 wired_in_planetai: false
 upstream_listed_in: []

@@ -13,6 +13,7 @@ api: null
 pilot_relevance: []
 tags: [spend-transparency, transactions, csv, stale, plymouth, england]
 added: 2026-09-11
+feeds_cells: [Economic|City]
 updated: 2026-09-11
 wired_in_planetai: false
 upstream_listed_in: []

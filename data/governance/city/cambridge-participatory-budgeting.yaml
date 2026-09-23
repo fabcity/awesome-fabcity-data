@@ -12,6 +12,7 @@ api: https://data.cambridgema.gov/resource/54vd-wdqj.json
 pilot_relevance: [boston]
 tags: [participatory-budgeting, participation, transparency, united-states]
 added: 2026-09-10
+feeds_cells: [Governance|City]
 wired_in_planetai: false
 upstream_listed_in: []
 notes: |

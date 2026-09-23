@@ -12,6 +12,7 @@ api: null
 pilot_relevance: [global]
 tags: [sdg-index, sdsn, on-track-assessment, excel, indicators]
 added: 2026-09-09
+feeds_cells: []
 wired_in_planetai: false
 upstream_listed_in: []
 notes: |

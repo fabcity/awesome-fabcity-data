@@ -12,6 +12,7 @@ api: https://ted.europa.eu/api/v3.0/
 pilot_relevance: [barcelona]
 tags: [procurement, eu, public-tender, action-latency, open-data-portal-eu]
 added: 2026-05-04
+feeds_cells: []
 wired_in_planetai: false
 upstream_listed_in: [awesome-public-datasets]
 notes: |

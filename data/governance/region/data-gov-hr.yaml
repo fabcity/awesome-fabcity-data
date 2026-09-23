@@ -12,6 +12,7 @@ api: https://data.gov.hr/ckan/api/3/action/package_search
 pilot_relevance: []
 tags: [open-data, croatia, ckan, national-portal]
 added: 2026-09-11
+feeds_cells: [Governance|Region]
 updated: 2026-09-11
 wired_in_planetai: false
 upstream_listed_in: []
