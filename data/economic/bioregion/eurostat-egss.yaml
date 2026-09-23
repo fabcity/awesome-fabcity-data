@@ -14,7 +14,6 @@ pilot_relevance: [barcelona, global]
 tags: [eurostat, egss, green-jobs, environmental-economy, europe-only, open-api]
 added: 2026-09-09
 feeds_cells: []
-wired_in_planetai: false
 upstream_listed_in: []
 notes: |
   Verified 2026-09-09 with a live call returning real values: Spain 2022,

@@ -15,7 +15,6 @@ tags: [oecd, sdmx, green-growth, green-jobs, environmental-taxes, open-api]
 added: 2026-09-09
 auth: none
 feeds_cells: []
-wired_in_planetai: false
 upstream_listed_in: []
 notes: |
   Verified 2026-09-09 with a live call returning JSON observations for

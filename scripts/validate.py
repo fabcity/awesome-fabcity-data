@@ -171,20 +171,8 @@ def pass_entries() -> tuple[int, dict]:
             failures += 1
             continue
 
-        if entry.get("wired_in_planetai") and not entry.get("adapter"):
-            warnings.append(rel)
-
         entries[path.relative_to(DATA_DIR).with_suffix("").as_posix()] = entry
         print(f"[ ok ] {rel}")
-
-    if warnings:
-        print(
-            f"\n[warn] {len(warnings)} entr{'y' if len(warnings) == 1 else 'ies'} say "
-            f"wired_in_planetai: true and name no `adapter`. That boolean is deprecated and "
-            f"unverifiable — say which code reads the source, or drop the claim:"
-        )
-        for rel in warnings:
-            print(f"       {rel}")
 
     print(f"\n{len(yaml_files)} entr{'y' if len(yaml_files) == 1 else 'ies'} checked.")
     return failures, entries

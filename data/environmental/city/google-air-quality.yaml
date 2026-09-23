@@ -13,7 +13,6 @@ tags: [air-quality, gridded, google, paywalled-tier]
 added: 2026-05-04
 auth: paid
 feeds_cells: [Environmental|City]
-wired_in_planetai: true
 upstream_listed_in: []
 notes: |
   Free quota of 10k requests/month per project; sufficient for

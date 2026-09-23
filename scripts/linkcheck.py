@@ -117,7 +117,7 @@ def entries(only: str | None) -> list[dict]:
         rows.append({"id": str(p.relative_to(ROOT / "data"))[:-len(".yaml")],
                      "name": d.get("name", ""), "status": d.get("status", ""),
                      "url": d.get("url"), "api": d.get("api"),
-                     "wired": bool(d.get("wired_in_planetai"))})
+                     "adapter": d.get("adapter")})
     return rows
 
 
@@ -166,7 +166,7 @@ def main() -> int:
             continue
         print(f"\n## {want} ({len(hits)})")
         for r, f, res in sorted(hits, key=lambda h: h[0]["id"]):
-            flag = " ⚑wired" if r["wired"] else ""
+            flag = f" ⚑{r['adapter']}" if r["adapter"] else ""
             extra = f" → {res['final']}" if res.get("final") else (f"  {res.get('error','')}" if res.get("error") else "")
             print(f"  {r['id']}  [{r['status']}]{flag}\n      {f}: {res['url']}{extra}")
     return 0

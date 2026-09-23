@@ -15,7 +15,6 @@ added: 2026-09-18
 adapter: core:baliairdispatch
 feeds_cells: [Environmental|City]
 auth: none
-wired_in_planetai: true
 upstream_listed_in: []
 notes: |
   A peer observatory, not a sensor network: credit both the archive and the

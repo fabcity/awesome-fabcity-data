@@ -14,7 +14,6 @@ tags: [public-finance, national-budget, budget-execution, argentina]
 added: 2026-09-10
 auth: api-key
 feeds_cells: []
-wired_in_planetai: false
 upstream_listed_in: []
 notes: |
   VERIFIED 2026-09-10. Four documented POST endpoints: consulta de crédito,

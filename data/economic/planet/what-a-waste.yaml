@@ -12,7 +12,6 @@ pilot_relevance: [global]
 tags: [waste, msw, world-bank, circular-economy]
 added: 2026-05-04
 feeds_cells: [Economic|Planet]
-wired_in_planetai: true
 upstream_listed_in: []
 notes: |
   Used in PLANETAI Wave 16 Sankey triptych as the right-hand panel

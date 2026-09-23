@@ -23,10 +23,10 @@ author, a date and a place, and it lives at `reviews/{entry}/{date}-{reviewer}.y
 dereferenced. This script carries a *summary* of that testimony (how many, by whom, when) so a
 queue can be built on it; the testimony itself stays in git.
 
-WHY THIS EXISTS NOW. The mirror was last synced 2026-07-04 with 32 of what are now 237 entries, and
-it still carries a `wired` checkbox. CONTRIBUTING 2b says `wired_in_planetai` is "removed in the
-release after the mirror reads `adapter` instead" — so this script is the gate on deleting that
-field. It writes `adapter` and `feeds_cells` and does not write `wired`.
+WHY THIS EXISTS. The mirror was last synced 2026-07-04 with 32 of what are now 237 entries, and it
+carried a `wired` checkbox. CONTRIBUTING 2b made this script the gate on deleting `wired_in_planetai`
+— "removed in the release after the mirror reads `adapter` instead". That happened on 2026-09-23:
+237 of 237 rows synced, `adapter` in its own column, the boolean gone from the schema and the base.
 
 Standard library only, deliberately: the repo's dependencies are pyyaml and jsonschema, and one
 more for an HTTP POST is not a trade worth making. PyYAML is already here.
@@ -367,9 +367,6 @@ def main(argv: list[str]) -> int:
             print("  refusing to write: the fields above do not exist and the batch would fail.",
                   file=sys.stderr)
             return 1
-    if present is not None and "wired" in present:
-        print("  note: the table still has a `wired` checkbox. This sync stops writing it; it can be")
-        print("        deleted once nothing reads it, which is what CONTRIBUTING 2b is waiting for.")
 
     code = push(TABLE, rows, "slug", argv)
     code = max(code, push(REVIEWERS_TABLE, people, "name", argv))

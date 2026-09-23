@@ -67,10 +67,6 @@
       "format": "date",
       "description": "ISO date of the last review of this entry's status / metadata."
     },
-    "wired_in_planetai": {
-      "type": "boolean",
-      "description": "DEPRECATED, derived — read `adapter` instead. A hand-set boolean in this repository asserting runtime state in another one, which is why it drifted. The validator warns when this is true and `adapter` is absent. Kept only until the Airtable Data Sources mirror reads `adapter`; removed in the release after that."
-    },
     "adapter": {
       "type": "string",
       "pattern": "^(core:[a-z_]+|pack:[a-z0-9-]+)$",

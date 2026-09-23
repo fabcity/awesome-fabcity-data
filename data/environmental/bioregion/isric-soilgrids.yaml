@@ -13,7 +13,6 @@ pilot_relevance: [global]
 tags: [soil, soilgrids, wcs, raster-250m, modelled, geospatial]
 added: 2026-09-09
 feeds_cells: []
-wired_in_planetai: false
 upstream_listed_in: []
 notes: |
   Verified 2026-09-09. REST API IS DEGRADED - do not rely on it. Three

@@ -15,7 +15,6 @@ added: 2026-09-10
 updated: 2026-09-10
 auth: api-key
 feeds_cells: [Economic|City]
-wired_in_planetai: false
 upstream_listed_in: []
 notes: |
   Added 2026-09-10, FCI Regime 1 harvest (wave 6, Mexico). Fills the

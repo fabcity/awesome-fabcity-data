@@ -13,7 +13,6 @@ pilot_relevance: []
 tags: [open-data-portal, ckan, argentina, catalogue]
 added: 2026-09-10
 feeds_cells: [Governance|Region]
-wired_in_planetai: false
 upstream_listed_in: []
 notes: |
   VERIFIED 2026-09-10. Platform self-reports CKAN 2.11.5. Homepage counters
