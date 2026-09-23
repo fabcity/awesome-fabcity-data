@@ -15,11 +15,18 @@
 #    that made the path dead on arrival; the label was created on 2026-09-22. On a fork, create it
 #    first: `gh label create source-review --color 0E8A16`.
 #
-# 1. GITHUB_TOKEN is all it needs, and `contents: write` + `pull-requests: write` below is all it
-#    is given. It does need the repository setting *Actions → General → Allow GitHub Actions to
-#    create and approve pull requests* to be on. That is a setting, not a token: if it is off,
-#    `gh pr create` fails, and the last step comments the branch name on the issue so a person can
-#    open the PR by hand rather than losing the review.
+# 1. GITHUB_TOKEN is all it needs, and the three scopes below are all it is given. `issues: write`
+#    is not optional and its absence is invisible until the run: every `gh issue comment` here dies
+#    with `GraphQL: Resource not accessible by integration (addComment)`, and so does
+#    `gh pr create --label`, because labelling a PR goes through the issues API. That was the second
+#    reason this path was dead on arrival — the first was the missing label in note 0 — and it was
+#    found on 2026-09-23 by firing the workflow at an entry that does not exist (#22). Both failures
+#    look like "the workflow is broken" and neither is: it had simply never been run.
+#
+#    It also needs the repository setting *Actions → General → Allow GitHub Actions to create and
+#    approve pull requests* to be on. That is a setting, not a token: if it is off, `gh pr create`
+#    fails, and the last step comments the branch name on the issue so a person can open the PR by
+#    hand rather than losing the review. Verified on for this repository on 2026-09-23.
 #
 # 2. A pull request opened with GITHUB_TOKEN does not trigger `on: pull_request` workflows — that
 #    is GitHub's loop guard, not a bug here. So validate.yml will not run on the review PR by
@@ -34,6 +41,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  issues: write
 
 jobs:
   review:
