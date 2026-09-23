@@ -5,15 +5,20 @@ indicator_categories:
 - watershed condition
 - regional emissions
 minimum_indicators:
-- name: Renewable electricity generation capacity
-  unit: MW
-  aggregation: latest
+- name: Renewable electricity generation
+  unit: GWh/yr
+  aggregation: annual-total
 - name: Land under each land-use class
   unit: km2
   aggregation: latest
-does_not_claim: A regional total conceals where within the region anything is. Renewable capacity
-  sited in one valley is not access for the whole region, and land-use area says nothing about condition
-  or tenure. Nothing here is a measure of energy actually consumed locally.
+does_not_claim: A regional total conceals where within the region anything is. Generation in one valley
+  is not access for the whole region, and land-use area says nothing about condition or tenure. Nothing
+  here is a measure of energy actually consumed locally. Generation is also not capacity — a wet year
+  and a new dam move this number the same way, so a rise is not evidence that anything was built, and
+  reading it as installed capacity is unsupported.
 notes: '7 entries filed and it is the thinnest environmental cell — four of the seven are Bhutan NSDI
-  layers and one is an Indonesian forecast feed. Treat the minimum set as provisional: it was written
-  from what exists rather than from what the tier needs, and it is the cell most likely to be wrong.'
+  layers and one is an Indonesian forecast feed. The energy row asked for installed capacity in MW
+  until 2026-09-23. No source in this list published that at region scale, while the one that exists
+  (Occitanie) publishes generation in GWh — 221 rows, every one GWh, 2008-2024 — so the minimum was
+  one nothing could meet. Changed to match what regions actually publish. Capacity stays in
+  indicator_categories because it is still the thing you would rather know.'
