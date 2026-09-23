@@ -13,7 +13,6 @@ pilot_relevance: [global]
 tags: [fab-lab, distributed-production, boeing-2024, community-tier, fci]
 added: 2026-05-04
 feeds_cells: []
-wired_in_planetai: true
 upstream_listed_in: []
 notes: |
   Boeing 2024 chapter is the methodological predecessor of the

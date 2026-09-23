@@ -14,7 +14,6 @@ pilot_relevance: [global]
 tags: [water-treaties, transboundary-water, excel, basin-id-join, cross-jurisdictional, no-licence-stated]
 added: 2026-09-09
 feeds_cells: [Governance|Bioregion]
-wired_in_planetai: false
 upstream_listed_in: []
 notes: |
   Verified 2026-09-09. Filed as STALE: the most recent Excel is version

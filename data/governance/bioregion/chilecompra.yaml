@@ -14,7 +14,6 @@ tags: [procurement, chile, action-latency, public-tender]
 added: 2026-05-04
 auth: key-free-rate-limited
 feeds_cells: []
-wired_in_planetai: false
 upstream_listed_in: []
 notes: |
   Santiago pilot's TED equivalent. Provides the H_0-A action-latency

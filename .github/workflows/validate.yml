@@ -53,10 +53,13 @@ jobs:
             exit 1
           fi
 
-      # The node declares what it reads. `wired_in_planetai` is typed by hand here, so the two drift;
-      # this fails only on the half that is checkable — a pack reads a source and its entry says
-      # otherwise. The other half is printed, see scripts/wired.py. `adapter`, which replaces that
-      # boolean, is checkable in both directions and the same step fails on a dangling one.
+      # The node declares what it reads, and `adapter` says what reads each source here. Both
+      # directions are errors: a pack reading a source no adapter names, and an adapter naming a
+      # pack or function the node does not have. This gate replaced a hand-typed boolean that was
+      # checkable in neither direction; see scripts/wired.py.
+      #
+      # NOTE this reads planetai-node's LIVE main, so a green here expires when the node ships,
+      # with no commit to this repository. A red gate you did not cause is the node having moved.
       - name: Check out planetai-node (public) to read what its packs declare
         uses: actions/checkout@v5
         with:
@@ -64,7 +67,7 @@ jobs:
           path: .planetai-node
           fetch-depth: 0
 
-      - name: wired_in_planetai agrees with the node's packs
+      - name: adapter agrees with the node's packs, both directions
         env:
           PLANETAI_NODE_REPO: .planetai-node
         run: python scripts/wired.py --check

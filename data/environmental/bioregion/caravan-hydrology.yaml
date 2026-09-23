@@ -13,7 +13,6 @@ pilot_relevance: [bali, barcelona, boston, santiago]
 tags: [hydrology, streamflow, watershed, benchmark, machine-learning]
 added: 2026-05-04
 feeds_cells: []
-wired_in_planetai: false
 upstream_listed_in: [awesome-public-datasets]
 notes: |
   Bulk download via Zenodo. Catchments include Tukad Badung

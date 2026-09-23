@@ -14,7 +14,6 @@ tags: [admin-boundaries, geocoding, identifiers, argentina, federation]
 added: 2026-09-10
 auth: key-free-rate-limited
 feeds_cells: []
-wired_in_planetai: false
 upstream_listed_in: []
 notes: |
   VERIFIED 2026-09-10. A live query to

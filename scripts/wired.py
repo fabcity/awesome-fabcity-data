@@ -1,32 +1,26 @@
 #!/usr/bin/env python3
-"""Check `wired_in_planetai` against what the node repo actually declares.
+"""Check `adapter` against what the node repo actually declares.
 
     python scripts/wired.py              # report
-    python scripts/wired.py --check      # exit 1 if a pack reads a source this list calls unwired
+    python scripts/wired.py --check      # exit 1 if a pack reads a source no adapter names
 
-`wired_in_planetai` is typed by hand, and a hand-typed claim about another repository drifts the
-moment either side moves. The node declares what it reads: every `packs/*/pack.yaml` there carries
+The node declares what it reads: every `packs/*/pack.yaml` there carries
 `sources: [<pillar>/<scale>/<slug>, ...]`, the same ids this list files its entries under. That is
-checkable, and this checks it.
+checkable, and this checks it in both directions, which is the whole argument for `adapter`.
 
-**Two directions, and only one of them is an error.**
+- A pack declares a source and no entry here names an `adapter` for it. This list is wrong about a
+  fact it can see, and `--check` fails.
+- An `adapter` names something the node does not have: `pack:<id>` with no such directory, or
+  `core:<fn>` with no such function in `app/sources.py` or `app/bootstrap.py`. Also a failure. A
+  pointer whose whole justification is that it can be dereferenced has to be dereferenced.
 
-- A pack declares a source and the entry names neither an `adapter` nor the old boolean. That is this
-  list being wrong about a fact it can see, and `--check` fails on it. Either field answers it:
-  `adapter` is the one CONTRIBUTING §2b tells you to write, and it says *do not* set the boolean on a
-  new entry, so this check must accept the field it asks for or the two documents contradict.
-- An entry says `true` and no pack declares it. That is *reported, not failed*, because this script
-  cannot see the other half of the node — `config/channels.yml` and `app/bootstrap.py` read sources
-  (AirGradient, PurpleAir, Smart Citizen, NASA POWER, CAMS) without naming a registry id anywhere —
-  and it cannot see the Index side at all. Some of those flags are probably right.
+This replaced `wired_in_planetai`, retired 2026-09-23. That was a boolean typed in this repository
+asserting runtime state in another one, and it drifted exactly as such a claim does. At the end it
+read 26 true, of which 12 had no pack declaring them and no adapter naming anything, unverifiable
+in either direction. The field was two claims wearing one name, node pack or anything downstream
+including index.fab.city, and nothing ever answered which. `adapter` answers one question and can
+be checked on both sides.
 
-That second list is the open question rather than a bug: **what does `wired_in_planetai` mean?** A
-node pack only, or anything downstream of this registry including index.fab.city? Until that is
-answered, the field is two claims wearing one name. Answer it, then this script can fail on both
-directions, or the field can split in two.
-
-The node repo is a sibling checkout and is absent in CI unless the workflow checks it out; without
-it this prints one line and exits 0. Point it somewhere else with PLANETAI_NODE_REPO.
 """
 from __future__ import annotations
 
@@ -86,21 +80,12 @@ def node_offers() -> tuple[set[str], set[str]]:
 
 
 def adapters() -> dict[str, str]:
-    """Every entry's `adapter:` value, keyed by registry id. Read as text, like flagged()."""
+    """Every entry's `adapter:` value, keyed by registry id. Read as text, one flat key per file."""
     out = {}
     for p in sorted((ROOT / "data").rglob("*.yaml")):
         m = re.search(r"^adapter:\s*[\"']?([a-z_:0-9-]+)[\"']?\s*$", p.read_text(), re.M)
         if m:
             out[str(p.relative_to(ROOT / "data"))[: -len(".yaml")]] = m.group(1)
-    return out
-
-
-def flagged() -> set[str]:
-    """Entries claiming a wiring. Read as text: the file is one flat mapping and this is one key."""
-    out = set()
-    for p in sorted((ROOT / "data").rglob("*.yaml")):
-        if re.search(r"^wired_in_planetai:\s*true\s*$", p.read_text(), re.M):
-            out.add(str(p.relative_to(ROOT / "data"))[: -len(".yaml")])
     return out
 
 
@@ -110,24 +95,15 @@ def main(argv: list[str]) -> int:
         return 0
 
     declared, at = node_declares()
-    claims = flagged()
     ad = adapters()
-    missing = sorted(declared - claims - set(ad))  # a pack reads it; neither field here says so
-    unbacked = sorted(claims - declared)           # the boolean says so; no pack declares it
+    missing = sorted(declared - set(ad))  # a pack reads it and no adapter here names anything
 
-    print(f"  {len(declared)} sources declared by node packs ({at}); {len(claims)} entries flagged wired")
+    print(f"  {len(declared)} sources declared by node packs ({at}); {len(ad)} entries name an adapter")
 
     if missing:
-        print(f"  x {len(missing)} entr{'y' if len(missing) == 1 else 'ies'} a pack reads and this list calls unwired:")
+        print(f"  x {len(missing)} entr{'y' if len(missing) == 1 else 'ies'} a pack reads and no adapter names:")
         for i in missing:
-            print(f"      data/{i}.yaml — name what reads it: adapter: pack:<id> (CONTRIBUTING §2b)")
-
-    if unbacked:
-        print(f"  · {len(unbacked)} flagged wired with no pack declaring them. Not an error: the node also reads")
-        print("    sources through config/channels.yml and app/bootstrap.py without naming a registry id,")
-        print("    and the Index is not visible from here. See the header — the word needs a definition.")
-        for i in unbacked:
-            print(f"      data/{i}.yaml")
+            print(f"      data/{i}.yaml — name what reads it: adapter: pack:<id> (CONTRIBUTING 2b)")
 
     # `adapter` is the replacement for that boolean, and its whole justification is that a pointer can be
     # dereferenced. So dereference it: pack:<id> must be a directory under packs/, core:<fn> a function in

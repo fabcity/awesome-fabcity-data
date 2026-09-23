@@ -14,7 +14,6 @@ pilot_relevance: [global]
 tags: [river-basins, transboundary-water, shapefile, bioregion-boundary, cross-jurisdictional]
 added: 2026-09-09
 feeds_cells: []
-wired_in_planetai: false
 upstream_listed_in: []
 notes: |
   Verified 2026-09-09. Current release 2024-08-07: https://transboundarywa

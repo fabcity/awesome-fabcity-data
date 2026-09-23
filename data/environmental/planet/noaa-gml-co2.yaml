@@ -13,7 +13,6 @@ pilot_relevance: [global]
 tags: [co2, ghg-concentration, atmospheric, flat-file, noaa]
 added: 2026-09-09
 feeds_cells: [Environmental|Planet]
-wired_in_planetai: false
 upstream_listed_in: []
 notes: |
   Verified 2026-09-09 by fetching the data file itself:

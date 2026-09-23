@@ -13,7 +13,6 @@ pilot_relevance: [global]
 tags: [biodiversity, species-occurrence, ecology]
 added: 2026-05-04
 feeds_cells: []
-wired_in_planetai: true
 upstream_listed_in: [awesome-public-datasets]
 notes: |
   Wired in PLANETAI observatory (rare-species panel).

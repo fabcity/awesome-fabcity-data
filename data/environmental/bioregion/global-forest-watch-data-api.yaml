@@ -14,7 +14,6 @@ tags: [forest-cover, tree-cover-loss, hansen, raster-30m, geospatial]
 added: 2026-09-09
 auth: none
 feeds_cells: [Environmental|Bioregion]
-wired_in_planetai: false
 upstream_listed_in: []
 notes: |
   Verified 2026-09-09. GET /datasets and GET /dataset/{id} return full

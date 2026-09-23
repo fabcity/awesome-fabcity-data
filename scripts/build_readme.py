@@ -137,7 +137,7 @@ def render_entry(entry: Dict[str, Any], reviews: Dict[str, str]) -> str:
     status = fmt_status(entry["status"])
     license_ = entry["license"]
     pilots = fmt_pilots(entry.get("pilot_relevance", []))
-    # The 🔌 badge is drawn from `adapter`, not from `wired_in_planetai`: a pointer at the code that
+    # The 🔌 badge is drawn from `adapter`, which replaced a hand-typed boolean: a pointer at code that
     # reads the source can be checked against that code, and the boolean never could. See CONTRIBUTING §2b.
     adapter = entry.get("adapter")
     act_kind = entry.get("act_kind")

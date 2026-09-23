@@ -13,7 +13,6 @@ pilot_relevance: [global]
 tags: [news, media, events, sentiment, attention]
 added: 2026-05-04
 feeds_cells: []
-wired_in_planetai: false
 upstream_listed_in: [awesome-public-datasets]
 notes: |
   The cheapest H_0-A baseline-attention layer available.

@@ -14,7 +14,6 @@ pilot_relevance: [barcelona, global]
 tags: [eurostat, circular-economy, circular-material-use-rate, europe-only, open-api]
 added: 2026-09-09
 feeds_cells: [Economic|Bioregion]
-wired_in_planetai: false
 upstream_listed_in: []
 notes: |
   Verified 2026-09-09 with a live call:

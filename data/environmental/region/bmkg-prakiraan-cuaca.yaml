@@ -15,7 +15,6 @@ added: 2026-09-18
 adapter: pack:forecast
 feeds_cells: []
 auth: key-free-rate-limited
-wired_in_planetai: true
 upstream_listed_in: []
 notes: |
   Query: /publik/prakiraan-cuaca?adm4=<kode wilayah tingkat IV>. Returns

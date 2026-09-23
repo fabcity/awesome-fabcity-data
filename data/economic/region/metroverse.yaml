@@ -13,7 +13,6 @@ pilot_relevance: [barcelona, boston, santiago]
 tags: [economic-complexity, metro-area, harvard, urban-economics]
 added: 2026-05-04
 feeds_cells: [Economic|Region]
-wired_in_planetai: true
 upstream_listed_in: []
 notes: |
   No public API; bulk download via the site's research portal.

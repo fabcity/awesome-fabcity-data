@@ -14,7 +14,6 @@ pilot_relevance: [global]
 tags: [water-quality, freshwater, gemstat, unep, zenodo, sparse-coverage]
 added: 2026-09-09
 feeds_cells: []
-wired_in_planetai: false
 upstream_listed_in: []
 notes: |
   Verified 2026-09-09. v2, 80 CSVs in a single 108.7 MB ZIP, Zenodo DOI

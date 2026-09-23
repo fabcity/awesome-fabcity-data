@@ -13,7 +13,6 @@ pilot_relevance: [global]
 tags: [land-cover, forest-cover, raster-10m, cog, sentinel, geospatial]
 added: 2026-09-09
 feeds_cells: [Environmental|Bioregion]
-wired_in_planetai: false
 upstream_listed_in: []
 notes: |
   Verified 2026-09-09. Effectively frozen: only 2020 (v100) and 2021

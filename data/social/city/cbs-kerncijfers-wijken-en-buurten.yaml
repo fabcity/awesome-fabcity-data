@@ -14,7 +14,6 @@ tags: [social-indicators, netherlands, cbs, statline, odata, neighbourhood]
 added: 2026-09-11
 feeds_cells: [Social|City]
 updated: 2026-09-11
-wired_in_planetai: false
 upstream_listed_in: []
 notes: |
   Verified 2026-09-11 in the FCI Regime 1 harvest (wave 10) by querying the

@@ -208,20 +208,22 @@ A pack that reads a source this list calls unwired fails. An `adapter` naming a 
 have, or a function that is not in `app/sources.py` or `app/bootstrap.py`, fails. There is no half this
 cannot see, which is the entire argument for replacing the boolean rather than repairing it.
 
-`wired_in_planetai` stays for now — the Airtable Data Sources mirror still reads it — and
-`scripts/validate.py` prints a warning for every entry that says `true` and names no `adapter`. Do not
-set it on a new entry. It is removed in the release after the mirror reads `adapter` instead.
+**`wired_in_planetai` was retired on 2026-09-23** and is gone from the schema, from all 210 entries
+that carried it, and from the Airtable base. Both halves of the condition this file set were met and
+checked rather than assumed: the mirror syncs 237 of 237 rows with `adapter` in its own column and
+`--check` exits 0, and nothing read the checkbox — the `Data Sources` table had one unfiltered grid
+view, the base had zero automations and zero published interfaces.
 
-`scripts/sync_airtable.py` is what makes that release possible: it pushes the registry into the
-mirror one way, writes `adapter` and `feeds_cells`, and deliberately does not write `wired`. Run
-`--plan` to see the records with no key and no network; `--check` to compare; `--write` to upsert.
+What the boolean was actually worth, measured on the day it went: 26 entries said `true`. Fourteen
+also named an `adapter`, so nothing was lost there. **Twelve named no adapter and no pack declared
+them**, and grepping the node's code for all twelve found none of them — every apparent hit was the
+node's own vendored copy of the registry entry, not code reading the source. Those twelve claims are
+listed in #3 so the record survives the field. If something really does read one, it says so with an
+`adapter` and this gate checks it.
 
-**The mirror was synced on 2026-09-23** — 237 of 237 rows, with `adapter` in its own column, and
-`--check` exits 0. So the first half of the condition is met. What is left is the second half:
-somebody has to confirm nothing still reads the `wired` checkbox — a view, an interface, an
-automation — and then `wired_in_planetai` can be deleted from the schema, the entries and the base.
-The sync stopped writing that field; it did not delete it, because deleting a column somebody may
-be reading is not a script's decision to make.
+`scripts/sync_airtable.py` pushes the registry into the mirror one way, writes `adapter` and
+`feeds_cells`, and never wrote `wired`. Run `--plan` to see the records with no key and no network;
+`--check` to compare; `--write` to upsert.
 
 The same script syncs `REVIEWERS.md` into a **Reviewers** table, keyed on name, and for a sharper
 reason than convenience: each row in that file belongs to the person named in it, so a shared base

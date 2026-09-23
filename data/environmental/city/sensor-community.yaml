@@ -13,7 +13,6 @@ pilot_relevance: [barcelona, global]
 tags: [air-quality, citizen-science, particulate-matter, eu]
 added: 2026-05-04
 feeds_cells: [Environmental|City]
-wired_in_planetai: false
 upstream_listed_in: []
 notes: |
   Formerly known as luftdaten.info. Coverage densest in Germany,
