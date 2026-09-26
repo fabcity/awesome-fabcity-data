@@ -29,8 +29,9 @@ notes: |
   figure, so the boundary or scope differs. Urban Audit codes distinguish city (C),
   greater city and functional urban area.
 
-  WHY THIS CELL. Environmental|City's waste row, and the only openly machine-readable
-  total for Hamburg. Divide by the Urban Audit population for kg per capita.
+  WHY THIS CELL. Environmental|City's waste row. Divide by the Urban Audit population for kg
+  per capita. For Hamburg, statistikamt-nord-abfall-einsammlung-hamburg now gives the split
+  this total lacks (775.1 kt collected in 2024, against 765.9 kt here).
 
   WHAT IT DOES NOT CLAIM. A total only: no recycling or disposal split, so residual waste
   cannot be derived from it. Coverage varies by city and year.
