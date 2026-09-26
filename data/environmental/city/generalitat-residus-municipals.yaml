@@ -13,7 +13,7 @@ pilot_relevance: [barcelona]
 tags: [waste, msw, recycling, landfill, catalonia, municipal, socrata]
 added: 2026-09-26
 auth: none
-feeds_cells: [Environmental|City]
+feeds_cells: [Environmental|City, Environmental|Region]
 upstream_listed_in: []
 notes: |
   VERIFIED 2026-09-26, not yet read for a real territory.
@@ -34,6 +34,9 @@ notes: |
   WHY THIS CELL. Environmental|City asks for municipal solid waste per capita, and this is
   it at municipal resolution. The disposal split also gives residual waste per capita, the
   proposed "trash out" measure (awesome-fabcity-data#42).
+
+  REGION. Summed over all 948 municipalities, 2024: residual 2,030,395 t for 8,012,231
+  people, 253.4 kg/capita (Environmental|Region's waste row).
 
   WHAT IT DOES NOT CLAIM. This is waste collected, not generated: a municipality can
   generate waste its system never counts. The separate-collection rate is not a recycling

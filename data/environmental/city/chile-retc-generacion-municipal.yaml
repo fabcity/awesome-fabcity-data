@@ -13,7 +13,7 @@ pilot_relevance: [santiago]
 tags: [waste, msw, landfill, chile, retc, sinader, comuna, ckan]
 added: 2026-09-26
 auth: none
-feeds_cells: [Environmental|City]
+feeds_cells: [Environmental|City, Environmental|Region]
 upstream_listed_in: []
 notes: |
   VERIFIED 2026-09-26, not yet read for a real territory.
@@ -31,7 +31,8 @@ notes: |
 
   WHY THIS CELL. The Coverage Tracker called SINADER "the best waste-tonnage source in the
   wave" for Santiago but never filed it. It serves Environmental|City's waste row per
-  comuna, and the destination split gives residual waste (awesome-fabcity-data#42).
+  comuna, and the destination split gives residual waste (awesome-fabcity-data#42). The
+  region column serves Environmental|Region; per capita needs a population source.
 
   WHAT IT DOES NOT CLAIM. These are declarations by municipalities and operators, not
   measurements. A comuna that declares late or not at all is missing, not zero. The
