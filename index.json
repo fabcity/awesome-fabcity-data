@@ -5,7 +5,7 @@
  "counts": {
   "entries": 257,
   "cells": 20,
-  "reviews": 2
+  "reviews": 3
  },
  "entries": [
   {
@@ -71,7 +71,7 @@
    "auth": "none",
    "pillar": "economic",
    "scale": "bioregion",
-   "status": "candidate",
+   "status": "live",
    "license": "Eurostat reuse policy (Commission Decision 2011/833/EU), reuse authorised with acknowledgement",
    "tags": [
     "waste",
@@ -92,7 +92,15 @@
    "added": "2026-09-26",
    "description": "Municipal waste per country, generated and by treatment (recycling, composting,\nenergy recovery, incineration, landfill), in tonnes and kg per inhabitant, 1995–2024,\nwith the recycling rate derived from it (2000–2024).\n",
    "notes": "VERIFIED 2026-09-26, not yet read for a real territory.\n\nLICENCE. Eurostat's copyright notice authorises reuse \"provided the source is\nacknowledged\" (Commission Decision of 12 December 2011, 2011/833/EU). The CC-BY-4.0 on\nthe website covers editorial content, not the statistics.\n\nENDPOINT. Key-free JSON-stat. env_wasmun, kg per inhabitant, 2024: Germany generated 628\nand recycled 420; Spain 456 and 194 (216 landfilled); France 530 and 217. cei_wm011,\nrecycling rate 2024: Germany 66.9%, Spain 42.5%, France 40.9%, EU27 48.1%. Operations\ninclude landfill, incineration, energy recovery, material recycling, composting and\npreparing for reuse.\n\nWHY THIS CELL. Economic|Bioregion's \"circularity\" category. It is not one of the cell's\nminimum indicators; the circular material use rate is. Its use is as the national\nbenchmark for the city and region waste rows (Environmental|City, Environmental|Region):\ngenerated minus recycled is the national counterpart of residual waste per capita, e.g.\nSpain 262 kg against Catalonia's 253 kg of residual (2024; the two count differently).\n\nWHAT IT DOES NOT CLAIM. A national figure hides every city and region inside it.\nCountries report under the EU Waste Framework Directive; Eurostat's flags mark estimates\nand breaks in series, and a comparison across a break is not a trend. EU and EFTA only.\n",
-   "reviews": []
+   "reviews": [
+    {
+     "by": "Tomas Diez",
+     "org": "Fab City",
+     "date": "2026-09-26",
+     "territory": "Barcelona",
+     "verdict": "usable"
+    }
+   ]
   },
   {
    "id": "economic/bioregion/eurostat-waste-trade",

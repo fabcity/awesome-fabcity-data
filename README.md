@@ -308,6 +308,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Eurostat's circularity headline indicator: the share of material recycled and fed back into the economy as a fraction of total material use. The only officially compiled, openly licensed, machine-readable circularity-share series in existence.
 - **[Eurostat — Environmental Goods and Services Sector (EGSS)](https://ec.europa.eu/eurostat/databrowser/view/env_ac_egss1/default/table?lang=en)** — ✅ `live` · `Eurostat re-use policy (Commission Decision 2011/833/EU) — free re-use with attribution, equivalent to CC-BY-4.0` · _BCN · ★_
   Eurostat's official green-jobs account: employment in full-time equivalents, value added and output for the environmental goods and services sector, split by NACE industry and CEPA/CReMA environmental purpose, for EU and EFTA countries.
+- **[Eurostat — Municipal waste by waste management operations (env_wasmun) and recycling rate (cei_wm011)](https://ec.europa.eu/eurostat/databrowser/view/env_wasmun/default/table)** — ✅ `live` · `Eurostat reuse policy (Commission Decision 2011/833/EU), reuse authorised with acknowledgement` · reviewed TD 2026-09 · _BCN_
+  Municipal waste per country, generated and by treatment (recycling, composting, energy recovery, incineration, landfill), in tonnes and kg per inhabitant, 1995–2024, with the recycling rate derived from it (2000–2024).
 - **[EXIOBASE 3 — multi-regional environmentally extended input-output tables](https://zenodo.org/records/5589597)** — ✅ `live` · `CC-BY-SA-4.0 for v3.8.2 — NOTE v3.9.6 and later are non-commercial only, see notes` · _★_
   Global multi-regional environmentally extended input-output database covering 44 countries plus 5 rest-of-world regions and 163 industries, with employment, material, land and emissions satellite accounts alongside monetary flows.
 - **[FAOSTAT Food Balance Sheets](https://www.fao.org/faostat/en/#data/FBS)** — ✅ `live` · `CC-BY-4.0 (FAO standard database licence — not confirmable from the pages fetched; verify at download)` · _★_
@@ -327,8 +329,6 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 #### Candidates — verified, not yet reviewed by anyone in the network
 
-- **[Eurostat — Municipal waste by waste management operations (env_wasmun) and recycling rate (cei_wm011)](https://ec.europa.eu/eurostat/databrowser/view/env_wasmun/default/table)** — 🌱 `candidate` · `Eurostat reuse policy (Commission Decision 2011/833/EU), reuse authorised with acknowledgement` · _BCN_
-  Municipal waste per country, generated and by treatment (recycling, composting, energy recovery, incineration, landfill), in tonnes and kg per inhabitant, 1995–2024, with the recycling rate derived from it (2000–2024).
 - **[Eurostat — Trade in waste by type of material and partner (env_wastrdmp)](https://ec.europa.eu/eurostat/databrowser/view/env_wastrdmp/default/table)** — 🌱 `candidate` · `Eurostat reuse policy (Commission Decision 2011/833/EU), reuse authorised with acknowledgement` · _BCN_
   Imports and exports of waste by material (paper, plastics, rubber, wood, textiles, glass, organic, mineral and metals) per country, by partner, in tonnes and euros, 2004–2025, including trade within and outside the EU.
 
