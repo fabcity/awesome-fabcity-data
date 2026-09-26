@@ -12,7 +12,8 @@ Exit codes, which the workflow branches on:
 
     0   a review file was written; the JSON on stdout says what happened
     3   the issue names an entry this list does not carry — write nothing, comment on the issue
-    4   the issue body is missing a required field — write nothing, comment on the issue
+    4   the issue body is missing a required field, or an answer the schema would refuse — write
+        nothing, comment on the issue
 
 **The promotion rule.** A review whose verdict is exactly `usable` promotes its entry from
 `candidate` to `live`, and only if the file carries the line `status: candidate` exactly once. The
@@ -38,6 +39,7 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
 REVIEWS_DIR = ROOT / "reviews"
 TEMPLATE = ROOT / ".github" / "ISSUE_TEMPLATE" / "source-review.yml"
+SCHEMA = ROOT / "schema" / "review.schema.json"
 
 ENTRY_RE = re.compile(r"^[a-z]+/[a-z]+/[a-z0-9-]+$")
 CANDIDATE_LINE = "status: candidate"
@@ -155,6 +157,25 @@ def promote(path: Path, verdict: str) -> bool:
     return True
 
 
+def schema_breaks(review: dict) -> list[str]:
+    """Each answer the schema would refuse that the form cannot stop: a string over its
+    `maxLength`, or a value outside an `enum` (an issue body can be edited by hand)."""
+    props = json.loads(SCHEMA.read_text(encoding="utf-8"))["properties"]
+    broken = []
+    for key, rule in props.items():
+        value = review.get(key)
+        if not isinstance(value, str):
+            continue
+        label = FIELDS.get(key, key)
+        if "maxLength" in rule and len(value) > rule["maxLength"]:
+            broken.append(f"**{label}** is {len(value):,} characters and the limit is "
+                          f"{rule['maxLength']:,}")
+        if "enum" in rule and value not in rule["enum"]:
+            broken.append(f"**{label}** is `{value}`, which is not one of "
+                          + ", ".join(f"`{v}`" for v in rule["enum"]))
+    return broken
+
+
 def build(body: str, issue: int, created: str) -> tuple[int, dict]:
     answers = parse_body(body)
     get = lambda key: answers.get(FIELDS[key], "").strip()
@@ -186,6 +207,16 @@ def build(body: str, issue: int, created: str) -> tuple[int, dict]:
                               "`{pillar}/{scale}/{slug}` — the entry's path under `data/` with "
                               "the `.yaml` removed, e.g. `environmental/city/openaq`. Edit the "
                               "issue body, then remove and re-add the `source-review` label."}
+
+    # The schema's own limits, read from the schema so there is one copy of them. Without this a
+    # note over maxLength parsed fine, the review file was written, and validate.py then failed the
+    # gates step — after the last point where anybody comments on the issue. The reviewer heard
+    # nothing. Found on the first real review (a 2,984-character note), before it was filed.
+    if broken := schema_breaks(review):
+        return 4, {"error": "schema", "fields": ", ".join(broken),
+                   "message": "This review does not fit the review schema: " + "; ".join(broken)
+                              + ". Edit the issue body, then remove and re-add the "
+                              "`source-review` label to try again."}
 
     entry_path = DATA_DIR / f"{review['entry']}.yaml"
     if not entry_path.is_file():
@@ -364,6 +395,19 @@ def selftest() -> int:
         check("build: and says so in one postable line",
               (out7["message"].count("\n"), out7["message"].startswith("This review is missing")),
               (0, True))
+
+        # Answers the form lets through and the schema refuses. These used to exit 0 and fail
+        # later, in validate.py, where nothing comments on the issue.
+        written_before = len(list(REVIEWS_DIR.rglob("*.yaml")))
+        code8, out8 = build(SAMPLE.replace("Two stations", "x" * 2001), 219, "2026-09-22")
+        check("build: a note over the schema's maxLength exits 4",
+              (code8, out8.get("fields", "").startswith("**Notes for the next reader** is 2,")),
+              (4, True))
+        check("build: and writes nothing", len(list(REVIEWS_DIR.rglob("*.yaml"))), written_before)
+        code9, out9 = build(SAMPLE.replace("\nusable\n", "\ngreat\n"), 220, "2026-09-22")
+        check("build: a hand-typed verdict outside the enum exits 4",
+              (code9, "`great`" in out9.get("message", "")), (4, True))
+        check("build: and the message is one postable line", out9.get("message", "\n").count("\n"), 0)
     ROOT = real_root
     DATA_DIR, REVIEWS_DIR = ROOT / "data", ROOT / "reviews"
 

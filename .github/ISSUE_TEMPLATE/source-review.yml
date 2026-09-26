@@ -137,7 +137,8 @@ body:
       description: >-
         Required by nothing and worth more than everything else in the file. The caveat behind
         `usable-with-caveats`, the reason behind `unusable`, the rate limit, the join you had to
-        build by hand, the series that ends without saying so.
+        build by hand, the series that ends without saying so. At most 2,000 characters; if yours
+        is longer, the workflow says so on this issue rather than cut it for you.
       placeholder: >-
         Station ids are the portal's own, not the national ones, so the join to districts had to be
         built from a lookup published as a PDF. Hourly data is 40 minutes behind wall clock.
