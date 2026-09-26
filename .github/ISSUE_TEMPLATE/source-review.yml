@@ -130,6 +130,18 @@ body:
       options:
         - label: My organisation publishes this source
 
+  - type: input
+    id: assisted_by
+    attributes:
+      label: Assisted by
+      description: >-
+        If an AI agent or a tool did part of the checks, name it (e.g. "Claude Code"). You are still
+        the reviewer: you read its findings, your name is on the verdict, and this issue comes from
+        your account. Leave it blank if you did the checks yourself.
+      placeholder: Claude Code
+    validations:
+      required: false
+
   - type: textarea
     id: note
     attributes:
