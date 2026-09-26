@@ -323,6 +323,13 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 - **[World Bank Changing Wealth of Nations (CWON)](https://datacatalog.worldbank.org/search/dataset/0042066)** — ✅ `live` · `CC-BY-4.0` · _★_
   World Bank wealth accounts measuring produced, human and natural capital as stocks per country. The only globally consistent open natural-capital valuation series, machine-readable through the Data360 API.
 
+#### Candidates — verified, not yet reviewed by anyone in the network
+
+- **[Eurostat — Municipal waste by waste management operations (env_wasmun) and recycling rate (cei_wm011)](https://ec.europa.eu/eurostat/databrowser/view/env_wasmun/default/table)** — 🌱 `candidate` · `Eurostat reuse policy (Commission Decision 2011/833/EU), reuse authorised with acknowledgement` · _BCN_
+  Municipal waste per country, generated and by treatment (recycling, composting, energy recovery, incineration, landfill), in tonnes and kg per inhabitant, 1995–2024, with the recycling rate derived from it (2000–2024).
+- **[Eurostat — Trade in waste by type of material and partner (env_wastrdmp)](https://ec.europa.eu/eurostat/databrowser/view/env_wastrdmp/default/table)** — 🌱 `candidate` · `Eurostat reuse policy (Commission Decision 2011/833/EU), reuse authorised with acknowledgement` · _BCN_
+  Imports and exports of waste by material (paper, plastics, rubber, wood, textiles, glass, organic, mineral and metals) per country, by partner, in tonnes and euros, 2004–2025, including trade within and outside the EU.
+
 ### Region
 
 - **[Asian KLEMS](http://www.asiaklems.net/)** — ✅ `live` · `custom open` · _BLI_
