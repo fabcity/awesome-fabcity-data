@@ -17,7 +17,7 @@ auth: none
 feeds_cells: [Economic|Region, Economic|Bioregion]
 upstream_listed_in: []
 notes: |
-  LIVE 2026-09-26. Read for a real territory by fabcity/fci-index `compute/trade.py` `regional()` (fci-index#19): the province of Barcelona and Catalonia, 2019 and 2024, in the Index's regional_trade output. There is no `adapter`, because that field names only planetai-node readers, so the join counts this entry unbacked until a source review lands. Filed for #42.
+  LIVE 2026-09-26. Read for a real territory by fabcity/fci-index `compute/trade.py` `regional()` (fci-index#19): the province of Barcelona and Catalonia, 2019 and 2024, in the Index's regional_trade output. There is no `adapter`, because that field names only planetai-node readers. What backs `live` is Tomas Diez's review for Barcelona (usable-with-caveats, #54, reviews/). Filed for #42.
 
   LICENCE. Idescat's legal notice (idescat.cat/institut/web) allows reuse "provided that its source is quoted, that the content of the information is not altered or denatured and that the date of the latest update ... is mentioned". These are Spain's default public-sector reuse conditions (Ley 37/2007), and no licence is named. Idescat may limit reuse to protect personal data or third-party rights, and users may not imply that Idescat endorses them. A reviewer should confirm this counts as open-equivalent.
 
