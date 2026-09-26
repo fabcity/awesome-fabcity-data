@@ -20,7 +20,7 @@ notes: |
 
   LICENCE. Idescat's legal notice (idescat.cat/institut/web) allows reuse "provided that its source is quoted, that the content of the information is not altered or denatured and that the date of the latest update ... is mentioned". These are Spain's default public-sector reuse conditions (Ley 37/2007), and no licence is named. Idescat may limit reuse to protect personal data or third-party rights, and users may not imply that Idescat endorses them. A reviewer should confirm this counts as open-equivalent.
 
-  ENDPOINT. Key-free JSON-stat, table 18132 (annual) and 18136 (monthly), updated 2026-02-24. Province of Barcelona (PROV=08), 2024: imports 87.45 bn EUR and 25.33 Mt, exports 77.17 bn EUR and 19.85 Mt. Values are thousand EUR and weights are kg. 2025 is provisional.
+  ENDPOINT. Key-free JSON-stat, table 18132 (annual) and 18136 (monthly), updated 2026-02-24. Province of Barcelona (PROV=08), 2024: imports 87.45 bn EUR and 25.33 Mt, exports 77.17 bn EUR and 19.85 Mt. Values are thousand EUR and weights are kg. Idescat flags 2024 and 2025 as provisional (status "p"), so both years can still move.
 
   WHY THESE CELLS. Economic|Region's external-trade row, in value. The weight columns are the regional import and export terms of a material-flow account (Economic|Bioregion), and MOD_TRANS splits them by sea, air, road and rail, which the gateway row cannot do.
 
