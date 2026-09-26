@@ -6,7 +6,7 @@ description: |
   key-free JSON API.
 pillar: social
 scale: city
-status: candidate
+status: live
 license: CC-BY-4.0
 api: https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/2855
 pilot_relevance: [barcelona, global]

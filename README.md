@@ -226,6 +226,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   City of Cambridge housing series: housing stock and residential properties by neighbourhood, residential permits from 1996, housing code violations, and foreclosure filings from 2003.
 - **[CBS Kerncijfers wijken en buurten](https://www.cbs.nl/nl-nl/cijfers/detail/85984NED)** — ✅ `live` · `Verveelvoudiging is toegestaan, mits het CBS als bron wordt vermeld (CC-BY-4.0 site-wide)`
   Statistics Netherlands' core indicators for every Dutch municipality, district and neighbourhood - population, household composition, income, housing, cars, energy use, distance to services - via the StatLine OData API.
+- **[INE Spain — Tempus3 JSON API](https://www.ine.es/)** — ✅ `live` · `CC-BY-4.0` · reviewed TD 2026-09 · _BCN · ★_
+  Spain's national statistics office: official municipal population, census, labour and price statistics for all 8,000-plus municipalities, through a key-free JSON API.
 - **[Seoul Employment Indicators (서울시 고용지표 통계)](https://data.seoul.go.kr/dataList/OA-475/S/1/datasetView.do)** — ⛔ `deprecated` · `공공누리 1유형 : 출처표시 (상업적 이용 및 변경 가능) - KOGL Type 1`
   Monthly unemployment rate, employment rate and labour-force participation rate for Seoul, broken out by sex. Sourced from KOSIS and republished by the city on its open data portal.
 - **[Seoul Living Population by Administrative Dong (행정동 단위 서울 생활인구)](https://data.seoul.go.kr/dataList/OA-14991/S/1/datasetView.do)** — ⛔ `deprecated` · `공공누리 1유형 : 출처표시 (상업적 이용 및 변경 가능) - KOGL Type 1`
@@ -237,8 +239,6 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Eurostat's city-level statistics: population, living conditions, labour, housing and environment for 969 European cities and greater cities, each with an official Urban Audit code that joins to LAU.
 - **[IBGE SIDRA / servicodados API (Brazil)](https://servicodados.ibge.gov.br/api/docs)** — 🌱 `candidate` · `No named licence. Open by Decreto nº 8.777/2016, the Brazilian federal Open Data Policy, which IBGE's own Dados Abertos page cites and under which it publishes its Plano de Dados Abertos. No Creative Commons statement anywhere on that page or the API docs.` · _★_
   Brazil's statistics institute: population, census, agriculture and economic aggregates for all 5,570 municipalities through a key-free API, with the official municipal code and its full territorial hierarchy on every row.
-- **[INE Spain — Tempus3 JSON API](https://www.ine.es/)** — 🌱 `candidate` · `CC-BY-4.0` · _BCN · ★_
-  Spain's national statistics office: official municipal population, census, labour and price statistics for all 8,000-plus municipalities, through a key-free JSON API.
 - **[INEGI Censo de Población y Vivienda 2020 — ITER (Mexico)](https://www.inegi.org.mx/programas/ccpv/2020/)** — 🌱 `candidate` · `Términos de Libre Uso de la Información del INEGI — copying, distribution, adaptation and commercial exploitation are all permitted with attribution. An open permission governed by Mexican law, not a named licence; no SPDX id exists for it.` · _★_
   Mexico's 2020 census, published down to the locality: population, housing, education and services for every locality in the country, with official geostatistical codes and coordinates, as open CSV.
 - **[JRC Global Human Settlement Layer (GHSL)](https://human-settlement.emergency.copernicus.eu/)** — 🌱 `candidate` · `CC-BY-4.0` · _★_
