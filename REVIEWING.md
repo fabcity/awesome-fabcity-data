@@ -13,8 +13,11 @@ Every entry in this list carries a `status`. `candidate` means somebody verified
 and nobody has read it for anywhere real. `live` means a named person read it for a named place and
 said it works — or that code in a node reads it every day.
 
-The list has **237 entries and 0 reviews**. Twelve are candidates. That is not a backlog to feel bad
-about; it is the reason your twenty minutes is worth more here than almost anywhere else in this
+**Reviews are still rare.** Most entries have none, and a `candidate` stays one until somebody's
+reading promotes it. The numbers are not written here, because they would be stale by the next
+merge: `counts` at the top of [`index.json`](index.json) is generated and always current, and each
+section of the [README](README.md) lists its candidates. That is not a backlog to feel bad about;
+it is the reason your twenty minutes is worth more here than almost anywhere else in this
 repository.
 
 **You are reviewing a source, not approving it.** `unusable` is a genuinely useful answer. So is
