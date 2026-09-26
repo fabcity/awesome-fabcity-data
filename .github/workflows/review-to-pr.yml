@@ -76,7 +76,8 @@ jobs:
           set -e
           echo "code=$code" >> "$GITHUB_OUTPUT"
 
-      # Exit 3 = no such entry. Exit 4 = the body is missing something. Either way nothing was
+      # Exit 3 = no such entry. Exit 4 = the body is missing something, or has an answer the schema
+      # would refuse (a note over 2,000 characters, a verdict typed in by hand). Either way nothing was
       # written, and the only right move is to say so on the issue and stop.
       - name: Nothing to review — comment and stop
         if: steps.review.outputs.code == '3' || steps.review.outputs.code == '4'
@@ -86,11 +87,19 @@ jobs:
           MSG: ${{ steps.review.outputs.message }}
         run: gh issue comment "$NUMBER" --body "$MSG"
 
+      # 3 and 4 are answers, and the issue has them. Anything else is the script crashing, which
+      # must fail the job so the last step tells the reviewer, rather than exit 0 and claim a
+      # comment that was never posted.
       - name: Stop here if nothing was written
         if: steps.review.outputs.code != '0'
+        env:
+          CODE: ${{ steps.review.outputs.code }}
         run: |
-          echo "::notice::review_from_issue.py exited ${{ steps.review.outputs.code }}; the issue has been commented on and nothing was committed."
-          exit 0
+          case "$CODE" in
+            3|4) echo "::notice::review_from_issue.py exited $CODE; the issue has been commented on and nothing was committed."; exit 0 ;;
+          esac
+          echo "::error::review_from_issue.py exited $CODE, which is a crash, not an answer."
+          exit 1
 
       # The PR this opens will not get an automatic check run (see the header), so the gates run
       # here instead, against the tree that is about to be pushed.
@@ -176,3 +185,17 @@ jobs:
             gh issue comment "$NUMBER" --body "The review file is committed and pushed to \`$BRANCH\`, but I could not open the pull request. That is usually the repository setting *Actions → General → Allow GitHub Actions to create and approve pull requests* being off. The work is not lost — open the PR from that branch: https://github.com/${GITHUB_REPOSITORY}/compare/main...${BRANCH}?expand=1"
             exit 1
           fi
+
+      # The one message this workflow must never fail to send. Every step after the parser can
+      # still fail — a gate, the push — and before this step existed each of those ended the run
+      # in silence, with the reviewer's twenty minutes sitting in an issue nobody was told about.
+      # If the PR step already commented (it does when only `gh pr create` fails), this is a
+      # second, shorter comment; a duplicate is better than nothing.
+      - name: Something broke after the review was read — say so on the issue
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NUMBER: ${{ github.event.issue.number }}
+          RUN: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          gh issue comment "$NUMBER" --body "Your review was read, but a step after that failed, so no pull request was opened. Nothing you wrote is lost: it is in this issue, and a maintainer has the run log at $RUN. You do not need to do anything."
