@@ -393,18 +393,28 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 #### Candidates — verified, not yet reviewed by anyone in the network
 
+- **[Destatis foreign trade by federal state (Statistischer Bericht Außenhandel)](https://www.destatis.de/DE/Themen/Wirtschaft/Aussenhandel/Publikationen/Downloads-Aussenhandel/statistischer-bericht-aussenhandel-2070100251125.html)** — 🌱 `candidate` · `Destatis: reproduction and distribution, also in extracts, permitted with source attribution; GENESIS-Online content under dl-de/by-2-0`
+  Monthly statistical report on German foreign trade, with exports and imports for each of the 16 Länder, monthly and annual, in thousand euro, published as an XLSX with machine-readable CSV sheets.
 - **[Eurostat maritime transport of goods by port](https://ec.europa.eu/eurostat/web/transport/database)** — 🌱 `candidate` · `Eurostat reuse policy: commercial and non-commercial reuse authorised with acknowledgement (Decision 2011/833/EU)` · _BCN_
   Gross weight of goods handled in EU and EFTA ports, inwards and outwards, by cargo type and partner port, quarterly and annual, from Eurostat's maritime transport statistics (Directive 2009/42/EC).
 - **[Eurostat Structural Business Statistics by NUTS 2 region](https://ec.europa.eu/eurostat/web/structural-business-statistics)** — 🌱 `candidate` · `Commission Decision 2011/833/EU — reuse for commercial or non-commercial purposes authorised with the source acknowledged. NOT CC-BY-4.0, which covers the site's editorial content only. See notes.` · _BCN · ★_
   Enterprises, local units and persons employed by NUTS 2 region and NACE activity: how much manufacturing capacity a European region actually has, and how many people it employs.
 - **[Eurostat — Freight and mail air transport by main airports (avia_gooa)](https://ec.europa.eu/eurostat/databrowser/view/avia_gooa/default/table)** — 🌱 `candidate` · `Eurostat reuse policy (Commission Decision 2011/833/EU), reuse authorised with acknowledgement` · _BCN_
   Freight and mail loaded and unloaded at each main EU and EFTA airport, in tonnes, monthly, quarterly and annual, by national, intra-EU and extra-EU transport.
+- **[French customs regional foreign trade (DGDDI, le kiosque)](https://lekiosque.finances.gouv.fr/site_fr/regions/Region_index.asp)** — 🌱 `candidate` · `DGDDI: reuse allowed with the integrity of the data respected and the source and reference date cited (Licence Ouverte not named)`
+  Exports and imports of goods for each French region and département, in thousand euro, by A129 product and partner country, annual and quarterly, from the customs directorate's statistics site.
+- **[Idescat external trade of Catalonia by province (comest)](https://www.idescat.cat/pub/?id=comest&lang=en)** — 🌱 `candidate` · `Idescat reuse conditions: reuse allowed if the source is cited, the content is not altered and the update date is stated (no named licence)` · _BCN_
+  Imports and exports of goods for Catalonia and its four provinces, in value and weight, by partner country, TARIC product and transport mode, monthly from 1994 and annual 1994-2025, from AEAT customs records via Idescat.
 - **[OECD Regional and Metropolitan Database](https://data-explorer.oecd.org/)** — 🌱 `candidate` · `OECD Terms and Conditions (last updated 1 July 2024) — reuse for any purpose including commercial, with attribution that must be passed on to sub-licensees. An open permission, not a named licence. See notes.` · _BCN · BOS · SCL · ★_
   OECD's sub-national statistics: GDP, labour, demography and climate exposure for regions (TL2/TL3) and functional urban areas across member and partner countries, served as SDMX.
 - **[Servicio Nacional de Aduanas (Chile) — import and export declarations](https://datos.gob.cl/organization/servicio_nacional_de_aduanas)** — 🌱 `candidate` · `ODC-By-1.0 (2019+ and most imports); ODbL-1.0 for some 2009–2018 years; CC-BY for aggregates` · _SCL_
   Chile's customs service publishes every import and export declaration line as monthly files on datos.gob.cl: port of loading and unloading, HS code, partner country, weight and FOB/CIF value, 2003 to 2026.
+- **[Statistikamt Nord exports and imports of Hamburg (G III 1 / G III 3)](https://suche.transparenz.hamburg.de/dataset?q=G_III_1_G_III_3)** — 🌱 `candidate` · `dl-de-by-2.0 on the Transparenzportal; the files' own imprint permits extracts with attribution and reserves other rights`
+  Annual and quarterly exports and imports of the Land Hamburg in thousand euro, by product group and by partner country, from the Statistical Office for Hamburg and Schleswig-Holstein, published through the Transparenzportal.
 - **[US Census Bureau international trade by port (intltrade porths)](https://www.census.gov/foreign-trade/data/index.html)** — 🌱 `candidate` · `US public domain (Census Bureau work; API terms require a no-endorsement notice)` · _BOS_
   Monthly US imports and exports by port of entry or exit and HS commodity, with value in dollars and shipping weight split by vessel, air and containerised cargo, from the Census Bureau's international trade API.
+- **[US Census exports by metropolitan area](https://www.census.gov/foreign-trade/statistics/state/index.html)** — 🌱 `candidate` · `US public domain (Census Bureau work, 17 USC 105)` · _BOS_
+  Quarterly and annual US goods exports for each metropolitan statistical area, in million US dollars, published by the Census Bureau as one XLSX per quarter (metroqQYYYY.xlsx).
 
 ### City
 
