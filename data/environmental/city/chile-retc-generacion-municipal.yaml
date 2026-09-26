@@ -26,13 +26,14 @@ notes: |
 
   ENDPOINT. Key-free CKAN, one file per year: CSV for 2014–2022, XLSX for 2023 and 2024,
   plus a combined 2014–2017 CSV. Comuna Santiago, 2022: 116.2 kt declared, 114.1 kt to
-  sanitary landfill. Región Metropolitana, 2022: 3.32 Mt, of which 3.25 Mt went to
-  disposal (both summed from the 2022 CSV by this entry's author).
+  sanitary landfill. Región Metropolitana, 2022: 3.60 Mt (3.25 disposal, 0.06 recovered,
+  0.28 with no treatment recorded). Filter by id_comuna, not the region text: 0.28 Mt of rows
+  spell "Metropolitana de Santiago" with non-breaking spaces, and a text match reads 3.32 Mt.
 
   WHY THIS CELL. The Coverage Tracker called SINADER "the best waste-tonnage source in the
   wave" for Santiago but never filed it. It serves Environmental|City's waste row per
   comuna, and the destination split gives residual waste (awesome-fabcity-data#42). The
-  region column serves Environmental|Region; per capita needs a population source.
+  region serves Environmental|Region. Per capita: social/city/ine-chile-proyecciones-comunales.
 
   WHAT IT DOES NOT CLAIM. These are declarations by municipalities and operators, not
   measurements. A comuna that declares late or not at all is missing, not zero. The
