@@ -5,7 +5,7 @@
  "counts": {
   "entries": 257,
   "cells": 20,
-  "reviews": 1
+  "reviews": 2
  },
  "entries": [
   {
@@ -2324,7 +2324,15 @@
    "updated": "2026-09-26",
    "description": "Imports and exports of goods for Catalonia and its four provinces, in value\nand weight, by partner country, TARIC product and transport mode, monthly\nfrom 1994 and annual 1994-2025, from AEAT customs records via Idescat.\n",
    "notes": "LIVE 2026-09-26. Read for a real territory by fabcity/fci-index `compute/trade.py` `regional()` (fci-index#19): the province of Barcelona and Catalonia, 2019 and 2024, in the Index's regional_trade output. There is no `adapter`, because that field names only planetai-node readers, so the join counts this entry unbacked until a source review lands. Filed for #42.\n\nLICENCE. Idescat's legal notice (idescat.cat/institut/web) allows reuse \"provided that its source is quoted, that the content of the information is not altered or denatured and that the date of the latest update ... is mentioned\". These are Spain's default public-sector reuse conditions (Ley 37/2007), and no licence is named. Idescat may limit reuse to protect personal data or third-party rights, and users may not imply that Idescat endorses them. A reviewer should confirm this counts as open-equivalent.\n\nENDPOINT. Key-free JSON-stat, table 18132 (annual) and 18136 (monthly), updated 2026-02-24. Province of Barcelona (PROV=08), 2024: imports 87.45 bn EUR and 25.33 Mt, exports 77.17 bn EUR and 19.85 Mt. Values are thousand EUR and weights are kg. Idescat flags 2024 and 2025 as provisional (status \"p\"), so both years can still move.\n\nWHY THESE CELLS. Economic|Region's external-trade row, in value. The weight columns are the regional import and export terms of a material-flow account (Economic|Bioregion), and MOD_TRANS splits them by sea, air, road and rail, which the gateway row cannot do.\n\nWHAT IT DOES NOT CLAIM. Customs attribute trade to the declarant's address, not to where goods are made or used. Trade with the rest of Spain is not in it.\n\nBLOCKED ALTERNATIVE. DataComex (Ministerio de Economía) has the same data for every province, but its API needs an email and password, and its footer reads \"Todos los derechos reservados\".\n",
-   "reviews": []
+   "reviews": [
+    {
+     "by": "Tomas Diez",
+     "org": "Fab City Foundation",
+     "date": "2026-09-26",
+     "territory": "Barcelona",
+     "verdict": "usable-with-caveats"
+    }
+   ]
   },
   {
    "id": "economic/region/kanagawa-expenditure-transactions",
