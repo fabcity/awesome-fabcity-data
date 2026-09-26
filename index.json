@@ -3151,11 +3151,12 @@
     "santiago"
    ],
    "feeds_cells": [
-    "Environmental|City"
+    "Environmental|City",
+    "Environmental|Region"
    ],
    "added": "2026-09-26",
    "description": "Non-hazardous municipal waste declared through SINADER for every Chilean comuna,\n2014–2024, in tonnes, with the destination (sanitary landfill, other disposal,\nrecovery).\n",
-   "notes": "VERIFIED 2026-09-26, not yet read for a real territory.\n\nLICENCE. The CKAN package on datosretc.mma.gob.cl gives license_title \"Creative Commons\nAttribution\" (license_id cc-by, linking opendefinition.org/licenses/cc-by). The mirror\non datos.gob.cl carries the same licence. The version is not stated; CC-BY-4.0 is\nrecorded as the current CC-BY, and a reviewer should confirm it. Publisher: RETC,\nMinisterio del Medio Ambiente.\n\nENDPOINT. Key-free CKAN, one file per year: CSV for 2014–2022, XLSX for 2023 and 2024,\nplus a combined 2014–2017 CSV. Comuna Santiago, 2022: 116.2 kt declared, 114.1 kt to\nsanitary landfill. Región Metropolitana, 2022: 3.32 Mt, of which 3.25 Mt went to\ndisposal (both summed from the 2022 CSV by this entry's author).\n\nWHY THIS CELL. The Coverage Tracker called SINADER \"the best waste-tonnage source in the\nwave\" for Santiago but never filed it. It serves Environmental|City's waste row per\ncomuna, and the destination split gives residual waste (awesome-fabcity-data#42).\n\nWHAT IT DOES NOT CLAIM. These are declarations by municipalities and operators, not\nmeasurements. A comuna that declares late or not at all is missing, not zero. The\n2019 file leaves the treatment column empty: recovery is unknown that year, not 0%. Santiago\nthe comuna is not Gran Santiago: the metropolitan figure is the sum of its comunas.\n",
+   "notes": "VERIFIED 2026-09-26, not yet read for a real territory.\n\nLICENCE. The CKAN package on datosretc.mma.gob.cl gives license_title \"Creative Commons\nAttribution\" (license_id cc-by, linking opendefinition.org/licenses/cc-by). The mirror\non datos.gob.cl carries the same licence. The version is not stated; CC-BY-4.0 is\nrecorded as the current CC-BY, and a reviewer should confirm it. Publisher: RETC,\nMinisterio del Medio Ambiente.\n\nENDPOINT. Key-free CKAN, one file per year: CSV for 2014–2022, XLSX for 2023 and 2024,\nplus a combined 2014–2017 CSV. Comuna Santiago, 2022: 116.2 kt declared, 114.1 kt to\nsanitary landfill. Región Metropolitana, 2022: 3.32 Mt, of which 3.25 Mt went to\ndisposal (both summed from the 2022 CSV by this entry's author).\n\nWHY THIS CELL. The Coverage Tracker called SINADER \"the best waste-tonnage source in the\nwave\" for Santiago but never filed it. It serves Environmental|City's waste row per\ncomuna, and the destination split gives residual waste (awesome-fabcity-data#42). The\nregion column serves Environmental|Region; per capita needs a population source.\n\nWHAT IT DOES NOT CLAIM. These are declarations by municipalities and operators, not\nmeasurements. A comuna that declares late or not at all is missing, not zero. The\n2019 file leaves the treatment column empty: recovery is unknown that year, not 0%. Santiago\nthe comuna is not Gran Santiago: the metropolitan figure is the sum of its comunas.\n",
    "reviews": []
   },
   {
@@ -3208,11 +3209,12 @@
     "barcelona"
    ],
    "feeds_cells": [
-    "Environmental|City"
+    "Environmental|City",
+    "Environmental|Region"
    ],
    "added": "2026-09-26",
    "description": "Municipal waste for every Catalan municipality, 2000–2024: tonnes and kg per\ninhabitant, separate collection by stream, and where the residual fraction went\n(landfill, incineration, mechanical-biological treatment).\n",
-   "notes": "VERIFIED 2026-09-26, not yet read for a real territory.\n\nLICENCE. The dataset's licence field says \"See Terms of Use\", which points to the\nLlicència oberta d'ús d'informació – Catalunya (web.gencat.cat, Dades obertes >\nLlicències). It permits \"la reutilització\", \"la distribució i la comunicació pública\" and\n\"la transformació de la informació per fer-ne obres derivades, per a tot el món i sense\ncap limitació temporal\". The conditions: do not alter or distort the information, cite\n\"Generalitat de Catalunya. Departament de ...\", and state the date of last update. No\ncommercial restriction. It is NOT CC-BY-4.0, although the portal entry once said so.\n\nENDPOINT. Key-free Socrata, 23,687 rows, 2000–2024. Barcelona (codi 80193), 2024:\nkg_hab_any 446.76, total separate collection 317,446 t (r_s_r_m_total 42.14%), residual\nto landfill 48,725 t and to incineration 10,838 t. Publisher: Departament de Territori,\nHabitatge i Transició Ecològica.\n\nWHY THIS CELL. Environmental|City asks for municipal solid waste per capita, and this is\nit at municipal resolution. The disposal split also gives residual waste per capita, the\nproposed \"trash out\" measure (awesome-fabcity-data#42).\n\nWHAT IT DOES NOT CLAIM. This is waste collected, not generated: a municipality can\ngenerate waste its system never counts. The separate-collection rate is not a recycling\nrate, because a collected fraction can still be rejected at sorting.\n",
+   "notes": "VERIFIED 2026-09-26, not yet read for a real territory.\n\nLICENCE. The dataset's licence field says \"See Terms of Use\", which points to the\nLlicència oberta d'ús d'informació – Catalunya (web.gencat.cat, Dades obertes >\nLlicències). It permits \"la reutilització\", \"la distribució i la comunicació pública\" and\n\"la transformació de la informació per fer-ne obres derivades, per a tot el món i sense\ncap limitació temporal\". The conditions: do not alter or distort the information, cite\n\"Generalitat de Catalunya. Departament de ...\", and state the date of last update. No\ncommercial restriction. It is NOT CC-BY-4.0, although the portal entry once said so.\n\nENDPOINT. Key-free Socrata, 23,687 rows, 2000–2024. Barcelona (codi 80193), 2024:\nkg_hab_any 446.76, total separate collection 317,446 t (r_s_r_m_total 42.14%), residual\nto landfill 48,725 t and to incineration 10,838 t. Publisher: Departament de Territori,\nHabitatge i Transició Ecològica.\n\nWHY THIS CELL. Environmental|City asks for municipal solid waste per capita, and this is\nit at municipal resolution. The disposal split also gives residual waste per capita, the\nproposed \"trash out\" measure (awesome-fabcity-data#42).\n\nREGION. Summed over all 948 municipalities, 2024: residual 2,030,395 t for 8,012,231\npeople, 253.4 kg/capita (Environmental|Region's waste row).\n\nWHAT IT DOES NOT CLAIM. This is waste collected, not generated: a municipality can\ngenerate waste its system never counts. The separate-collection rate is not a recycling\nrate, because a collected fraction can still be rejected at sorting.\n",
    "reviews": []
   },
   {
@@ -6895,7 +6897,8 @@
     "renewable energy capacity",
     "land use",
     "watershed condition",
-    "regional emissions"
+    "regional emissions",
+    "municipal waste"
    ],
    "minimum_indicators": [
     {
@@ -6907,10 +6910,15 @@
      "name": "Land under each land-use class",
      "unit": "km2",
      "aggregation": "latest"
+    },
+    {
+     "name": "Residual municipal waste per capita",
+     "unit": "kg/capita/yr",
+     "aggregation": "annual-total"
     }
    ],
-   "does_not_claim": "A regional total conceals where within the region anything is. Generation in one valley is not access for the whole region, and land-use area says nothing about condition or tenure. Nothing here is a measure of energy actually consumed locally. Generation is also not capacity — a wet year and a new dam move this number the same way, so a rise is not evidence that anything was built, and reading it as installed capacity is unsupported.",
-   "notes": "7 entries filed and it is the thinnest environmental cell — four of the seven are Bhutan NSDI layers and one is an Indonesian forecast feed. The energy row asked for installed capacity in MW until 2026-09-23. No source in this list published that at region scale, while the one that exists (Occitanie) publishes generation in GWh — 221 rows, every one GWh, 2008-2024 — so the minimum was one nothing could meet. Changed to match what regions actually publish. Capacity stays in indicator_categories because it is still the thing you would rather know."
+   "does_not_claim": "A regional total conceals where within the region anything is. Generation in one valley is not access for the whole region, and land-use area says nothing about condition or tenure. Nothing here is a measure of energy actually consumed locally. Generation is also not capacity — a wet year and a new dam move this number the same way, so a rise is not evidence that anything was built, and reading it as installed capacity is unsupported. Residual waste is what is not separately collected for recovery, so it went to landfill, incineration, mechanical treatment or out of the region. It is not waste generated, and a low figure can mean waste the system never collected. Separate collection is not recycling, since a collected fraction can still be rejected at sorting, and sources count different things (collected municipal waste, household waste only, or tonnes declared by operators).",
+   "notes": "7 entries filed and it is the thinnest environmental cell — four of the seven are Bhutan NSDI layers and one is an Indonesian forecast feed. The energy row asked for installed capacity in MW until 2026-09-23. No source in this list published that at region scale, while the one that exists (Occitanie) publishes generation in GWh — 221 rows, every one GWh, 2008-2024 — so the minimum was one nothing could meet. Changed to match what regions actually publish. Capacity stays in indicator_categories because it is still the thing you would rather know. The waste row (added 2026-09-26, #42) is the \"trash out\" half of PITO at region scale. Eurostat publishes no NUTS-level waste table, so it is summed from municipal sources: Catalonia from the Generalitat's 948 municipalities (253.4 kg/capita in 2024), the Region Metropolitana from RETC's comunas."
   },
   {
    "cell": "Governance|Bioregion",
