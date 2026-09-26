@@ -14,7 +14,8 @@ pilot_relevance: [santiago, bali, global]
 tags: [earthquakes, seismic, hazard, near-real-time, geojson, usgs]
 added: 2026-09-26
 auth: none
-feeds_cells: []
+feeds_cells: [Environmental|Bioregion]
+updated: 2026-09-26
 upstream_listed_in: []
 notes: |
   VERIFIED 2026-09-26, nothing read for a real territory yet.
@@ -37,13 +38,11 @@ notes: |
   promises at least 6 months for any production feed and 30 days' notice before
   deprecation.
 
-  WHY feeds_cells IS EMPTY. None of the twenty cells has a hazards row today:
-  Environmental|Bioregion names water, land cover, biodiversity, coast and soil.
-  This source does not fit a named indicator row, which is what `candidate`
-  normally requires. It is filed anyway because seismic exposure is material to two
-  pilots, Santiago and Bali, and the gap belongs to the cell, not the source. If a
-  "hazard exposure" category is added to a cell, this entry should name that cell.
-  Google Flood Hub is in the same position.
+  WHY THIS CELL. Environmental|Bioregion's natural-hazards category (added 2026-09-26) carries
+  "Earthquakes of magnitude 4.5 and above, count/yr". M4.5 is the threshold because that is where
+  global completeness holds; below it, the count measures the local network as much as the ground.
+  Seismic exposure matters to two pilots, Santiago and Bali. Until that row existed this entry had
+  `feeds_cells: []` and bent the candidate rule, because no cell had a hazards row.
 
   WHAT IT DOES NOT CLAIM. Global completeness is only about M4.5 and above. Below
   that the catalogue is only as complete as the local network that feeds it. An

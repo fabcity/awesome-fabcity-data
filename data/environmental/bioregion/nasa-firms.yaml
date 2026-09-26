@@ -14,6 +14,7 @@ tags: [fire, wildfire, peat, land-cover, satellite, near-real-time, hazard, nasa
 added: 2026-09-26
 auth: api-key
 feeds_cells: [Environmental|Bioregion]
+updated: 2026-09-26
 upstream_listed_in: []
 notes: |
   VERIFIED 2026-09-26, nothing read for a real territory yet.
@@ -36,11 +37,12 @@ notes: |
   a day range of 1–5 per call (an optional date moves the window back), so a long
   history is better taken from the archive download than a loop over the API.
 
-  WHY THIS CELL. Environmental|Bioregion lists land cover and biodiversity. Fire
-  counts and fire radiative power per bioregion per month are the fastest-moving land
-  signal a node can read: peat and field burning around Bali, the central-Chile
-  wildfire season, Catalan summers. None of the ten entries filed against the cell
-  carries fire.
+  WHY THIS CELL. Environmental|Bioregion's natural-hazards category (added 2026-09-26) carries
+  "Active fire detections, count/yr (VIIRS 375 m hot pixels)". The unit names the sensor because a
+  MODIS 1 km count is a different number. Pilot relevance: peat and field burning around Bali, the
+  central-Chile wildfire season, Catalan summers. Fire radiative power, summed, is the obvious second
+  number and is not a minimum. It was filed first under the land-cover category, before hazards
+  existed.
 
   WHAT IT DOES NOT CLAIM. A detection is a hot pixel, not a fire perimeter and not
   burned area. Industrial flares, kilns and volcanoes show up too, and the static
