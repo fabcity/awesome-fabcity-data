@@ -102,7 +102,11 @@ jobs:
           exit 1
 
       # The PR this opens will not get an automatic check run (see the header), so the gates run
-      # here instead, against the tree that is about to be pushed.
+      # here instead, against the tree that is about to be pushed. This list must follow
+      # validate.yml's. It did not: README.md was regenerated and index.json, which carries every
+      # entry's `reviews` and `status`, was not, so the first real review PR (#32) failed CI the
+      # moment it got a check run. wired.py --check is the one step left out, because it needs a
+      # planetai-node checkout and a review never touches `adapter`.
       - name: The gates, before the push rather than after
         if: steps.review.outputs.code == '0'
         run: |
@@ -111,6 +115,7 @@ jobs:
           python scripts/validate.py
           python scripts/check_review.py
           python scripts/build_readme.py
+          python scripts/build_index.py
 
       - name: Commit, push, and open the PR
         if: steps.review.outputs.code == '0'
@@ -131,7 +136,7 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -b "$BRANCH"
-          git add reviews README.md "$ENTRY_PATH"
+          git add reviews README.md index.json "$ENTRY_PATH"
 
           if [ "$PROMOTED" = "true" ]; then
             headline="reviewed by $BY and promoted from candidate to live"
