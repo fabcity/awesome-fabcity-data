@@ -112,6 +112,13 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 - **[WRI Aqueduct 4.0 — Global Water Risk Atlas](https://www.wri.org/data/aqueduct-global-maps-40-data)** — ✅ `live` · `Creative Commons (variant not specified on the source page - verify before publishing derived values)` · _★_
   WRI's global water risk framework: 13 baseline annual and 3 baseline monthly indicators covering water stress, depletion, variability and quality, plus CMIP6-driven projections for 2030, 2050 and 2080.
 
+#### Candidates — verified, not yet reviewed by anyone in the network
+
+- **[NASA FIRMS — active fire detections (VIIRS + MODIS)](https://firms.modaps.eosdis.nasa.gov/)** — 🌱 `candidate` · `CC0-1.0` · _BLI · SCL · BCN · BOS_
+  NASA's Fire Information for Resource Management System: satellite-detected active fires and thermal anomalies from VIIRS (375 m) and MODIS (1 km), within about three hours of overpass, worldwide, with an archive back to 2000.
+- **[USGS Earthquake Catalog (ComCat) — real-time feeds and FDSN event API](https://earthquake.usgs.gov/earthquakes/search/)** — 🌱 `candidate` · `US public domain (USGS-authored data)` · _SCL · BLI · ★_
+  The US Geological Survey's comprehensive earthquake catalogue: location, depth, magnitude, felt reports and shaking estimates for events worldwide, as key-free GeoJSON feeds refreshed every minute and a query API over the full archive.
+
 ### Region
 
 - **[Bhutan 186 Watershed Boundaries (NSDI)](https://nsdi.systems.gov.bt/portal/sharing/rest/content/items/565e1b5cac0046e9b2f64b76d8c4bca0?f=json)** — ✅ `live` · `Open (Geo-Information Policy 2018 §6.3.1 open tier: "Open data shall be openly and freely accessible")`
@@ -253,8 +260,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 - **[Appropedia](https://www.appropedia.org/)** — ✅ `live` · `CC-BY-SA-4.0 (site default; proprietary licences allowed only on approval)` · _★_ · 🛠 design
   The wiki of appropriate technology and sustainable development: build instructions, project pages and research for tools people make and repair locally. The largest openly licensed body of practical how-to on the web.
-- **[Atlas of Economic Complexity (Harvard Growth Lab)](https://atlas.hks.harvard.edu/)** — ✅ `live` · `CC-BY-4.0` · _★_
-  Global trade + economic-complexity indicators (ECI, product-space, diversification metrics) for ~250 countries × ~6,000 products. Bulk download via Dataverse; interactive web tool for exploration.
+- **[Atlas of Economic Complexity (Harvard Growth Lab)](https://atlas.hks.harvard.edu/)** — ✅ `live` · `CC0-1.0` · _★_
+  Global trade + economic-complexity indicators (ECI, product-space, diversification metrics) for ~250 countries × ~6,000 products. Public GraphQL API plus bulk tables on Harvard Dataverse.
 - **[Climate Funds Update](https://climatefundsupdate.org/data-dashboard/)** — ✅ `live` · `Not stated on the source page — freely downloadable, licence UNDECLARED` · _★_
   Independent monitor of multilateral climate finance run by ODI and Heinrich Boell Stiftung. Tracks money pledged, deposited and approved by fund, contributor country and recipient country, downloadable as Excel.
 - **[Field Ready — humanitarian supply solutions](https://www.fieldready.org/)** — ✅ `live` · `CERN-OHL variant per catalogue metadata on 156 of 193 items — the organisation's own site says All rights reserved. Confirmation pending, see notes.` · _★_ · 🛠 design
