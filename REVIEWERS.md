@@ -32,10 +32,11 @@ minutes, and it shows what each of the five checks actually catches.
 | Lucas Marangoni | Fab City Foundation — operations | Mallorca, Menorca, Balearics | *not declared* |
 | Nurita | CAST Foundation | Bali, Indonesia | *not declared* |
 | Lars Taylor | Fab City Foundation | *not declared* | *not declared* |
+| Tomas Diez | Fab City Foundation | Barcelona, Catalonia, Spain, Bali | Sources Fab City Foundation publishes: a review of those would be self-declared |
 
-These four rows are a seed, written from what the network already knows. **Each row belongs to the
-person named in it** — if yours is wrong, thin, or says something you did not say, open a PR that
-changes it, and do not wait for permission. The `not declared` cells are deliberately empty rather
+The first four rows are a seed, written from what the network already knows; the fifth was added
+at its owner's request. **Each row belongs to the person named in it** — if yours is wrong, thin,
+or says something you did not say, open a PR that changes it, and do not wait for permission. The `not declared` cells are deliberately empty rather
 than guessed at.
 
 **Partner-city data contacts: please add yourselves.** If you run or maintain open data for a
