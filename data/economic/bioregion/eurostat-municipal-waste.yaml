@@ -6,7 +6,7 @@ description: |
   with the recycling rate derived from it (2000–2024).
 pillar: economic
 scale: bioregion
-status: candidate
+status: live
 license: Eurostat reuse policy (Commission Decision 2011/833/EU), reuse authorised with acknowledgement
 api: https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/env_wasmun
 pilot_relevance: [barcelona]
