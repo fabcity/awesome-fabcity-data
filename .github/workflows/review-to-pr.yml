@@ -175,16 +175,25 @@ jobs:
           EOF
           )"
 
-          if ! gh pr create \
+          if ! pr_url=$(gh pr create \
             --title "review: $ENTRY — $VERDICT ($TERRITORY)" \
             --body "$body" \
             --base main \
             --head "$BRANCH" \
-            --label source-review
+            --label source-review)
           then
             gh issue comment "$NUMBER" --body "The review file is committed and pushed to \`$BRANCH\`, but I could not open the pull request. That is usually the repository setting *Actions → General → Allow GitHub Actions to create and approve pull requests* being off. The work is not lost — open the PR from that branch: https://github.com/${GITHUB_REPOSITORY}/compare/main...${BRANCH}?expand=1"
             exit 1
           fi
+
+          # The success path has to say so too. `Closes #N` in the PR body links the two, but a
+          # cross-reference notifies nobody, so without this the reviewer, often someone doing
+          # their first one, sees nothing happen. Found on the first real run (#31, 2026-09-26).
+          # A failed comment is only a warning: the PR exists, and the failure() step below
+          # would wrongly say it does not.
+          if [ "$PROMOTED" = "true" ]; then done_line="and because your verdict is \`usable\`, it also moves the entry from \`candidate\` to \`live\`"; else done_line="and it leaves the entry's status as it is"; fi
+          gh issue comment "$NUMBER" --body "Thank you. Your review is now a pull request: $pr_url. It adds \`$REVIEW_PATH\`, $done_line. A maintainer merges it, and this issue closes when they do. You do not need to do anything else." \
+            || echo "::warning::the PR was opened but the thank-you comment on #$NUMBER failed"
 
       # The one message this workflow must never fail to send. Every step after the parser can
       # still fail — a gate, the push — and before this step existed each of those ended the run
