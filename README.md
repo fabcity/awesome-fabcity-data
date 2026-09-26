@@ -171,6 +171,19 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 - **[UK local authority and regional greenhouse gas emissions statistics](https://www.gov.uk/government/statistics/uk-local-authority-and-regional-greenhouse-gas-emissions-statistics-2005-to-2024)** — ✅ `live` · `Open Government Licence v3.0`
   Annual territorial GHG emissions for every UK local authority and region, 2005-2024, as an 82.6 MB CSV plus Excel tables. Excludes aviation, shipping, military transport and fluorinated gases.
 
+#### Candidates — verified, not yet reviewed by anyone in the network
+
+- **[ADEME SINOE — Chiffres-clés DMA (déchets ménagers et assimilés) par département](https://www.data.gouv.fr/datasets/sinoe-r-chiffres-cles-dma-hors-gravats/)** — 🌱 `candidate` · `Licence Ouverte / Open Licence v2.0 (Etalab)`
+  Household and similar waste (DMA) per département, tonnes and kg per inhabitant, from ADEME's SINOE waste observatory. This series runs 2009–2017.
+- **[Eurostat Urban Audit — Municipal waste generated (urb_cenv, EN4008V)](https://ec.europa.eu/eurostat/databrowser/view/urb_cenv/default/table)** — 🌱 `candidate` · `Eurostat reuse policy (Commission Decision 2011/833/EU), reuse authorised with acknowledgement`
+  Municipal waste generated (domestic and commercial) per city, in thousand tonnes, for the Urban Audit cities of the EU and EFTA, 2007–2024.
+- **[Generalitat de Catalunya — Estadístiques de residus municipals (69zu-w48s)](https://analisi.transparenciacatalunya.cat/d/69zu-w48s)** — 🌱 `candidate` · `Llicència oberta d'ús d'informació – Catalunya (reuse, redistribution and derived works; cite the source and the date of last update; do not alter or distort)` · _BCN_
+  Municipal waste for every Catalan municipality, 2000–2024: tonnes and kg per inhabitant, separate collection by stream, and where the residual fraction went (landfill, incineration, mechanical-biological treatment).
+- **[RETC Chile — Generación municipal de residuos no peligrosos (SINADER)](https://datosretc.mma.gob.cl/dataset/generacion-municipal-de-residuos-no-peligrosos)** — 🌱 `candidate` · `CC-BY-4.0` · _SCL_
+  Non-hazardous municipal waste declared through SINADER for every Chilean comuna, 2014–2024, in tonnes, with the destination (sanitary landfill, other disposal, recovery).
+- **[Ville de Paris — Quantité de déchets produits et triés par habitant et par an](https://opendata.paris.fr/explore/dataset/quantite-de-dechets-produits-et-tries-par-habitant-et-par-an/)** — 🌱 `candidate` · `Licence Ouverte (Etalab)`
+  Household waste per Parisian per year, 2019–2024, split into residual waste and the sorted streams (packaging, glass, biowaste, occasional waste).
+
 ### Community
 
 - **[AirGradient](https://www.airgradient.com/)** — ✅ `live` · `CC-BY-4.0 (data) + custom open (hardware)` · _★_ · 🔌 `core:airgradient`
@@ -281,7 +294,7 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 - **[Things That Work (Fab City Foundation)](https://ttw.fab.city/)** — ✅ `live` · `CC-BY-SA-4.0 (content); MIT (code); third-party assets under their own terms` · _★_ · 🛠 design
   A curated index of solutions for when services fail — drinkable water when the tap is cut, light in a blackout, a part to print when the supply chain is gone. Tagged by what each one does and which scarcity it answers.
 - **[World Bank What a Waste 2.0](https://datacatalog.worldbank.org/search/dataset/0039597)** — ✅ `live` · `CC-BY-4.0` · _★_
-  National-level municipal solid waste accounts: per-capita generation, composition, collection, treatment. Coverage for ~217 economies.
+  Municipal solid waste accounts: per-capita generation, composition, collection and treatment for ~217 economies, plus a city-level table.
 - **[World Bank World Development Indicators](https://datacatalog.worldbank.org/search/dataset/0037712/World-Development-Indicators)** — ✅ `live` · `CC-BY-4.0` · _★_
   The World Bank's flagship cross-country indicator database served through a free unauthenticated REST API. Carries global and national GDP, value added by sector, adjusted net savings and natural-resource depletion rents.
 
@@ -530,7 +543,7 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   European electricity grid data: generation by source, consumption, cross-border flows, balancing, day-ahead prices. Hourly resolution for all EU + UK + Norway + Switzerland.
 - **[Find a Tender Service - OCDS API (UK)](https://www.find-tender.service.gov.uk/Developer/Documentation)** — ✅ `live` · `Open Government Licence v3.0`
   UK national procurement notice register under the Procurement Act 2023, from 24 February 2025, serving OCDS 1.1.5 JSON release and record packages. Also carries a payments transparency register.
-- **[Generalitat de Catalunya — Dades Obertes](https://analisi.transparenciacatalunya.cat/)** — ✅ `live` · `CC-BY-4.0` · _BCN_
+- **[Generalitat de Catalunya — Dades Obertes](https://analisi.transparenciacatalunya.cat/)** — ✅ `live` · `Llicència oberta d'ús d'informació – Catalunya (reuse, redistribution and derived works; cite the source and the date of last update; do not alter or distort)` · _BCN_
   Catalan regional open data portal. Includes Estadistiques de residus municipals (per-capita waste, all 947 Catalan municipalities), Idescat IPC (consumer prices), Mercabarna figures, energy mix.
 - **[Georef — Servicio de Normalización de Datos Geográficos (Argentina)](https://datosgobar.github.io/georef-ar-api/)** — ✅ `live` · `CC-BY-4.0`
   Argentina's official API for resolving and normalising administrative units — provincias, departamentos, municipios, localidades and addresses — to their national identifier codes. Run by Datos Argentina on IGN base data.
