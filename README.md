@@ -181,6 +181,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Municipal waste for every Catalan municipality, 2000–2024: tonnes and kg per inhabitant, separate collection by stream, and where the residual fraction went (landfill, incineration, mechanical-biological treatment).
 - **[RETC Chile — Generación municipal de residuos no peligrosos (SINADER)](https://datosretc.mma.gob.cl/dataset/generacion-municipal-de-residuos-no-peligrosos)** — 🌱 `candidate` · `CC-BY-4.0` · _SCL_
   Non-hazardous municipal waste declared through SINADER for every Chilean comuna, 2014–2024, in tonnes, with the destination (sanitary landfill, other disposal, recovery).
+- **[Statistikamt Nord — Abfallentsorgung in Hamburg, Teil 3 Einsammlung von Abfällen (Q II 9)](https://suche.transparenz.hamburg.de/dataset/abfallentsorgung-in-hamburg-2024-teil-3-einsammlung-von-abfaellen)** — 🌱 `candidate` · `dl-de-by-2.0`
+  Waste collected by Hamburg's public collection, 2012–2024, in tonnes and kg per inhabitant, split into residual household and bulky waste, separately collected organics, recyclables (Wertstoffe), electrical equipment and other waste.
 - **[Ville de Paris — Quantité de déchets produits et triés par habitant et par an](https://opendata.paris.fr/explore/dataset/quantite-de-dechets-produits-et-tries-par-habitant-et-par-an/)** — 🌱 `candidate` · `Licence Ouverte (Etalab)`
   Household waste per Parisian per year, 2019–2024, split into residual waste and the sorted streams (packaging, glass, biowaste, occasional waste).
 
