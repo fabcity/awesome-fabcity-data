@@ -369,10 +369,16 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 #### Candidates — verified, not yet reviewed by anyone in the network
 
+- **[Eurostat maritime transport of goods by port](https://ec.europa.eu/eurostat/web/transport/database)** — 🌱 `candidate` · `Eurostat reuse policy: commercial and non-commercial reuse authorised with acknowledgement (Decision 2011/833/EU)` · _BCN_
+  Gross weight of goods handled in EU and EFTA ports, inwards and outwards, by cargo type and partner port, quarterly and annual, from Eurostat's maritime transport statistics (Directive 2009/42/EC).
 - **[Eurostat Structural Business Statistics by NUTS 2 region](https://ec.europa.eu/eurostat/web/structural-business-statistics)** — 🌱 `candidate` · `Commission Decision 2011/833/EU — reuse for commercial or non-commercial purposes authorised with the source acknowledged. NOT CC-BY-4.0, which covers the site's editorial content only. See notes.` · _BCN · ★_
   Enterprises, local units and persons employed by NUTS 2 region and NACE activity: how much manufacturing capacity a European region actually has, and how many people it employs.
 - **[OECD Regional and Metropolitan Database](https://data-explorer.oecd.org/)** — 🌱 `candidate` · `OECD Terms and Conditions (last updated 1 July 2024) — reuse for any purpose including commercial, with attribution that must be passed on to sub-licensees. An open permission, not a named licence. See notes.` · _BCN · BOS · SCL · ★_
   OECD's sub-national statistics: GDP, labour, demography and climate exposure for regions (TL2/TL3) and functional urban areas across member and partner countries, served as SDMX.
+- **[Servicio Nacional de Aduanas (Chile) — import and export declarations](https://datos.gob.cl/organization/servicio_nacional_de_aduanas)** — 🌱 `candidate` · `ODC-By-1.0 (2019+ and most imports); ODbL-1.0 for some 2009–2018 years; CC-BY for aggregates` · _SCL_
+  Chile's customs service publishes every import and export declaration line as monthly files on datos.gob.cl: port of loading and unloading, HS code, partner country, weight and FOB/CIF value, 2003 to 2026.
+- **[US Census Bureau international trade by port (intltrade porths)](https://www.census.gov/foreign-trade/data/index.html)** — 🌱 `candidate` · `US public domain (Census Bureau work; API terms require a no-endorsement notice)` · _BOS_
+  Monthly US imports and exports by port of entry or exit and HS commodity, with value in dollars and shipping weight split by vessel, air and containerised cargo, from the Census Bureau's international trade API.
 
 ### City
 
