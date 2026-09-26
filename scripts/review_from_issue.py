@@ -58,6 +58,7 @@ FIELDS = {
     "checked": "What you checked",
     "verdict": "Verdict",
     "self_declared": "Self-declared",
+    "assisted_by": "Assisted by",
     "note": "Notes for the next reader",
 }
 REQUIRED = ("entry", "by", "org", "territory", "verdict")
@@ -134,6 +135,7 @@ def render_review(r: dict) -> str:
         *[f"  - {c}" for c in r["checked"]],
         f"verdict: {r['verdict']}",
         f"self_declared: {'true' if r['self_declared'] else 'false'}",
+        *([f"assisted_by: {yaml_scalar(r['assisted_by'])}"] if r.get("assisted_by") else []),
         f"issue: {r['issue']}",
     ]
     if r.get("note"):
@@ -188,6 +190,7 @@ def build(body: str, issue: int, created: str) -> tuple[int, dict]:
         "verdict": get("verdict"),
         "checked": checked_boxes(answers.get(FIELDS["checked"], "")),
         "self_declared": bool(checked_boxes(answers.get(FIELDS["self_declared"], ""))),
+        "assisted_by": get("assisted_by"),
         "note": get("note"),
         "date": iso_date(get("date"), created),
         "issue": issue,
@@ -200,13 +203,13 @@ def build(body: str, issue: int, created: str) -> tuple[int, dict]:
         return 4, {"error": "missing", "fields": ", ".join(missing),
                    "message": "This review is missing a required answer: **"
                               + "**, **".join(missing) + "**. Edit the issue body to fill it in, "
-                              "then remove and re-add the `source-review` label to try again."}
+                              "then remove and re-add the `source-review` label, or open the review again as a new issue."}
     if not ENTRY_RE.match(review["entry"]):
         return 4, {"error": "entry-malformed", "entry": review["entry"],
                    "message": f"`{review['entry']}` is not a registry id. It must look like "
                               "`{pillar}/{scale}/{slug}` — the entry's path under `data/` with "
                               "the `.yaml` removed, e.g. `environmental/city/openaq`. Edit the "
-                              "issue body, then remove and re-add the `source-review` label."}
+                              "issue body, then remove and re-add the `source-review` label, or open it again as a new issue."}
 
     # The schema's own limits, read from the schema so there is one copy of them. Without this a
     # note over maxLength parsed fine, the review file was written, and validate.py then failed the
@@ -216,7 +219,7 @@ def build(body: str, issue: int, created: str) -> tuple[int, dict]:
         return 4, {"error": "schema", "fields": ", ".join(broken),
                    "message": "This review does not fit the review schema: " + "; ".join(broken)
                               + ". Edit the issue body, then remove and re-add the "
-                              "`source-review` label to try again."}
+                              "`source-review` label, or open the review again as a new issue."}
 
     entry_path = DATA_DIR / f"{review['entry']}.yaml"
     if not entry_path.is_file():
@@ -225,7 +228,7 @@ def build(body: str, issue: int, created: str) -> tuple[int, dict]:
                               "nothing here to review and nothing has been written. If the source "
                               "belongs in this list, add the entry first (see CONTRIBUTING) — a "
                               "new source starts at `status: candidate`. If the id is just a typo, "
-                              "fix the issue body and re-add the `source-review` label."}
+                              "fix the issue body and re-add the `source-review` label, or open it again as a new issue."}
 
     directory = REVIEWS_DIR / review["entry"]
     directory.mkdir(parents=True, exist_ok=True)
@@ -281,6 +284,10 @@ usable
 ### Self-declared
 
 - [ ] My organisation publishes this source
+
+### Assisted by
+
+Claude Code
 
 ### Notes for the next reader
 
@@ -372,6 +379,10 @@ def selftest() -> int:
         code3, out3 = build(SAMPLE, 214, "2026-09-22")
         check("build: a third gets -3", out3.get("review_path"),
               "reviews/environmental/city/example-city-air-portal/2026-09-18-lars-taylor-3.yaml")
+        check("write: the agent is named, the person is still the reviewer",
+              ("assisted_by: Claude Code" in written, "by: Lars Taylor" in written), (True, True))
+        solo = build(SAMPLE.replace("### Assisted by\n\nClaude Code", "### Assisted by\n\n_No response_"), 13, "2026-09-22")
+        check("write: no agent, no assisted_by line", "assisted_by" in (ROOT / solo[1]["review_path"]).read_text(), False)
 
         # usable-with-caveats writes the review and leaves the status alone.
         entry.write_text(original)

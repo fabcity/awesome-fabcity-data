@@ -154,14 +154,91 @@ Write it for the next person, who is not you and has twenty minutes.
 
 ## Submitting
 
-Open a [source review issue](../../issues/new?template=source-review.yml). One field per key of the
-review schema, the entry id is prefilled if you came from the registry table, and that is the end of
-your involvement.
+The shortest way is [index.fab.city/operate/source-review](https://index.fab.city/operate/source-review):
+pick the source, do the checks, fill in your reading, and the button opens a GitHub issue with the
+whole review already written out. You read it and press Submit. Nothing is typed twice.
+
+The [source review form](../../issues/new?template=source-review.yml) on GitHub does the same, one
+field per key of the review schema. Either way a GitHub account is needed, because a review is a
+named person's reading and the issue is how that name is attached.
 
 A workflow then writes the review file, promotes the entry if your verdict earned it, and opens a
 pull request for a maintainer to merge. You will get a comment on your issue either way — including
 when something is wrong with it, which is not a rebuke, it is the parser telling you it did not want
 to guess.
+
+## Reviewing with an agent
+
+You can have an AI agent do the legwork: fetch the endpoint and look inside the response, read the
+licence page, join the codes, date the newest record. Many of the reviews here were done that way.
+Three rules keep it a review and not a bot's output:
+
+1. **You are the reviewer.** `Your name` is yours, not the agent's. You read what it found, you
+   check anything that looks too tidy, and you stand behind the verdict. If you would not defend it
+   to the source's publisher, do not file it.
+2. **Name the agent.** Put it in `Assisted by` (e.g. `Claude Code`). It is recorded in the review
+   file as `assisted_by`, so a reader can see which kind of evidence this is, the same way
+   `self_declared` works.
+3. **File it from your own account.** The agent can open the issue with your GitHub CLI login, and
+   that is the point: the issue, and so the review, is attached to a person who can be asked about
+   it in six months.
+
+An agent files a review as a plain issue titled `review: <entry>` whose body is the rendered form,
+`### <label>` then the answer:
+
+```
+### Entry
+
+economic/region/idescat-comerc-exterior
+
+### Your name
+
+Your Name
+
+### Organisation
+
+Your organisation
+
+### Date you read it
+
+2026-09-26
+
+### Territory you read it for
+
+Barcelona
+
+### What you checked
+
+- [X] licence
+- [X] endpoint
+- [ ] admin-code
+- [X] vintage
+- [X] field-fit
+
+### Verdict
+
+usable-with-caveats
+
+### Self-declared
+
+- [ ] My organisation publishes this source
+
+### Assisted by
+
+Claude Code
+
+### Notes for the next reader
+
+What a reader must know first. At most 2,000 characters.
+```
+
+```
+gh issue create --repo fabcity/awesome-fabcity-data --title "review: <entry>" --body-file review.md
+```
+
+The workflow picks up any new issue whose title starts with `review: `. It needs no label and no
+write access. Run `python scripts/review_from_issue.py --issue 1 --body-file review.md` in a clone
+first if you want to see the file it will write, and every refusal it would give, before you file.
 
 ## Good answers that do not look like answers
 

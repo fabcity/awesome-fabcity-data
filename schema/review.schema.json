@@ -53,6 +53,11 @@
       "default": false,
       "description": "True when the reviewer's org is also the source's publisher. Not disqualifying — the publisher often knows the licence and the vintage best — but it is a different kind of evidence than an outside reading, and a reader is entitled to see which one this is."
     },
+    "assisted_by": {
+      "type": "string",
+      "maxLength": 200,
+      "description": "The AI agent or tool that did part of the checks, named (e.g. 'Claude Code'). The reviewer is still `by`: the person who read the findings, stands behind the verdict and filed the issue from their own account. Absent means the person did the checks themselves. Like self_declared, it tells a reader which kind of evidence this is."
+    },
     "issue": {
       "type": "integer",
       "description": "The issue number this review arrived on, when it came through .github/ISSUE_TEMPLATE/source-review.yml. Absent for a review committed by hand."

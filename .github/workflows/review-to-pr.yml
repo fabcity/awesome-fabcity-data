@@ -36,7 +36,7 @@ name: Source review to PR
 
 on:
   issues:
-    types: [labeled]
+    types: [opened, labeled]
 
 permissions:
   contents: write
@@ -45,7 +45,17 @@ permissions:
 
 jobs:
   review:
-    if: github.event.label.name == 'source-review'
+    # Two ways in. The form applies the `source-review` label, which fires `labeled`. A review written
+    # out whole (from index.fab.city/operate/source-review, or by a reviewer's agent with `gh issue
+    # create`) is a plain issue titled `review: <entry>`: GitHub drops the `labels` query parameter
+    # for anyone without triage rights, so it arrives unlabelled and fires `opened`. An issue that
+    # already carries the label at `opened` is the form's, and is left to its own `labeled` run so it
+    # is never reviewed twice. The label this job then adds is applied with GITHUB_TOKEN, which starts
+    # no new run.
+    if: >-
+      github.event.label.name == 'source-review' ||
+      (github.event.action == 'opened' && startsWith(github.event.issue.title, 'review: ') &&
+       !contains(github.event.issue.labels.*.name, 'source-review'))
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -56,6 +66,13 @@ jobs:
 
       - name: Install validation deps
         run: pip install -r requirements.txt
+
+      - name: Label a review that arrived without the form
+        if: github.event.action == 'opened'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NUMBER: ${{ github.event.issue.number }}
+        run: gh issue edit "$NUMBER" --add-label source-review
 
       # The issue body is untrusted input, so it never reaches a shell as text: it goes through an
       # environment variable into a file, and the parser reads the file.
