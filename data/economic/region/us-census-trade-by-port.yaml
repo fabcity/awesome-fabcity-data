@@ -10,6 +10,7 @@ status: candidate
 license: US public domain (Census Bureau work; API terms require a no-endorsement notice)
 api: https://api.census.gov/data/timeseries/intltrade/imports/porths
 pilot_relevance: [boston]
+places: [boston]
 tags: [trade, imports, exports, ports, airports, material-flow, tonnes, census]
 added: 2026-09-26
 auth: api-key

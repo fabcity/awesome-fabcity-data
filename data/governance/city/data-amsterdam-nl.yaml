@@ -10,6 +10,7 @@ status: live
 license: CC0-1.0
 api: https://api.data.amsterdam.nl/v1/
 pilot_relevance: []
+places: [amsterdam]
 tags: [open-data, amsterdam, netherlands, rest-api, municipal, wfs]
 added: 2026-09-11
 updated: 2026-09-11

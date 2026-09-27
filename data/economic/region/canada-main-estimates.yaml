@@ -10,6 +10,7 @@ status: live
 license: Open Government Licence - Canada
 api: https://open.canada.ca/data/api/3/action/package_search?q=%22Main%20Estimates%22
 pilot_relevance: []
+places: [montreal]
 tags: [national-budget, estimates, appropriations, canada, csv, fiscal-year]
 added: 2026-09-11
 feeds_cells: []

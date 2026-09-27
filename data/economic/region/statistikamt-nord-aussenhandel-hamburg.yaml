@@ -10,6 +10,7 @@ status: candidate
 license: "dl-de-by-2.0 on the Transparenzportal; the files' own imprint permits extracts with attribution and reserves other rights"
 api: https://suche.transparenz.hamburg.de/api/3/action/package_search?q=G_III_1_G_III_3
 pilot_relevance: []
+places: [hamburg]
 tags: [trade, imports, exports, value, products, partner-countries, hamburg, xlsx, ckan]
 added: 2026-09-26
 auth: none

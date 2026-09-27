@@ -10,6 +10,7 @@ status: live
 license: "Los datos publicados acá son públicos y se pueden reutilizar libremente citando la fuente."
 api: null
 pilot_relevance: []
+places: [cordoba]
 tags: [open-data-portal, ckan, argentina, catalogue]
 added: 2026-09-10
 feeds_cells: [Governance|Region]

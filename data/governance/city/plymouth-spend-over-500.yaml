@@ -11,6 +11,7 @@ status: deprecated
 license: Open Government Licence v3.0
 api: null
 pilot_relevance: []
+places: [plymouth]
 tags: [spend-transparency, transactions, csv, stale, plymouth, england]
 added: 2026-09-11
 feeds_cells: [Economic|City]

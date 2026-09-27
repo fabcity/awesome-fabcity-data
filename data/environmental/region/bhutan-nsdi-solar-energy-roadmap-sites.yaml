@@ -10,6 +10,7 @@ license: 'Open (Geo-Information Policy 2018 §6.3.1 open tier: "Open data shall 
   freely accessible")'
 api: null
 pilot_relevance: []
+places: [bhutan]
 tags:
 - energy
 - solar

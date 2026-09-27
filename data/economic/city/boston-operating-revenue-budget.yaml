@@ -10,6 +10,7 @@ status: live
 license: Open Data Commons Public Domain Dedication and License (PDDL)
 api: null
 pilot_relevance: [boston]
+places: [boston]
 tags: [public-budget, municipal-finance, open-budget, united-states]
 added: 2026-09-09
 feeds_cells: []

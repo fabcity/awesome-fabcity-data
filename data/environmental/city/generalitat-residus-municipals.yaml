@@ -10,6 +10,7 @@ status: candidate
 license: Llicència oberta d'ús d'informació – Catalunya (reuse, redistribution and derived works; cite the source and the date of last update; do not alter or distort)
 api: https://analisi.transparenciacatalunya.cat/resource/69zu-w48s.json
 pilot_relevance: [barcelona]
+places: [barcelona]
 tags: [waste, msw, recycling, landfill, catalonia, municipal, socrata]
 added: 2026-09-26
 auth: none

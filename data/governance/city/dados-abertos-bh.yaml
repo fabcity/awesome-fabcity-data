@@ -10,6 +10,7 @@ status: live
 license: Creative Commons Attribution (564 of 606); Open Data Commons ODbL (23 of 606)
 api: https://dados.pbh.gov.br/api/3/action
 pilot_relevance: []
+places: [belo-horizonte]
 tags: [open-data, belo-horizonte, brazil, ckan, municipal, budget-execution, procurement]
 added: 2026-09-10
 feeds_cells: [Governance|City]

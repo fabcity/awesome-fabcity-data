@@ -96,6 +96,8 @@ status: candidate        # candidate | live | stale | paywalled | deprecated | p
 license: CC-BY-4.0
 api: https://api.example.org/v1
 pilot_relevance: [barcelona, boston]
+places: [barcelona, boston]  # which of the Index's places (slugs in places.yaml) it serves, for its feeds_cells.
+                             # The site's ranking, city list and city cells count this. Name only places you checked.
 tags: [air-quality, citizen-science]
 added: 2026-05-04
 adapter: pack:coast      # core:<fn> in the node's app/sources.py or app/bootstrap.py, or pack:<id>.

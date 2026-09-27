@@ -10,6 +10,7 @@ license: 'Open (Geo-Information Policy 2018 §6.3.1 open tier: "Open data shall 
   freely accessible")'
 api: https://nsdi.systems.gov.bt/portal/sharing/rest?f=json
 pilot_relevance: []
+places: [bhutan]
 tags:
 - catalogue
 - metadata

@@ -10,6 +10,7 @@ status: candidate
 license: US public domain (Census Bureau work, 17 USC 105)
 api: null
 pilot_relevance: [boston]
+places: [boston]
 tags: [trade, exports, value, metro, msa, boston, census, xlsx]
 added: 2026-09-26
 auth: none

@@ -10,6 +10,7 @@ status: live
 license: Datenlizenz Deutschland - Namensnennung - 2.0 (dl-de/by-2-0), declared per record
 api: https://suche.transparenz.hamburg.de/api/3/action/package_search
 pilot_relevance: []
+places: [hamburg]
 tags: [open-data-portal, transparency, ckan, public-budget, germany]
 added: 2026-09-10
 feeds_cells: [Governance|City]

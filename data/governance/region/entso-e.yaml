@@ -10,6 +10,7 @@ status: live
 license: custom open (ENTSO-E terms; free for non-commercial)
 api: https://transparency.entsoe.eu/api
 pilot_relevance: [barcelona]
+places: [barcelona]
 tags: [electricity, grid, energy, eu, entso-e, renewable]
 added: 2026-05-04
 auth: api-key

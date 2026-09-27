@@ -10,6 +10,7 @@ status: live
 license: Datos digitales puestos a disposicion de cualquier persona para ser usados, reutilizados y redistribuidos libremente
 api: null
 pilot_relevance: []
+places: [yucatan]
 tags: [budget, public-finance, yucatan, mexico, budget-execution, cuenta-publica, state-government]
 added: 2026-09-10
 feeds_cells: [Economic|Region]

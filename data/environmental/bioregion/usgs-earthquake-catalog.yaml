@@ -11,6 +11,7 @@ status: candidate
 license: US public domain (USGS-authored data)
 api: https://earthquake.usgs.gov/fdsnws/event/1/query
 pilot_relevance: [santiago, bali, global]
+places: [bali, santiago-de-chile]
 tags: [earthquakes, seismic, hazard, near-real-time, geojson, usgs]
 added: 2026-09-26
 auth: none

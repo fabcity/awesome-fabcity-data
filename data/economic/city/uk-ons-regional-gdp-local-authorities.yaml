@@ -10,6 +10,7 @@ status: live
 license: Open Government Licence v3.0
 api: null
 pilot_relevance: []
+places: [plymouth]
 tags: [gdp, gva, ons, xlsx, annual, itl3, uk]
 added: 2026-09-11
 feeds_cells: [Economic|City]

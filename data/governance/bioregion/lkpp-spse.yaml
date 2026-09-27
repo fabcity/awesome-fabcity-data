@@ -11,6 +11,7 @@ status: live
 license: public (Indonesian government)
 api: null
 pilot_relevance: [bali]
+places: [bali]
 tags: [procurement, indonesia, action-latency, public-tender]
 added: 2026-05-04
 feeds_cells: []
