@@ -10,6 +10,7 @@ status: live
 license: CC-BY-SA-4.0
 api: https://api.presupuestoabierto.gob.cl/api/v1/data/municipios.csv
 pilot_relevance: [santiago]
+places: [renca, santiago-de-chile]
 tags: [public-finance, municipal-budget, expenditure, chile, comuna]
 added: 2026-09-10
 feeds_cells: [Economic|City]

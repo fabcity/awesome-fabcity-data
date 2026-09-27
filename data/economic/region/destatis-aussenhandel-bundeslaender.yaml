@@ -10,6 +10,7 @@ status: candidate
 license: "Destatis: reproduction and distribution, also in extracts, permitted with source attribution; GENESIS-Online content under dl-de/by-2-0"
 api: null
 pilot_relevance: []
+places: [hamburg]
 tags: [trade, imports, exports, value, lander, germany, hamburg, xlsx]
 added: 2026-09-26
 auth: none

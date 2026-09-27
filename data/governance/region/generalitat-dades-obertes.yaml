@@ -10,6 +10,7 @@ status: live
 license: Llicència oberta d'ús d'informació – Catalunya (reuse, redistribution and derived works; cite the source and the date of last update; do not alter or distort)
 api: https://analisi.transparenciacatalunya.cat/resource/
 pilot_relevance: [barcelona]
+places: [barcelona]
 tags: [open-data, catalonia, regional, generalitat, waste]
 added: 2026-05-04
 feeds_cells: [Governance|Region]

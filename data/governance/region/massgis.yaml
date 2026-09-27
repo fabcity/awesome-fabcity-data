@@ -10,6 +10,7 @@ status: live
 license: public
 api: https://gis.massdot.state.ma.us/arcgis/rest/services/
 pilot_relevance: [boston]
+places: [boston]
 tags: [gis, massachusetts, geospatial, parcels, transit]
 added: 2026-05-04
 feeds_cells: [Governance|Region]

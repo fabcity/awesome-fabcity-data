@@ -9,6 +9,7 @@ status: live
 license: 이용허락범위 제한 없음 (no restriction on scope of use)
 api: https://apis.data.go.kr/1741000/StanReginCd/getStanReginCdList
 pilot_relevance: []
+places: [seoul]
 tags:
 - admin-codes
 - geography

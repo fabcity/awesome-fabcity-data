@@ -10,6 +10,7 @@ status: live
 license: Creative Commons 4.0 Attribution (CC-BY) licence - Quebec (qc-cc-by)
 api: null
 pilot_relevance: []
+places: [montreal]
 tags: [municipal-finance, budget, mamh, cod-geo, quebec, all-municipalities]
 added: 2026-09-11
 feeds_cells: [Economic|City]

@@ -9,6 +9,7 @@ status: live
 license: 이용허락범위 제한 없음 (no restriction on scope of use)
 api: null
 pilot_relevance: []
+places: [seoul]
 tags:
 - fiscal-transparency
 - local-finance

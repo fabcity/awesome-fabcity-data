@@ -9,6 +9,7 @@ status: deprecated
 license: '공공누리 1유형 : 출처표시 (상업적 이용 및 변경 가능) - KOGL Type 1'
 api: null
 pilot_relevance: []
+places: [seoul]
 tags:
 - air-quality
 - pm10

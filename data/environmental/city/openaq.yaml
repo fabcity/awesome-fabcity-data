@@ -10,6 +10,7 @@ status: live
 license: CC-BY-4.0
 api: https://api.openaq.org/v3
 pilot_relevance: [barcelona, boston, santiago, bali, global]
+places: [bali, barcelona, boston, santiago-de-chile]
 tags: [air-quality, regulatory-monitoring, harmonised]
 added: 2026-05-04
 auth: key-free-rate-limited

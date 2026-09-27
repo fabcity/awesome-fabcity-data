@@ -10,6 +10,7 @@ status: candidate
 license: CC0-1.0
 api: https://firms.modaps.eosdis.nasa.gov/api/area/
 pilot_relevance: [bali, santiago, barcelona, boston]
+places: [bali, barcelona, boston, santiago-de-chile]
 tags: [fire, wildfire, peat, land-cover, satellite, near-real-time, hazard, nasa]
 added: 2026-09-26
 auth: api-key

@@ -10,6 +10,7 @@ status: candidate
 license: "DGDDI: reuse allowed with the integrity of the data respected and the source and reference date cited (Licence Ouverte not named)"
 api: null
 pilot_relevance: []
+places: [paris]
 tags: [trade, imports, exports, value, regions, departements, france, paris]
 added: 2026-09-26
 auth: none

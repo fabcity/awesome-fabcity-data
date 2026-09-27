@@ -10,6 +10,7 @@ status: live
 license: Licence Ouverte / Open Licence version 2.0
 api: https://data.laregion.fr/api/explore/v2.1/catalog/datasets
 pilot_relevance: []
+places: [occitanie]
 tags: [education, vocational-training, occitanie, france, region, education-access]
 added: 2026-09-09
 feeds_cells: []

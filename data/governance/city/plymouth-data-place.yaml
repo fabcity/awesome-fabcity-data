@@ -10,6 +10,7 @@ status: live
 license: Open Government Licence v3.0
 api: null
 pilot_relevance: []
+places: [plymouth]
 tags: [open-data-portal, ckan, catalogue, transparency, plymouth]
 added: 2026-09-11
 feeds_cells: [Governance|City]

@@ -9,6 +9,7 @@ status: live
 license: CC-BY-4.0
 api: null
 pilot_relevance: []
+places: [kamakura]
 tags:
 - waste
 - recycling

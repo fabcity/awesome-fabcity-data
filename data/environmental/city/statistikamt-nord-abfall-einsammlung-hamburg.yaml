@@ -10,6 +10,7 @@ status: candidate
 license: dl-de-by-2.0
 api: https://www.statistik-nord.de/fileadmin/Dokumente/Q_II_9_j_24_HH.xlsx
 pilot_relevance: []
+places: [hamburg]
 tags: [waste, household-waste, recycling, hamburg, germany, statistikamt-nord, transparenzportal, xlsx]
 added: 2026-09-26
 auth: none

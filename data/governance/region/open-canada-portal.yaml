@@ -11,6 +11,7 @@ status: live
 license: Open Government Licence - Canada
 api: https://open.canada.ca/data/api/3/action/package_search
 pilot_relevance: []
+places: [bas-saint-laurent, montreal]
 tags: [open-data-portal, ckan, transparency, catalogue, canada]
 added: 2026-09-11
 updated: '2026-09-19'

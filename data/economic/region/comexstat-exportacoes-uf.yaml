@@ -10,6 +10,7 @@ status: candidate
 license: "Open government data under Decreto 8.777/2016 (reuse limited to crediting the source). The gov.br site footer reads CC BY-ND 3.0; read as the website's editorial licence, not the data's, by maintainer decision (Tomas Diez, 2026-09-27)"
 api: https://api-comexstat.mdic.gov.br/general?language=en
 pilot_relevance: []
+places: [recife, sao-paulo]
 tags: [trade, exports, imports, value, brazil, sao-paulo, pernambuco, recife, isic, open-api]
 added: 2026-09-27
 auth: none

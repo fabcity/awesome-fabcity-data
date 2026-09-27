@@ -10,6 +10,7 @@ status: live
 license: "Idescat reuse conditions: reuse allowed if the source is cited, the content is not altered and the update date is stated (no named licence)"
 api: https://api.idescat.cat/taules/v2/comest/18132/5/prov/data?lang=en&TOD=TOTAL&TARIC=TOTAL&MOD_TRANS=TOTAL&CONCEPT=VALUE_IMP,VALUE_EXP,WEIGHT_IMP,WEIGHT_EXP
 pilot_relevance: [barcelona]
+places: [barcelona]
 tags: [trade, imports, exports, tonnes, value, provinces, catalonia, open-api]
 added: 2026-09-26
 updated: 2026-09-26

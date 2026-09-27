@@ -9,6 +9,7 @@ status: candidate
 license: CC-BY-SA-4.0
 api: https://www.ine.gob.cl/docs/default-source/proyecciones-de-poblacion/cuadros-estadisticos/base-2017/estimaciones-y-proyecciones-2002-2035-comuna-y-%C3%A1rea-urbana-y-rural.xlsx
 pilot_relevance: [santiago]
+places: [santiago-de-chile]
 tags: [population, projections, chile, ine, comuna, census, denominator]
 added: 2026-09-26
 auth: none

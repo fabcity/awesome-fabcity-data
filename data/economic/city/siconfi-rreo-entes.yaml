@@ -10,6 +10,7 @@ status: live
 license: Open Data Commons Open Database License (ODbL)
 api: https://apidatalake.tesouro.gov.br/ords/siconfi/tt/rreo
 pilot_relevance: []
+places: [belo-horizonte, curitiba, recife, sao-paulo, sorocaba]
 tags: [budget, public-finance, brazil, siconfi, budget-execution, cofog-adjacent, ibge]
 added: 2026-09-10
 feeds_cells: [Economic|City]

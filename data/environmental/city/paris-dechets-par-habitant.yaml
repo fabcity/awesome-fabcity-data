@@ -9,6 +9,7 @@ status: candidate
 license: Licence Ouverte (Etalab)
 api: https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/quantite-de-dechets-produits-et-tries-par-habitant-et-par-an/records
 pilot_relevance: []
+places: [paris]
 tags: [waste, household-waste, recycling, paris, france, opendatasoft]
 added: 2026-09-26
 auth: none

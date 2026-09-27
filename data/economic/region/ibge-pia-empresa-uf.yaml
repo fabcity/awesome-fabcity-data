@@ -10,6 +10,7 @@ status: candidate
 license: "IBGE terms: data from IBGE publications and databases may be used by third parties with IBGE cited as the source; a transformed table must say who transformed it"
 api: https://apisidra.ibge.gov.br/values/t/1849/n3/35,26/v/810,836,631/p/2019/c12762/116911/f/n
 pilot_relevance: []
+places: [recife, sao-paulo]
 tags: [manufacturing, production, production-value, employment, brazil, sao-paulo, pernambuco, recife, sidra, open-api]
 added: 2026-09-27
 auth: none

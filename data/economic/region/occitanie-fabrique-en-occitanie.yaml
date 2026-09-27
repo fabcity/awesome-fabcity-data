@@ -10,6 +10,7 @@ status: live
 license: Licence Ouverte / Open Licence version 2.0
 api: null
 pilot_relevance: []
+places: [occitanie]
 tags: [local-production, manufacturing, business-registry, occitanie, france, region]
 added: 2026-09-09
 feeds_cells: []

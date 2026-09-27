@@ -11,6 +11,7 @@ status: candidate
 license: "Idescat reuse conditions: reuse allowed if the source is cited, the content is not altered and the update date is stated (no named licence)"
 api: https://www.idescat.cat/indicadors/?id=aec&n=16006&lang=en&f=csv&t=201900
 pilot_relevance: [barcelona]
+places: [barcelona]
 tags: [material-flow, dmc, domestic-extraction, imports, exports, interregional-trade, tonnes, catalonia, csv]
 added: 2026-09-27
 auth: none

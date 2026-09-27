@@ -9,6 +9,7 @@ status: candidate
 license: "BPS website terms (bps.go.id/id/term-of-use): free, worldwide, perpetual, non-exclusive use including commercial, copying, distribution and derivatives, with citation; content stays subject to copyright and BPS may change the terms without notice. The BPS WebAPI (non-commercial, key) is excluded. Used from the website only by maintainer decision (Tomas Diez, 2026-09-27)"
 api: null
 pilot_relevance: [bali]
+places: [bali]
 tags: [trade, exports, value, tonnes, bali, indonesia, bps, hs]
 added: 2026-09-27
 auth: none

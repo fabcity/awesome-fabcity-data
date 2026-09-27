@@ -10,6 +10,7 @@ status: live
 license: Free of charge, no agreement required, commercial use permitted; attribution "Kalla, Kolada" required unless the data has been substantially processed
 api: https://api.kolada.se/v3
 pilot_relevance: []
+places: [veberod]
 tags: [kpi, municipal-benchmarking, sweden, api, kolada, attribution-required]
 added: 2026-09-11
 feeds_cells: []

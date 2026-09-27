@@ -10,6 +10,7 @@ status: live
 license: Licence Ouverte / Open Licence version 2.0
 api: null
 pilot_relevance: []
+places: [occitanie]
 tags: [energy, renewables, occitanie, france, region, energy-mix]
 added: 2026-09-09
 feeds_cells: [Environmental|Region]

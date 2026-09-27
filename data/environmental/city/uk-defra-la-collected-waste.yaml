@@ -10,6 +10,7 @@ status: live
 license: Open Government Licence v3.0
 api: null
 pilot_relevance: []
+places: [plymouth]
 tags: [waste, recycling, wastedataflow, ods, annual, defra, england]
 added: 2026-09-11
 feeds_cells: [Environmental|City]

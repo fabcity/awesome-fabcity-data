@@ -118,6 +118,12 @@ def candidate_needs_notes(entry: dict) -> str | None:
     return None
 
 
+PLACES_PATH = ROOT / "places.yaml"
+# No places.yaml means no known places: an entry without `places` still passes, one naming a place fails.
+KNOWN_PLACES = ({p["slug"] for p in (yaml.safe_load(PLACES_PATH.read_text(encoding="utf-8")) or {}).get("places", [])}
+                if PLACES_PATH.is_file() else set())
+
+
 def pass_entries() -> tuple[int, dict]:
     """Pass 1: data/**/*.yaml. Returns (failures, {registry id: entry})."""
     validator = _validator(SCHEMA_PATH)
@@ -163,6 +169,13 @@ def pass_entries() -> tuple[int, dict]:
             failures += 1
             continue
         seen_slugs[key] = rel
+
+        # `places` must name places the Index tracks (places.yaml), or the site counts nothing for them.
+        unknown = [p for p in entry.get("places") or [] if p not in KNOWN_PLACES]
+        if unknown:
+            print(f"[FAIL] {rel}: places {unknown} are not in places.yaml")
+            failures += 1
+            continue
 
         # `candidate` without notes — validator logic, not schema. See candidate_needs_notes().
         why = candidate_needs_notes(entry)

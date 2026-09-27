@@ -10,6 +10,7 @@ status: live
 license: CC0-1.0
 api: null
 pilot_relevance: []
+places: [amsterdam, velsen]
 tags: [open-data, netherlands, ckan, national-portal, dcat]
 added: 2026-09-11
 feeds_cells: [Governance|Region]

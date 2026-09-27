@@ -11,6 +11,7 @@ status: candidate
 license: "IBGE terms: data from IBGE publications and databases may be used by third parties with IBGE cited as the source; a transformed table must say who transformed it"
 api: https://apisidra.ibge.gov.br/values/t/6972/n3/35,26/v/1201/p/2018/c339/7999/c12190/103626/f/n
 pilot_relevance: []
+places: [recife, sao-paulo]
 tags: [consumption, household-spending, pof, brazil, sao-paulo, pernambuco, recife, sidra, open-api]
 added: 2026-09-27
 auth: none

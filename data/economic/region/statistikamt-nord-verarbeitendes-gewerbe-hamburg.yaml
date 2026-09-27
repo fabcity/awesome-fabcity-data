@@ -11,6 +11,7 @@ status: candidate
 license: "Statistikamt Nord imprint: extracts may be reproduced and distributed with attribution, all other rights reserved. Not on the Transparenzportal, so no dl-de-by-2.0. Used under these terms by maintainer decision (Tomas Diez, 2026-09-27)"
 api: null
 pilot_relevance: []
+places: [hamburg]
 tags: [manufacturing, production, turnover, exports, foreign-turnover, employment, hamburg, xlsx]
 added: 2026-09-27
 auth: none

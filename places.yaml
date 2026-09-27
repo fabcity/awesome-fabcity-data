@@ -1,0 +1,187 @@
+# The 61 Fab City places the Index tracks, one per locality in Airtable's FCI Coverage Tracker
+# (the source of record for the list). An entry's `places` must use these slugs. Snapshot taken
+# 2026-09-27 from index.fab.city/api/coverage.json; add a place here when the tracker gains one.
+places:
+  - slug: accra
+    name: "Accra"
+    country: "Ghana"
+  - slug: amsterdam
+    name: "Amsterdam"
+    country: "Netherlands"
+  - slug: augsburg
+    name: "Augsburg"
+    country: "Germany"
+  - slug: auvergne-rhone-alpes
+    name: "Auvergne-Rhône-Alpes"
+    country: "France"
+  - slug: bali
+    name: "Bali"
+    country: "Indonesia"
+  - slug: barcelona
+    name: "Barcelona"
+    country: "Spain"
+  - slug: bas-saint-laurent
+    name: "Bas-Saint-Laurent"
+    country: "Canada"
+  - slug: belo-horizonte
+    name: "Belo Horizonte"
+    country: "Brazil"
+  - slug: bergisches
+    name: "Bergisches"
+    country: "Germany"
+  - slug: bhutan
+    name: "Bhutan"
+    country: "Bhutan"
+  - slug: boston
+    name: "Boston"
+    country: "United States of America"
+  - slug: brest
+    name: "Brest"
+    country: "France"
+  - slug: cambridge
+    name: "Cambridge"
+    country: "United States of America"
+  - slug: cape-town
+    name: "Cape Town"
+    country: "South Africa"
+  - slug: charlotte
+    name: "Charlotte"
+    country: "United States of America"
+  - slug: cordoba
+    name: "Cordoba"
+    country: "Argentina"
+  - slug: curitiba
+    name: "Curitiba"
+    country: "Brazil"
+  - slug: detroit
+    name: "Detroit"
+    country: "United States of America"
+  - slug: ekurhuleni
+    name: "Ekurhuleni"
+    country: "South Africa"
+  - slug: georgia
+    name: "Georgia"
+    country: "Georgia"
+  - slug: goa
+    name: "Goa"
+    country: "India"
+  - slug: guanajuato
+    name: "Guanajuato"
+    country: "Mexico"
+  - slug: hamburg
+    name: "Hamburg"
+    country: "Germany"
+  - slug: kamakura
+    name: "Kamakura"
+    country: "Japan"
+  - slug: kerala
+    name: "Kerala"
+    country: "India"
+  - slug: kumasi
+    name: "Kumasi"
+    country: "Ghana"
+  - slug: linz
+    name: "Linz"
+    country: "Austria"
+  - slug: ljubljana
+    name: "Ljubljana"
+    country: "Slovenia"
+  - slug: mexico-city
+    name: "Mexico City"
+    country: "Mexico"
+  - slug: monterrey
+    name: "Monterrey"
+    country: "Mexico"
+  - slug: montpellier
+    name: "Montpellier"
+    country: "France"
+  - slug: montreal
+    name: "Montreal"
+    country: "Canada"
+  - slug: oakland
+    name: "Oakland"
+    country: "United States of America"
+  - slug: occitanie
+    name: "Occitanie"
+    country: "France"
+  - slug: oulu
+    name: "Oulu"
+    country: "Finland"
+  - slug: papua
+    name: "Papua"
+    country: "Indonesia"
+  - slug: parepare
+    name: "Parepare"
+    country: "Indonesia"
+  - slug: paris
+    name: "Paris"
+    country: "France"
+  - slug: pemkab-bangka-tengah
+    name: "Pemkab Bangka Tengah"
+    country: "Indonesia"
+  - slug: plymouth
+    name: "Plymouth"
+    country: "United Kingdom"
+  - slug: puebla
+    name: "Puebla"
+    country: "Mexico"
+  - slug: recife
+    name: "Recife"
+    country: "Brazil"
+  - slug: renca
+    name: "Renca"
+    country: "Chile"
+  - slug: rennes
+    name: "Rennes"
+    country: "France"
+  - slug: sacramento
+    name: "Sacramento"
+    country: "United States of America"
+  - slug: santiago-de-chile
+    name: "Santiago de Chile"
+    country: "Chile"
+  - slug: sao-paulo
+    name: "Sao Paulo"
+    country: "Brazil"
+  - slug: seoul
+    name: "Seoul"
+    country: "Korea, South"
+  - slug: shenzhen
+    name: "Shenzhen"
+    country: "China"
+  - slug: somerville
+    name: "Somerville"
+    country: "United States of America"
+  - slug: sorocaba
+    name: "Sorocaba"
+    country: "Brazil"
+  - slug: sudburgenland
+    name: "Sudburgenland"
+    country: "Austria"
+  - slug: sumedang
+    name: "Sumedang"
+    country: "Indonesia"
+  - slug: tanga
+    name: "Tanga"
+    country: "Tanzania"
+  - slug: toulouse
+    name: "Toulouse"
+    country: "France"
+  - slug: valence-romans-agglo
+    name: "Valence Romans Agglo"
+    country: "France"
+  - slug: veberod
+    name: "Veberod"
+    country: "Sweden"
+  - slug: velsen
+    name: "Velsen"
+    country: "Netherlands"
+  - slug: yucatan
+    name: "Yucatan"
+    country: "Mexico"
+  - slug: zadar
+    name: "Zadar"
+    country: "Croatia"
+  - slug: zagreb
+    name: "Zagreb"
+    country: "Croatia"

@@ -10,6 +10,7 @@ status: live
 license: Open Data Commons Attribution License (105 datasets) / Creative Commons Attribution (19)
 api: null
 pilot_relevance: []
+places: [monterrey]
 tags: [open-data, nuevo-leon, monterrey, mexico, ckan, state-government]
 added: 2026-09-10
 feeds_cells: [Governance|Region]

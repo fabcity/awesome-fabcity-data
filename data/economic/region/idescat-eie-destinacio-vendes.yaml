@@ -11,6 +11,7 @@ status: candidate
 license: "Idescat reuse conditions: reuse allowed if the source is cited, the content is not altered and the update date is stated (no named licence); built on INE's Structural Business Statistics, CC BY 4.0 at INE"
 api: https://www.idescat.cat/indicadors/?id=aec&n=15464&lang=en&f=csv&t=201900
 pilot_relevance: [barcelona]
+places: [barcelona]
 tags: [manufacturing, production, turnover, exports, sales-destination, catalonia, csv]
 added: 2026-09-27
 auth: none
