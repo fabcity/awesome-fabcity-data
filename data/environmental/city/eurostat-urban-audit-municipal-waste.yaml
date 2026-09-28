@@ -9,6 +9,7 @@ status: candidate
 license: Eurostat reuse policy (Commission Decision 2011/833/EU), reuse authorised with acknowledgement
 api: https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/urb_cenv?indic_ur=EN4008V
 pilot_relevance: []
+places: [hamburg, paris]
 tags: [waste, msw, eurostat, urban-audit, europe-only, open-api]
 added: 2026-09-26
 auth: none

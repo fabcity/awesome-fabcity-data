@@ -9,7 +9,7 @@ status: candidate
 license: Eurostat reuse policy (Commission Decision 2011/833/EU), reuse authorised with acknowledgement
 api: https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/avia_gooa?freq=A&unit=T&schedule=TOTAL&tra_cov=TOTAL&tra_meas=FRM_LD&tra_meas=FRM_NLD
 pilot_relevance: [barcelona]
-places: [barcelona]
+places: [barcelona, hamburg]
 tags: [trade, imports, exports, airports, air-freight, material-flow, tonnes, eurostat, europe-only, open-api]
 added: 2026-09-26
 auth: none

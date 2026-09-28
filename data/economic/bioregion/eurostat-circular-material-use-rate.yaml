@@ -11,7 +11,7 @@ status: live
 license: Eurostat re-use policy (Commission Decision 2011/833/EU) — free re-use with attribution
 api: https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/cei_srm030
 pilot_relevance: [barcelona, global]
-places: [barcelona]
+places: [barcelona, hamburg]
 tags: [eurostat, circular-economy, circular-material-use-rate, europe-only, open-api]
 added: 2026-09-09
 feeds_cells: [Economic|Bioregion]
