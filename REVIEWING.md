@@ -180,9 +180,16 @@ Three rules keep it a review and not a bot's output:
 2. **Name the agent.** Put it in `Assisted by` (e.g. `Claude Code`). It is recorded in the review
    file as `assisted_by`, so a reader can see which kind of evidence this is, the same way
    `self_declared` works.
-3. **File it from your own account.** The agent can open the issue with your GitHub CLI login, and
-   that is the point: the issue, and so the review, is attached to a person who can be asked about
-   it in six months.
+3. **File it from your own account.** The issue, and so the review, is then attached to a person
+   who can be asked about it in six months.
+
+**Any agent will do.** The agent doesn't need access to GitHub:
+1. On [the review page](https://index.fab.city/operate/source-review), open a source and choose "Review it with your agent instead". Copy the brief into your own agent (Claude, ChatGPT, or any agent that can read web pages).
+2. The agent does the checks and replies with the review.
+3. Paste its reply into the box under the brief and press **Fill the form from it**. The page fills in the checks, verdict, date, notes and `Assisted by`. It never takes your name, organisation or territory from the agent.
+4. Read the form, change what you disagree with, and file it with the button, from your account.
+
+If your agent can run the GitHub CLI as you, it can file the issue itself instead, once you say so.
 
 An agent files a review as a plain issue titled `review: <entry>` whose body is the rendered form,
 `### <label>` then the answer:
