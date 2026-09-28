@@ -10,7 +10,7 @@ status: candidate
 license: "Eurostat reuse policy: commercial and non-commercial reuse authorised with acknowledgement (Decision 2011/833/EU)"
 api: https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/mar_go_qm_es
 pilot_relevance: [barcelona]
-places: [barcelona]
+places: [barcelona, hamburg]
 tags: [trade, imports, exports, ports, maritime, material-flow, tonnes, eurostat]
 added: 2026-09-26
 auth: none

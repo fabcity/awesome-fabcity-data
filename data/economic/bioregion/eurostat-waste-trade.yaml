@@ -10,7 +10,7 @@ status: candidate
 license: Eurostat reuse policy (Commission Decision 2011/833/EU), reuse authorised with acknowledgement
 api: https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/env_wastrdmp?rawmat=TOTAL&unit=T
 pilot_relevance: [barcelona]
-places: [barcelona]
+places: [barcelona, hamburg]
 tags: [waste, trade, imports, exports, material-flow, eurostat, europe-only, open-api]
 added: 2026-09-26
 auth: none
