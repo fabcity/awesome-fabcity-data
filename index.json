@@ -6,7 +6,7 @@
   "entries": 268,
   "cells": 20,
   "places_served": 43,
-  "reviews": 3
+  "reviews": 4
  },
  "entries": [
   {
@@ -2205,7 +2205,15 @@
    "places": [
     "bali"
    ],
-   "reviews": []
+   "reviews": [
+    {
+     "by": "Tomas Diez",
+     "org": "Fab City",
+     "date": "2026-09-28",
+     "territory": "Bali",
+     "verdict": "usable-with-caveats"
+    }
+   ]
   },
   {
    "id": "economic/region/canada-main-estimates",
