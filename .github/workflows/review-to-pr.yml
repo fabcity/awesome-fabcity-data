@@ -57,6 +57,12 @@ jobs:
       (github.event.action == 'opened' && startsWith(github.event.issue.title, 'review: ') &&
        !contains(github.event.issue.labels.*.name, 'source-review'))
     runs-on: ubuntu-latest
+    # One run per issue at a time. Removing and re-adding the label twice in quick succession started two
+    # runs for #76 on 2026-09-28: the first opened #77, the second tried to push the same branch, was
+    # rejected, and told the reviewer that something had failed. Queued runs then see the first one's PR.
+    concurrency:
+      group: source-review-${{ github.event.issue.number }}
+      cancel-in-progress: false
     steps:
       - uses: actions/checkout@v5
 
@@ -150,6 +156,13 @@ jobs:
           ENTRY_PATH: ${{ steps.review.outputs.entry_path }}
           PROMOTED: ${{ steps.review.outputs.promoted }}
         run: |
+          # A re-run of a review that is already a pull request (open, merged or closed) links it and stops,
+          # rather than pushing the same branch again and reporting a failure that is not one.
+          existing="$(gh pr list --head "$BRANCH" --state all --json number,state,url --jq '.[0] | select(.) | "\(.state) \(.url)"')"
+          if [ -n "$existing" ]; then
+            gh issue comment "$NUMBER" --body "This review is already a pull request: ${existing#* } (${existing%% *}). Nothing new was written, and there is nothing for you to do."
+            exit 0
+          fi
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -b "$BRANCH"
@@ -171,7 +184,9 @@ jobs:
 
           From #$NUMBER via .github/ISSUE_TEMPLATE/source-review.yml." \
             -m "Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>"
-          git push -u origin "$BRANCH"
+          # The branch is this workflow's own, one per issue and date, so an earlier run's leftover (pushed, but the
+          # PR never opened) is replaced rather than left to reject this push.
+          git push --force -u origin "$BRANCH"
 
           body="$(cat <<EOF
           **$ENTRY** — $headline.
