@@ -3993,7 +3993,8 @@
    "description": "Municipal waste generated (domestic and commercial) per city, in thousand tonnes,\nfor the Urban Audit cities of the EU and EFTA, 2007–2024.\n",
    "notes": "VERIFIED 2026-09-26, not yet read for a real territory.\n\nLICENCE. Eurostat's copyright notice authorises reuse \"provided the source is\nacknowledged\" (Commission Decision of 12 December 2011, 2011/833/EU). The CC-BY-4.0 on\nthe website covers editorial content, not the statistics. Data \"identified as belonging\nto sources other than Eurostat\" is excluded, and that applies here: Urban Audit figures\ncome from national statistical offices and cities.\n\nENDPOINT. Key-free JSON-stat. Hamburg (cities=DE002C): 749.2 kt in 2022, 750.4 in\n2023, 765.9 in 2024. Barcelona (ES002C) returns no values for this variable. Paris\n(FR001C) returns 4,188 kt for 2023, about four times the Ville de Paris household\nfigure, so the boundary or scope differs. Urban Audit codes distinguish city (C),\ngreater city and functional urban area.\n\nWHY THIS CELL. Environmental|City's waste row. Divide by the Urban Audit population for kg\nper capita. For Hamburg, statistikamt-nord-abfall-einsammlung-hamburg now gives the split\nthis total lacks (775.1 kt collected in 2024, against 765.9 kt here).\n\nWHAT IT DOES NOT CLAIM. A total only: no recycling or disposal split, so residual waste\ncannot be derived from it. Coverage varies by city and year.\n",
    "places": [
-    "hamburg"
+    "hamburg",
+    "paris"
    ],
    "reviews": []
   },
@@ -7212,7 +7213,8 @@
    "notes": "LICENCE, read from Eurostat's own copyright notice 2026-09-22, and the\ndistinction matters. Two sentences on that page say different things: \"The\ncopyright for the editorial content of this website ... is licensed under the\nCreative Commons Attribution 4.0 International licence\", and separately\n\"Reuse of statistical data, metadata, publications, and other dissemination\ntools published on this website for commercial or non-commercial purposes is\nauthorised provided the source is acknowledged. The reuse policy of the\nEuropean Commission is implemented by the Decision of 12 December 2011.\"\n**The data is not CC-BY-4.0; it is the Commission reuse Decision.** Both are\nopen with attribution, and filing the data as CC-BY-4.0 would be citing the\nwrong instrument.\n\nTHE NON-COMMERCIAL EXCEPTION, verbatim and worth reading before building a\nproduct on any Eurostat table: some data \"may not be reused for commercial\npurposes, but non-commercial reuse is possible without restriction\" — data\nbelonging to sources other than Eurostat, co-publications, and \"Data for\ncountries other than: Member States of the European Union (EU) ... EFTA ...\nofficial EU acceding and candidate countries\", where \"the user will need to\neliminate these data from the tables before reusing them commercially\".\n**AND IT DOES BITE HERE, which the first version of this entry got wrong.**\nThe C' licence pass (2026-09-23) caught it and it is confirmed: `urb_cpop1`\nfor 2023 carries **136 UK-coded members** — `UK001C` London, `UK002C`\nBirmingham, `UK003C` Leeds and so on. The United Kingdom is not an EU member,\nnot EFTA and not a candidate, so every UK row in this table falls under the\nexception: non-commercial reuse without restriction, commercial reuse only\nafter eliminating them. A node filtering to a partner city is unaffected; an\nIndex that aggregates the table whole is not.\n\nENDPOINT VERIFIED 2026-09-22, no key and no account: `GET\n.../1.0/data/urb_cpop1?format=JSON&lang=EN&time=2023&indic_ur=DE1001V`\nreturned JSON-stat, \"Population on 1 January by age groups and sex - cities\nand greater cities\", `updated: 2026-09-07`. The dataset id is the whole API —\n`urb_cpop1` is population, and the other `urb_*` tables (living conditions,\nlabour, economy) answer the same way.\n\nSPATIAL, and this is what separates it from a population grid. The geo\ndimension is `cities`, 969 members, coded with official Eurostat Urban Audit\ncodes — `BE001C` Bruxelles, `BE002C` Antwerpen, `ES002C` Barcelona — with\ncountry rollups under the plain ISO code. These correspond to LAU, so a\nEuropean partner city can join this to its own register without a crosswalk\nsomebody invented. That is rarer than it sounds: social/city/jrc-ghsl and\nsocial/region/worldpop both give better resolution and neither can be joined\nto an official boundary at all.\n\nCADENCE: annual, published with a lag; the 2023 reference year was refreshed\n2026-09-07. Coverage is uneven city by city — a city can be in the register\nand carry no value for an indicator in a given year, which is a null and not\na zero.\n\nINDICATOR: city population and living conditions — the social-pillar city row\nfor European partner cities, and the only source in this list that gives it\nwith an official code attached. I could not read the landing plan's Table 2 in\nthis session, so this names the indicator in plain words rather than a row id.\n\nPromotes to live when somebody pulls one indicator for one partner city —\nBarcelona is `ES002C` — checks the value against that city's own published\nfigure, and confirms how many of the 969 carry a non-null value for the year\nthey need. Coverage, not the endpoint, is what will decide whether this is\nusable.\n",
    "places": [
     "barcelona",
-    "hamburg"
+    "hamburg",
+    "paris"
    ],
    "reviews": []
   },
@@ -8502,11 +8504,15 @@
    ],
    "Environmental|City": [
     "environmental/city/ademe-sinoe-dma",
+    "environmental/city/eurostat-urban-audit-municipal-waste",
     "environmental/city/paris-dechets-par-habitant"
    ],
    "Governance|City": [
     "governance/city/opendata-paris",
     "governance/city/paris-marches-publics"
+   ],
+   "Social|City": [
+    "social/city/eurostat-urban-audit"
    ]
   },
   "renca": {
