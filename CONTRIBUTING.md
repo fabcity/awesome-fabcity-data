@@ -4,6 +4,8 @@ This list is opinionated curation, not exhaustive cataloguing. Adding an entry s
 
 If your contribution doesn't fit that frame — e.g. you found a generic dataset list and want to mirror it here — that's not a fit. Submit upstream to [`awesomedata/awesome-public-datasets`](https://github.com/awesomedata/awesome-public-datasets) instead, where the criteria are different. We may then pull individual entries from there if they pass our fit test.
 
+**Using an AI agent?** It can do the searching and checking, and you stay responsible. Read [Filing a source with an agent](#filing-a-source-with-an-agent) first. For reviews, see [REVIEWING.md](REVIEWING.md#reviewing-with-an-agent).
+
 ## What kinds of entries belong here
 
 A source belongs in this list if **all three** are true:
@@ -77,6 +79,53 @@ Entries added before this convention (September 2026) carry a descriptive senten
 instead — `"No licence published — …"`. Both say the same thing; new entries use the short string,
 because it is greppable.
 
+## Filing a source with an agent
+
+An AI agent can do the legwork of finding a missing source:
+- find which cells a place lacks;
+- search for an open dataset;
+- read the licence on the publisher's own page;
+- fetch the endpoint, and confirm it holds data for the place;
+- write the entry.
+
+Four rules keep the entry yours and not the agent's:
+
+1. **You are the contributor.** The pull request comes from your own GitHub account. You read the entry and the evidence in its `notes`, you check anything that looks too tidy, and you answer for it. If you would not defend it to the publisher, do not open the PR.
+2. **Name the agent.** Put it in `assisted_by:` (e.g. `assisted_by: Claude Code`). A reader can then see what kind of work stands behind the entry, the same way a review's `assisted_by` works.
+3. **An agent files a `candidate`, never `live`.** `live` needs a person's review under [`reviews/`](reviews/) or an `adapter`, and `validate.py` enforces that. An agent can help with the review later, under [REVIEWING.md](REVIEWING.md#reviewing-with-an-agent), but a person files it.
+4. **Evidence, not claims.** Every figure in `notes` must be one the agent actually read from the source, with where and when.
+   - The licence is quoted from the publisher's own terms, not from a portal's label. Portals get it wrong: datos.gob.cl labels INE Chile's data "cc-nc" against INE's own CC BY-SA 4.0.
+   - `places` names only places whose data was checked in the source itself.
+
+**Why the merge matters.** A `candidate` already counts in the Index's DIDO term, the share of cells with open data, from the moment it is merged. So a place's score moves on the maintainer's merge, before any review. That is why the maintainer reads an agent-filed PR as closely as any other.
+
+### A brief to give your agent
+
+Replace the parts in `<angle brackets>` and paste it to an agent that can fetch pages and run `git` and the GitHub CLI as you:
+
+```
+You are helping <your name> file an open-data source in fabcity/awesome-fabcity-data, the registry
+behind the Fab City Index. I am responsible for what you file; you do the research.
+
+1. Find the gap. Read https://index.fab.city/api/v0/places/<place-slug>.json. The cells with an
+   empty "sources" list have no open data. Pick one, and read its definition in
+   cells/<pillar>-<scale>.yaml (what it requires, and what it must not claim).
+2. Search for a source that fits that cell for <place>. Prefer the publisher's own site or API.
+3. Verify, and write down what you read:
+   - the licence, quoted from the publisher's terms page (URL and the key sentence). If it is not
+     open (non-commercial, no-derivatives, all rights reserved, revocable), stop and tell me;
+   - the endpoint: fetch it, and record two or three real figures for <place> with their year;
+   - that it holds data for <place> itself (its official code or name in the data).
+4. Write data/<pillar>/<scale>/<slug>.yaml from the template in CONTRIBUTING.md, with
+   status: candidate, places: [<place-slug>], assisted_by: <your agent's name>, and notes in the
+   VERIFIED / LICENCE / ENDPOINT / WHY THIS CELL / WHAT IT DOES NOT CLAIM shape other entries use.
+   Never invent a figure; if you could not read something, say so in notes.
+5. Run: python3 scripts/validate.py && python3 scripts/build_index.py && python3 tests/test_schema.py
+   && python3 scripts/build_readme.py. Fix anything that fails.
+6. Show me the entry and your evidence before opening anything. When I say go, open a pull
+   request from my account titled "Add: <source name>". Do not merge it.
+```
+
 ## Adding an entry
 
 Every entry is a single YAML file under `data/{pillar}/{scale}/{slug}.yaml`. The slug is lowercase-hyphenated and unique within its directory.
@@ -100,6 +149,7 @@ places: [barcelona, boston]  # which of the Index's places (slugs in places.yaml
                              # The site's ranking, city list and city cells count this. Name only places you checked.
 tags: [air-quality, citizen-science]
 added: 2026-05-04
+assisted_by: Claude Code # the agent that did part of the research, if one did. You, who open the PR, stay responsible.
 adapter: pack:coast      # core:<fn> in the node's app/sources.py or app/bootstrap.py, or pack:<id>.
                          # Omit it if nothing reads this source yet — that is the honest majority.
 feeds_cells: [Environmental|Bioregion]   # Index cells a node fills from it. Pillar|Scale, capitalised.

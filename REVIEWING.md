@@ -175,7 +175,8 @@ Three rules keep it a review and not a bot's output:
 
 1. **You are the reviewer.** `Your name` is yours, not the agent's. You read what it found, you
    check anything that looks too tidy, and you stand behind the verdict. If you would not defend it
-   to the source's publisher, do not file it.
+   to the source's publisher, do not file it. The parser refuses an agent's name (or the same
+   name as `Assisted by`) in `Your name`, and says so on the issue.
 2. **Name the agent.** Put it in `Assisted by` (e.g. `Claude Code`). It is recorded in the review
    file as `assisted_by`, so a reader can see which kind of evidence this is, the same way
    `self_declared` works.
@@ -254,3 +255,6 @@ first if you want to see the file it will write, and every refusal it would give
 Who can review what, and who would rather not be asked: [`REVIEWERS.md`](REVIEWERS.md). Add yourself
 — especially if you maintain open data for a pledged Fab City. You are the best possible reviewer
 for your own city's sources, and for the national feeds that cover it.
+
+To file a missing **source** with an agent, rather than review one, see
+[CONTRIBUTING.md › Filing a source with an agent](CONTRIBUTING.md#filing-a-source-with-an-agent).

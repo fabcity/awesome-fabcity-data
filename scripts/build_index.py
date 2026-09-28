@@ -39,7 +39,7 @@ OUT = ROOT / "index.json"
 # trap is — but this is the line to revisit if the file ever gets heavy.
 KEEP = ("name", "url", "api", "auth", "pillar", "scale", "status", "license", "tags",
         "pilot_relevance", "feeds_cells", "role", "act_kind", "adapter", "added", "updated",
-        "description", "notes", "places")
+        "description", "notes", "places", "assisted_by")
 # The per-place cells the site counts: what the Coverage Tracker calls a place's eight cells.
 PLACE_SCALES = ("City", "Region")
 COUNTS = ("live", "candidate")      # verified sources; stale, deprecated, paywalled and planned do not count
