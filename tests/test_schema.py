@@ -103,6 +103,11 @@ CASES = [
     ("notes one over",                  {"notes": "x" * 4001}, False),
     ("notes at the old 2000 limit",     {"notes": "x" * 2000}, True),
 
+    # --- assisted_by: the agent named, the person who opened the PR still responsible ------------
+    ("assisted_by an agent",            {"assisted_by": "Claude Code"}, True),
+    ("assisted_by empty",               {"assisted_by": ""}, False),
+    ("assisted_by as a list",           {"assisted_by": ["Claude Code"]}, False),
+
     # --- the closed door ----------------------------------------------------------------------
     ("an invented key",                 {"adapters": "core:ckan"}, False),
 

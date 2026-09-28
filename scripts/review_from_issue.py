@@ -62,6 +62,16 @@ FIELDS = {
     "note": "Notes for the next reader",
 }
 REQUIRED = ("entry", "by", "org", "territory", "verdict")
+# Agent and tool names that cannot be a reviewer. A lone "Claude" is refused too: it is also a person's
+# first name, and the message asks for a full name, which a person called Claude can give.
+AGENT_RE = re.compile(r"^\s*(claude|chatgpt|copilot|gemini|codex)\s*$|claude (code|opus|sonnet|haiku|ai)|chatgpt|openai|"
+                      r"anthropic|github copilot|\bgpt-?\d|\bgemini (pro|ultra|flash)|\b(an? )?(ai|llm) (agent|assistant|model)\b|"
+                      r"\bbot\b", re.I)
+
+
+def agent_named(name: str) -> str | None:
+    m = AGENT_RE.search(name or "")
+    return m.group(0).strip() if m else None
 NO_RESPONSE = "_no response_"
 
 
@@ -210,6 +220,16 @@ def build(body: str, issue: int, created: str) -> tuple[int, dict]:
                               "`{pillar}/{scale}/{slug}` — the entry's path under `data/` with "
                               "the `.yaml` removed, e.g. `environmental/city/openaq`. Edit the "
                               "issue body, then remove and re-add the `source-review` label, or open it again as a new issue."}
+
+    # The reviewer is a person. An agent's name in `Your name` would turn the review into the agent's
+    # own verdict with nobody behind it, so it is refused and the agent is asked for in `Assisted by`.
+    if (who := agent_named(review["by"])) or (review.get("assisted_by") or "").strip().lower() == review["by"].strip().lower():
+        return 4, {"error": "reviewer-is-agent", "by": review["by"],
+                   "message": f"**Your name** reads `{review['by']}`, which "
+                              + (f"names an AI agent or tool ({who})" if who else "is the same as **Assisted by**")
+                              + ". The reviewer is the person who read the findings and stands behind the verdict: "
+                              "put your own full name there, and the agent in **Assisted by**. Edit the issue body, then "
+                              "remove and re-add the `source-review` label, or open the review again as a new issue."}
 
     # The schema's own limits, read from the schema so there is one copy of them. Without this a
     # note over maxLength parsed fine, the review file was written, and validate.py then failed the
@@ -398,6 +418,14 @@ def selftest() -> int:
         # An entry this list does not carry.
         code6, out6 = build(SAMPLE.replace("example-city-air-portal", "nothing-here"), 217, "2026-09-22")
         check("build: unknown entry exits 3", (code6, out6.get("error")), (3, "entry-missing"))
+
+        # The reviewer must be a person, not the agent that helped.
+        for who, want in (("Claude Code", 4), ("Claude", 4), ("ChatGPT", 4), ("an AI agent", 4), ("Claude Dubois", 0)):
+            c, o = build(SAMPLE.replace("### Your name\n\nLars Taylor", f"### Your name\n\n{who}"), 230, "2026-09-22")
+            check(f"build: reviewer '{who}' " + ("refused as an agent" if want else "accepted as a person"),
+                  (c == 4 and o.get("error") == "reviewer-is-agent") == bool(want), True)
+        c, o = build(SAMPLE.replace("### Your name\n\nLars Taylor", "### Your name\n\nClaude Code"), 231, "2026-09-22")
+        check("build: and says what to do in one postable line", (o["message"].count("\n"), "Assisted by" in o["message"]), (0, True))
 
         # A body with a required field left blank.
         code7, out7 = build(SAMPLE.replace("Barcelona", "_No response_"), 218, "2026-09-22")
