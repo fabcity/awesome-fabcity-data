@@ -136,6 +136,11 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 - **[Occitanie — Panorama des énergies renouvelables](https://www.data.gouv.fr/datasets/panorama-des-energies-renouvelables)** — ✅ `live` · `Licence Ouverte / Open Licence version 2.0`
   Time series of renewable energy production in Occitanie, 2008-2024, compiled by the region from RTE, SDeS and ENEDIS sources. Serves the renewable generation row of the FCI Environmental|Region cell.
 
+#### Candidates — verified, not yet reviewed by anyone in the network
+
+- **[Global Power Plant Database v1.3.0 (WRI)](https://datasets.wri.org/dataset/globalpowerplantdatabase)** — 🌱 `candidate` · `CC-BY-4.0` · _BCN · BOS · SCL · BLI_
+  WRI's open list of the world's power plants: 34,936 geolocated plants in 167 countries with capacity in MW, primary fuel, commissioning year, owner and reported or estimated annual generation 2013-2019. Frozen at v1.3.0; WRI says it is no longer maintained.
+
 ### City
 
 - **[AlphaEarth Foundations - Satellite Embedding V1 (Google DeepMind)](https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_SATELLITE_EMBEDDING_V1_ANNUAL)** — ✅ `live` · `CC-BY-4.0 (attribution required)` · _★_ · 🔌 `pack:earth`
