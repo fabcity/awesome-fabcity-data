@@ -21,7 +21,7 @@ Every entry carries:
 | **Scale** | planet · bioregion · region · city · community |
 | **License** | SPDX where possible (CC-BY-4.0, ODbL-1.0, CC0, MIT) |
 | **Pilots** | which PLANETAI pilots have non-trivial coverage |
-| **Wired** | whether a connector is currently live in the [PLANETAI observatory](https://planetai.fab.city/observatory/) |
+| **🔌 Adapter** | the code in a [PLANETAI node](https://github.com/fabcity/planetai-node) that reads the source: `core:<fn>` or `pack:<id>`. Checked against the node's `main` on every CI run. See [CONTRIBUTING](CONTRIBUTING.md#2b-what-reads-it-adapter-not-wired_in_planetai). |
 | **Reviewed** | `reviewed AB 2026-09` — initials and month of the newest usable review in [`reviews/`](reviews/) |
 
 Entries live as YAML files under `data/{pillar}/{scale}/{slug}.yaml` — that's the source of truth. This README is generated from them by `scripts/build_readme.py`.
@@ -714,6 +714,8 @@ We welcome contributions from anyone in the Fab City network — fab-lab manager
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the workflow. Short version: each entry is a YAML file. Validation runs in CI. The README is regenerated from the YAML by `scripts/build_readme.py`.
 
 If you spot a stale entry, broken link, or licensing change, open an issue. Honest curation matters more than completeness.
+
+To read a source for your place without touching YAML, see [REVIEWING.md](REVIEWING.md): a review is a form, and a workflow turns it into the pull request. Working with an AI agent? Point it at [AGENTS.md](AGENTS.md) or [llms.txt](llms.txt); `CONTRIBUTING.md` and `REVIEWING.md` each carry a brief written for one. You stay the contributor, and the agent is named in `assisted_by`.
 
 ## License
 

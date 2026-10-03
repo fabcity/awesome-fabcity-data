@@ -1,0 +1,25 @@
+# awesome-fabcity-data
+
+> The registry of open data sources behind the Fab City Index and the PLANETAI nodes, organised by the Full Stack
+> Metrics Framework: four pillars (environmental, social, economic, governance) by five scales (planet, bioregion,
+> region, city, community). One YAML file per source; dated reviews by named people; CC-BY-4.0, scripts MIT.
+> Index: https://index.fab.city/ · nodes: https://github.com/fabcity/planetai-node
+
+If you are an agent working for somebody, start with AGENTS.md: it routes you by what they are asking for, lists the
+checks CI runs, and the rules an entry or a review must keep. You file as the person, never as yourself.
+
+## Start here
+
+- [AGENTS.md](https://raw.githubusercontent.com/fabcity/awesome-fabcity-data/main/AGENTS.md): the routing table, the local checks, and what must hold.
+- [CONTRIBUTING.md](https://raw.githubusercontent.com/fabcity/awesome-fabcity-data/main/CONTRIBUTING.md): what belongs here, filing a source with an agent (with a ready brief), the entry template, `adapter` and `feeds_cells`, updating an entry.
+- [REVIEWING.md](https://raw.githubusercontent.com/fabcity/awesome-fabcity-data/main/REVIEWING.md): the five checks of a review, a worked example, and reviewing with an agent.
+- [REVIEWERS.md](https://raw.githubusercontent.com/fabcity/awesome-fabcity-data/main/REVIEWERS.md): who reviews for which territory.
+
+## The data
+
+- [index.json](https://raw.githubusercontent.com/fabcity/awesome-fabcity-data/main/index.json): every entry as one JSON array, generated; read this rather than hundreds of YAML files.
+- [places.yaml](https://raw.githubusercontent.com/fabcity/awesome-fabcity-data/main/places.yaml): the 61 places the Index tracks, and their slugs.
+- [schema/dataset.schema.json](https://raw.githubusercontent.com/fabcity/awesome-fabcity-data/main/schema/dataset.schema.json): what an entry may say.
+- [schema/review.schema.json](https://raw.githubusercontent.com/fabcity/awesome-fabcity-data/main/schema/review.schema.json): what a review may say.
+- [schema/cell.schema.json](https://raw.githubusercontent.com/fabcity/awesome-fabcity-data/main/schema/cell.schema.json): what an Index cell definition may say; the cells are in `cells/`.
+- Per-place gaps, live: `https://index.fab.city/api/v0/places/<slug>.json` (cells with an empty `sources` list have no open data).
