@@ -202,6 +202,11 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 - **[Smart Citizen](https://smartcitizen.me/)** — ✅ `live` · `CC-BY-SA-4.0 (data) + GPL-3.0 (firmware/hardware)` · _BCN · ★_ · 🔌 `core:smartcitizen`
   Open-hardware community sensor network from Fab Lab Barcelona / IAAC. ~25k kits deployed globally measuring PM2.5, sound, temperature, humidity, light, CO2. FOSS hardware + firmware, public REST API.
 
+#### Candidates — verified, not yet reviewed by anyone in the network
+
+- **[OpenLitterMap](https://openlittermap.com/)** — 🌱 `candidate` · `ODbL-1.0` · _★_
+  Citizen-science map of litter and plastic pollution: geotagged photos, each tagged by object, material and brand, verified by people before they reach the map. Open source (GPL-3.0), data under ODbL.
+
 
 ## Social
 
