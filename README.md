@@ -114,6 +114,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 #### Candidates — verified, not yet reviewed by anyone in the network
 
+- **[FAO AQUASTAT, global information system on water and agriculture](https://data.apps.fao.org/aquastat/)** — 🌱 `candidate` · `Conflict, maintainer to decide: FAO Statistical Database Terms of Use list AQUASTAT in Annex 1 under CC BY 4.0; FAO's data catalogue labels the AQUASTAT Dissemination System dataset CC BY-NC-SA 4.0` · _★_
+  FAO's country water statistics: renewable water resources (internal, external, total), the dependency ratio (the share flowing in from other countries), withdrawals by sector and source, irrigation and dams, for about 200 countries, with a symbol on every value saying whether it is official, estimated or imputed.
 - **[NASA FIRMS — active fire detections (VIIRS + MODIS)](https://firms.modaps.eosdis.nasa.gov/)** — 🌱 `candidate` · `CC0-1.0` · _BLI · SCL · BCN · BOS_
   NASA's Fire Information for Resource Management System: satellite-detected active fires and thermal anomalies from VIIRS (375 m) and MODIS (1 km), within about three hours of overpass, worldwide, with an archive back to 2000.
 - **[USGS Earthquake Catalog (ComCat) — real-time feeds and FDSN event API](https://earthquake.usgs.gov/earthquakes/search/)** — 🌱 `candidate` · `US public domain (USGS-authored data)` · _SCL · BLI · ★_

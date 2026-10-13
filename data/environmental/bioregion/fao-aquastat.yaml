@@ -1,0 +1,30 @@
+name: FAO AQUASTAT, global information system on water and agriculture
+url: https://data.apps.fao.org/aquastat/
+description: |
+  FAO's country water statistics: renewable water resources (internal,
+  external, total), the dependency ratio (the share flowing in from other
+  countries), withdrawals by sector and source, irrigation and dams, for
+  about 200 countries, with a symbol on every value saying whether it is
+  official, estimated or imputed.
+pillar: environmental
+scale: bioregion
+status: candidate
+license: "Conflict, maintainer to decide: FAO Statistical Database Terms of Use list AQUASTAT in Annex 1 under CC BY 4.0; FAO's data catalogue labels the AQUASTAT Dissemination System dataset CC BY-NC-SA 4.0"
+api: https://api.data.apps.fao.org/api/v2/bigquery?sql_url=https://data.apps.fao.org/catalog/dataset/945666e6-7803-4621-b8ef-cfd885a84596/resource/4a000a1b-24f0-4328-aab6-b9b525892090/download/query_en.sql
+pilot_relevance: [global]
+tags: [fao, aquastat, water, renewable-water-resources, dependency-ratio, withdrawal, bigquery]
+added: 2026-10-13
+assisted_by: Claude Code
+auth: none
+feeds_cells: []
+upstream_listed_in: []
+notes: |
+  VERIFIED 2026-10-13 by fabcity/fci-index compute/water.py: the dissemination system's query endpoint answered for all 26 tracker countries. Spain 2022: dependency ratio 26.9%, internal 111.2 and external 0.3 km3/yr, withdrawal 29.02 km3 (symbol A, actual); Netherlands dependency 87.9%; Bhutan and Indonesia 0%; Ghana 46.1%.
+
+  LICENCE, two FAO documents disagree. fao.org/contact-us/terms/db-terms-of-use: "Specific statistical databases are covered by the Open Data Licensing Policy", Annex 1 names "Global Information System on Water and Agriculture (AQUASTAT)", datasets CC BY 4.0 "unless specified otherwise in their metadata or webpage", plus the clause against use in the promotion of a commercial enterprise. data.apps.fao.org/catalog, dataset aquastat-ds ("Dataset view configuration for the dissemination system") carries license_title "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International", and the same label sits on its per-variable CSVs. Whether that catalogue label is the "specified otherwise" the terms allow is the maintainer's call; filed as a conflict, not resolved.
+
+  ENDPOINT. GET the api with the published SQL as sql_url and four parameters: area (World), type (country|aggregate|all), variable (codes, comma-separated: 4192 dependency ratio, 4157 internal, 4182 external, 4188 total renewable, 4263 total freshwater withdrawal, 4275 withdrawal as % of renewable), year (comma-separated). Returns CSV with Country, Year, Value, Unit, Symbol (I imputed, E estimate, A actual), m49, VariableCode. 1.5 MB for five variables over five years; the 338 variable codes are in the schema resource unified_schema.json. Resources are long-term averages repeated yearly.
+
+  WHY NO CELL. National only; read as the water half of the Index's country bracket (index.fab.city/countries): one minus the dependency ratio is the share of a country's renewable water that rises inside it.
+
+  WHAT IT DOES NOT CLAIM. Water is not traded like goods, so "from inside" is provenance, not self-supply by effort. A country figure says nothing about a basin; Aqueduct is the basin source here.
