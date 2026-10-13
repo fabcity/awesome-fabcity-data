@@ -138,6 +138,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 #### Candidates — verified, not yet reviewed by anyone in the network
 
+- **[Generalitat de Catalunya — Parcel·les i cultius de les explotacions (DUN) (uwe8-jqcu)](https://analisi.transparenciacatalunya.cat/d/uwe8-jqcu)** — 🌱 `candidate` · `Llicència oberta d'ús d'informació – Catalunya (reuse, redistribution and derived works; cite the source and the date of last update; do not alter or distort; no sublicensing)` · _BCN_
+  Every agricultural parcel declared in Catalonia's annual farm declaration (DUN), 2023–2025, as polygons with the declared crop, variety, irrigation, cover and net area. Published by the Departament d'Agricultura, Ramaderia, Pesca i Alimentació.
 - **[Global Power Plant Database v1.3.0 (WRI)](https://datasets.wri.org/dataset/globalpowerplantdatabase)** — 🌱 `candidate` · `CC-BY-4.0` · _BCN · BOS · SCL · BLI_
   WRI's open list of the world's power plants: 34,936 geolocated plants in 167 countries with capacity in MW, primary fuel, commissioning year, owner and reported or estimated annual generation 2013-2019. Frozen at v1.3.0; WRI says it is no longer maintained.
 
