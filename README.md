@@ -343,6 +343,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 - **[Eurostat — Trade in waste by type of material and partner (env_wastrdmp)](https://ec.europa.eu/eurostat/databrowser/view/env_wastrdmp/default/table)** — 🌱 `candidate` · `Eurostat reuse policy (Commission Decision 2011/833/EU), reuse authorised with acknowledgement` · _BCN_
   Imports and exports of waste by material (paper, plastics, rubber, wood, textiles, glass, organic, mineral and metals) per country, by partner, in tonnes and euros, 2004–2025, including trade within and outside the EU.
+- **[OECD Trade in Value Added (TiVA) 2025, SDMX](https://www.oecd.org/en/data/datasets/trade-in-value-added.html)** — 🌱 `candidate` · `OECD Terms and Conditions, Data, Permitted Use: any purpose including commercial, credit the OECD, same acknowledgment carried into sub-licences` · _★_
+  OECD trade in value added indicators from its inter-country input-output tables, 1995-2022, about 80 economies. FD_VA_SH with the country as its own counterpart is the share of what the country buys that was made at home, by industry.
 
 ### Region
 
