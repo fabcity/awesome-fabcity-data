@@ -1,11 +1,10 @@
 name: OECD Trade in Value Added (TiVA) 2025, SDMX
 url: https://www.oecd.org/en/data/datasets/trade-in-value-added.html
 description: |
-  Trade in value added indicators from the OECD's inter-country
-  input-output tables, 1995-2022, about 80 economies: for each country
-  and industry, where the value added in its exports, imports and final
-  demand was created. FD_VA_SH with the country as its own counterpart is
-  the share of what the country buys that was made at home, by industry.
+  OECD trade in value added indicators from its inter-country input-output
+  tables, 1995-2022, about 80 economies. FD_VA_SH with the country as its
+  own counterpart is the share of what the country buys that was made at
+  home, by industry.
 pillar: economic
 scale: bioregion
 status: candidate
