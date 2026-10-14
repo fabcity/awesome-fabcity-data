@@ -166,7 +166,7 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 - **[Luchtmeetnet / Landelijk Meetnet Luchtkwaliteit (RIVM)](https://api-docs.luchtmeetnet.nl/)** — ✅ `live` · `CC-BY-4.0`
   The Dutch national air quality monitoring network, run by RIVM with regional environment agencies. Open JSON API serving station metadata and hourly concentrations for NO2, PM10, PM2.5, O3 and more.
 - **[OpenAQ](https://openaq.org/)** — ✅ `live` · `CC-BY-4.0` · _BCN · BOS · SCL · BLI · ★_
-  Reference-grade air quality aggregator. Pulls from ~10k+ regulatory monitoring stations globally and harmonises to a common schema. Free public API with optional auth for higher rate limits.
+  Reference-grade air quality aggregator. Pulls from ~10k+ regulatory monitoring stations globally and harmonises to a common schema. Free API; v3 needs a free key from an OpenAQ account.
 - **[RSQA - Indice de la qualite de l'air, temps reel (Montreal)](https://donnees.montreal.ca/dataset/rsqa-indice-qualite-air)** — ✅ `live` · `CC-BY-4.0`
   Hourly air quality index per monitoring station from Montreal's RSQA network, covering SO2, CO, O3, NO2 and PM2.5. Published as a rolling daily CSV, updated about ten minutes past each hour.
 - **[Sensor.Community](https://sensor.community/)** — ✅ `live` · `DbCL-1.0` · _BCN · ★_
@@ -188,6 +188,10 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Municipal waste generated (domestic and commercial) per city, in thousand tonnes, for the Urban Audit cities of the EU and EFTA, 2007–2024.
 - **[Generalitat de Catalunya — Estadístiques de residus municipals (69zu-w48s)](https://analisi.transparenciacatalunya.cat/d/69zu-w48s)** — 🌱 `candidate` · `Llicència oberta d'ús d'informació – Catalunya (reuse, redistribution and derived works; cite the source and the date of last update; do not alter or distort)` · _BCN_
   Municipal waste for every Catalan municipality, 2000–2024: tonnes and kg per inhabitant, separate collection by stream, and where the residual fraction went (landfill, incineration, mechanical-biological treatment).
+- **[Landsat Collection 2 Level-2 surface temperature (USGS, via Microsoft Planetary Computer)](https://planetarycomputer.microsoft.com/dataset/landsat-c2-l2)** — 🌱 `candidate` · `US public domain (USGS-authored data)` · _BLI · ★_
+  USGS Landsat Collection 2 Level-2 products, including the surface temperature band (ST_B10) at 30 m, resampled from 100 m thermal pixels; Landsat 8 and 9 together revisit every 8 days. Served by Microsoft Planetary Computer as Cloud-Optimised GeoTIFFs behind a STAC API.
+- **[MODIS Land Surface Temperature MOD11A1/MYD11A1 v061 (NASA, via Microsoft Planetary Computer)](https://planetarycomputer.microsoft.com/dataset/modis-11A1-061)** — 🌱 `candidate` · `CC0-1.0` · _BLI · ★_
+  NASA's daily 1 km land surface temperature and emissivity from MODIS on Terra (~10:30 and 22:30 local) and Aqua (~13:30 and 01:30), day and night, since 2000. Served by Microsoft Planetary Computer as Cloud-Optimised GeoTIFFs behind a STAC API.
 - **[RETC Chile — Generación municipal de residuos no peligrosos (SINADER)](https://datosretc.mma.gob.cl/dataset/generacion-municipal-de-residuos-no-peligrosos)** — 🌱 `candidate` · `CC-BY-4.0` · _SCL_
   Non-hazardous municipal waste declared through SINADER for every Chilean comuna, 2014–2024, in tonnes, with the destination (sanitary landfill, other disposal, recovery).
 - **[Statistikamt Nord — Abfallentsorgung in Hamburg, Teil 3 Einsammlung von Abfällen (Q II 9)](https://suche.transparenz.hamburg.de/dataset/abfallentsorgung-in-hamburg-2024-teil-3-einsammlung-von-abfaellen)** — 🌱 `candidate` · `dl-de-by-2.0`
