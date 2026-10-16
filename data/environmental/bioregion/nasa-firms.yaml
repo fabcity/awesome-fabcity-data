@@ -7,6 +7,7 @@ description: |
 pillar: environmental
 scale: bioregion
 status: candidate
+adapter: pack:fire
 license: CC0-1.0
 api: https://firms.modaps.eosdis.nasa.gov/data/active_fire/
 pilot_relevance: [bali, santiago, barcelona, boston]
@@ -15,11 +16,11 @@ tags: [fire, wildfire, peat, land-cover, satellite, near-real-time, hazard, nasa
 added: 2026-09-26
 assisted_by: Claude Code
 auth: none
-feeds_cells: [Environmental|Bioregion]
-updated: 2026-10-15
+feeds_cells: []
+updated: 2026-10-16
 upstream_listed_in: []
 notes: |
-  VERIFIED 2026-10-15 (first 2026-09-26). Nothing read for a real territory yet.
+  VERIFIED 2026-10-15 (first 2026-09-26). Read live by node #1 (Bali) through pack:fire since 2026-10-15; no cell yet.
 
   LICENCE. NASA Earthdata data-use guidance, re-read 2026-10-15: "Unless the content is marked
   with a use restriction or license, data provided from a NASA-led mission are licensed as
