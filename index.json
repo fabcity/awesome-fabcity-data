@@ -4746,7 +4746,7 @@
     "Environmental|Community",
     "Social|Community"
    ],
-   "adapter": "core:airgradient",
+   "adapter": "pack:airgradient",
    "added": "2026-05-04",
    "updated": "2026-09-18",
    "description": "Open-hardware indoor + outdoor air quality monitoring network with\npublic REST API. PM2.5, PM10, CO2, TVOC, NOx, temperature, humidity.\n~10k+ devices deployed globally; transparent pricing for the open\nvariant.\n",
