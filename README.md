@@ -207,7 +207,7 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Island-wide PM2.5 archive for Bali aggregating eight sensor networks (Nafas, IQAir, PurpleAir, AQICN, OpenAQ, AirGradient, Smart Citizen, Airly) into one key-free, read-only API with raw and humidity-corrected values.
 - **[iNaturalist](https://www.inaturalist.org/)** — ✅ `live` · `CC-BY-NC (default per-observation; varies by uploader)` · _★_
   Community species observation platform. ~200M+ research-grade observations globally with photo verification by community identifiers. Used as the de facto biodiversity citizen-science layer.
-- **[Smart Citizen](https://smartcitizen.me/)** — ✅ `live` · `CC-BY-SA-4.0 (data) + GPL-3.0 (firmware/hardware)` · _BCN · ★_ · 🔌 `core:smartcitizen`
+- **[Smart Citizen](https://smartcitizen.me/)** — ✅ `live` · `CC-BY-SA-4.0 (data) + GPL-3.0 (firmware/hardware)` · _BCN · ★_ · 🔌 `pack:smartcitizen`
   Open-hardware community sensor network from Fab Lab Barcelona / IAAC. ~25k kits deployed globally measuring PM2.5, sound, temperature, humidity, light, CO2. FOSS hardware + firmware, public REST API.
 
 #### Candidates — verified, not yet reviewed by anyone in the network
