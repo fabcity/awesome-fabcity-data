@@ -140,6 +140,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 #### Candidates — verified, not yet reviewed by anyone in the network
 
+- **[BMKG hourly SYNOP observations on WMO WIS2](https://wis2-gdc.weather.gc.ca/collections/wis2-discovery-metadata/items/urn:wmo:md:id-bmkg:surface-based-observations)** — 🌱 `candidate` · `WMO Unified Data Policy, core data (free and unrestricted)` · _BLI_
+  Hourly observations from BMKG's synoptic stations across Indonesia (temperature, humidity, pressure, wind, rain, cloud, visibility), published as WMO core data through WIS2 global brokers and caches, key-free.
 - **[Generalitat de Catalunya — Parcel·les i cultius de les explotacions (DUN) (uwe8-jqcu)](https://analisi.transparenciacatalunya.cat/d/uwe8-jqcu)** — 🌱 `candidate` · `Llicència oberta d'ús d'informació – Catalunya (reuse, redistribution and derived works; cite the source and the date of last update; do not alter or distort; no sublicensing)` · _BCN_
   Every agricultural parcel declared in Catalonia's annual farm declaration (DUN), 2023–2025, as polygons with the declared crop, variety, irrigation, cover and net area. Published by the Departament d'Agricultura, Ramaderia, Pesca i Alimentació.
 - **[Global Power Plant Database v1.3.0 (WRI)](https://datasets.wri.org/dataset/globalpowerplantdatabase)** — 🌱 `candidate` · `CC-BY-4.0` · _BCN · BOS · SCL · BLI_
@@ -212,8 +214,12 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 #### Candidates — verified, not yet reviewed by anyone in the network
 
+- **[CoCoRaHS (Community Collaborative Rain, Hail and Snow Network)](https://www.cocorahs.org/)** — 🌱 `candidate` · `CC-BY-4.0` · _BOS_
+  Volunteers read a standard rain gauge every morning and report rain, hail and snow. Run by the Colorado Climate Center; covers the United States, Canada and the Bahamas, with a key-free daily export.
 - **[OpenLitterMap](https://openlittermap.com/)** — 🌱 `candidate` · `ODbL-1.0` · _★_
   Citizen-science map of litter and plastic pollution: geotagged photos, each tagged by object, material and brand, verified by people before they reach the map. Open source (GPL-3.0), data under ODbL.
+- **[openSenseMap](https://opensensemap.org/)** — 🌱 `candidate` · `PDDL-1.0` · _★_
+  Citizen sensor stations worldwide, mostly senseBox and Sensor.Community kits, reporting temperature, humidity, pressure and PM2.5/PM10 every few minutes. Run by the senseBox team in Münster, key-free API.
 
 
 ## Social
