@@ -114,6 +114,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 #### Candidates — verified, not yet reviewed by anyone in the network
 
+- **[Copernicus EMS Rapid Mapping, flood delineations](https://mapping.emergency.copernicus.eu/activations/)** — 🌱 `candidate` · `Copernicus, Regulation (EU) 2021/696: "free, full and open access"; credit "Copernicus Emergency Management Service (© European Union, 2012-<year>)"`
+  Mapped flood extents from Copernicus Emergency Management Service activations: observed flood, maximum extent and depth as GeoJSON and shapefiles per area of interest, with affected-area tables. Run by the European Commission's Joint Research Centre.
 - **[FAO AQUASTAT, global information system on water and agriculture](https://data.apps.fao.org/aquastat/)** — 🌱 `candidate` · `CC BY 4.0 under FAO's Statistical Database Terms of Use (Annex 1 names AQUASTAT), with the clause against use in the promotion of a commercial enterprise; decided by Tomas Diez 2026-10-14 over the catalogue's CC BY-NC-SA label` · _★_
   FAO's country water statistics: renewable water resources (internal, external, total), the dependency ratio (the share flowing in from other countries), withdrawals by sector and source, irrigation and dams, for about 200 countries, with a symbol on every value saying whether it is official, estimated or imputed.
 - **[GEOID-Flood (flood segmentation benchmark from Copernicus EMS Rapid Mapping)](https://huggingface.co/datasets/links-ads/geoid-flood)** — 🌱 `candidate` · `CC-BY-4.0`
