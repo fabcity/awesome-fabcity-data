@@ -23,8 +23,9 @@ notes: |
   this entry. Read on Overture's attribution page: Places has no theme-wide licence, it is licensed per source.
   Meta, Microsoft, BrightQuery, Uberall, PinMeTo, DAC, OpenTravel and others: "Available under CDLA Permissive 2.0."
   Foursquare: "Copyright 2024 Foursquare Labs, Inc. All rights reserved. Available under Apache 2.0", with a
-  NOTICE.txt. AllThePlaces: "Available under CC0 1.0." All three are open, with no share-alike. Each record carries
-  its own sources[].dataset and sources[].license, so a reader can attribute or filter row by row.
+  NOTICE.txt. AllThePlaces: "Available under CC0 1.0." All three are open, with no share-alike. Records carry
+  sources[].dataset and sources[].license, and every source row in both boxes read had both. The schema makes
+  sources[].license optional, so where it is absent go by the attribution page or ask the provider.
 
   ENDPOINT. Anonymous S3, us-west-2, no key. Read with DuckDB 1.5.5 over httpfs, filtering on the bbox column.
   The release notes give 88,418,121 places, up 8.55 % on September.

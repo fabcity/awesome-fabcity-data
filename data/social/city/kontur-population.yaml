@@ -6,7 +6,7 @@ description: |
 pillar: social
 scale: city
 status: candidate
-license: CC-BY-4.0
+license: "CC BY, version not stated; see notes"
 api: https://data.humdata.org/api/3/action/package_show?id=kontur-population-dataset
 pilot_relevance: [global]
 places: [barcelona, bali]
@@ -20,9 +20,10 @@ notes: |
   VERIFIED 2026-10-23.
 
   LICENCE. Read on Kontur's own dataset page: "Kontur Population is available under Creative Commons Attribution
-  International (CC BY) license. You can use it for any purpose, even commercially." The page names no version;
-  "International" is the name of the 4.0 suite, and HDX's licence field for every Kontur package read (global,
-  Indonesia, Spain) is cc-by. Criterion 1 is met. Attribution to Kontur; the sources it fuses (GHSL CC BY 4.0,
+  International (CC BY) license. You can use it for any purpose, even commercially." The page names no version,
+  and HDX's licence field for every Kontur package read (global, Indonesia, Spain) is an unversioned cc-by.
+  "International" points at the 4.0 suite, but nobody has confirmed it, so `license` records no version.
+  Every CC BY version allows any use with attribution, so criterion 1 is met either way. Attribution to Kontur; the sources it fuses (GHSL CC BY 4.0,
   OSM ODbL among them) are Kontur's to answer for, and Kontur publishes the fusion under CC BY.
 
   ENDPOINT. HDX CKAN API, no key. The global file kontur_population_20231101.gpkg.gz is 2.44 GB on Kontur's S3
@@ -43,4 +44,5 @@ notes: |
 
   WHY THIS CELL. Population density for Social|City, already on the H3 grid, so it needs no raster-to-cell step.
   WHAT IT DOES NOT CLAIM. A model, not a register. Where it disagrees with the municipal padron, the padron wins.
-  Promotes to live when somebody sums it inside one real municipal boundary and records the gap to the census.
+  A review should sum it inside one real municipal boundary and record the gap to the census. Like any entry, it
+  goes live only with a usable review in reviews/ or an adapter.
