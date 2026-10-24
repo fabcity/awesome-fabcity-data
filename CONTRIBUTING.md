@@ -219,7 +219,7 @@ is at [`docs/review.example.yaml`](docs/review.example.yaml).
 passes 365 days and fails CI past 730, printing the exact `status:` line to flip back to `candidate`.
 A reading is evidence about a source at a moment: the `data.seoul.go.kr` pages served a termination
 notice for months without changing a status code. Entries standing on an `adapter` are not failed —
-there the code is the evidence, and `scripts/wired.py` checks that it resolves.
+there the code is the evidence, and planetai-node's lint checks that it resolves.
 
 Who can review what, and who would rather not be asked: [`REVIEWERS.md`](REVIEWERS.md). Add
 yourself — especially if you maintain open data for a pledged Fab City.
@@ -249,16 +249,16 @@ Together they let a node compute what a person used to count by hand: which cell
 have a registered source, which of those have an adapter, and which have neither. `planetai sources
 --cell "Social|City"` is that query.
 
-Unlike the boolean, both halves of `adapter` are checkable, and CI checks them:
+Unlike the boolean, both halves of `adapter` are checkable, and the node checks them: planetai-node's
+`tools/check_registry.py`, in its `make lint`, against the snapshot of this list it vendors. A pack that
+reads a source this list calls unwired fails. An `adapter` naming a pack the node does not have, or a
+function that is not in `app/sources.py` or `app/bootstrap.py`, fails. There is no half this cannot see,
+which is the entire argument for replacing the boolean rather than repairing it.
 
-```bash
-python scripts/wired.py            # report
-python scripts/wired.py --check    # what CI runs
-```
-
-A pack that reads a source this list calls unwired fails. An `adapter` naming a pack the node does not
-have, or a function that is not in `app/sources.py` or `app/bootstrap.py`, fails. There is no half this
-cannot see, which is the entire argument for replacing the boolean rather than repairing it.
+Until 24 Oct 2026 this repository ran that check itself (`scripts/wired.py`), against the node's live
+`main`. Its green expired whenever the node shipped, with no commit here, so it moved to the node, where
+the code and the pin it is checked against ship together. When a reader moves in the node, change
+`adapter` here first; the node's PR that moves it re-pins this list in the same change.
 
 **`wired_in_planetai` was retired on 2026-09-23** and is gone from the schema, from all 210 entries
 that carried it, and from the Airtable base. Both halves of the condition this file set were met and

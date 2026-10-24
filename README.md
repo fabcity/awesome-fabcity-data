@@ -21,7 +21,7 @@ Every entry carries:
 | **Scale** | planet · bioregion · region · city · community |
 | **License** | SPDX where possible (CC-BY-4.0, ODbL-1.0, CC0, MIT) |
 | **Pilots** | which PLANETAI pilots have non-trivial coverage |
-| **🔌 Adapter** | the code in a [PLANETAI node](https://github.com/fabcity/planetai-node) that reads the source: `core:<fn>` or `pack:<id>`. Checked against the node's `main` on every CI run. See [CONTRIBUTING](CONTRIBUTING.md#2b-what-reads-it-adapter-not-wired_in_planetai). |
+| **🔌 Adapter** | the code in a [PLANETAI node](https://github.com/fabcity/planetai-node) that reads the source: `core:<fn>` or `pack:<id>`. Checked by the node's lint against the snapshot of this list it vendors. See [CONTRIBUTING](CONTRIBUTING.md#2b-what-reads-it-adapter-not-wired_in_planetai). |
 | **Reviewed** | `reviewed AB 2026-09` — initials and month of the newest usable review in [`reviews/`](reviews/) |
 
 Entries live as YAML files under `data/{pillar}/{scale}/{slug}.yaml` — that's the source of truth. This README is generated from them by `scripts/build_readme.py`.

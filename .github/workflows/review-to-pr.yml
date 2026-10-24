@@ -128,8 +128,7 @@ jobs:
       # here instead, against the tree that is about to be pushed. This list must follow
       # validate.yml's. It did not: README.md was regenerated and index.json, which carries every
       # entry's `reviews` and `status`, was not, so the first real review PR (#32) failed CI the
-      # moment it got a check run. wired.py --check is the one step left out, because it needs a
-      # planetai-node checkout and a review never touches `adapter`.
+      # moment it got a check run. `adapter` is checked by planetai-node's lint against its pin, not here.
       - name: The gates, before the push rather than after
         if: steps.review.outputs.code == '0'
         run: |
