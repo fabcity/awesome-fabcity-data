@@ -79,7 +79,7 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   NOAA GML's canonical atmospheric CO2 record: Mauna Loa daily, weekly and monthly means plus the globally averaged marine surface annual mean, from the NOAA cooperative air sampling network.
 - **[Open-Meteo](https://open-meteo.com/)** — ✅ `live` · `CC-BY-4.0` · _★_ · 🔌 `core:openmeteo`
   Free weather + climate API with no auth required. Backed by ECMWF + GFS + DWD + KNMI. Hourly forecasts to 14 days, historical reanalysis, climate projections, marine forecasts.
-- **[Open-Meteo Air Quality API (Copernicus CAMS)](https://open-meteo.com/en/docs/air-quality-api)** — ✅ `live` · `CC-BY-4.0 (Open-Meteo) with mandatory attribution to CAMS / Copernicus as data provider` · _★_ · 🔌 `core:openmeteo_air`
+- **[Open-Meteo Air Quality API (Copernicus CAMS)](https://open-meteo.com/en/docs/air-quality-api)** — ✅ `live` · `CC-BY-4.0 (Open-Meteo) with mandatory attribution to CAMS / Copernicus as data provider` · _★_ · 🔌 `pack:air-quality`
   Key-free hourly air-quality forecasts and 92 days of history from the Copernicus CAMS global (0.4 deg) and European (0.1 deg) models: PM2.5, PM10, O3, NO2, SO2, CO, dust, aerosol optical depth, UV index, pollen (EU).
 - **[UNEP IRP Global Material Flows Database](https://energydata.info/en/dataset/world-unep-irp-global-material-flows-database)** — ✅ `live` · `CC-BY-4.0` · _★_
   UNEP International Resource Panel material flow accounts: domestic extraction, direct trade and material footprint in raw-material equivalents by material category for 200+ countries. Compiled with CSIRO and WU Vienna.
