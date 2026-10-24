@@ -60,7 +60,7 @@ CASES = [
     ("adapter core:ckan",               {"adapter": "core:ckan"}, True),
     ("adapter pack:open-data-health",   {"adapter": "pack:open-data-health"}, True),
     # NB: `pack:nope` is SYNTACTICALLY fine — the schema cannot know the node's pack list, and it is
-    # scripts/wired.py, with the node checked out, that fails on a pack which does not exist.
+    # planetai-node's tools/check_registry.py, against its pin, that fails on a pack which does not exist.
     ("adapter pack:nope (syntax ok)",   {"adapter": "pack:nope"}, True),
     ("adapter Pack:Nope",               {"adapter": "Pack:Nope"}, False),
     ("adapter core:open-meteo",         {"adapter": "core:open-meteo"}, False),   # core is a fn name, snake_case

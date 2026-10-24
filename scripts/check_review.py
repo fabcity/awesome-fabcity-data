@@ -18,7 +18,7 @@ line number, because the remedy is one text substitution and a person should not
 The flip is not done here: no script in this repository edits an entry file.
 
 **What is skipped, and why.** An entry with an `adapter` and no review is not this script's
-business at all — the adapter is the evidence, and scripts/wired.py already fails if it names a
+business at all — the adapter is the evidence, and planetai-node's lint already fails if it names a
 pack or a function the node does not have. An entry with an adapter *and* a decayed review is
 warned about but never failed: it stands on the code leg of `live` regardless of the review, so
 telling anyone to flip it to `candidate` would be wrong advice. Entries with no evidence of either

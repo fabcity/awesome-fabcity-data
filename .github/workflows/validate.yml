@@ -33,8 +33,9 @@ jobs:
 
       # A review is evidence about a source at a moment. Past 365 days this warns; past 730 it
       # fails, and prints the exact `status:` line to flip back to `candidate`. Entries standing on
-      # an `adapter` are not failed — the code is the evidence there, and wired.py checks it
-      # resolves. Zero reviews exist today, so this is a no-op until the first one lands.
+      # an `adapter` are not failed — the code is the evidence there, and planetai-node's lint checks
+      # it resolves (tools/check_registry.py, against the pin it vendors). Zero reviews exist today,
+      # so this is a no-op until the first one lands.
       - name: Reviews have not decayed past two years
         run: python scripts/check_review.py
 
@@ -52,22 +53,3 @@ jobs:
             git --no-pager diff README.md | head -200
             exit 1
           fi
-
-      # The node declares what it reads, and `adapter` says what reads each source here. Both
-      # directions are errors: a pack reading a source no adapter names, and an adapter naming a
-      # pack or function the node does not have. This gate replaced a hand-typed boolean that was
-      # checkable in neither direction; see scripts/wired.py.
-      #
-      # NOTE this reads planetai-node's LIVE main, so a green here expires when the node ships,
-      # with no commit to this repository. A red gate you did not cause is the node having moved.
-      - name: Check out planetai-node (public) to read what its packs declare
-        uses: actions/checkout@v5
-        with:
-          repository: fabcity/planetai-node
-          path: .planetai-node
-          fetch-depth: 0
-
-      - name: adapter agrees with the node's packs, both directions
-        env:
-          PLANETAI_NODE_REPO: .planetai-node
-        run: python scripts/wired.py --check

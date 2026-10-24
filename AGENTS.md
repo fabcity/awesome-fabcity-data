@@ -15,9 +15,8 @@ with your name in `assisted_by`.
 | "my city has no data for X", "add a source" | `CONTRIBUTING.md`, *Filing a source with an agent* (it has a brief written for you) | Find the gap at `index.fab.city/api/v0/places/<slug>.json`, verify licence and endpoint yourself, write the entry as `status: candidate`. Show the person the entry and the evidence before opening a pull request. |
 | "is this source usable for our place?", "review it" | `REVIEWING.md`, *Reviewing with an agent* | A review is an issue titled `review: <pillar>/<scale>/<slug>`, filed from the person's account with their name and yours in `Assisted by`. A workflow writes the file under `reviews/` and opens the pull request; do not write review files by hand. |
 | "this link is dead", "the licence changed", "it moved" | `CONTRIBUTING.md`, *Updating an existing entry* | Edit the one YAML file, say in `notes` what you read and when, regenerate (below). `python3 scripts/linkcheck.py` finds the rest of the drift. |
-| "does a node read this source?" | `CONTRIBUTING.md` §2b | `adapter` names the code (`core:<fn>` or `pack:<id>`) in planetai-node. Set it only when that code exists on the node's `main`. |
+| "does a node read this source?" | `CONTRIBUTING.md` §2b | `adapter` names the code (`core:<fn>` or `pack:<id>`) in planetai-node. Set it when the code exists on the node's `main`, or lands in the same node PR as the re-pin: planetai-node's `make lint` checks it against its pin. |
 | "add our city" | `places.yaml`'s header | Places come from the Index's coverage tracker, not from this repository. Ask a maintainer; do not add a slug here. |
-| "CI is red and I changed nothing" | `.github/workflows/validate.yml` | The last step reads planetai-node's live `main`. Run `scripts/wired.py --check` against a clean checkout of this repo's `main`; if it fails there too, the node moved and your branch is innocent. Fix it in its own pull request. |
 
 ## Before you open a pull request
 
@@ -30,7 +29,6 @@ python3 scripts/validate.py
 python3 scripts/check_review.py
 python3 scripts/build_index.py          # rewrites index.json; commit what it writes
 python3 scripts/build_readme.py         # rewrites the generated middle of README.md; commit it
-PLANETAI_NODE_REPO=../planetai-node python3 scripts/wired.py --check
 ```
 
 All of them must exit 0. When you rebase or merge, regenerate `index.json` with `build_index.py` rather than resolving
