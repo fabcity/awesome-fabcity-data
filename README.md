@@ -150,10 +150,14 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 - **[BMKG hourly SYNOP observations on WMO WIS2](https://wis2-gdc.weather.gc.ca/collections/wis2-discovery-metadata/items/urn:wmo:md:id-bmkg:surface-based-observations)** — 🌱 `candidate` · `WMO Unified Data Policy, core data (free and unrestricted)` · _BLI_
   Hourly observations from BMKG's synoptic stations across Indonesia (temperature, humidity, pressure, wind, rain, cloud, visibility), published as WMO core data through WIS2 global brokers and caches, key-free.
+- **[EIA-923 Power Plant Operations Report (with EIA-860 plant locations)](https://www.eia.gov/electricity/data/eia923/)** — 🌱 `candidate` · `US public domain: EIA states US government publications are in the public domain and not subject to copyright protection.`
+  Net generation and fuel use for every US power plant above 1 MW, monthly and annual, from the US Energy Information Administration. Joined to EIA-860 for each plant's county.
 - **[Generalitat de Catalunya — Parcel·les i cultius de les explotacions (DUN) (uwe8-jqcu)](https://analisi.transparenciacatalunya.cat/d/uwe8-jqcu)** — 🌱 `candidate` · `Llicència oberta d'ús d'informació – Catalunya (reuse, redistribution and derived works; cite the source and the date of last update; do not alter or distort; no sublicensing)` · _BCN_
   Every agricultural parcel declared in Catalonia's annual farm declaration (DUN), 2023–2025, as polygons with the declared crop, variety, irrigation, cover and net area. Published by the Departament d'Agricultura, Ramaderia, Pesca i Alimentació.
 - **[Global Power Plant Database v1.3.0 (WRI)](https://datasets.wri.org/dataset/globalpowerplantdatabase)** — 🌱 `candidate` · `CC-BY-4.0` · _BCN · BOS · SCL · BLI_
   WRI's open list of the world's power plants: 34,936 geolocated plants in 167 countries with capacity in MW, primary fuel, commissioning year, owner and reported or estimated annual generation 2013-2019. Frozen at v1.3.0; WRI says it is no longer maintained.
+- **[USGS National Land Cover Database (NLCD), MRLC](https://www.mrlc.gov/data)** — 🌱 `candidate` · `US public domain: MRLC describes NLCD as public domain information on the nation's land cover; the WCS declares no fees and no access constraints.`
+  30 m land cover for the conterminous US in 16 classes from Landsat, by the Multi-Resolution Land Characteristics consortium led by USGS. Served as bulk downloads and through a keyless WCS.
 
 ### City
 
@@ -206,6 +210,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Non-hazardous municipal waste declared through SINADER for every Chilean comuna, 2014–2024, in tonnes, with the destination (sanitary landfill, other disposal, recovery).
 - **[Statistikamt Nord — Abfallentsorgung in Hamburg, Teil 3 Einsammlung von Abfällen (Q II 9)](https://suche.transparenz.hamburg.de/dataset/abfallentsorgung-in-hamburg-2024-teil-3-einsammlung-von-abfaellen)** — 🌱 `candidate` · `dl-de-by-2.0`
   Waste collected by Hamburg's public collection, 2012–2024, in tonnes and kg per inhabitant, split into residual household and bulky waste, separately collected organics, recyclables (Wertstoffe), electrical equipment and other waste.
+- **[US EPA AirData pre-generated files (AQS)](https://aqs.epa.gov/aqsweb/airdata/download_files.html)** — 🌱 `candidate` · `US public domain: EPA data is in the public domain by default under 17 U.S.C. 105 unless otherwise specified.`
+  Annual and daily summaries from every regulatory air monitor in the US, exported from EPA's Air Quality System as yearly zip files. Keyless.
 - **[Ville de Paris — Quantité de déchets produits et triés par habitant et par an](https://opendata.paris.fr/explore/dataset/quantite-de-dechets-produits-et-tries-par-habitant-et-par-an/)** — 🌱 `candidate` · `Licence Ouverte (Etalab)`
   Household waste per Parisian per year, 2019–2024, split into residual waste and the sorted streams (packaging, glass, biowaste, occasional waste).
 
@@ -249,6 +255,11 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   The Max Planck Institute for Evolutionary Anthropology's catalogue of the world's languages, dialects and families, with geographic coordinates per languoid and full bibliographic references. Openly licensed and versioned with DOIs.
 - **[LandMark — Global Platform of Indigenous and Community Lands](https://www.landmarkmap.org/data-methods/access-data)** — ✅ `live` · `CC-BY-SA-4.0 (plus assent to LandMark Terms of Service)` · _★_
   The only global georeferenced platform mapping Indigenous and community lands, run by a WRI-originated steering group. Carries community-level polygons plus national tenure-security scoring against ten legal indicators.
+
+#### Candidates — verified, not yet reviewed by anyone in the network
+
+- **[US Census Gazetteer, American Indian / Alaska Native / Native Hawaiian Areas](https://www.census.gov/geographies/reference-files/time-series/geo/gazetteer-files.html)** — 🌱 `candidate` · `No named licence. US federal work, no domestic copyright; the Bureau names no licence of its own (same position as us-census-acs).`
+  Land and water area and an internal point for every federally and state-recognised American Indian, Alaska Native and Native Hawaiian area, from the Census Bureau's TIGER geography.
 
 ### Region
 
@@ -363,6 +374,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 #### Candidates — verified, not yet reviewed by anyone in the network
 
+- **[BTS T-100 Air Carrier Statistics (freight by airport)](https://www.transtats.bts.gov/Tables.asp?QO_VQ=EEE)** — 🌱 `candidate` · `US public domain: data.bts.gov, BTS's own catalogue, lists it as Public Domain U.S. Government. bts.gov's own pages could not be read (403).`
+  Monthly passengers, freight and mail carried by every airline on every US airport pair, domestic and international, from the Bureau of Transportation Statistics.
 - **[Eurostat — Trade in waste by type of material and partner (env_wastrdmp)](https://ec.europa.eu/eurostat/databrowser/view/env_wastrdmp/default/table)** — 🌱 `candidate` · `Eurostat reuse policy (Commission Decision 2011/833/EU), reuse authorised with acknowledgement` · _BCN_
   Imports and exports of waste by material (paper, plastics, rubber, wood, textiles, glass, organic, mineral and metals) per country, by partner, in tonnes and euros, 2004–2025, including trade within and outside the EU.
 - **[OECD Trade in Value Added (TiVA) 2025, SDMX](https://www.oecd.org/en/data/datasets/trade-in-value-added.html)** — 🌱 `candidate` · `OECD Terms and Conditions, Data, Permitted Use: any purpose including commercial, credit the OECD, same acknowledgment carried into sub-licences` · _★_
@@ -471,6 +484,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Annual report on manufacturing, mining and quarrying in Hamburg: establishments, persons employed, gross pay, turnover, foreign turnover and export share, and (from 2022) turnover from own production, by WZ 2008 division, for establishments with 20 or more persons employed. XLSX, final results.
 - **[US Census Bureau international trade by port (intltrade porths)](https://www.census.gov/foreign-trade/data/index.html)** — 🌱 `candidate` · `US public domain (Census Bureau work; API terms require a no-endorsement notice)` · _BOS_
   Monthly US imports and exports by port of entry or exit and HS commodity, with value in dollars and shipping weight split by vessel, air and containerised cargo, from the Census Bureau's international trade API.
+- **[US Census County Business Patterns (CBP)](https://www.census.gov/programs-surveys/cbp.html)** — 🌱 `candidate` · `No named licence. US federal work, no domestic copyright; the Bureau names no licence of its own (same position as us-census-acs).`
+  Annual establishments, mid-March employment and payroll for every US county by NAICS industry, from the Census Bureau's Business Register.
 - **[US Census exports by metropolitan area](https://www.census.gov/foreign-trade/statistics/state/index.html)** — 🌱 `candidate` · `US public domain (Census Bureau work, 17 USC 105)` · _BOS_
   Quarterly and annual US goods exports for each metropolitan statistical area, in million US dollars, published by the Census Bureau as one XLSX per quarter (metroqQYYYY.xlsx).
 
@@ -546,6 +561,11 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Funds allocated to Zagreb's sub-municipal self-government units (gradske cetvrti and mjesni odbori) for small communal works, 2001-2024, roughly EUR 1.094 billion in total. CSV and XLSX.
 - **[Toulouse Metropole - Budgets primitifs et comptes administratifs](https://data.toulouse-metropole.fr/api/explore/v2.1/catalog/datasets?where=theme%3D%22Finance%22)** — ✅ `live` · `Licence Ouverte v2.0 (Etalab)`
   218 finance datasets on Toulouse Metropole's portal: budgets primitifs (planned) and comptes administratifs both alloue and realise (executed), for the city, the metropole and several member communes and their satellite budgets.
+
+#### Candidates — verified, not yet reviewed by anyone in the network
+
+- **[BEA GDP by County and Metropolitan Area (CAGDP)](https://apps.bea.gov/regional/downloadzip.htm)** — 🌱 `candidate` · `US public domain: BEA states its web information is in the public domain unless stated otherwise; a citation is requested.`
+  The US Bureau of Economic Analysis's gross domestic product for every county, 2001 onwards, current and chained dollars, by industry. Keyless zip downloads; the API needs a UserID.
 
 ### Community
 
@@ -659,6 +679,11 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Quebec's public tender and awarded-contract register, covering government, health, education and municipal bodies. Weekly and monthly files, XML from 2009 and JSON from March 2021.
 - **[TenderNed - Aankondigingen van overheidsopdrachten](https://data.overheid.nl/dataset/aankondigingen-van-overheidsopdrachten---tenderned)** — ✅ `live` · `CC0-1.0`
   Every Dutch public procurement notice - market consultations, contract notices, awards, modifications and early terminations - published by PIANOo via TenderNed, downloadable in bulk and available as feeds and a webservice.
+
+#### Candidates — verified, not yet reviewed by anyone in the network
+
+- **[NC OneMap](https://www.nconemap.gov)** — 🌱 `candidate` · `NC OneMap terms: free and unrestricted use, no release agreement required or issued. No named licence; quoted in notes.`
+  North Carolina's statewide geospatial data portal (ArcGIS Hub), run by the State's Center for Geographic Information and Analysis. 455 datasets from state agencies, counties and municipalities, under a free and unrestricted use policy.
 
 ### City
 

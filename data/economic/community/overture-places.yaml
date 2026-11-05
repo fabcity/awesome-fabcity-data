@@ -9,7 +9,7 @@ status: candidate
 license: "CDLA-Permissive-2.0 AND Apache-2.0 AND CC0-1.0, per source; see notes"
 api: s3://overturemaps-us-west-2/release/2026-10-21.0/theme=places/type=place/
 pilot_relevance: [global]
-places: [barcelona, bali]
+places: [barcelona, bali, charlotte]
 tags: [places, poi, businesses, premises, repair, amenities, geoparquet, overture, gers]
 added: 2026-10-23
 assisted_by: Claude Code
@@ -45,3 +45,8 @@ notes: |
   WHY THIS CELL. "Businesses per km2 within the radius" and repair access for Economic|Community, with permissive
   licences where OSM's ODbL would bind what a node publishes. WHAT IT DOES NOT CLAIM. A listing is not an open
   door, and no fab lab is identified as one: there is no makerspace category in either box.
+
+  CHARLOTTE, read 2026-11-05 (release 2026-10-21.0, DuckDB over anonymous S3, 22 s): 103,388 places in a box
+  around Mecklenburg County. There is no makerspace category; by name, "MakerSpace Charlotte"
+  (a0d1170b-a306-473f-a1fd-e49441b45115, confidence 0.99) and "Hackerspace Charlotte"
+  (1dc89547-0df2-4996-8ac8-f51c30908aac, 0.98).
