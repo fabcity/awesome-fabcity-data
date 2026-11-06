@@ -1,0 +1,178 @@
+name: Add a source
+description: File an open dataset for a place. It becomes a candidate entry, as a pull request, without touching YAML.
+title: "source: "
+labels: ["source-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **What this is for.** You found an open dataset that fills one of the Index's cells for a real
+        place. This form is how it gets filed: a workflow turns it into `data/{pillar}/{scale}/{slug}.yaml`
+        with `status: candidate` and opens a pull request for a maintainer to merge. You do not need
+        write access, and you do not need to touch YAML.
+
+        The same form lives at [index.fab.city/operate/add-source](https://index.fab.city/operate/add-source),
+        which can also file it for you without a GitHub account.
+
+        **A candidate is not a claim that it works.** It says the licence and the endpoint were checked and
+        nobody has read it for a territory yet. That reading is a [source review](?template=source-review.yml),
+        and it comes later. Every field below is one key of
+        [`schema/dataset.schema.json`](../blob/main/schema/dataset.schema.json).
+
+  - type: input
+    id: name
+    attributes:
+      label: Name
+      description: The dataset's own name, as its publisher calls it. The file's slug is made from it.
+      placeholder: Barcelona Open Data — Air quality stations
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: Home URL
+      description: The landing page or registry entry, where a person would start.
+      placeholder: https://opendata-ajuntament.barcelona.cat/data/en/dataset/qualitat-aire-estacions-bcn
+    validations:
+      required: true
+
+  - type: input
+    id: api
+    attributes:
+      label: API or download URL
+      description: The endpoint or file a program reads. Leave it blank if the home page is the download.
+      placeholder: https://opendata-ajuntament.barcelona.cat/data/api/3/action/package_show?id=qualitat-aire-estacions-bcn
+    validations:
+      required: false
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: One or two sentences, between 20 and 320 characters. What it is, what it carries, who runs it.
+      placeholder: Hourly readings from the city's regulatory air-quality stations, published by the Ajuntament de Barcelona on its CKAN portal.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: cell
+    attributes:
+      label: Cell
+      description: >-
+        The Index cell this source fills, as Pillar|Scale. The entry's own `pillar` and `scale` are
+        taken from it.
+      options:
+        - Environmental|Planet
+        - Environmental|Bioregion
+        - Environmental|Region
+        - Environmental|City
+        - Environmental|Community
+        - Social|Planet
+        - Social|Bioregion
+        - Social|Region
+        - Social|City
+        - Social|Community
+        - Economic|Planet
+        - Economic|Bioregion
+        - Economic|Region
+        - Economic|City
+        - Economic|Community
+        - Governance|Planet
+        - Governance|Bioregion
+        - Governance|Region
+        - Governance|City
+        - Governance|Community
+    validations:
+      required: true
+
+  - type: input
+    id: license
+    attributes:
+      label: Licence
+      description: >-
+        As the publisher states it, SPDX where possible (CC-BY-4.0, CC0-1.0, ODbL-1.0). If no page says,
+        write exactly `not stated` and name in the notes every page you checked.
+      placeholder: CC-BY-4.0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: auth
+    attributes:
+      label: Authentication
+      description: What a node must hold to read it. `none` is an open call with no identification.
+      options:
+        - none
+        - key-free-rate-limited
+        - api-key
+        - registration
+        - paid
+    validations:
+      required: true
+
+  - type: input
+    id: places
+    attributes:
+      label: Places
+      description: >-
+        The Index places this source was checked for, as slugs from `places.yaml`, comma-separated. Only
+        places whose data you saw in the source itself.
+      placeholder: barcelona
+    validations:
+      required: false
+
+  - type: input
+    id: tags
+    attributes:
+      label: Tags
+      description: Lowercase, hyphenated, comma-separated.
+      placeholder: air-quality, regulatory-monitoring
+    validations:
+      required: false
+
+  - type: input
+    id: by
+    attributes:
+      label: Your name
+      description: A person. The entry is yours, and somebody can ask you about it in six months.
+      placeholder: Lars Taylor
+    validations:
+      required: true
+
+  - type: input
+    id: org
+    attributes:
+      label: Organisation
+      description: The lab, city, foundation or institution you did this as.
+      placeholder: Fab City Foundation
+    validations:
+      required: true
+
+  - type: input
+    id: assisted_by
+    attributes:
+      label: Assisted by
+      description: >-
+        If an AI agent did part of the research, name it (e.g. "Claude Code"). You are still the
+        contributor. Leave it blank if you did the checks yourself.
+      placeholder: Claude Code
+    validations:
+      required: false
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: >-
+        Required for a candidate: what you verified and what is still missing. The date and page you read
+        the licence on, what the endpoint returned with two or three real figures and their year, which
+        indicator the cell needs that this carries, and what it does not claim. At most 4,000 characters.
+      placeholder: |
+        VERIFIED: 2026-11-06, the CKAN package page and the API.
+        LICENCE: the dataset page says "CC BY 4.0" under Llicència.
+        ENDPOINT: package_show returned 8 resources; the 2025 CSV has 11 stations, hourly NO2 and PM10.
+        WHY THIS CELL: Environmental|City asks for air quality at station resolution.
+        WHAT IT DOES NOT CLAIM: no PM2.5 before 2019; nobody has read it for a territory yet.
+    validations:
+      required: true

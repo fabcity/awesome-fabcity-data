@@ -130,6 +130,14 @@ behind the Fab City Index. I am responsible for what you file; you do the resear
 
 Every entry is a single YAML file under `data/{pillar}/{scale}/{slug}.yaml`. The slug is lowercase-hyphenated and unique within its directory.
 
+**The easy way in needs no YAML and no fork.** Open an [Add a source](.github/ISSUE_TEMPLATE/source-submit.yml)
+issue, or fill the same form at [index.fab.city/operate/add-source](https://index.fab.city/operate/add-source),
+which files it for you without a GitHub account (your name goes in the body). A workflow writes the
+entry as `status: candidate`, runs the gates and opens the pull request; `scripts/source_from_issue.py`
+refuses an id that already exists and anything the schema would, and says so on the issue. The
+`source-submission` label has to exist first, like `source-review` below. What follows is the same
+entry written by hand.
+
 ### 1. Copy the template
 
 ```yaml
