@@ -126,8 +126,10 @@ jobs:
           ENTRY_PATH: ${{ steps.source.outputs.entry_path }}
           CROSSCHECK: ${{ steps.source.outputs.crosscheck }}
         run: |
-          # A re-run of a source that is already a pull request links it and stops.
-          existing="$(gh pr list --head "$BRANCH" --state all --json number,state,url --jq '.[0] | select(.) | "\(.state) \(.url)"')"
+          # A re-run of a source that is already an open or merged pull request links it and stops. A PR a
+          # maintainer closed unmerged does not count: the person may have corrected the issue, and the
+          # force-push below replaces the branch with the corrected entry and opens a new PR.
+          existing="$(gh pr list --head "$BRANCH" --state all --json number,state,url --jq '[.[] | select(.state != "CLOSED")] | .[0] | select(.) | "\(.state) \(.url)"')"
           if [ -n "$existing" ]; then
             gh issue comment "$NUMBER" --body "This source is already a pull request: ${existing#* } (${existing%% *}). Nothing new was written, and there is nothing for you to do."
             exit 0

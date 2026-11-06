@@ -103,13 +103,13 @@ def schema_breaks(entry: dict) -> list[str]:
             if "minLength" in rule and len(value) < rule["minLength"]:
                 broken.append(f"**{label}** is {len(value)} characters and the minimum is {rule['minLength']}")
             if "enum" in rule and value not in rule["enum"]:
-                broken.append(f"**{label}** is `{value}`, which is not one of " + ", ".join(f"`{v}`" for v in rule["enum"]))
+                broken.append(f"**{label}** is `{tick(value)}`, which is not one of " + ", ".join(f"`{v}`" for v in rule["enum"]))
             if rule.get("format") == "uri" and not re.match(r"^https?://\S+$", value):
-                broken.append(f"**{label}** is `{value}`, which is not a URL")
+                broken.append(f"**{label}** is `{tick(value)}`, which is not a URL")
         elif isinstance(value, list) and (pat := rule.get("items", {}).get("pattern")):
             bad = [v for v in value if not re.match(pat, v)]
             if bad:
-                broken.append(f"**{label}** has " + ", ".join(f"`{v}`" for v in bad)
+                broken.append(f"**{label}** has " + ", ".join(f"`{tick(v)}`" for v in bad)
                               + ", which must be lowercase letters, digits and dashes")
     return broken
 
@@ -156,9 +156,20 @@ def crosscheck(body: str, entry: dict) -> list[str]:
     return diff
 
 
+ONE_LINE = ("name", "url", "api", "cell", "license", "auth", "places", "tags", "by", "org", "assisted_by")
+
+
+def tick(value: str) -> str:
+    """A value quoted back in an issue comment: no backtick can close the code span, and it is short."""
+    return value.replace("`", "'")[:80]
+
+
 def build(body: str, issue: int, created: str) -> tuple[int, dict]:
     answers = parse_body(body)
-    get = lambda key: answers.get(FIELDS[key], "").strip()
+    # A one-line field is one line, whatever the body carried: yaml_scalar does not escape newlines,
+    # and a multi-line name would otherwise reach the file as an unindented continuation line.
+    get = lambda key: (" ".join(answers.get(FIELDS[key], "").split()) if key in ONE_LINE
+                       else answers.get(FIELDS[key], "").strip())
 
     missing = [FIELDS[k] for k in REQUIRED if not get(k)]
     if missing:
@@ -169,14 +180,14 @@ def build(body: str, issue: int, created: str) -> tuple[int, dict]:
     cell = get("cell")
     if not CELL_RE.match(cell):
         return 4, {"error": "cell-malformed", "cell": cell,
-                   "message": f"**Cell** is `{cell}`, which is not one of the twenty `Pillar|Scale` cells "
+                   "message": f"**Cell** is `{tick(cell)}`, which is not one of the twenty `Pillar|Scale` cells "
                               "(e.g. `Environmental|City`). " + REFILE}
     pillar, scale = (p.lower() for p in cell.split("|"))
 
     by = get("by")
     if (who := agent_named(by)) or get("assisted_by").lower() == by.lower():
         return 4, {"error": "contributor-is-agent", "by": by,
-                   "message": f"**Your name** reads `{by}`, which "
+                   "message": f"**Your name** reads `{tick(by)}`, which "
                               + (f"names an AI agent or tool ({who})" if who else "is the same as **Assisted by**")
                               + ". The contributor is the person who answers for the entry: put your own full name "
                               "there, and the agent in **Assisted by**. " + REFILE}
@@ -184,7 +195,7 @@ def build(body: str, issue: int, created: str) -> tuple[int, dict]:
     stem = entry_slug(get("name"))
     if not stem:
         return 4, {"error": "name-unsluggable", "name": get("name"),
-                   "message": f"**Name** is `{get('name')}`, which leaves nothing for a file name once "
+                   "message": f"**Name** is `{tick(get('name'))}`, which leaves nothing for a file name once "
                               "lowercased to letters, digits and dashes. " + REFILE}
     entry_id = f"{pillar}/{scale}/{stem}"
 
@@ -202,7 +213,7 @@ def build(body: str, issue: int, created: str) -> tuple[int, dict]:
                    "message": "This source does not fit the dataset schema: " + "; ".join(broken) + ". " + REFILE}
     if unknown := [p for p in entry["places"] if p not in known_places()]:
         return 4, {"error": "places-unknown", "fields": ", ".join(unknown),
-                   "message": "**Places** names " + ", ".join(f"`{p}`" for p in unknown)
+                   "message": "**Places** names " + ", ".join(f"`{tick(p)}`" for p in unknown)
                               + ", which the Index does not track: a place is a slug from `places.yaml` "
                               "(the list at index.fab.city/api/coverage.json). " + REFILE}
 
@@ -380,6 +391,15 @@ def selftest() -> int:
         check("build: a YAML block that disagrees is reported, not used", (c, o.get("crosscheck"), o.get("entry")),
               (0, "name", "environmental/city/example-three"))
 
+        c, o = build(SAMPLE.replace("Example City Air Portal", "Example\nFour", 1), 124, "2026-11-06")
+        multi = (ROOT / o["entry_path"]).read_text()
+        check("build: a multi-line name is one line in the file", (c, "name: Example Four\n" in multi, o["entry"]),
+              (0, True, "environmental/city/example-four"))
+        check("write: and the file still parses", yaml.safe_load(multi)["name"], "Example Four")
+
+        c, o = build(SAMPLE.replace("Environmental|City\n\n### Licence", "`](https://evil.example)`\n\n### Licence"), 125, "2026-11-06")
+        check("build: a crafted cell cannot close the code span in the comment", (c, "`](" in o["message"]), (4, False))
+
         for label, body, want in (
             ("missing Licence", SAMPLE.replace("CC-BY-4.0\n\n### Authentication", "_No response_\n\n### Authentication"), "missing"),
             ("missing Notes", SAMPLE.replace("VERIFIED: 2026-11-06, the portal's dataset page and the API.\nLICENCE", "_No response_\n\n### Entry (YAML)\n\n```yaml\nLICENCE"), "missing"),
@@ -398,8 +418,8 @@ def selftest() -> int:
             check(f"build: {label} message is one postable line", o.get("message", "\n").count("\n"), 0)
         written = sorted(p.relative_to(DATA_DIR).as_posix() for p in DATA_DIR.rglob("*.yaml"))
         check("build: the refusals wrote nothing", written,
-              ["environmental/city/example-city-air-portal.yaml", "environmental/city/example-three.yaml",
-               "environmental/city/example-two.yaml"])
+              ["environmental/city/example-city-air-portal.yaml", "environmental/city/example-four.yaml",
+               "environmental/city/example-three.yaml", "environmental/city/example-two.yaml"])
     ROOT, DATA_DIR, PLACES = real
 
     print(f"\nsource_from_issue selftest: {bad} failed.")
