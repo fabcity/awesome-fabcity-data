@@ -28,6 +28,11 @@ jobs:
       - name: Review-from-issue selftest
         run: python scripts/review_from_issue.py --selftest
 
+      # The other writer: a `source: <id>` issue becomes a candidate entry. Its selftest checks the
+      # written file against the dataset schema and asserts its labels still exist in source-submit.yml.
+      - name: Source-from-issue selftest
+        run: python tests/test_source_from_issue.py
+
       - name: Validate entries against schema
         run: python scripts/validate.py
 

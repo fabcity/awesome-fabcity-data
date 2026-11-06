@@ -1,0 +1,200 @@
+# A source-submission issue becomes a pull request.
+#
+# Somebody filed an open dataset for a place, through .github/ISSUE_TEMPLATE/source-submit.yml or
+# through index.fab.city/operate/add-source. This turns that issue into data/{pillar}/{scale}/{slug}.yaml
+# with `status: candidate`, runs the gates, and opens a PR for a maintainer to merge. Nobody needs write
+# access to add a source to this list, and nobody has to touch YAML. It is review-to-pr.yml with the
+# parser swapped; the header of that file explains the three traps, and they apply here unchanged:
+#
+# 0. THE `source-submission` LABEL MUST EXIST IN THE REPOSITORY. An issue form's `labels:` field is
+#    silently ignored for a label that does not exist, so the issue opens unlabelled and `labeled`
+#    never fires. Created on 2026-11-06. On a fork: `gh label create source-submission --color 1D76DB`.
+#
+# 1. GITHUB_TOKEN with the three scopes below, including `issues: write`, or every `gh issue comment`
+#    dies with `Resource not accessible by integration`. And the repository setting *Actions → General
+#    → Allow GitHub Actions to create and approve pull requests* has to be on.
+#
+# 2. A pull request opened with GITHUB_TOKEN gets no `on: pull_request` run, so the gates run here,
+#    before the push. Push any commit to the branch to get the real check run.
+name: Source submission to PR
+
+on:
+  issues:
+    types: [opened, labeled]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  source:
+    # Two ways in. The form applies the `source-submission` label, which fires `labeled`. The site's
+    # /api/submit route files the issue with the Index's own token as a plain issue titled
+    # `source: <id>`, and so does a person's agent with `gh issue create`: it arrives unlabelled and
+    # fires `opened`. An issue that already carries the label at `opened` is the form's, and is left
+    # to its own `labeled` run so it is never filed twice.
+    if: >-
+      github.event.label.name == 'source-submission' ||
+      (github.event.action == 'opened' && startsWith(github.event.issue.title, 'source: ') &&
+       !contains(github.event.issue.labels.*.name, 'source-submission'))
+    runs-on: ubuntu-latest
+    concurrency:
+      group: source-submission-${{ github.event.issue.number }}
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install validation deps
+        run: pip install -r requirements.txt
+
+      - name: Label a source that arrived without the form
+        if: github.event.action == 'opened'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NUMBER: ${{ github.event.issue.number }}
+        run: gh issue edit "$NUMBER" --add-label source-submission
+
+      # The issue body is untrusted input, so it never reaches a shell as text: it goes through an
+      # environment variable into a file, and the parser reads the file.
+      - name: Write the entry
+        id: source
+        env:
+          BODY: ${{ github.event.issue.body }}
+          CREATED_AT: ${{ github.event.issue.created_at }}
+          NUMBER: ${{ github.event.issue.number }}
+        run: |
+          printf '%s' "$BODY" > "$RUNNER_TEMP/body.md"
+          set +e
+          python scripts/source_from_issue.py \
+            --issue "$NUMBER" \
+            --body-file "$RUNNER_TEMP/body.md" \
+            --created "${CREATED_AT:0:10}"
+          code=$?
+          set -e
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+
+      # Exit 3 = the id already exists. Exit 4 = the body is missing something, or has an answer the
+      # schema or validate.py would refuse. Either way nothing was written: say so on the issue and stop.
+      - name: Nothing to file — comment and stop
+        if: steps.source.outputs.code == '3' || steps.source.outputs.code == '4'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NUMBER: ${{ github.event.issue.number }}
+          MSG: ${{ steps.source.outputs.message }}
+        run: gh issue comment "$NUMBER" --body "$MSG"
+
+      - name: Stop here if nothing was written
+        if: steps.source.outputs.code != '0'
+        env:
+          CODE: ${{ steps.source.outputs.code }}
+        run: |
+          case "$CODE" in
+            3|4) echo "::notice::source_from_issue.py exited $CODE; the issue has been commented on and nothing was committed."; exit 0 ;;
+          esac
+          echo "::error::source_from_issue.py exited $CODE, which is a crash, not an answer."
+          exit 1
+
+      # The PR this opens gets no automatic check run (see the header), so the gates run here, against
+      # the tree that is about to be pushed. This list must follow validate.yml's.
+      - name: The gates, before the push rather than after
+        if: steps.source.outputs.code == '0'
+        run: |
+          python tests/test_schema.py
+          python tests/test_source_from_issue.py
+          python scripts/review_from_issue.py --selftest
+          python scripts/validate.py
+          python scripts/check_review.py
+          python scripts/build_readme.py
+          python scripts/build_index.py
+
+      - name: Commit, push, and open the PR
+        if: steps.source.outputs.code == '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NUMBER: ${{ github.event.issue.number }}
+          BRANCH: ${{ steps.source.outputs.branch }}
+          ENTRY: ${{ steps.source.outputs.entry }}
+          NAME: ${{ steps.source.outputs.name }}
+          CELL: ${{ steps.source.outputs.cell }}
+          BY: ${{ steps.source.outputs.by }}
+          ORG: ${{ steps.source.outputs.org }}
+          ENTRY_PATH: ${{ steps.source.outputs.entry_path }}
+          CROSSCHECK: ${{ steps.source.outputs.crosscheck }}
+        run: |
+          # A re-run of a source that is already a pull request links it and stops.
+          existing="$(gh pr list --head "$BRANCH" --state all --json number,state,url --jq '.[0] | select(.) | "\(.state) \(.url)"')"
+          if [ -n "$existing" ]; then
+            gh issue comment "$NUMBER" --body "This source is already a pull request: ${existing#* } (${existing%% *}). Nothing new was written, and there is nothing for you to do."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add data README.md index.json
+          git commit -m "Add: $NAME ($ENTRY)" -m "Filed by $BY, $ORG, as a candidate for $CELL.
+
+          From #$NUMBER via .github/ISSUE_TEMPLATE/source-submit.yml or index.fab.city/operate/add-source." \
+            -m "Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
+          git push --force -u origin "$BRANCH"
+
+          if [ -n "$CROSSCHECK" ]; then
+            crosscheck_note="**The YAML block in the issue disagrees with the fields** on: \`$CROSSCHECK\`. The fields won; read both before merging."
+          else
+            crosscheck_note=""
+          fi
+
+          body="$(cat <<EOF
+          **$ENTRY** — a new candidate, filed by $BY.
+
+          | | |
+          | --- | --- |
+          | Contributor | $BY, $ORG |
+          | Cell | \`$CELL\` |
+          | Status | \`candidate\` |
+          | Entry | \`$ENTRY_PATH\` |
+
+          $crosscheck_note
+
+          A candidate counts in the place's DIDO from the merge, before any review, so read the entry's
+          \`notes\` as closely as any hand-written PR. \`live\` needs a review or an adapter and is not
+          this PR's to give.
+
+          The gates ran in the workflow that opened this PR — schema tests, the two selftests,
+          \`validate.py\`, \`check_review.py\` and the README and index regeneration — because a PR
+          opened with \`GITHUB_TOKEN\` does not get its own automatic check run. Push any commit to this
+          branch to see the real one.
+
+          Closes #$NUMBER
+
+          🤖 Generated with [Claude Code](https://claude.com/claude-code)
+          EOF
+          )"
+
+          if ! pr_url=$(gh pr create \
+            --title "Add: $NAME ($ENTRY)" \
+            --body "$body" \
+            --base main \
+            --head "$BRANCH" \
+            --label source-submission)
+          then
+            gh issue comment "$NUMBER" --body "The entry is committed and pushed to \`$BRANCH\`, but I could not open the pull request. That is usually the repository setting *Actions → General → Allow GitHub Actions to create and approve pull requests* being off. The work is not lost — open the PR from that branch: https://github.com/${GITHUB_REPOSITORY}/compare/main...${BRANCH}?expand=1"
+            exit 1
+          fi
+
+          gh issue comment "$NUMBER" --body "Thank you. Your source is now a pull request: $pr_url. It adds \`$ENTRY_PATH\` as a \`candidate\`. A maintainer merges it, and this issue closes when they do. You do not need to do anything else." \
+            || echo "::warning::the PR was opened but the thank-you comment on #$NUMBER failed"
+
+      # The one message this workflow must never fail to send.
+      - name: Something broke after the source was read — say so on the issue
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NUMBER: ${{ github.event.issue.number }}
+          RUN: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          gh issue comment "$NUMBER" --body "Your source was read, but a step after that failed, so no pull request was opened. Nothing you wrote is lost: it is in this issue, and a maintainer has the run log at $RUN. You do not need to do anything."
