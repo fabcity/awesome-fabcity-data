@@ -14,6 +14,11 @@ minimum_indicators:
 - name: Housing cost burden or overcrowding
   unit: percent
   aggregation: latest
+- name: Nodes running models under local control
+  unit: ratio
+  aggregation: latest
+  id: local_model_share
+  proposed_in: Method v1, in review
 does_not_claim: A city total hides its districts. An average that conceals a distribution is not a
   measure of who lives well, and this cell must not be read as one. A census figure is exactly as
   old as the census — Mexico's is 2020 and does not refresh. A gridded model's population is an estimate

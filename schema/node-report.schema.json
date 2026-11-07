@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/fabcity/awesome-fabcity-data/blob/main/schema/node-report.schema.json",
+  "title": "Fab City Index node report",
+  "description": "PROPOSED FOR METHOD v1, IN REVIEW. What a lab or a city reports about the design and production nodes in one place: how many machines each has, who owns it, and where its models run. It is the only source of the two v1 indicators capacity_ownership_share and local_model_share (cells/*.yaml, `proposed_in`); the fablabs.io directory and Open Know-Where carry no owner field. Nothing reads these files until the method is accepted, and no reports/ folder exists yet. fci-index compute/v1_stubs.py checks the same rules in code, because a report comes from outside.",
+  "type": "object",
+  "required": ["place", "reported_by", "nodes"],
+  "additionalProperties": false,
+  "properties": {
+    "place": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$", "description": "The place's slug in places.yaml." },
+    "reported_by": {
+      "type": "object",
+      "required": ["name", "kind"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string", "minLength": 2, "description": "The lab, the city department, or the person who runs the node. A name someone can write back to." },
+        "kind": { "enum": ["lab", "city", "node-operator"] }
+      }
+    },
+    "nodes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "machines", "owner_type", "model_runtime", "date"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "minLength": 1, "description": "Stable across reports: a later report for the same id replaces the earlier one. A fablabs.io slug where the node has one." },
+          "name": { "type": "string" },
+          "machines": { "type": "integer", "minimum": 0, "description": "Digital fabrication machines the node runs (laser cutters, CNC mills, 3D printers, vinyl and PCB machines, looms). A count, not a value: the v1 share weighs a machine as a machine." },
+          "owner_type": {
+            "enum": ["local_public", "cooperative", "resident", "local_firm", "outside_firm", "outside_public", "unknown"],
+            "description": "Who owns the machines. Local: local_public (a council, a public school or university of the place), cooperative, resident (people who live there), local_firm (a firm whose owners are in the place). Outside: outside_firm, outside_public (a national or foreign body). unknown is counted apart, never as outside."
+          },
+          "model_runtime": {
+            "enum": ["local_hardware", "open_weights_local", "closed_api", "none"],
+            "description": "Where the node's AI inference runs, if it runs any. local_hardware: on machines the node controls. open_weights_local: open-weight models the node can inspect and retrain, under its control. closed_api: a remote service whose model it cannot inspect. none: no model, and then the node is left out of local_model_share."
+          },
+          "date": { "type": "string", "format": "date", "description": "When this was true, YYYY-MM-DD. It ages like any measurement: full weight for two years, nothing at twelve." }
+        }
+      }
+    },
+    "notes": { "type": "string", "maxLength": 2000 }
+  }
+}

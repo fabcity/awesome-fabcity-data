@@ -13,6 +13,11 @@ minimum_indicators:
 - name: Listed spaces reporting open now
   unit: percent
   aggregation: latest
+- name: Production capacity owned locally
+  unit: ratio
+  aggregation: latest
+  id: capacity_ownership_share
+  proposed_in: Method v1, in review
 does_not_claim: 'A directory entry is not an open door. A listed lab may have closed years ago — of
   500 sampled hackerspace records only 37 percent are active — so a count of listings is a count of
   listings. Capacity is not use: a lab that exists and a lab that is used are the same row here, and

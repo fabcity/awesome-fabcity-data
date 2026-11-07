@@ -41,6 +41,7 @@ SCHEMA = json.loads((ROOT / "schema" / "dataset.schema.json").read_text(encoding
 V = _v("dataset")
 VR = _v("review")
 VC = _v("cell")
+VN = _v("node-report")
 
 # A minimal entry that satisfies every `required` key, so each case below tests exactly one thing.
 BASE = yaml.safe_load("""
@@ -178,6 +179,26 @@ CELL_CASES = [
     ("cell missing does_not_claim",     {"does_not_claim": None}, False),
     ("cell does_not_claim too short",   {"does_not_claim": "nothing"}, False),
     ("cell an invented key",            {"cells": "Environmental|City"}, False),
+    ("cell indicator with id and proposed_in", {"minimum_indicators": [{"name": "Local ownership", "unit": "ratio", "aggregation": "latest",
+                                         "id": "capacity_ownership_share", "proposed_in": "Method v1, in review"}]}, True),
+    ("cell indicator id not snake_case", {"minimum_indicators": [{"name": "x", "unit": "ratio", "aggregation": "latest", "id": "Local-Share"}]}, False),
+]
+
+# The node report proposed for Method v1. docs/node-report.example.yaml is the base, so the example cannot rot.
+NODE_REPORT = yaml.safe_load((ROOT / "docs" / "node-report.example.yaml").read_text(encoding="utf-8"))
+NODE = lambda **k: [{**NODE_REPORT["nodes"][0], **k}]
+
+NODE_REPORT_CASES = [
+    ("node report example valid",       {}, True),
+    ("node report no nodes",            {"nodes": []}, False),
+    ("node report place not a slug",    {"place": "Bali"}, False),
+    ("node report unknown reporter kind", {"reported_by": {"name": "Lab", "kind": "vendor"}}, False),
+    ("node report invented owner type", {"nodes": NODE(owner_type="foreign")}, False),
+    ("node report invented runtime",    {"nodes": NODE(model_runtime="hybrid")}, False),
+    ("node report negative machines",   {"nodes": NODE(machines=-1)}, False),
+    ("node report machines as text",    {"nodes": NODE(machines="6")}, False),
+    ("node report node without date",   {"nodes": [{k: v for k, v in NODE_REPORT["nodes"][0].items() if k != "date"}]}, False),
+    ("node report an invented key",     {"score": 0.8}, False),
 ]
 
 
@@ -300,6 +321,9 @@ def main() -> int:
     print()
     bad += check(VC, CELL, CELL_CASES)
 
+    print()
+    bad += check(VN, NODE_REPORT, NODE_REPORT_CASES)
+
     # The act_kind conditional produces jsonschema's worst error message; validate.py rewrites it.
     print()
     err = next(e for e in V.iter_errors({**BASE, "act_kind": "facility"}))
@@ -335,7 +359,7 @@ def main() -> int:
         else:
             print(f"[ ok ] {label}")
 
-    total = len(CASES) + len(REVIEW_CASES) + len(CELL_CASES) + len(TREE_CASES) + 2
+    total = len(CASES) + len(REVIEW_CASES) + len(CELL_CASES) + len(NODE_REPORT_CASES) + len(TREE_CASES) + 2
     print(f"\n{total} case(s), {bad} failed.")
     return 1 if bad else 0
 

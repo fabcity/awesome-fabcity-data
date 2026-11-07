@@ -29,7 +29,9 @@
         "properties": {
           "name": { "type": "string", "minLength": 2, "description": "The indicator, named the way it would be read off a dashboard." },
           "unit": { "type": "string", "minLength": 1, "description": "The unit it is carried in, explicitly. 'ug/m3', 't/capita/yr', 'count', 'percent'. A number without a unit is not an indicator." },
-          "aggregation": { "type": "string", "minLength": 2, "description": "How readings become the cell's number: mean, median, sum, max, p95, annual-total, latest. Says what the cell is doing to the data, which is the half of an index that is usually left implicit." }
+          "aggregation": { "type": "string", "minLength": 2, "description": "How readings become the cell's number: mean, median, sum, max, p95, annual-total, latest. Says what the cell is doing to the data, which is the half of an index that is usually left implicit." },
+          "id": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$", "description": "Optional. The name the Index's code uses for this indicator, where an indicator enters a score on its own (fci-3-prototype js/data.js SUBINDICATORS_V1). The same id in several cells is one indicator read at several places in the matrix." },
+          "proposed_in": { "type": "string", "minLength": 2, "description": "Optional. Set while the indicator is a proposal, to the method version that would adopt it ('Method v1, in review'). Remove it when the method is accepted; the coverage page lists indicators that carry it apart from the rest." }
         }
       },
       "description": "The floor. Below this list the cell is not filled, it is decorated — a single source with one reading is a demo, and this repo has been burned by cells that looked live on the strength of one row."

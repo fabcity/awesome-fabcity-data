@@ -16,6 +16,11 @@ minimum_indicators:
 - name: Gross domestic product
   unit: USD PPP
   aggregation: annual-total
+- name: Production capacity owned locally
+  unit: ratio
+  aggregation: latest
+  id: capacity_ownership_share
+  proposed_in: Method v1, in review
 does_not_claim: 'Budget execution measures administrative throughput, not outcomes: a city that spends
   its budget has spent its budget. A register of businesses omits informal work, which in many partner
   cities is most of the economy, so a low count is as likely to mean weak registration as weak activity.'

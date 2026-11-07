@@ -1,0 +1,25 @@
+# A worked example of a node report, proposed for Method v1. THIS IS DOCUMENTATION, NOT A RECORD.
+#
+# The place and the nodes below are invented to show the shape: none of these labs exists. Real reports would live
+# under reports/{place}/{date}-{reporter}.yaml once the method is accepted, against schema/node-report.schema.json.
+
+place: bali
+reported_by:
+  name: Example Lab Cooperative
+  kind: lab
+nodes:
+  - id: example-lab                 # a fablabs.io slug where the node has one
+    machines: 6
+    owner_type: cooperative
+    model_runtime: open_weights_local
+    date: 2026-11-01
+  - id: example-print-shop
+    machines: 2
+    owner_type: outside_firm
+    model_runtime: closed_api
+    date: 2026-10-15
+  - id: example-banjar-shed
+    machines: 1
+    owner_type: unknown             # counted apart from both local and outside
+    model_runtime: none             # runs no model, so left out of local_model_share
+    date: 2026-10-15

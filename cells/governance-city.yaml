@@ -20,6 +20,16 @@ minimum_indicators:
 - name: Participatory budget projects funded
   unit: count
   aggregation: annual-total
+- name: Production capacity owned locally
+  unit: ratio
+  aggregation: latest
+  id: capacity_ownership_share
+  proposed_in: Method v1, in review
+- name: Nodes running models under local control
+  unit: ratio
+  aggregation: latest
+  id: local_model_share
+  proposed_in: Method v1, in review
 does_not_claim: Publishing is not accountability. A city can run an exemplary portal and answer nobody.
   And rho measures whether the people using THIS node acted on what it asked of them — it is a property
   of a household or a banjar and its own instrument, not of the city's responsiveness to its residents.
