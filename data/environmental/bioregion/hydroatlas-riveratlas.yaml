@@ -13,6 +13,7 @@ places: [bali, barcelona]
 tags: [rivers, river-network, discharge, stream-order, hydrosheds, hydroatlas, hydrorivers, vector]
 added: 2026-11-08
 assisted_by: Claude Code
+adapter: pack:hydro
 feeds_cells: []
 auth: none
 upstream_listed_in: []

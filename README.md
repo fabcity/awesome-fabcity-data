@@ -122,9 +122,9 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   FAO's country water statistics: renewable water resources (internal, external, total), the dependency ratio (the share flowing in from other countries), withdrawals by sector and source, irrigation and dams, for about 200 countries, with a symbol on every value saying whether it is official, estimated or imputed.
 - **[GEOID-Flood (flood segmentation benchmark from Copernicus EMS Rapid Mapping)](https://huggingface.co/datasets/links-ads/geoid-flood)** — 🌱 `candidate` · `CC-BY-4.0`
   Mapped flood extents for 219 Copernicus EMS Rapid Mapping flood activations in 65 countries, 2016-2026, as 10 m tiles with Sentinel-1, Sentinel-2 and DEM layers and validated labels. Built by Fondazione LINKS (Turin) to train flood-mapping models.
-- **[HydroATLAS — BasinATLAS v1.0](https://www.hydrosheds.org/hydroatlas)** — 🌱 `candidate` · `CC-BY-4.0` · _★_
+- **[HydroATLAS — BasinATLAS v1.0](https://www.hydrosheds.org/hydroatlas)** — 🌱 `candidate` · `CC-BY-4.0` · _★_ · 🔌 `pack:hydro`
   HydroBASINS sub-basins at all 12 Pfafstetter levels, each with 281 hydro-environmental attributes (climate, land cover, soils, population, ecoregion). The same basin polygons as HydroBASINS, released under CC-BY 4.0.
-- **[HydroATLAS — RiverATLAS v1.0 (HydroRIVERS)](https://www.hydrosheds.org/hydroatlas)** — 🌱 `candidate` · `CC-BY-4.0` · _★_
+- **[HydroATLAS — RiverATLAS v1.0 (HydroRIVERS)](https://www.hydrosheds.org/hydroatlas)** — 🌱 `candidate` · `CC-BY-4.0` · _★_ · 🔌 `pack:hydro`
   The world's rivers as 8.5 million reaches, wherever 10 km2 drains or 0.1 m3/s flows, with long-term discharge, Strahler order, upstream area and distance to the sea; RiverATLAS adds 281 attributes per reach. CC-BY 4.0.
 - **[NASA FIRMS — active fire detections (VIIRS + MODIS)](https://firms.modaps.eosdis.nasa.gov/)** — 🌱 `candidate` · `CC0-1.0` · _BLI · SCL · BCN · BOS_ · 🔌 `pack:fire`
   NASA's Fire Information for Resource Management System: satellite-detected active fires and thermal anomalies from VIIRS (375 m) and MODIS (1 km), within about three hours of overpass, worldwide, with an archive back to 2000.
