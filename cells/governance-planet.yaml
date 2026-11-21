@@ -15,3 +15,4 @@ does_not_claim: 'A national governance score is not a city''s, and putting one o
   intervals: two countries whose intervals overlap are not ranked, whatever their point estimates
   do, and an Index that ranks them anyway is reporting noise as order.'
 notes: 6 entries filed. WGI carries the standard errors that make the non-ranking explicit.
+  Index method v0.1, 21 Nov 2026, gives this cell PITO 0.0, DIDO 0.0 and read 1.0, where it is read beside the score as context, national figures do not describe a city.

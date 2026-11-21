@@ -37,4 +37,4 @@ notes: '12 entries filed. The node computes three things here today, all `partia
   days (packs/posidonia). None is a measurement made here, which is why none is `live`. The natural-hazards
   rows (added 2026-09-26) are served by two candidates, NASA FIRMS for fires and the USGS catalogue for
   earthquakes; nothing reads either yet. Flood is deliberately not a row: the only filed source, Google
-  Flood Hub, publishes forecasts, and a forecast is not a count of what happened.'
+  Flood Hub, publishes forecasts, and a forecast is not a count of what happened. Index method v0.1, 21 Nov 2026, gives this cell PITO 0.3, DIDO 0.0 and read 0.7, where the read share is the ceiling, and water stress is the scored part.'

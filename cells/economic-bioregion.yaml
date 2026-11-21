@@ -26,4 +26,4 @@ notes: '10 entries filed. EXIOBASE, materialflows.net and the UNEP IRP accounts 
   maritime goods by port (Barcelona), US Census trade by port (Boston seaport and Logan) and Chile''s
   customs declarations (San Antonio, Valparaíso, AMB). The national accounts above publish imports
   and exports only per country, which is why the row exists. Bali has no open source for it: IMF
-  PortWatch covers Benoa and is blocked on licence (#35).'
+  PortWatch covers Benoa and is blocked on licence (#35). Index method v0.1, 21 Nov 2026, gives this cell PITO 0.8, DIDO 0.2 and read -0.0.'

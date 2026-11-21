@@ -9073,7 +9073,7 @@
     }
    ],
    "does_not_claim": "A material-flow account is an accounting boundary, not a physical measurement: it is built from trade and production statistics, and its resolution is the statistical unit, never the watershed. A per-capita figure assigns material to where people live, which is not where it was extracted or used. Neither is a measure of what any place could make locally. A gateway's throughput is not its hinterland's consumption: goods landed at Barcelona feed Aragon and southern France, San Antonio serves the whole of central Chile, and transit or transhipment cargo never enters the local economy at all. Gateway tonnage is the physical boundary flow a territory's account would start from, not the account, and it is silent on everything that crosses by road or rail.",
-   "notes": "10 entries filed. EXIOBASE, materialflows.net and the UNEP IRP accounts are the backbone. The gateway row (added 2026-09-26, #36) is served from economic/region by three candidates: Eurostat maritime goods by port (Barcelona), US Census trade by port (Boston seaport and Logan) and Chile's customs declarations (San Antonio, Valparaíso, AMB). The national accounts above publish imports and exports only per country, which is why the row exists. Bali has no open source for it: IMF PortWatch covers Benoa and is blocked on licence (#35)."
+   "notes": "10 entries filed. EXIOBASE, materialflows.net and the UNEP IRP accounts are the backbone. The gateway row (added 2026-09-26, #36) is served from economic/region by three candidates: Eurostat maritime goods by port (Barcelona), US Census trade by port (Boston seaport and Logan) and Chile's customs declarations (San Antonio, Valparaíso, AMB). The national accounts above publish imports and exports only per country, which is why the row exists. Bali has no open source for it: IMF PortWatch covers Benoa and is blocked on licence (#35). Index method v0.1, 21 Nov 2026, gives this cell PITO 0.8, DIDO 0.2 and read -0.0."
   },
   {
    "cell": "Economic|City",
@@ -9105,7 +9105,7 @@
     }
    ],
    "does_not_claim": "Budget execution measures administrative throughput, not outcomes: a city that spends its budget has spent its budget. A register of businesses omits informal work, which in many partner cities is most of the economy, so a low count is as likely to mean weak registration as weak activity.",
-   "notes": "35 entries filed, the largest cell in the matrix and overwhelmingly municipal budgets. packs/thingdata computes the repair-route share, `partial`."
+   "notes": "35 entries filed, the largest cell in the matrix and overwhelmingly municipal budgets. packs/thingdata computes the repair-route share, `partial`. Index method v0.1, 21 Nov 2026, gives this cell PITO 0.5, DIDO 0.5 and read 0.0."
   },
   {
    "cell": "Economic|Community",
@@ -9132,7 +9132,7 @@
     }
    ],
    "does_not_claim": "A directory entry is not an open door. A listed lab may have closed years ago — of 500 sampled hackerspace records only 37 percent are active — so a count of listings is a count of listings. Capacity is not use: a lab that exists and a lab that is used are the same row here, and this cell does not distinguish them.",
-   "notes": "9 entries filed and it is where the act sources live: fablabs.io, hackerspaces.org, SpaceAPI, Maps of Making, Precious Plastic, Repair Cafe. packs/place computes businesses per km2, `partial`. SpaceAPI is the only source in the list carrying a real-time open/closed signal."
+   "notes": "9 entries filed and it is where the act sources live: fablabs.io, hackerspaces.org, SpaceAPI, Maps of Making, Precious Plastic, Repair Cafe. packs/place computes businesses per km2, `partial`. SpaceAPI is the only source in the list carrying a real-time open/closed signal. Index method v0.1, 21 Nov 2026, gives this cell PITO 0.0, DIDO 1.0 and read 0.0."
   },
   {
    "cell": "Economic|Planet",
@@ -9154,7 +9154,7 @@
     }
    ],
    "does_not_claim": "A count of designs is not a count of things made. The size of a commons says nothing about whether anything was built from it, where, or by whom — and an Index that reports a growing library as growing production is making the claim this sentence exists to forbid.",
-   "notes": "13 entries filed, most of them act sources: Appropedia, OKH Search, OSHWA, Things That Work, the Open Lab Starter Kit. This is the cell where 'what could be built' lives."
+   "notes": "13 entries filed, most of them act sources: Appropedia, OKH Search, OSHWA, Things That Work, the Open Lab Starter Kit. This is the cell where 'what could be built' lives. Index method v0.1, 21 Nov 2026, gives this cell PITO 0.0, DIDO 0.5 and read 0.5, where designs published count as DIDO, and the global figure is read as the ceiling."
   },
   {
    "cell": "Economic|Region",
@@ -9187,7 +9187,7 @@
     }
    ],
    "does_not_claim": "Enterprise counts measure registration, not production — a region can register many firms and make little, and informal production appears in neither number. Regional accounts locate activity by the reporting unit's address, which for a multi-site firm is a headquarters and not a workshop. Regional trade is attributed to the exporter's or importer's registered address, not to where goods were made or used, and a region's imports and exports can follow different concepts (Germany reports general-trade imports against special-trade exports), so their balance is not a measure of self-supply.",
-   "notes": "30 entries filed, mostly public-finance series. Eurostat SBS by NUTS 2 is the one that reaches manufacturing capacity directly. The external-trade row (added 2026-09-26, #42) has five candidates: Idescat (Catalonia by province, value and weight), Destatis and Statistikamt Nord (Hamburg), French customs by region and département, and Census metro exports (Boston, exports only). Blocked leads: #50."
+   "notes": "30 entries filed, mostly public-finance series. Eurostat SBS by NUTS 2 is the one that reaches manufacturing capacity directly. The external-trade row (added 2026-09-26, #42) has five candidates: Idescat (Catalonia by province, value and weight), Destatis and Statistikamt Nord (Hamburg), French customs by region and département, and Census metro exports (Boston, exports only). Blocked leads: #50. Index method v0.1, 21 Nov 2026, gives this cell PITO 0.6, DIDO 0.4 and read 0.0."
   },
   {
    "cell": "Environmental|Bioregion",
@@ -9227,7 +9227,7 @@
     }
    ],
    "does_not_claim": "A bioregion is not the sum of its cities, and a figure here must not be presented as one. A satellite land-cover class is a model's guess at what a pixel contains, not a survey — tree cover from Dynamic World and tree cover from a forest inventory disagree, and the disagreement is real. A point sample from a global model, which is what the node's coast and earth-engine packs take, is a boundary condition for this place and not a measurement of the bioregion. A count of hazard events is not risk. Risk is hazard times exposure times vulnerability, and neither row carries the buildings or the people. A fire detection is a hot pixel, not a fire and not burned area; flares, kilns and volcanoes count too, and cloud hides what burns under it. A quiet year is not a safe place. Faults release on return periods of centuries, so a count of zero earthquakes says nothing about seismic hazard, and below about M4.5 the global catalogue is only as complete as the local network.",
-   "notes": "12 entries filed. The node computes three things here today, all `partial` on purpose: sea surface temperature (packs/coast), tree-cover fraction (packs/earth-engine) and Posidonia thermal-stress days (packs/posidonia). None is a measurement made here, which is why none is `live`. The natural-hazards rows (added 2026-09-26) are served by two candidates, NASA FIRMS for fires and the USGS catalogue for earthquakes; nothing reads either yet. Flood is deliberately not a row: the only filed source, Google Flood Hub, publishes forecasts, and a forecast is not a count of what happened."
+   "notes": "12 entries filed. The node computes three things here today, all `partial` on purpose: sea surface temperature (packs/coast), tree-cover fraction (packs/earth-engine) and Posidonia thermal-stress days (packs/posidonia). None is a measurement made here, which is why none is `live`. The natural-hazards rows (added 2026-09-26) are served by two candidates, NASA FIRMS for fires and the USGS catalogue for earthquakes; nothing reads either yet. Flood is deliberately not a row: the only filed source, Google Flood Hub, publishes forecasts, and a forecast is not a count of what happened. Index method v0.1, 21 Nov 2026, gives this cell PITO 0.3, DIDO 0.0 and read 0.7, where the read share is the ceiling, and water stress is the scored part."
   },
   {
    "cell": "Environmental|City",
@@ -9265,7 +9265,7 @@
     }
    ],
    "does_not_claim": "Reference-station air quality describes a city's regulatory compliance, not where a child walks to school — neighbourhood exposure is `Environmental|Community` and needs a different kind of source. A municipal GHG inventory is an accounting exercise with a declared scope, so two cities' inventories are not comparable unless both declare the same scopes; an Index that ranks them without checking is comparing methodologies. And waste collected is not waste generated.",
-   "notes": "16 entries filed. The node computes reference-station PM2.5 (packs/air-quality, `partial` — \"never live: it isn't our measurement\") and a land-change figure from AlphaEarth embeddings (packs/earth, `partial` for good)."
+   "notes": "16 entries filed. The node computes reference-station PM2.5 (packs/air-quality, `partial` — \"never live: it isn't our measurement\") and a land-change figure from AlphaEarth embeddings (packs/earth, `partial` for good). Index method v0.1, 21 Nov 2026, gives this cell PITO 0.7, DIDO 0.3 and read 0.0."
   },
   {
    "cell": "Environmental|Community",
@@ -9287,7 +9287,7 @@
     }
    ],
    "does_not_claim": "A handful of sensors is not the neighbourhood. This cell measures the air where the instruments are, and says nothing about a street with none. Indoor and outdoor are different measurements and must never be averaged together. A low-cost sensor is not a reference instrument: its number is not comparable to a regulatory station's without calibration, and presenting the two on one axis implies an equivalence that does not exist.",
-   "notes": "4 entries filed and this is the cell the node can actually measure. packs/air-quality computes PM2.5 from sensors in custody and is the only `state: live` cell in the environmental pillar — `live` means measured here, by instruments this node or its children hold."
+   "notes": "4 entries filed and this is the cell the node can actually measure. packs/air-quality computes PM2.5 from sensors in custody and is the only `state: live` cell in the environmental pillar — `live` means measured here, by instruments this node or its children hold. Index method v0.1, 21 Nov 2026, gives this cell PITO 0.5, DIDO 0.5 and read 0.0."
   },
   {
    "cell": "Environmental|Planet",
@@ -9320,7 +9320,7 @@
     }
    ],
    "does_not_claim": "A planetary number is not any territory's number. Nothing here apportions a share of global CO2 or global extraction to a city, a region or a person, and an Index that displays a planetary figure on a local page is inviting exactly that reading. Nor is a forecast an observation: the earth-system models filed against this cell publish projections, and a 2030 layer is a model's opinion about 2030.",
-   "notes": "10 entries filed. The node computes nothing here and is not expected to — a node measures its own place. This cell is context: the number every local figure is read against."
+   "notes": "10 entries filed. The node computes nothing here and is not expected to — a node measures its own place. This cell is context: the number every local figure is read against. Index method v0.1, 21 Nov 2026, gives this cell PITO 0.0, DIDO 0.0 and read 1.0, where it is read beside the score as the ceiling."
   },
   {
    "cell": "Environmental|Region",
@@ -9349,7 +9349,7 @@
     }
    ],
    "does_not_claim": "A regional total conceals where within the region anything is. Generation in one valley is not access for the whole region, and land-use area says nothing about condition or tenure. Nothing here is a measure of energy actually consumed locally. Generation is also not capacity — a wet year and a new dam move this number the same way, so a rise is not evidence that anything was built, and reading it as installed capacity is unsupported. Residual waste is what is not separately collected for recovery, so it went to landfill, incineration, mechanical treatment or out of the region. It is not waste generated, and a low figure can mean waste the system never collected. Separate collection is not recycling, since a collected fraction can still be rejected at sorting, and sources count different things (collected municipal waste, household waste only, or tonnes declared by operators).",
-   "notes": "7 entries filed and it is the thinnest environmental cell — four of the seven are Bhutan NSDI layers and one is an Indonesian forecast feed. The energy row asked for installed capacity in MW until 2026-09-23. No source in this list published that at region scale, while the one that exists (Occitanie) publishes generation in GWh — 221 rows, every one GWh, 2008-2024 — so the minimum was one nothing could meet. Changed to match what regions actually publish. Capacity stays in indicator_categories because it is still the thing you would rather know. The waste row (added 2026-09-26, #42) is the \"trash out\" half of PITO at region scale. Eurostat publishes no NUTS-level waste table, so it is summed from municipal sources: Catalonia from the Generalitat's 948 municipalities (253.4 kg/capita in 2024), the Region Metropolitana from RETC's comunas."
+   "notes": "7 entries filed and it is the thinnest environmental cell — four of the seven are Bhutan NSDI layers and one is an Indonesian forecast feed. The energy row asked for installed capacity in MW until 2026-09-23. No source in this list published that at region scale, while the one that exists (Occitanie) publishes generation in GWh — 221 rows, every one GWh, 2008-2024 — so the minimum was one nothing could meet. Changed to match what regions actually publish. Capacity stays in indicator_categories because it is still the thing you would rather know. The waste row (added 2026-09-26, #42) is the \"trash out\" half of PITO at region scale. Eurostat publishes no NUTS-level waste table, so it is summed from municipal sources: Catalonia from the Generalitat's 948 municipalities (253.4 kg/capita in 2024), the Region Metropolitana from RETC's comunas. Index method v0.1, 21 Nov 2026, gives this cell PITO 0.8, DIDO 0.2 and read -0.0."
   },
   {
    "cell": "Governance|Bioregion",
@@ -9371,7 +9371,7 @@
     }
    ],
    "does_not_claim": "A treaty in force is not a treaty observed, and a designation is not management. A Ramsar site or a basin agreement records an intention registered with an international body; whether water is shared or a wetland protected is not in these sources and must not be inferred from them.",
-   "notes": "7 entries filed, the TFDD family plus Ramsar and three procurement systems."
+   "notes": "7 entries filed, the TFDD family plus Ramsar and three procurement systems. Index method v0.1, 21 Nov 2026, gives this cell PITO 0.0, DIDO 0.5 and read 0.5, where half is read, because a treaty in force is not a treaty observed."
   },
   {
    "cell": "Governance|City",
@@ -9409,7 +9409,7 @@
     }
    ],
    "does_not_claim": "Publishing is not accountability. A city can run an exemplary portal and answer nobody. And rho measures whether the people using THIS node acted on what it asked of them — it is a property of a household or a banjar and its own instrument, not of the city's responsiveness to its residents. Reading rho as a civic score is the single most available misreading in this matrix.",
-   "notes": "32 entries filed. packs/open-data-health computes both dataset indicators (`partial`) and the core computes rho at every scale — see app/index.py, \"is anyone acting on what this node says\"."
+   "notes": "32 entries filed. packs/open-data-health computes both dataset indicators (`partial`) and the core computes rho at every scale — see app/index.py, \"is anyone acting on what this node says\". Index method v0.1, 21 Nov 2026, gives this cell PITO 0.0, DIDO 1.0 and read 0.0."
   },
   {
    "cell": "Governance|Community",
@@ -9425,7 +9425,7 @@
     }
    ],
    "does_not_claim": "Rho is a measure of this household or this banjar acting on its own node, and of nothing else. A low rho may mean the asks were wrong, badly timed or impossible, and reading it as apathy is unsupported. It is not a governance score for the place and must never be aggregated upward into one.",
-   "notes": "No registry entry is filed here. The core computes rho at any scale, so like Social|Community this cell is computable and unregistered."
+   "notes": "No registry entry is filed here. The core computes rho at any scale, so like Social|Community this cell is computable and unregistered. Index method v0.1, 21 Nov 2026, gives this cell PITO 0.0, DIDO 0.0 and read 1.0, where this cell is rho, the third term of the formula, and is not counted a second time as DIDO."
   },
   {
    "cell": "Governance|Planet",
@@ -9447,7 +9447,7 @@
     }
    ],
    "does_not_claim": "A national governance score is not a city's, and putting one on a city row asserts something the source does not support. These are perception-based composites with published confidence intervals: two countries whose intervals overlap are not ranked, whatever their point estimates do, and an Index that ranks them anyway is reporting noise as order.",
-   "notes": "6 entries filed. WGI carries the standard errors that make the non-ranking explicit."
+   "notes": "6 entries filed. WGI carries the standard errors that make the non-ranking explicit. Index method v0.1, 21 Nov 2026, gives this cell PITO 0.0, DIDO 0.0 and read 1.0, where it is read beside the score as context, national figures do not describe a city."
   },
   {
    "cell": "Governance|Region",
@@ -9473,7 +9473,7 @@
     }
    ],
    "does_not_claim": "A catalogue's size is not its usefulness. A portal with a thousand datasets nobody maintains scores higher on the first indicator than one with fifty that are current, which is why the second indicator is in the minimum set and not optional. Neither measures whether anyone used the data.",
-   "notes": "23 entries filed, almost all regional open-data catalogues."
+   "notes": "23 entries filed, almost all regional open-data catalogues. Index method v0.1, 21 Nov 2026, gives this cell PITO 0.0, DIDO 1.0 and read 0.0."
   },
   {
    "cell": "Social|Bioregion",
@@ -9494,7 +9494,7 @@
     }
    ],
    "does_not_claim": "Presence is not vitality and title is not security. A language recorded in a global register may have few speakers left; land shown as recognised may be contested, unmapped in the national cadastre, or recognised on paper only. Absence from a global register is emphatically not absence on the ground — under-registration is the normal state for both of these.",
-   "notes": "2 entries filed, the thinnest cell in the matrix. The minimum set is provisional and this cell most needs someone with standing to say what belongs in it — it is the one where a badly chosen indicator does real harm."
+   "notes": "2 entries filed, the thinnest cell in the matrix. The minimum set is provisional and this cell most needs someone with standing to say what belongs in it — it is the one where a badly chosen indicator does real harm. Index method v0.1, 21 Nov 2026, gives this cell PITO 0.0, DIDO 0.0 and read 1.0, where it is read beside the score as the floor."
   },
   {
    "cell": "Social|City",
@@ -9522,7 +9522,7 @@
     }
    ],
    "does_not_claim": "A city total hides its districts. An average that conceals a distribution is not a measure of who lives well, and this cell must not be read as one. A census figure is exactly as old as the census — Mexico's is 2020 and does not refresh. A gridded model's population is an estimate redistributed from a census, not a register, and where it disagrees with the municipal padron the register is the authority.",
-   "notes": "11 entries filed, now the best-supplied social cell: Urban Audit, INE, IBGE, INEGI and US Census ACS all reach it with official codes. No node computes it."
+   "notes": "11 entries filed, now the best-supplied social cell: Urban Audit, INE, IBGE, INEGI and US Census ACS all reach it with official codes. No node computes it. Index method v0.1, 21 Nov 2026, gives this cell PITO 0.0, DIDO 0.0 and read 1.0, where it is read beside the score as the floor, how people live."
   },
   {
    "cell": "Social|Community",
@@ -9539,7 +9539,7 @@
     }
    ],
    "does_not_claim": "One household is not a community. This cell measures the dwellings whose instruments report into this node, and describes the people in them and nobody else. A low figure is not evidence that the street is comfortable; it is evidence about the rooms that were measured.",
-   "notes": "No registry entry is filed here, and the node computes it anyway: packs/heat is `state: live` and counts hours at or above 32 degC indoors. A cell can be measurable and unregistered — which is the opposite of the usual gap and worth seeing."
+   "notes": "No registry entry is filed here, and the node computes it anyway: packs/heat is `state: live` and counts hours at or above 32 degC indoors. A cell can be measurable and unregistered — which is the opposite of the usual gap and worth seeing. Index method v0.1, 21 Nov 2026, gives this cell PITO 0.0, DIDO 0.5 and read 0.5, where the read share is the floor, how people live."
   },
   {
    "cell": "Social|Planet",
@@ -9562,7 +9562,7 @@
     }
    ],
    "does_not_claim": "A global or national composite is not a measure of any city, and must not be shown on a city page as though it were. A composite index's rank is an artefact of its weighting: two indices over the same underlying data rank countries differently, and the ranking is the index's opinion, not a finding.",
-   "notes": "4 entries filed. Context for local figures; no node computes this."
+   "notes": "4 entries filed. Context for local figures; no node computes this. Index method v0.1, 21 Nov 2026, gives this cell PITO 0.0, DIDO 0.0 and read 1.0, where it is read beside the score as the floor."
   },
   {
    "cell": "Social|Region",
@@ -9591,7 +9591,7 @@
     }
    ],
    "does_not_claim": "A regional labour figure does not locate the work: people are counted where they live or where they are surveyed, not where they produce. Informality measured by survey is a definition as much as a count, and the definitions differ by country. A national series displayed at region scale is the country's number wearing a region's name — check the geography before believing it.",
-   "notes": "8 entries filed. ILOSTAT is the only open source here that measures informal work, which is most of the production a Fab City in Indonesia or Chile is surrounded by — and it is national."
+   "notes": "8 entries filed. ILOSTAT is the only open source here that measures informal work, which is most of the production a Fab City in Indonesia or Chile is surrounded by — and it is national. Index method v0.1, 21 Nov 2026, gives this cell PITO 0.0, DIDO 0.0 and read 1.0, where it is read beside the score as the floor, how people live."
   }
  ],
  "coverage": {
