@@ -1,0 +1,42 @@
+name: GeoNames
+url: https://www.geonames.org
+description: |
+  Global gazetteer of about 13 million named places (towns, neighbourhoods, hills, rivers) with
+  coordinates, feature class, admin codes and population where known. Daily dumps per country.
+pillar: social
+scale: community
+status: candidate
+license: CC-BY-4.0
+api: http://api.geonames.org
+pilot_relevance: [global]
+places: []
+tags: [gazetteer, place-names, points, admin-codes, population, daily]
+added: 2026-11-21
+assisted_by: Claude Code
+feeds_cells: []
+auth: none
+upstream_listed_in: []
+notes: |
+  VERIFIED 2026-11-21.
+
+  LICENCE. download.geonames.org/export/dump/readme.txt: "This work is licensed under a Creative
+  Commons Attribution 4.0 License". geonames.org/export says the web services carry the same terms,
+  commercial use allowed, credit GeoNames. TRAP in the postal-code dump: GB_full is "Royal Mail
+  copyright and database right 2022", and the Chile, Ireland and Malta codes are cut back "for
+  copyright reasons". Leave postal codes out unless each country file is checked.
+
+  ENDPOINT. Dumps need no account: allCountries.zip (about 423 MB) and one zip per country, refreshed
+  daily, plus daily modification files. The web services (api.geonames.org) need a free registered
+  username on every request, with 10,000 credits a day and 1,000 an hour, and no SLA. `auth: none`
+  describes the dumps, which is what a node should read.
+
+  READ 2026-11-21. ES.zip (3.3 MB) holds 87,391 features, 30,917 of them populated places (class P).
+  ID.zip (10.4 MB) holds 452,131 features, 258,056 populated places. Barcelona is geonameid 3128760,
+  41.38879 N 2.15899 E, PPLA, population 1,686,208, modified 2026-05-20. Denpasar is 1645528,
+  -8.65 115.21667, PPLA, population 670,210, modified 2026-06-10.
+
+  WHY NO CELL. Names and points, not an indicator. It is useful to a node as an offline gazetteer: the
+  country dump names what lies around a cell without a network call.
+  WHAT IT DOES NOT CLAIM. Its population field is a single figure of unstated year and source
+  (Barcelona's matches no INE year) and must never stand in for a census. It is volunteer-edited, so
+  the coordinates are points of reference, not boundaries.

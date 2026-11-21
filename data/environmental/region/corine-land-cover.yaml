@@ -1,0 +1,46 @@
+name: CORINE Land Cover and CLC+ Backbone (Copernicus Land Monitoring Service)
+url: https://land.copernicus.eu/en/products/corine-land-cover
+description: |
+  Europe's reference land-cover inventory: 44 classes, 25 ha minimum mapping unit, for 1990 to 2018
+  plus change layers. CLC+ Backbone adds a 10 m raster with 11 classes for 2018, 2021 and 2023. Run by the EEA.
+pillar: environmental
+scale: region
+status: candidate
+license: 'Copernicus, Delegated Regulation (EU) 1159/2013: "free, full and open"; credit the source and state any modification'
+api: https://image.discomap.eea.europa.eu/arcgis/rest/services/Corine/CLC2018_WM/MapServer
+pilot_relevance: [barcelona]
+places: [barcelona]
+tags: [land-cover, land-use, europe, eea, copernicus, vector, raster-100m, raster-10m]
+added: 2026-11-21
+assisted_by: Claude Code
+feeds_cells: [Environmental|Region]
+auth: none
+upstream_listed_in: []
+notes: |
+  VERIFIED 2026-11-21.
+
+  LICENCE. land.copernicus.eu: "Users are free to copy, distribute, transmit, and adapt the CLMS data as
+  long as the data source is given credit", for "any public or commercial organisation". The data
+  policy cites Delegated Regulation (EU) No 1159/2013. Conditions: credit the source, say whether the
+  data were modified, and do not imply EU endorsement.
+
+  ENDPOINT. Two paths. (1) Full downloads and the CLMS API need a free EU Login account (machine tokens
+  at /en/how-to-guides/how-to-download-spatial-data/how-to-create-api-tokens). CLC+ Backbone 2023 is
+  downloaded through WEkEO, which also needs an account. (2) EEA's public ArcGIS REST service answers
+  `identify` with no login: image.discomap.eea.europa.eu/arcgis/rest/services/Corine/ lists CLC 1990 to
+  2018 and the change layers. `auth: none` describes path 2.
+
+  READ 2026-11-21 through CLC2018_WM identify. Plaça de Catalunya (41.3870 N 2.1700 E): code 111,
+  continuous urban fabric, in a polygon of 3,719.7 ha. Collserola (41.4200 N 2.1050 E): 312,
+  coniferous forest, polygon 6,092.6 ha. Off the Barceloneta (41.3600 N 2.1900 E): 523, sea and ocean.
+
+  COVERAGE. EEA39 only (CLC 2018); CLC+ Backbone is EEA38 plus the UK. Nothing outside Europe: Bali,
+  Santiago and Boston have no data. CLC 2018 (version 2020_20u1) is the latest. The 2024 update is
+  "scheduled for publication in Q1 2027". Anything labelled CLC 2024 before then is premature.
+
+  WHY THIS CELL. Environmental|Region asks for land under each land-use class in km2. CORINE is the
+  European source built for exactly that, with a nomenclature (agriculture, forest, artificial
+  surfaces) that answers land use rather than only cover.
+  WHAT IT DOES NOT CLAIM. A 25 ha minimum unit merges everything smaller: a park inside urban fabric is
+  urban fabric. Classes come from photo-interpretation, not a cadastre, so a class area is not tenure.
+  A review should sum the classes inside one NUTS region and compare with ESA WorldCover.

@@ -1,0 +1,48 @@
+name: geoBoundaries
+url: https://www.geoboundaries.org
+description: |
+  Administrative boundaries for every country, ADM0 to ADM5, as GeoJSON, TopoJSON and shapefile, from
+  William & Mary's geoLab. Three release types: gbOpen, gbHumanitarian and gbAuthoritative.
+pillar: governance
+scale: region
+status: candidate
+license: "Per file: read boundaryLicense. gbOpen mostly CC-BY-4.0 with ODbL and CC-BY-SA files; gbHumanitarian CC-BY-3.0-IGO; gbAuthoritative non-commercial (excluded)"
+api: https://www.geoboundaries.org/api/current/gbOpen/
+pilot_relevance: [global]
+places: []
+tags: [administrative-boundaries, adm0, adm1, adm2, geojson, polygons, github]
+added: 2026-11-21
+assisted_by: Claude Code
+feeds_cells: []
+auth: none
+upstream_listed_in: []
+notes: |
+  VERIFIED 2026-11-21.
+
+  LICENCE. The front page says "geoBoundaries datasets are provided under the CC BY 4.0 license", but
+  that is the banner. Every API record carries its own `boundaryLicense`, which is the licence that
+  applies. The api.html page itself says gbAuthoritative files (UN SALB) "cannot be used for commerical
+  purposes": all 93 carry the UN SALB Data License, so they fail and are excluded. All 463
+  gbHumanitarian files are CC BY 3.0 IGO and pass. gbOpen is not uniformly CC BY:
+  - ODbL on about 225 files and CC BY-SA 2.0/3.0/4.0 on about 45, which carry share-alike;
+  - five rest on permission by email ("Other - Direct Permission"): Oman ADM2, Solomon Islands ADM3 and
+    ADM4, Tuvalu ADM3 and Vanuatu ADM3. Do not use them;
+  - one-offs to check before use: Pixabay licence (Taiwan ADM0), swisstopo, "Other - Humanitarian"
+    (Poland ADM0).
+  The GitHub repo's licence reads NOASSERTION, so a code licence is not available as a fallback either.
+
+  ENDPOINT. api/current/<gbOpen|gbHumanitarian|gbAuthoritative>/<ISO3|ALL>/<ADM0-5>/ returns JSON that
+  points at files on GitHub (wmgeolab/geoBoundaries). No key.
+
+  READ 2026-11-21. ESP ADM2 (gbOpen): 52 units, source INE, licence "National Institute of Statistics
+  (INE) Data License", year represented 2018, built 12 Dec 2023. ESP ADM3: 8,205 units, CC BY 4.0. IDN
+  ADM2 (gbOpen): 519 units, source BPS / WFP / OCHA ROAP, CC BY 3.0 IGO, year 2020. Its simplified file
+  holds "Kota Denpasar" as one ADM2 polygon.
+
+  VINTAGE. The last tagged release is v6.0.0 (14 Sep 2023). Boundary merges still land in the repo
+  (latest 1 Nov 2026). Years represented vary by country.
+
+  WHY NO CELL. Boundaries are the frame other figures are summed in, not an indicator. A node can use
+  them to say which district and region a cell sits in.
+  WHAT IT DOES NOT CLAIM. Not an official boundary unless the file's source is the national agency.
+  CGAZ composites replace disputed areas using US State Department lines, which is a political choice.

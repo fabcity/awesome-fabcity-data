@@ -1,0 +1,44 @@
+name: E-OBS_EU daily gridded observations (Copernicus C3S)
+url: https://cds.climate.copernicus.eu/datasets/insitu-gridded-observations-europe
+description: |
+  Daily temperature, precipitation, pressure, humidity, wind and radiation on a 0.1 and 0.25 degree grid
+  from 1950, interpolated from ECA&D station series. The EU, Norway, Switzerland, Iceland and UK subset is
+  the open one.
+pillar: environmental
+scale: region
+status: candidate
+license: "CC-BY-4.0 for the E-OBS_EU subset from the Copernicus CDS only; whole-Europe E-OBS and the ecad.eu copy are non-commercial (excluded)"
+api: https://cds.climate.copernicus.eu/api
+pilot_relevance: [barcelona]
+places: []
+tags: [climate, temperature, precipitation, gridded, daily, europe, copernicus, c3s, observations]
+added: 2026-11-21
+assisted_by: Claude Code
+feeds_cells: []
+auth: registration
+upstream_listed_in: []
+notes: |
+  VERIFIED 2026-11-21 (licence and catalogue). NOT READ for any place.
+
+  LICENCE. Split by geography and by distributor. The CDS licence "E-OBS and E-OBS_EU product licences"
+  says E-OBS_EU, "the subset covering the EU area plus Norway, Switzerland, Iceland and the United
+  Kingdom", is CC BY 4.0, and "These data may be used for any purpose, including commercial use". The
+  whole-Europe grid stays "strictly for use in non-commercial research and education projects only".
+  The same words govern every ECA&D station series and the NetCDF files on ecad.eu (ECA&D data policy,
+  16 Sep 2019). Only the E-OBS_EU files fetched from the CDS pass. Accepting the CDS licence covers
+  both products at once, so it is easy to fetch the wrong one.
+
+  ENDPOINT. Copernicus CDS: a free account plus licence acceptance, then the cdsapi client. The
+  catalogue record (api/catalogue/v1/collections/insitu-gridded-observations-europe) answers without
+  a key: title "E-OBS daily gridded meteorological data for Europe from 1950 to present derived from
+  in-situ observations", updated 2026-11-06. This machine holds no CDS key, so no grid was read.
+
+  VINTAGE. v34.0e, released October 2026, runs to 30 June 2026. Land only, 25N to 71.5N, 25W to 45E.
+  Wind starts in 1980.
+
+  WHY NO CELL. No cell's minimum indicators ask for a regional climate series today. It is filed for
+  the node: observed daily temperature back to 1950 at 0.1 degrees gives a European node a measured
+  "usual" to set against its own sensors and forecasts.
+  WHAT IT DOES NOT CLAIM. An interpolated grid, not a station. Where stations are sparse the grid
+  smooths extremes, and more than half of the input stations are not downloadable, so they cannot
+  be checked.

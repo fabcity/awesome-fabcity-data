@@ -1,0 +1,42 @@
+name: Natural Earth
+url: https://www.naturalearthdata.com
+description: |
+  Public-domain world base map at 1:10m, 1:50m and 1:110m: coastlines, land, countries, admin-1 units,
+  rivers, lakes, populated places and relief. Run by NACIS volunteers.
+pillar: environmental
+scale: planet
+status: candidate
+license: Public domain (Natural Earth terms of use)
+api: null
+pilot_relevance: [global]
+places: []
+tags: [base-map, coastline, boundaries, vector, raster, public-domain, cartography]
+added: 2026-11-21
+assisted_by: Claude Code
+feeds_cells: []
+auth: none
+upstream_listed_in: []
+notes: |
+  VERIFIED 2026-11-21.
+
+  LICENCE. naturalearthdata.com/about/terms-of-use: "All versions of Natural Earth raster + vector map
+  data found on this website are in the public domain" and "No permission is needed to use Natural
+  Earth." The repo's LICENSE.md (github.com/nvkelso/natural-earth-vector) repeats it and names
+  personal, educational and commercial use. The site footer's "All rights reserved" covers the
+  website, not the data. Some third-party inputs (JRC, Washington Post and others) were licensed to
+  Natural Earth for building the base map; Natural Earth still releases the result as public domain.
+
+  ENDPOINT. No API. Direct zips from naciscdn.org and the GitHub repo, no account.
+
+  ALREADY IN THE NODE. planetai-node ships Natural Earth 1:110m land as
+  app/static/vendor/world-land-110m.json (202 KB, via world-atlas), credited in NOTICE, for the Node
+  door's world. It is a bundled file and no function reads it, so it has no `adapter` and stays
+  `candidate`.
+
+  VINTAGE. The latest release is v5.1.2 (13 May 2022), and the repo has had no release since. Boundaries
+  are de facto, Natural Earth's own view, and names lag reality by that much.
+
+  WHY NO CELL. A base layer feeds no indicator row. It is filed so the node's bundled data has an
+  entry and a licence on record.
+  WHAT IT DOES NOT CLAIM. A cartographic generalisation, not a survey. A 1:110m coast is drawn
+  for a world view and is kilometres off at city scale. Never measure areas or distances with it.
