@@ -1,0 +1,18 @@
+entry: economic/community/overture-places
+by: Tomas Diez
+org: Fab City
+date: 2026-11-21
+territory: Bali
+checked:
+  - licence
+  - admin-code
+  - vintage
+verdict: usable-with-caveats
+self_declared: false
+assisted_by: Gemini
+issue: 114
+note: |
+  Licence: Split across 12 providers, all permissive — 10 under CDLA-Permissive-2.0 (Meta 61.3M, BrightQuery 16.8M, Microsoft 5.9M, etc.), Foursquare (3.6M) under Apache-2.0, AllThePlaces (2.0M) under CC0-1.0. No OSM data, so no ODbL share-alike on Places alone; a node can read it and publish derived numbers. Caution: joining Places to Overture's divisions theme (ODbL) and republishing the joined database can trigger ODbL — join against BPS/Permendagri or local banjar polygons instead.
+  Admin codes (Bali): No Permendagri/BPS codes and no division_id. As of 2026-11-18.0, addresses[].country is normalized to ISO 3166-1 (ID) and addresses[].region to ISO 3166-2 (ID-BA for Bali), with unparseable regions set to null. Sub-province fields (locality, postcode) are freeform and sparse. Do not filter by region = 'ID-BA' alone — it silently drops Bali rows with null region and cannot split kabupaten/desa/banjar. Use a spatial point-in-polygon join on geometry against Bali boundaries.
+  Vintage and breaking changes: Monthly releases since Oct 2023; latest is 2026-11-18.0 (schema v2.0.0, 90.3M places; next 2026-12-16.0). Public S3/Azure buckets only keep the last two months, so resolve paths via STAC (catalog.json or latest.ddb). Schema v2.0.0 removed categories; query taxonomy and basic_category instead. Monthly GERS ID churn is ~6.6%.
+  Quality and open checks: Overture documents duplicates, a high junk rate, and low property completeness (confidence filters junk but does not remove duplicates). Endpoint and field-fit are unticked because STAC/GeoParquet could not be queried for Bali rows from this environment and cells/economic-community.yaml was not fetched; run a DuckDB spatial query for Bali and check against minimum_indicators before promoting to live.

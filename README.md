@@ -598,7 +598,7 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 #### Candidates — verified, not yet reviewed by anyone in the network
 
-- **[Overture Maps Places](https://docs.overturemaps.org/guides/places/)** — 🌱 `candidate` · `CDLA-Permissive-2.0 AND Apache-2.0 AND CC0-1.0, per source; see notes` · _★_
+- **[Overture Maps Places](https://docs.overturemaps.org/guides/places/)** — 🌱 `candidate` · `CDLA-Permissive-2.0 AND Apache-2.0 AND CC0-1.0, per source; see notes` · reviewed TD 2026-11 · _★_
   88 million points of interest worldwide (shops, workshops, repair, services), merged by the Overture Maps Foundation from Meta, Microsoft, Foursquare, BrightQuery, AllThePlaces and others. Monthly GeoParquet release.
 
 
