@@ -12,4 +12,4 @@ does_not_claim: One household is not a community. This cell measures the dwellin
   that the street is comfortable; it is evidence about the rooms that were measured.
 notes: 'No registry entry is filed here, and the node computes it anyway: packs/heat is `state: live`
   and counts hours at or above 32 degC indoors. A cell can be measurable and unregistered — which
-  is the opposite of the usual gap and worth seeing.'
+  is the opposite of the usual gap and worth seeing. Index method v0.1, 21 Nov 2026, gives this cell PITO 0.0, DIDO 0.5 and read 0.5, where the read share is the floor, how people live.'

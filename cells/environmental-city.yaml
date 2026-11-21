@@ -27,4 +27,4 @@ does_not_claim: Reference-station air quality describes a city's regulatory comp
   them without checking is comparing methodologies. And waste collected is not waste generated.
 notes: '16 entries filed. The node computes reference-station PM2.5 (packs/air-quality, `partial`
   — "never live: it isn''t our measurement") and a land-change figure from AlphaEarth embeddings (packs/earth,
-  `partial` for good).'
+  `partial` for good). Index method v0.1, 21 Nov 2026, gives this cell PITO 0.7, DIDO 0.3 and read 0.0.'

@@ -29,3 +29,4 @@ notes: >-
   manufacturing capacity directly. The external-trade row (added 2026-09-26, #42) has five candidates:
   Idescat (Catalonia by province, value and weight), Destatis and Statistikamt Nord (Hamburg), French
   customs by region and département, and Census metro exports (Boston, exports only). Blocked leads: #50.
+  Index method v0.1, 21 Nov 2026, gives this cell PITO 0.6, DIDO 0.4 and read 0.0.

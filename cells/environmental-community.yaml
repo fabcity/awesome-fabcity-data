@@ -17,4 +17,4 @@ does_not_claim: 'A handful of sensors is not the neighbourhood. This cell measur
   axis implies an equivalence that does not exist.'
 notes: '4 entries filed and this is the cell the node can actually measure. packs/air-quality computes
   PM2.5 from sensors in custody and is the only `state: live` cell in the environmental pillar — `live`
-  means measured here, by instruments this node or its children hold.'
+  means measured here, by instruments this node or its children hold. Index method v0.1, 21 Nov 2026, gives this cell PITO 0.5, DIDO 0.5 and read 0.0.'
