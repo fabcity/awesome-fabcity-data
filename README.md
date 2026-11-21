@@ -90,6 +90,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Heights of the Earth's land surface every 30 m, buildings and trees included, from the TanDEM-X radar mission. Published by the Copernicus programme as one-degree Cloud-Optimized GeoTIFFs on AWS. A node reads its own square to see where rain runs and where it stands.
 - **[EDGAR non-CO2 greenhouse gases (CH4, N2O, F-gases)](https://edgar.jrc.ec.europa.eu/dataset_ghg2024)** — 🌱 `candidate` · `CC-BY-4.0` · _★_
   The JRC's global inventory of methane, nitrous oxide and fluorinated gases by country and sector, 1970–2023, plus 0.1° gridded maps. Scoped deliberately to the gases the European Union owns and licenses openly.
+- **[Natural Earth](https://www.naturalearthdata.com)** — 🌱 `candidate` · `Public domain (Natural Earth terms of use)` · _★_
+  Public-domain world base map at 1:10m, 1:50m and 1:110m: coastlines, land, countries, admin-1 units, rivers, lakes, populated places and relief. Run by NACIS volunteers.
 
 ### Bioregion
 
@@ -158,6 +160,10 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 - **[BMKG hourly SYNOP observations on WMO WIS2](https://wis2-gdc.weather.gc.ca/collections/wis2-discovery-metadata/items/urn:wmo:md:id-bmkg:surface-based-observations)** — 🌱 `candidate` · `WMO Unified Data Policy, core data (free and unrestricted)` · _BLI_
   Hourly observations from BMKG's synoptic stations across Indonesia (temperature, humidity, pressure, wind, rain, cloud, visibility), published as WMO core data through WIS2 global brokers and caches, key-free.
+- **[CORINE Land Cover and CLC+ Backbone (Copernicus Land Monitoring Service)](https://land.copernicus.eu/en/products/corine-land-cover)** — 🌱 `candidate` · `Copernicus, Delegated Regulation (EU) 1159/2013: "free, full and open"; credit the source and state any modification` · _BCN_
+  Europe's reference land-cover inventory: 44 classes, 25 ha minimum mapping unit, for 1990 to 2018 plus change layers. CLC+ Backbone adds a 10 m raster with 11 classes for 2018, 2021 and 2023. Run by the EEA.
+- **[E-OBS_EU daily gridded observations (Copernicus C3S)](https://cds.climate.copernicus.eu/datasets/insitu-gridded-observations-europe)** — 🌱 `candidate` · `CC-BY-4.0 for the E-OBS_EU subset from the Copernicus CDS only; whole-Europe E-OBS and the ecad.eu copy are non-commercial (excluded)` · _BCN_
+  Daily temperature, precipitation, pressure, humidity, wind and radiation on a 0.1 and 0.25 degree grid from 1950, interpolated from ECA&D station series. The EU, Norway, Switzerland, Iceland and UK subset is the open one.
 - **[EIA-923 Power Plant Operations Report (with EIA-860 plant locations)](https://www.eia.gov/electricity/data/eia923/)** — 🌱 `candidate` · `US public domain: EIA states US government publications are in the public domain and not subject to copyright protection.`
   Net generation and fuel use for every US power plant above 1 MW, monthly and annual, from the US Energy Information Administration. Joined to EIA-860 for each plant's county.
 - **[Generalitat de Catalunya — Parcel·les i cultius de les explotacions (DUN) (uwe8-jqcu)](https://analisi.transparenciacatalunya.cat/d/uwe8-jqcu)** — 🌱 `candidate` · `Llicència oberta d'ús d'informació – Catalunya (reuse, redistribution and derived works; cite the source and the date of last update; do not alter or distort; no sublicensing)` · _BCN_
@@ -320,8 +326,18 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   The European Commission's global record of where people and buildings are: population, built-up surface and a settlement classification on a 100 m grid from 1975 to 2030, plus a city-by-city Urban Centre Database.
 - **[Kontur Population (400 m H3 hexagons)](https://www.kontur.io/datasets/population-dataset/)** — 🌱 `candidate` · `CC BY, version not stated; see notes` · _★_
   Population counts for every inhabited H3 hexagon on Earth at resolution 8 (about 0.7 km2 each), fused by Kontur from GHSL, Facebook HRSL, Microsoft buildings and OpenStreetMap. Published on HDX, globally and per country.
+- **[Mobility Database (MobilityData)](https://mobilitydatabase.org)** — 🌱 `candidate` · `Catalogue metadata CC0-1.0; each feed under its agency's own licence (urls.license), and an empty field does not pass` · _BCN_
+  Catalogue of about 8,000 public transport and shared-mobility feeds (GTFS, GTFS Realtime, GBFS) in more than 99 countries, run by MobilityData. It replaced TransitFeeds, which was deprecated in December 2025.
 - **[US Census Bureau American Community Survey (ACS) API](https://www.census.gov/data/developers/data-sets/acs-5year.html)** — 🌱 `candidate` · `No named licence. Published as open data under OMB M-10-06 and EO 13642; the API terms require a specific attribution notice, quoted in notes. US federal works carry no domestic copyright, which is the usual basis — but the Bureau names no licence of its own.` · _BOS · ★_
   The United States' rolling household survey: population, income, housing, commuting and employment down to block group, five-year estimates, queried by FIPS geography through a public API.
+
+### Community
+
+
+#### Candidates — verified, not yet reviewed by anyone in the network
+
+- **[GeoNames](https://www.geonames.org)** — 🌱 `candidate` · `CC-BY-4.0` · _★_
+  Global gazetteer of about 13 million named places (towns, neighbourhoods, hills, rivers) with coordinates, feature class, admin codes and population where known. Daily dumps per country.
 
 
 ## Economic
@@ -690,6 +706,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 #### Candidates — verified, not yet reviewed by anyone in the network
 
+- **[geoBoundaries](https://www.geoboundaries.org)** — 🌱 `candidate` · `Per file: read boundaryLicense. gbOpen mostly CC-BY-4.0 with ODbL and CC-BY-SA files; gbHumanitarian CC-BY-3.0-IGO; gbAuthoritative non-commercial (excluded)` · _★_
+  Administrative boundaries for every country, ADM0 to ADM5, as GeoJSON, TopoJSON and shapefile, from William & Mary's geoLab. Three release types: gbOpen, gbHumanitarian and gbAuthoritative.
 - **[NC OneMap](https://www.nconemap.gov)** — 🌱 `candidate` · `NC OneMap terms: free and unrestricted use, no release agreement required or issued. No named licence; quoted in notes.`
   North Carolina's statewide geospatial data portal (ArcGIS Hub), run by the State's Center for Geographic Information and Analysis. 455 datasets from state agencies, counties and municipalities, under a free and unrestricted use policy.
 
