@@ -42,6 +42,7 @@ V = _v("dataset")
 VR = _v("review")
 VC = _v("cell")
 VRD = _v("reading")
+VO = _v("observation")
 
 # A minimal entry that satisfies every `required` key, so each case below tests exactly one thing.
 BASE = yaml.safe_load("""
@@ -202,6 +203,41 @@ es:
   not_held: Cuéntanos a quién preguntaste y qué te dijeron.
 """)
 
+# One observation file with one candidate figure; each case patches the file or, via "figures", the figure.
+OBS = yaml.safe_load("""
+place: example-city
+reading: R1
+figures:
+  - year: 2024
+    state: candidate
+    value: 120000
+    unit: t/yr
+    source_url: https://example.org/waste
+    source_name: City waste report
+    terms: CC-BY-4.0
+    sent_by_role: City waste department lead
+    sent_on: 2026-11-20
+""")
+
+
+def fig(**kw) -> dict:
+    return {"figures": [{k: v for k, v in {**OBS["figures"][0], **kw}.items() if v is not None}]}
+
+
+OBS_CASES = [
+    ("observation candidate with a value", {}, True),
+    ("observation live, checked",          fig(state="live", checked_by="Index reviewer", checked_on="2026-11-22"), True),
+    ("observation held, no value",         fig(state="held", value=None, unit=None, terms=None), True),
+    ("observation held with a value",      fig(state="held"), False),
+    ("observation live without checked_on", fig(state="live", checked_by="Index reviewer"), False),
+    ("observation not-held with a value",  fig(state="not-held"), False),
+    ("observation candidate without terms", fig(terms=None), False),
+    ("observation sent_by_role with @",    fig(sent_by_role="lead@example.org"), False),
+    ("observation sent_by_role a phone",   fig(sent_by_role="call +34 600 123 456"), False),
+    ("observation checked_by with @",      fig(state="live", checked_by="a@b.org", checked_on="2026-11-22"), False),
+    ("observation reading R15",            {"reading": "R15"}, False),
+]
+
 READING_CASES = [
     ("reading minimal valid",           {}, True),
     ("reading R14",                     {"id": "R14"}, True),
@@ -261,6 +297,20 @@ does_not_claim: Reference-station data does not claim neighbourhood exposure.
 ENTRY_AT = "data/environmental/city/temp-tree-source.yaml"
 
 # (label, {path: text}, should_pass, a phrase the output must carry when it fails)
+# An observation file, with the place left to fill in.
+OBS_FILE = """place: {place}
+reading: R1
+figures:
+  - year: 2024
+    state: candidate
+    value: 120000
+    unit: t/yr
+    terms: CC-BY-4.0
+    sent_by_role: City waste department lead
+    sent_on: 2026-11-20
+"""
+
+
 TREE_CASES = [
     ("tree: candidate with notes",
      {ENTRY_AT: CANDIDATE}, True, None),
@@ -293,8 +343,33 @@ TREE_CASES = [
                                       allow_unicode=True)}, False, "duplicate reading R3"),
     ("tree: readings.yaml missing",
      {ENTRY_AT: CANDIDATE, "readings.yaml": None}, False, "readings.yaml: not found"),
+    # --- observations and the fictional city ---------------------------------------------------
+    ("tree: observation for a place in neither list",
+     {ENTRY_AT: CANDIDATE, "observations/atlantis/R1.yaml": OBS_FILE.format(place="atlantis")},
+     False, "unknown place atlantis"),
+    ("tree: observation for a real place",
+     {ENTRY_AT: CANDIDATE, "observations/accra/R1.yaml": OBS_FILE.format(place="accra"),
+      "places.yaml": "places:\n  - slug: accra\n    name: Accra\n    country: Ghana\n"}, True, None),
+    ("tree: Uqbar observation without fictional: true",
+     {ENTRY_AT: CANDIDATE, "observations/uqbar/R1.yaml": OBS_FILE.format(place="uqbar")},
+     False, "fictional"),
+    ("tree: Uqbar observation with fictional: true",
+     {ENTRY_AT: CANDIDATE, "observations/uqbar/R1.yaml": "fictional: true\n" + OBS_FILE.format(place="uqbar")},
+     True, None),
+    ("tree: observation of a reading that is not in readings.yaml",
+     {ENTRY_AT: CANDIDATE, "observations/accra/R9.yaml": OBS_FILE.format(place="accra").replace("R1", "R9"),
+      "places.yaml": "places:\n  - slug: accra\n    name: Accra\n    country: Ghana\n",
+      "readings.yaml": yaml.safe_dump({"readings": [r for r in yaml.safe_load((ROOT / "readings.yaml").read_text(encoding="utf-8"))["readings"]
+                                                    if r["id"] != "R9"]}, allow_unicode=True)},
+     False, "not in readings.yaml"),
+    ("tree: observation path does not match its place",
+     {ENTRY_AT: CANDIDATE, "observations/accra/R1.yaml": OBS_FILE.format(place="lima"),
+      "places.yaml": "places:\n  - slug: accra\n    name: Accra\n    country: Ghana\n  - slug: lima\n    name: Lima\n    country: Peru\n"},
+     False, "path"),
+    ("tree: a data entry names a fictional place",
+     {ENTRY_AT: CANDIDATE + "places: [uqbar]\n"}, False,
+     "uqbar is fictional and cannot be a source's place"),
 ]
-
 
 def run_tree(files: dict) -> tuple[int, str]:
     """Run scripts/validate.py against a throwaway repo holding `files`. schema/ and scripts/ are
@@ -306,7 +381,8 @@ def run_tree(files: dict) -> tuple[int, str]:
         root = Path(td)
         for sub in ("schema", "scripts", "cells"):
             shutil.copytree(ROOT / sub, root / sub)
-        shutil.copy(ROOT / "readings.yaml", root / "readings.yaml")
+        for name in ("readings.yaml", "fictional.yaml"):
+            shutil.copy(ROOT / name, root / name)
         for rel, text in files.items():
             f = root / rel
             if text is None:
@@ -319,6 +395,40 @@ def run_tree(files: dict) -> tuple[int, str]:
         proc = subprocess.run([sys.executable, "scripts/validate.py"], cwd=root,
                               capture_output=True, text=True)
         return proc.returncode, proc.stdout + proc.stderr
+
+
+def test_fictional_not_in_coverage() -> int:
+    """validate.py refuses uqbar as a source's place, and build_index still leaves it out of coverage
+    when pointed at a tree validate.py rejects."""
+    files = {ENTRY_AT: CANDIDATE.replace("status: candidate", "status: live") + "places: [uqbar]\nfeeds_cells: [\"Governance|City\"]\n",
+             "observations/uqbar/R1.yaml": "fictional: true\n" + OBS_FILE.format(place="uqbar")}
+    code, out = run_tree(files)
+    if code != 1 or "uqbar is fictional and cannot be a source's place" not in out:
+        print(f"[FAIL] fictional not in coverage: validate.py exit {code}, no refusal")
+        return 1
+    with tempfile.TemporaryDirectory() as td:
+        root = Path(td)
+        for sub in ("scripts", "cells"):
+            shutil.copytree(ROOT / sub, root / sub)
+        for name in ("readings.yaml", "fictional.yaml"):
+            shutil.copy(ROOT / name, root / name)
+        for rel, text in files.items():
+            (root / rel).parent.mkdir(parents=True, exist_ok=True)
+            (root / rel).write_text(text, encoding="utf-8")
+        proc = subprocess.run([sys.executable, "-c",
+                               "import sys,json; sys.path.insert(0,'scripts'); import build_index as b; "
+                               "i=b.build(); print(json.dumps([i['coverage'], i['counts']['places_served'], "
+                               "[o['place'] for o in i['observations']], [f['slug'] for f in i['fictional']]]))"],
+                              cwd=root, capture_output=True, text=True)
+    if proc.returncode:
+        print(f"[FAIL] fictional not in coverage: build() raised {proc.stderr[-200:]}")
+        return 1
+    cov, served, obs, fic = json.loads(proc.stdout)
+    if "uqbar" in cov or served != 0 or obs != ["uqbar"] or fic != ["uqbar"]:
+        print(f"[FAIL] fictional not in coverage: {proc.stdout}")
+        return 1
+    print("[ ok ] fictional not in coverage")
+    return 0
 
 
 def patched(base: dict, patch: dict) -> dict:
@@ -356,6 +466,9 @@ def main() -> int:
     print()
     bad += check(VRD, READING, READING_CASES)
 
+    print()
+    bad += check(VO, OBS, OBS_CASES)
+
     # The act_kind conditional produces jsonschema's worst error message; validate.py rewrites it.
     print()
     err = next(e for e in V.iter_errors({**BASE, "act_kind": "facility"}))
@@ -391,7 +504,9 @@ def main() -> int:
         else:
             print(f"[ ok ] {label}")
 
-    total = len(CASES) + len(REVIEW_CASES) + len(CELL_CASES) + len(READING_CASES) + len(TREE_CASES) + 2
+    bad += test_fictional_not_in_coverage()
+
+    total = 1 + len(CASES) + len(REVIEW_CASES) + len(CELL_CASES) + len(READING_CASES) + len(OBS_CASES) + len(TREE_CASES) + 2
     print(f"\n{total} case(s), {bad} failed.")
     return 1 if bad else 0
 

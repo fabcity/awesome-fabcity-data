@@ -10,6 +10,7 @@ Run from repo root:
     pass 2  reviews/**/*.yaml   source reviews, against schema/review.schema.json
     pass 3  cells/*.yaml        Index cells,    against schema/cell.schema.json
     pass 4  readings.yaml       the fourteen readings asked of a city, against schema/reading.schema.json
+    pass 5  observations/**     the figures a place sent for a reading, against schema/observation.schema.json
     join    every `status: live` entry must carry a usable review or an `adapter`
 
 The join is the point of the whole thing, and today it is a warning. 189 of the 203 live entries
@@ -50,7 +51,10 @@ SCHEMA_PATH = ROOT / "schema" / "dataset.schema.json"
 REVIEW_SCHEMA_PATH = ROOT / "schema" / "review.schema.json"
 CELL_SCHEMA_PATH = ROOT / "schema" / "cell.schema.json"
 READING_SCHEMA_PATH = ROOT / "schema" / "reading.schema.json"
+OBSERVATION_SCHEMA_PATH = ROOT / "schema" / "observation.schema.json"
 READINGS_PATH = ROOT / "readings.yaml"
+FICTIONAL_PATH = ROOT / "fictional.yaml"
+OBSERVATIONS_DIR = ROOT / "observations"
 DATA_DIR = ROOT / "data"
 REVIEWS_DIR = ROOT / "reviews"
 CELLS_DIR = ROOT / "cells"
@@ -127,6 +131,11 @@ KNOWN_PLACES = ({p["slug"] for p in (yaml.safe_load(PLACES_PATH.read_text(encodi
                 if PLACES_PATH.is_file() else set())
 
 
+# Invented places (fictional.yaml). They are never real places: no source may name one.
+FICTIONAL = ({p["slug"] for p in (yaml.safe_load(FICTIONAL_PATH.read_text(encoding="utf-8")) or {}).get("places", [])}
+             if FICTIONAL_PATH.is_file() else set())
+
+
 def pass_entries() -> tuple[int, dict]:
     """Pass 1: data/**/*.yaml. Returns (failures, {registry id: entry})."""
     validator = _validator(SCHEMA_PATH)
@@ -174,7 +183,11 @@ def pass_entries() -> tuple[int, dict]:
         seen_slugs[key] = rel
 
         # `places` must name places the Index tracks (places.yaml), or the site counts nothing for them.
-        unknown = [p for p in entry.get("places") or [] if p not in KNOWN_PLACES]
+        for p in entry.get("places") or []:
+            if p in FICTIONAL:
+                print(f"[FAIL] {rel}: {p} is fictional and cannot be a source's place")
+                failures += 1
+        unknown = [p for p in entry.get("places") or [] if p not in KNOWN_PLACES and p not in FICTIONAL]
         if unknown:
             print(f"[FAIL] {rel}: places {unknown} are not in places.yaml")
             failures += 1
@@ -320,6 +333,45 @@ def pass_readings() -> tuple[int, dict[str, dict]]:
     return failures, readings
 
 
+def pass_observations(readings: dict[str, dict]) -> int:
+    """Pass 5: observations/{place}/{reading}.yaml, the figures a place has sent for one reading.
+    The place must be in places.yaml or fictional.yaml, `fictional: true` must be there exactly
+    when it is in fictional.yaml, the reading must be in readings.yaml, and the path must say the
+    same place and reading the file does. Returns the number of failing files."""
+    validator = _validator(OBSERVATION_SCHEMA_PATH)
+    failures = n = 0
+    for path in sorted(OBSERVATIONS_DIR.rglob("*.yaml")):
+        rel = path.relative_to(ROOT)
+        n += 1
+        doc, why = _read(path, rel)
+        if why:
+            print(f"[FAIL] {rel}: {why}")
+            failures += 1
+            continue
+        if _schema_errors(validator, doc, rel):
+            failures += 1
+            continue
+        place, reading = doc["place"], doc["reading"]
+        problems = []
+        if place not in KNOWN_PLACES and place not in FICTIONAL:
+            problems.append(f"unknown place {place}: it is in neither places.yaml nor fictional.yaml")
+        elif (place in FICTIONAL) != (doc.get("fictional") is True):
+            problems.append(f"{place} {'is' if place in FICTIONAL else 'is not'} in fictional.yaml, "
+                            f"so `fictional` must be {'true' if place in FICTIONAL else 'absent or false'}")
+        if reading not in readings:
+            problems.append(f"reading {reading} is not in readings.yaml")
+        if path.relative_to(OBSERVATIONS_DIR).as_posix() != f"{place}/{reading}.yaml":
+            problems.append(f"path must be observations/{place}/{reading}.yaml")
+        for m in problems:
+            print(f"[FAIL] {rel}: {m}")
+        if problems:
+            failures += 1
+        else:
+            print(f"[ ok ] {rel} :: {len(doc['figures'])} figure(s)")
+    print(f"\n{n - failures} of {n} observation files checked.")
+    return failures
+
+
 def cell_join(entries: dict, cells: dict, strict: bool) -> int:
     """Does the map close? `feeds_cells` and `cells/` are two halves of one claim — the entry says
     it can fill a cell, the cell says what filling it means — and nothing has been checking that
@@ -436,6 +488,9 @@ def main(argv: list[str]) -> int:
     print("\n== pass 4: readings.yaml — what the Index asks of a city")
     f4, readings = pass_readings()
     failures += f4
+
+    print("\n== pass 5: observations/ — what places have sent")
+    failures += pass_observations(readings)
 
     print("\n== join: does `live` mean anything on each entry that claims it")
     failures += join(entries, reviews, strict)
