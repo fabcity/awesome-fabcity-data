@@ -85,6 +85,14 @@ def test_not_held_has_no_value():
     assert fig["state"] == "not-held" and "value" not in fig, fig
 
 
+def test_not_held_without_consent_is_held():
+    """Ruling: "we do not hold it" is itself an answer the city has not released."""
+    for consent in ("no", "ask", None):
+        fig = only_figure(copy(rec(not_held=True, may_publish=consent, value=None))[0])
+        assert fig["state"] == "held" and "value" not in fig and "terms" not in fig, (consent, fig)
+        assert "source_url" not in fig and "source_name" not in fig, (consent, fig)
+
+
 def test_later_figure_replaces_earlier():
     early = rec(created="2027-01-10T08:00:00.000Z", rid="recA", value=400)
     late = rec(created="2027-02-01T08:00:00.000Z", rid="recB", value=412.5)
@@ -106,6 +114,26 @@ def test_contact_details_refused():
         assert len(skips) == 1, skips
         # The reason is printed in a public workflow log, so it never repeats what was typed.
         assert "example.org" not in skips[0] and "3456" not in skips[0], skips
+
+
+def test_contact_in_terms_refused():
+    """An email or phone number in any published text field refuses the record, and is never repeated."""
+    bad = rec(terms="Reuse allowed; ask ana.perez@city.go.id or +62 812 3456 7890")
+    docs, skips = copy(bad)
+    assert docs == {} and len(skips) == 1 and "`terms`" in skips[0], (docs, skips)
+    assert "ana.perez" not in skips[0] and "3456" not in skips[0], skips
+    assert cf.source_issue(bad, READINGS["R1"]) is None
+
+
+def test_contact_phone_in_source_name_refused():
+    bad = rec(source_name="Waste office, call +62 361 222 333")
+    docs, skips = copy(bad)
+    assert docs == {} and len(skips) == 1 and "`source_name`" in skips[0], (docs, skips)
+    assert "222 333" not in skips[0], skips
+    assert cf.source_issue(bad, READINGS["R1"]) is None
+    for field in ("district", "unit"):
+        docs, skips = copy(rec(**{field: "ask ana@city.go.id"}))
+        assert docs == {} and f"`{field}`" in skips[0], (field, docs, skips)
 
 
 def test_checked_is_live():
@@ -154,7 +182,7 @@ def test_source_issue_parses():
 
 # --- the controller's rulings -------------------------------------------------------------------
 def fixes(*records):
-    return cf.needs_fix(list(records), PLACES, FICTIONAL, set(READINGS))
+    return cf.taken_back(list(records), PLACES, FICTIONAL, set(READINGS))
 
 
 def test_needs_a_fix_is_not_written_and_removed():
@@ -165,7 +193,7 @@ def test_needs_a_fix_is_not_written_and_removed():
         assert cf.apply(docs, root, write=True) == ([BALI], [], [])
         docs, skips = copy(rec(state="needs a fix"))
         assert docs == {} and len(skips) == 1 and "needs a fix" in skips[0], (docs, skips)
-        assert cf.apply(docs, root, write=True, fixes=fixes(rec(state="needs a fix"))) == ([], [], [BALI])
+        assert cf.apply(docs, root, write=True, taken=fixes(rec(state="needs a fix"))) == ([], [], [BALI])
         assert not (root / BALI).exists() and not (root / BALI).parent.exists()
 
 
@@ -176,7 +204,7 @@ def test_needs_a_fix_leaves_the_rest_of_the_file():
         both = (rec(rid="recA", year=2024, value=398), rec(rid="recB", year=2025))
         cf.apply(copy(*both)[0], root, write=True)
         listing = (rec(rid="recB", year=2025, state="needs a fix"),)
-        assert cf.apply(copy(*listing)[0], root, write=True, fixes=fixes(*listing)) == ([], [BALI], [])
+        assert cf.apply(copy(*listing)[0], root, write=True, taken=fixes(*listing)) == ([], [BALI], [])
         left = yaml.safe_load((root / BALI).read_text(encoding="utf-8"))["figures"]
         assert [(f["year"], f["value"]) for f in left] == [(2024, 398)], left
 
@@ -208,6 +236,38 @@ def test_partial_listing_removes_nothing():
             assert len(yaml.safe_load((root / BALI).read_text(encoding="utf-8"))["figures"]) == 1
         finally:
             cf.ROOT = real
+
+
+def test_withdrawn_consent_removes_value_even_when_skipped():
+    """The city takes consent back on a newer record that is skipped for another reason (here a
+    `fictional` box that disagrees with the place). Its earlier published value does not stay."""
+    published = rec(rid="recA", created="2027-01-10T08:00:00.000Z")
+    withdrawn = rec(rid="recB", created="2027-02-01T08:00:00.000Z", may_publish="ask", fictional=True)
+    regranted = rec(rid="recC", created="2027-03-01T08:00:00.000Z", value=415)
+    for listing in ((withdrawn,), (published, withdrawn)):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            cf.apply(copy(published)[0], root, write=True)
+            docs, skips = copy(*listing)
+            assert docs == {} and len(skips) == 1, (len(listing), docs, skips)
+            assert cf.apply(docs, root, write=True, taken=fixes(*listing)) == ([], [], [BALI]), len(listing)
+    # A newer yes puts a figure back.
+    fig = only_figure(copy(published, withdrawn, regranted)[0])
+    assert (fig["value"], fig["sent_on"]) == (415, "2027-03-01"), fig
+
+
+def test_workflow_fails_loudly_and_files_after_the_gates():
+    """figures-to-pr.yml: a failed copy fails the job, and no source is filed before the gates pass."""
+    wf = yaml.safe_load((ROOT / ".github" / "workflows" / "figures-to-pr.yml").read_text(encoding="utf-8"))
+    steps = wf["jobs"]["figures"]["steps"]
+    runs = [s.get("run", "") for s in steps]
+    for run in runs:
+        if "|" in run.replace("||", ""):
+            assert "set -o pipefail" in run, run
+    gates = next(i for i, s in enumerate(steps) if "gates" in s.get("name", ""))
+    filing = [i for i, run in enumerate(runs) if "--file-sources" in run]
+    assert filing and all(i > gates for i in filing), (gates, filing)
+    assert "validate.py" in runs[gates] and "test_copy_figures.py" in runs[gates], runs[gates]
 
 
 def test_missing_role_is_not_given():
