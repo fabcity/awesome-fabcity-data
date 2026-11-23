@@ -399,7 +399,71 @@ def test_prompt_tags_pass_the_schema():
     for rid, r in READINGS.items():
         line = r["prompt"].split("### Tags\n", 1)[1].splitlines()[0].strip()
         assert line == f"city-sent, reading-{rid.lower()}", (rid, line)
-        assert all(pattern.match(t) for t in sfi.csv(line)), (rid, line)
+        # Final review 2: terms that are not open add `cited-figure`, as copy_figures does.
+        assert "If the terms are not open, add cited-figure to Tags." in r["prompt"], rid
+        for tags in (line, line + ", cited-figure"):
+            assert all(pattern.match(t) for t in sfi.csv(tags)), (rid, tags)
+
+
+def test_not_held_without_year_takes_sent_year():
+    """Final review 1: "nobody holds it" with no year is the answer for the year it was sent."""
+    fig = only_figure(copy(rec(not_held=True, value=None, year=None))[0])
+    assert (fig["state"], fig["year"]) == ("not-held", 2027), fig
+
+
+def test_held_without_year_takes_sent_year():
+    for consent in ("no", "ask"):
+        fig = only_figure(copy(rec(may_publish=consent, year=None))[0])
+        assert (fig["state"], fig["year"]) == ("held", 2027), (consent, fig)
+    # A figure with a value still needs its year.
+    docs, skips = copy(rec(year=None))
+    assert docs == {} and len(skips) == 1 and "year" in skips[0], (docs, skips)
+
+
+def test_empty_terms_written_as_not_stated():
+    for terms in (None, "  "):
+        fig = only_figure(copy(rec(terms=terms))[0])
+        assert (fig["state"], fig["terms"]) == ("candidate", "not stated"), (terms, fig)
+
+
+def test_contact_in_place_not_echoed():
+    """Final review 3: a phone number typed as the place is slug-shaped, and the skip reason is public."""
+    for place in ("62-812-3456-7890", "081234567890", "ana@city.go.id"):
+        docs, skips = copy(rec(place=place))
+        assert docs == {} and len(skips) == 1, (place, docs, skips)
+        assert "3456" not in skips[0] and "4567" not in skips[0] and "ana@" not in skips[0], skips
+        assert "a record with an unknown place" in skips[0], skips
+
+
+def test_ask_then_yes_leaves_no_held_row():
+    """Final review 4: a later figure with a value replaces the held answer for that year, in any unit."""
+    ask = rec(rid="recA", created="2027-01-10T08:00:00.000Z", may_publish="ask")
+    yes = rec(rid="recB", created="2027-02-01T08:00:00.000Z", value=412.5)
+    fig = only_figure(copy(ask, yes)[0])
+    assert (fig["state"], fig["value"]) == ("candidate", 412.5), fig
+    # The held row is already on disk from an earlier run, and the yes comes in a later one.
+    with tempfile.TemporaryDirectory() as td:
+        root = Path(td)
+        cf.apply(copy(ask)[0], root, write=True)
+        cf.apply(copy(yes)[0], root, write=True)
+        figs = yaml.safe_load((root / BALI).read_text(encoding="utf-8"))["figures"]
+    assert [f["state"] for f in figs] == ["candidate"], figs
+    # The other way round, the ask takes the figure back and the held row stays.
+    late_ask = rec(rid="recC", created="2027-03-01T08:00:00.000Z", may_publish="ask")
+    fig = only_figure(copy(yes, late_ask)[0])
+    assert fig["state"] == "held", fig
+
+
+def test_withdrawn_figure_files_no_source():
+    """Final review 5: only a figure that survives the merge and the withdrawals files its source."""
+    old = rec(rid="recA", created="2027-01-10T08:00:00.000Z",
+              source_url="https://old.example.org/waste", source_name="Old waste report")
+    taken = rec(rid="recB", created="2027-02-01T08:00:00.000Z", may_publish="ask")
+    assert cf.sources([old, taken], READINGS) == []
+    new = rec(rid="recC", created="2027-03-01T08:00:00.000Z", value=415,
+              source_url="https://new.example.org/waste", source_name="New waste report")
+    issues = cf.sources([old, new], READINGS)
+    assert len(issues) == 1 and "https://new.example.org/waste" in issues[0][1], issues
 
 
 def test_build_readings():

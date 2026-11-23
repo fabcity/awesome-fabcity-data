@@ -43,12 +43,12 @@ Para cada lectura, la página muestra primero lo que el registro ya tiene para t
 
 1. Revisar lo que ya tenemos. Cada fuente que el registro tiene para tu ciudad lleva un botón para revisarla. Una revisión dice si la fuente tiene cifras de tu ciudad y si sus condiciones nos permiten usarlas.
 2. Añadir una fuente. Si sabes dónde se publica una cifra, mándanos el enlace. Entra en el registro como una fuente por comprobar.
-3. Enviar una cifra. Un formulario corto te pregunta el año, el valor y su unidad, de dónde viene la cifra y sus condiciones de uso, tu nombre y tu cargo, y si podemos publicarla. Si tu ciudad no tiene la cifra, marca la casilla que lo dice y deja el valor vacío.
+3. Enviar una cifra. Un formulario corto te pregunta el año, el valor y su unidad, de dónde viene la cifra y sus condiciones de uso, tu nombre y tu cargo, y si podemos publicarla. Si tu ciudad no tiene la cifra, marca la casilla que lo dice y deja el valor vacío. Para una lectura que tu ciudad no tiene, pon el último año en que buscaste.
 4. Buscarla con un agente de IA. La página te da las instrucciones ya escritas para tu ciudad y esa lectura (un prompt), listas para pegar en un asistente de IA que pueda buscar en la web. Le piden al agente que encuentre una fuente, que lea sus condiciones en la página de quien la publica, que compruebe que tiene cifras de tu ciudad y que te muestre la evidencia. El agente no envía nada. Tú lees lo que encontró y, si se sostiene, lo añades como fuente con tu nombre.
 
 ## Qué pasa con una cifra
 
-Cuando dices que podemos publicar una cifra, se copia al registro en menos de un día y queda marcada como enviada (en el registro se llama `candidate`). Después el equipo de Fab City la revisa. La unidad y los años tienen que coincidir con lo que pedimos, y la fuente tiene que respaldar el número, con sus condiciones escritas. Una cifra que pasa queda marcada como comprobada (`live` en el registro), con quién la comprobó y cuándo. Si algo no coincide, el equipo de Fab City se pone en contacto contigo. Hasta que se corrija, la cifra sale del registro público.
+Cuando dices que podemos publicar una cifra, el equipo de Fab City la copia al registro, normalmente en pocos días. Allí queda marcada como enviada (en el registro se llama `candidate`). Después el equipo de Fab City la revisa. La unidad y los años tienen que coincidir con lo que pedimos, y la fuente tiene que respaldar el número, con sus condiciones escritas. Una cifra que pasa queda marcada como comprobada (`live` en el registro), con quién la comprobó y cuándo. Si algo no coincide, el equipo de Fab City se pone en contacto contigo. Hasta que se corrija, la cifra sale del registro público.
 
 Cada año va como una cifra aparte. Una lectura con dos partes, como las toneladas y el porcentaje de R1, va como dos cifras, cada una con su unidad. Una cifra por distrito va como una por distrito, con el nombre del distrito. Mantén todos los años de una serie sobre el mismo territorio. Si 2023 cuenta la ciudad y 2025 el área metropolitana, el cambio entre los dos no nos dice nada.
 
@@ -74,7 +74,7 @@ En la página, cada lectura muestra uno de siete estados, escritos en palabras.
 - "cifra enviada" quiere decir que llegó una cifra con permiso para publicarla y espera la revisión del equipo de Fab City.
 - "en manos de la ciudad" quiere decir que la cifra existe y la ciudad no la ha hecho pública.
 - "nadie la tiene" quiere decir que la ciudad nos dijo que nadie la cuenta.
-- "comprobada" quiere decir que el equipo de Fab City comprobó la cifra, o que alguien revisó una fuente para tu ciudad y vio que sirve.
+- "comprobada" quiere decir que el equipo de Fab City comprobó la cifra, o que alguien revisó una fuente para esta lectura y vio que sirve.
 
 ## Uqbar
 

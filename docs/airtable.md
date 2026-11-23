@@ -2,11 +2,11 @@
 
 Base `appmNQaDGEFE9VcYh` ("FCI Observations", Fab City Foundation workspace). Made 23 November 2026. No token is kept here.
 
-Existing tables, left as they were: `Observations` (`tbl8VZoGMr6kdE4QX`, 0 records), `Data Sources`, `Reviewers`, `FCI Coverage Tracker` (`tbl9tfpEsxoxQAh0w`). The only change to the tracker is a reverse link field `Cohort` (`fldMwBgyzM8e6fmFh`).
+Existing tables, left as they were: `Observations` (`tbl8VZoGMr6kdE4QX`), the prototype's public feed, which this track leaves alone, `Data Sources`, `Reviewers`, `FCI Coverage Tracker` (`tbl9tfpEsxoxQAh0w`). The only change to the tracker is a reverse link field `Cohort` (`fldMwBgyzM8e6fmFh`).
 
 ## Readings (`tblQTZ5xv3Cx1RXBm`)
 
-Copied one way from `readings.yaml` by `scripts/sync_airtable.py --write`. Only the row `R1` exists so far (`recXEOmoelK9Vtm20`, id and name only), made to test the form.
+Copied one way from `readings.yaml` by `scripts/sync_airtable.py --write`. All fourteen rows exist, R1 to R14, last synced 23 November 2026. R1 is `recXEOmoelK9Vtm20`.
 
 | field | id | type |
 |---|---|---|
@@ -53,6 +53,8 @@ Copied one way from `readings.yaml` by `scripts/sync_airtable.py --write`. Only 
 
 `scripts/copy_figures.py` copies this table one way into `observations/`, and its docstring says what goes out and what stays here. It only reads Airtable. `.github/workflows/figures-to-pr.yml` runs it daily once the repository secret `AIRTABLE_TOKEN` is set; until then it runs by hand on a listing of the rows: `python3 scripts/copy_figures.py --records rows.json --write`.
 
+The team reads the skipped list in each daily figures pull request. A skipped record is fixed in Airtable, and the next run picks it up.
+
 ## Cohort (`tblefySK5wVdZWnHu`)
 
 | field | id | type |
@@ -73,13 +75,15 @@ The connector cannot set a default value, so `follow_up_by` is typed on each row
 
 ## The form "Send a figure"
 
-Page `pagsz9HlBft5pJIP8`, a standalone form on `City figures`, published.
+Page `pagsz9HlBft5pJIP8`, a standalone form on `City figures`. It is published to the base and is not yet public (see the open point below). The question that fills `sender_note` is in the working draft.
 
 - Form address: `https://airtable.com/appmNQaDGEFE9VcYh/pagsz9HlBft5pJIP8/form`
 - Share settings: `https://airtable.com/appmNQaDGEFE9VcYh/pagsz9HlBft5pJIP8/form?share=show`
 - Editor: `https://airtable.com/appmNQaDGEFE9VcYh/pagsz9HlBft5pJIP8/edit`
 
-It asks for place, reading, year, value, unit, district, source link, source name, terms of use, "my city does not hold this figure", name, role and "may we publish it". The last question, "Anything you want to tell us, in any language", fills `sender_note`; it is in the form's working draft and reaches the live form the next time someone publishes it (the connector can publish, but publishing is Tomas's call). Place, reading, name and "may we publish it" are required. The internal fields (`state`, `team_note`, `checked_by`, `checked_on`, `copied_on`, `fictional`) are not on the form.
+It asks for place, reading, year, value, unit, district, source link, source name, terms of use, "my city does not hold this figure", name, role and "may we publish it". Place, reading, name and "may we publish it" are required. The internal fields (`state`, `team_note`, `checked_by`, `checked_on`, `copied_on`, `fictional`) are not on the form.
+
+The working draft has changes the published form does not have yet. The last question, "Anything you want to tell us, in any language", fills `sender_note`. Year is required, and its help says that for a reading the city does not hold, it gives the latest year it looked. The role's help asks for a role, such as data officer at the city council. They reach the live form the next time someone publishes it. The connector can publish, and publishing is Tomas's call.
 
 ### Open point: public access and prefill, not yet confirmed
 
@@ -95,4 +99,4 @@ It embeds the same form from `https://airtable.com/embed/appmNQaDGEFE9VcYh/pagsz
 
 ## The team view
 
-Grid view `viw66ZB5HWVZc3FEk` on `City figures`, named "By place and reading", grouped by `place` then `reading`, both ascending. It does not put followed places first, because `City figures` has no field that says whether a place is followed. Task 4 can add a lookup from `Cohort.followed` if that matters.
+Grid view `viw66ZB5HWVZc3FEk` on `City figures`, named "By place and reading", grouped by `place` then `reading`, both ascending. It does not put followed places first, because `City figures` has no field that says whether a place is followed. A lookup from `Cohort.followed` would do it, and none has been added.

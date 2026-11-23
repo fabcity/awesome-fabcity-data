@@ -5,7 +5,7 @@
 # track design of 23 November 2026, section 5. index.json carries them as `readings`; the city-data
 # page on index.fab.city and the Airtable `Readings` table copy them from here, one way.
 #
-# `plain`, `why` and `not_held` are public text, in English and, under `es:`, in Spanish. `prompt`
+# `plain`, `why`, `held_by` and `not_held` are public text, in English and, under `es:`, in Spanish. `prompt`
 # is the brief a person gives an AI agent; the page fills {place_name}, {place_slug}, {years},
 # {reading_name} and {unit}. An id never changes once a city has answered it.
 # Schema: schema/reading.schema.json. Checked by scripts/validate.py, pass 4.
@@ -31,7 +31,7 @@ readings:
     1. Search for a dataset that holds this figure for {place_name}. Prefer the publisher's own site or API.
     2. Read the licence or terms on the publisher's own page. Quote the URL and the sentence that says what may be done with the data. If the terms are not open, say so and quote them, since a public source can still be cited with its terms.
     3. Fetch the data and check that it holds figures for {place_name} itself, for {years}. Write down the place's official name or code as the data gives it, and two or three real figures with their year. Never invent a figure. If you could not read something, say so.
-    4. Write it in exactly this shape, one answer under each heading, with yourself in Assisted by.
+    4. Write it in exactly this shape, one answer under each heading, with yourself in Assisted by. If the terms are not open, add cited-figure to Tags.
 
     ### Name
     ### Home URL
@@ -60,6 +60,7 @@ readings:
     Reply with that and nothing after it. I paste it into https://index.fab.city/operate/add-source and send it in my name. I am responsible for what you file; you do the research.
   es:
     name: Residuos generados, y la parte recogida por separado
+    held_by: Departamento de residuos de la ciudad
     plain: Cuántas toneladas de residuos generó la ciudad cada año, y qué parte se recogió por separado
       para reciclar o compostar.
     why: En una Fab City las toneladas de residuos que salen tienen que bajar, y esta cifra muestra si
@@ -87,7 +88,7 @@ readings:
     1. Search for a dataset that holds this figure for {place_name}. Prefer the publisher's own site or API.
     2. Read the licence or terms on the publisher's own page. Quote the URL and the sentence that says what may be done with the data. If the terms are not open, say so and quote them, since a public source can still be cited with its terms.
     3. Fetch the data and check that it holds figures for {place_name} itself, for {years}. Write down the place's official name or code as the data gives it, and two or three real figures with their year. Never invent a figure. If you could not read something, say so.
-    4. Write it in exactly this shape, one answer under each heading, with yourself in Assisted by.
+    4. Write it in exactly this shape, one answer under each heading, with yourself in Assisted by. If the terms are not open, add cited-figure to Tags.
 
     ### Name
     ### Home URL
@@ -116,6 +117,7 @@ readings:
     Reply with that and nothing after it. I paste it into https://index.fab.city/operate/add-source and send it in my name. I am responsible for what you file; you do the research.
   es:
     name: Energía usada en la ciudad, y la parte producida dentro de la ciudad o de su región
+    held_by: Oficina de energía de la ciudad, balance energético regional
     plain: Cuánta energía usó la ciudad cada año, en megavatios hora, y qué parte se produjo dentro de
       la ciudad o de su región.
     why: El Índice lee cada sector en su propia unidad, y en energía pregunta cuánto de lo que usa la
@@ -144,7 +146,7 @@ readings:
     1. Search for a dataset that holds this figure for {place_name}. Prefer the publisher's own site or API.
     2. Read the licence or terms on the publisher's own page. Quote the URL and the sentence that says what may be done with the data. If the terms are not open, say so and quote them, since a public source can still be cited with its terms.
     3. Fetch the data and check that it holds figures for {place_name} itself, for {years}. Write down the place's official name or code as the data gives it, and two or three real figures with their year. Never invent a figure. If you could not read something, say so.
-    4. Write it in exactly this shape, one answer under each heading, with yourself in Assisted by.
+    4. Write it in exactly this shape, one answer under each heading, with yourself in Assisted by. If the terms are not open, add cited-figure to Tags.
 
     ### Name
     ### Home URL
@@ -173,6 +175,7 @@ readings:
     Reply with that and nothing after it. I paste it into https://index.fab.city/operate/add-source and send it in my name. I am responsible for what you file; you do the research.
   es:
     name: Alimentos que entran a la ciudad por sus mercados mayoristas, y la parte que viene de la región
+    held_by: Operador del mercado mayorista, oficina regional de agricultura
     plain: Cuántas toneladas de alimentos entraron a la ciudad por sus mercados mayoristas en un año,
       y qué parte vino de la región.
     why: La comida es algo que todos necesitamos cada día, y la parte que viene de la región muestra cuánto
@@ -200,7 +203,7 @@ readings:
     1. Search for a dataset that holds this figure for {place_name}. Prefer the publisher's own site or API.
     2. Read the licence or terms on the publisher's own page. Quote the URL and the sentence that says what may be done with the data. If the terms are not open, say so and quote them, since a public source can still be cited with its terms.
     3. Fetch the data and check that it holds figures for {place_name} itself, for {years}. Write down the place's official name or code as the data gives it, and two or three real figures with their year. Never invent a figure. If you could not read something, say so.
-    4. Write it in exactly this shape, one answer under each heading, with yourself in Assisted by.
+    4. Write it in exactly this shape, one answer under each heading, with yourself in Assisted by. If the terms are not open, add cited-figure to Tags.
 
     ### Name
     ### Home URL
@@ -229,6 +232,7 @@ readings:
     Reply with that and nothing after it. I paste it into https://index.fab.city/operate/add-source and send it in my name. I am responsible for what you file; you do the research.
   es:
     name: Material usado por la región (consumo doméstico de materiales), donde exista una cuenta regional
+    held_by: Oficina regional de estadística
     plain: Cuántas toneladas de material usa la región por persona cada año, contando lo que extrae más
       lo que trae de fuera, menos lo que manda fuera.
     why: Una Fab City tiene que traer menos material recién extraído, y la cuenta de materiales de la
@@ -257,7 +261,7 @@ readings:
     1. Search for a dataset that holds this figure for {place_name}. Prefer the publisher's own site or API.
     2. Read the licence or terms on the publisher's own page. Quote the URL and the sentence that says what may be done with the data. If the terms are not open, say so and quote them, since a public source can still be cited with its terms.
     3. Fetch the data and check that it holds figures for {place_name} itself, for {years}. Write down the place's official name or code as the data gives it, and two or three real figures with their year. Never invent a figure. If you could not read something, say so.
-    4. Write it in exactly this shape, one answer under each heading, with yourself in Assisted by.
+    4. Write it in exactly this shape, one answer under each heading, with yourself in Assisted by. If the terms are not open, add cited-figure to Tags.
 
     ### Name
     ### Home URL
@@ -287,6 +291,7 @@ readings:
   es:
     name: Importaciones y exportaciones de la región por tipo (bienes terminados, materiales y piezas,
       equipos, conocimiento y servicios), por valor y, donde se registre, por peso
+    held_by: Oficina regional de estadística, aduana
     plain: Lo que la región compra y vende fuera cada año, separado en bienes terminados, materiales y
       piezas, equipos, y conocimiento y servicios, por valor y por peso donde se cuente.
     why: Una Fab City sigue comerciando y cambia el tipo de cosas que trae, con menos bienes terminados
@@ -314,7 +319,7 @@ readings:
     1. Search for a dataset that holds this figure for {place_name}. Prefer the publisher's own site or API.
     2. Read the licence or terms on the publisher's own page. Quote the URL and the sentence that says what may be done with the data. If the terms are not open, say so and quote them, since a public source can still be cited with its terms.
     3. Fetch the data and check that it holds figures for {place_name} itself, for {years}. Write down the place's official name or code as the data gives it, and two or three real figures with their year. Never invent a figure. If you could not read something, say so.
-    4. Write it in exactly this shape, one answer under each heading, with yourself in Assisted by.
+    4. Write it in exactly this shape, one answer under each heading, with yourself in Assisted by. If the terms are not open, add cited-figure to Tags.
 
     ### Name
     ### Home URL
@@ -343,6 +348,7 @@ readings:
     Reply with that and nothing after it. I paste it into https://index.fab.city/operate/add-source and send it in my name. I am responsible for what you file; you do the research.
   es:
     name: Empresas por actividad, con el código de actividad más detallado que se publique
+    held_by: Registro de empresas, oficina de estadística
     plain: Cuántas empresas hay registradas en la ciudad bajo cada código de actividad, el código que
       la oficina de estadística le da a cada empresa según lo que hace, al nivel más detallado que se
       publique.
@@ -371,7 +377,7 @@ readings:
     1. Search for a dataset that holds this figure for {place_name}. Prefer the publisher's own site or API.
     2. Read the licence or terms on the publisher's own page. Quote the URL and the sentence that says what may be done with the data. If the terms are not open, say so and quote them, since a public source can still be cited with its terms.
     3. Fetch the data and check that it holds figures for {place_name} itself, for {years}. Write down the place's official name or code as the data gives it, and two or three real figures with their year. Never invent a figure. If you could not read something, say so.
-    4. Write it in exactly this shape, one answer under each heading, with yourself in Assisted by.
+    4. Write it in exactly this shape, one answer under each heading, with yourself in Assisted by. If the terms are not open, add cited-figure to Tags.
 
     ### Name
     ### Home URL
@@ -401,6 +407,7 @@ readings:
   es:
     name: 'Reparación y reutilización: negocios de reparación, eventos de reparación, y lo que reciben
       los centros de reutilización'
+    held_by: Departamento de medio ambiente de la ciudad, labs, repair cafés
     plain: Cuántos negocios y eventos de reparación tiene la ciudad cada año, y cuántas toneladas reciben
       sus centros de reutilización.
     why: Reparar suele ser el comienzo de fabricar, porque quien arregla una cosa termina haciendo sus
@@ -428,7 +435,7 @@ readings:
     1. Search for a dataset that holds this figure for {place_name}. Prefer the publisher's own site or API.
     2. Read the licence or terms on the publisher's own page. Quote the URL and the sentence that says what may be done with the data. If the terms are not open, say so and quote them, since a public source can still be cited with its terms.
     3. Fetch the data and check that it holds figures for {place_name} itself, for {years}. Write down the place's official name or code as the data gives it, and two or three real figures with their year. Never invent a figure. If you could not read something, say so.
-    4. Write it in exactly this shape, one answer under each heading, with yourself in Assisted by.
+    4. Write it in exactly this shape, one answer under each heading, with yourself in Assisted by. If the terms are not open, add cited-figure to Tags.
 
     ### Name
     ### Home URL
@@ -457,6 +464,7 @@ readings:
     Reply with that and nothing after it. I paste it into https://index.fab.city/operate/add-source and send it in my name. I am responsible for what you file; you do the research.
   es:
     name: Labs y talleres, sus máquinas en uso, y cuántas de esas máquinas se hicieron en un lab
+    held_by: Quien coordina Fab City y la red de labs
     plain: Cuántos fab labs y talleres abiertos tiene la ciudad, cuántas máquinas tienen en uso, y cuántas
       de esas máquinas se construyeron en un lab.
     why: El Índice cuenta las máquinas que la gente del lugar usa y arregla por sí misma, y un lab que
@@ -484,7 +492,7 @@ readings:
     1. Search for a dataset that holds this figure for {place_name}. Prefer the publisher's own site or API.
     2. Read the licence or terms on the publisher's own page. Quote the URL and the sentence that says what may be done with the data. If the terms are not open, say so and quote them, since a public source can still be cited with its terms.
     3. Fetch the data and check that it holds figures for {place_name} itself, for {years}. Write down the place's official name or code as the data gives it, and two or three real figures with their year. Never invent a figure. If you could not read something, say so.
-    4. Write it in exactly this shape, one answer under each heading, with yourself in Assisted by.
+    4. Write it in exactly this shape, one answer under each heading, with yourself in Assisted by. If the terms are not open, add cited-figure to Tags.
 
     ### Name
     ### Home URL
@@ -514,6 +522,7 @@ readings:
   es:
     name: 'Compras de la ciudad: total gastado, y la parte adjudicada a proveedores de la ciudad y de
       la región'
+    held_by: Oficina de compras de la ciudad, registro de contratos
     plain: Cuánto gastó la ciudad en compras y contratos cada año, y qué parte fue a proveedores con sede
       en la ciudad y en la región.
     why: Lo que compra una ciudad es uno de los poderes más fuertes que tiene, porque comprarle a sus
@@ -542,7 +551,7 @@ readings:
     1. Search for a dataset that holds this figure for {place_name}. Prefer the publisher's own site or API.
     2. Read the licence or terms on the publisher's own page. Quote the URL and the sentence that says what may be done with the data. If the terms are not open, say so and quote them, since a public source can still be cited with its terms.
     3. Fetch the data and check that it holds figures for {place_name} itself, for {years}. Write down the place's official name or code as the data gives it, and two or three real figures with their year. Never invent a figure. If you could not read something, say so.
-    4. Write it in exactly this shape, one answer under each heading, with yourself in Assisted by.
+    4. Write it in exactly this shape, one answer under each heading, with yourself in Assisted by. If the terms are not open, add cited-figure to Tags.
 
     ### Name
     ### Home URL
@@ -572,6 +581,7 @@ readings:
   es:
     name: 'Los poderes de la ciudad: un cuestionario corto (impuestos que puede cobrar, suelo que posee,
       servicios que gestiona, reglas que fija para sus propias compras)'
+    held_by: La persona que representa a la ciudad
     plain: Un cuestionario corto sobre lo que tu ciudad puede decidir por sí misma, como los impuestos
       que puede fijar, el suelo que posee, los servicios que gestiona y las reglas de sus propias compras.
     why: Los poderes de una ciudad cambian de un país a otro, así que el Índice necesita saber qué puede
@@ -601,7 +611,7 @@ readings:
     1. Search for a dataset that holds this figure for {place_name}. Prefer the publisher's own site or API.
     2. Read the licence or terms on the publisher's own page. Quote the URL and the sentence that says what may be done with the data. If the terms are not open, say so and quote them, since a public source can still be cited with its terms.
     3. Fetch the data and check that it holds figures for {place_name} itself, for {years}. Write down the place's official name or code as the data gives it, and two or three real figures with their year. Never invent a figure. If you could not read something, say so.
-    4. Write it in exactly this shape, one answer under each heading, with yourself in Assisted by.
+    4. Write it in exactly this shape, one answer under each heading, with yourself in Assisted by. If the terms are not open, add cited-figure to Tags.
 
     ### Name
     ### Home URL
@@ -632,6 +642,7 @@ readings:
     name: 'Acceso: hogares que reciben ayuda alimentaria, hogares sin agua o energía fiables, carga del
       gasto en vivienda, parte de la población bajo la línea de pobreza, por distrito donde se tenga;
       y el alquiler de espacio de taller'
+    held_by: Servicios sociales de la ciudad, oficina de estadística, desarrollo económico
     plain: Cuántos hogares reciben ayuda alimentaria, viven sin agua o energía fiables, o gastan demasiado
       de sus ingresos en vivienda, cuánta gente vive bajo la línea de pobreza, y cuánto cuesta alquilar
       un espacio de taller, por distrito donde lo tengas.
@@ -662,7 +673,7 @@ readings:
     1. Search for a dataset that holds this figure for {place_name}. Prefer the publisher's own site or API.
     2. Read the licence or terms on the publisher's own page. Quote the URL and the sentence that says what may be done with the data. If the terms are not open, say so and quote them, since a public source can still be cited with its terms.
     3. Fetch the data and check that it holds figures for {place_name} itself, for {years}. Write down the place's official name or code as the data gives it, and two or three real figures with their year. Never invent a figure. If you could not read something, say so.
-    4. Write it in exactly this shape, one answer under each heading, with yourself in Assisted by.
+    4. Write it in exactly this shape, one answer under each heading, with yourself in Assisted by. If the terms are not open, add cited-figure to Tags.
 
     ### Name
     ### Home URL
@@ -692,6 +703,7 @@ readings:
   es:
     name: 'Límites del suelo: superficie construida en zonas inundables, humedales perdidos, suelo sellado
       sobre zonas de recarga de acuíferos'
+    held_by: El equipo de Fab City, con mapas abiertos del suelo y de inundaciones; la ciudad confirma sus mapas de inundación y de recarga de acuíferos
     plain: Cuánto de la ciudad está construido en zonas que se inundan, cuánto humedal se ha perdido,
       y cuánto suelo se ha sellado donde la lluvia se filtra para recargar el agua subterránea.
     why: Hay suelo que protege a la ciudad de las inundaciones y recarga su agua subterránea, y construir
@@ -720,7 +732,7 @@ readings:
     1. Search for a dataset that holds this figure for {place_name}. Prefer the publisher's own site or API.
     2. Read the licence or terms on the publisher's own page. Quote the URL and the sentence that says what may be done with the data. If the terms are not open, say so and quote them, since a public source can still be cited with its terms.
     3. Fetch the data and check that it holds figures for {place_name} itself, for {years}. Write down the place's official name or code as the data gives it, and two or three real figures with their year. Never invent a figure. If you could not read something, say so.
-    4. Write it in exactly this shape, one answer under each heading, with yourself in Assisted by.
+    4. Write it in exactly this shape, one answer under each heading, with yourself in Assisted by. If the terms are not open, add cited-figure to Tags.
 
     ### Name
     ### Home URL
@@ -751,6 +763,7 @@ readings:
     name: Material que entra a la ciudad en toneladas, por tipo donde se tenga (materiales de construcción,
       alimentos, bienes), de la cuenta de materiales de la ciudad o de la carga que entra por carretera,
       tren, puerto y aire
+    held_by: Departamento de medio ambiente o de urbanismo de la ciudad, autoridades del puerto y de logística
     plain: Cuántas toneladas de material entran a la ciudad cada año, por tipo donde lo tengas, de la
       cuenta de materiales de la ciudad o de la carga que llega por carretera, tren, mar y aire.
     why: Sin las toneladas que entran y los residuos que salen, el Índice no puede decir cuánto de lo
@@ -779,7 +792,7 @@ readings:
     1. Search for a dataset that holds this figure for {place_name}. Prefer the publisher's own site or API.
     2. Read the licence or terms on the publisher's own page. Quote the URL and the sentence that says what may be done with the data. If the terms are not open, say so and quote them, since a public source can still be cited with its terms.
     3. Fetch the data and check that it holds figures for {place_name} itself, for {years}. Write down the place's official name or code as the data gives it, and two or three real figures with their year. Never invent a figure. If you could not read something, say so.
-    4. Write it in exactly this shape, one answer under each heading, with yourself in Assisted by.
+    4. Write it in exactly this shape, one answer under each heading, with yourself in Assisted by. If the terms are not open, add cited-figure to Tags.
 
     ### Name
     ### Home URL
@@ -809,6 +822,7 @@ readings:
   es:
     name: 'Intercambio con otras ciudades miembro: bienes comprados o vendidos a ellas, y diseños hechos
       localmente que vinieron de otra ciudad miembro'
+    held_by: Quien coordina Fab City y la red de labs
     plain: Qué bienes compró tu ciudad a otras ciudades miembro de Fab City o les vendió, y qué cosas
       hechas aquí se fabricaron con un diseño que vino de otra ciudad miembro.
     why: El Índice lee lo que las ciudades miembro se compran entre sí y qué diseños viajan entre ellas,

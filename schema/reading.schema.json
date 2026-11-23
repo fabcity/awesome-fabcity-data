@@ -55,9 +55,10 @@
       "type": "object",
       "required": ["name", "plain", "why", "not_held"],
       "additionalProperties": false,
-      "description": "The Spanish copies of the four texts a person reads.",
+      "description": "The Spanish copies of the texts a person reads. `held_by` is optional; the Spanish page shows it the way the English page shows `held_by`.",
       "properties": {
         "name": { "type": "string", "minLength": 3 },
+        "held_by": { "type": "string", "minLength": 3 },
         "plain": { "type": "string", "minLength": 20, "maxLength": 400 },
         "why": { "type": "string", "minLength": 20, "maxLength": 400 },
         "not_held": { "type": "string", "minLength": 20, "maxLength": 400 }

@@ -242,6 +242,8 @@ OBS_CASES = [
     ("observation district with @",        fig(district="North, ana@city.go.id"), False),
     ("observation unit a phone",           fig(unit="+62 812 3456 7890"), False),
     ("observation terms a licence name",   fig(terms="Open Government Licence v3.0"), True),
+    # Absence is not zero: a figure of 0 is a figure, and 0 is kept (main() checks it is not dropped).
+    ("observation candidate with value 0", fig(value=0), True),
     # A phone number is 9 or more digits; a year range or a publication code is not one.
     ("observation source_name a year range", fig(source_name="Waste statistics 2015-2024"), True),
     ("observation terms a publication code", fig(terms="CC-BY-4.0, Eurostat KS-GQ-18-006-EN-N"), True),
@@ -270,6 +272,7 @@ READING_CASES = [
      {"prompt": "Find {reading_name} for {place_name} ({place_slug}) in {city}, for {years}, in {unit}."}, False),
     ("reading es without not_held",     {"es": {k: v for k, v in READING["es"].items() if k != "not_held"}}, False),
     ("reading an invented key",         {"source": "x"}, False),
+    ("reading es with held_by",         {"es": {**READING["es"], "held_by": "Departamento de residuos de la ciudad"}}, True),
 ]
 
 
@@ -483,6 +486,12 @@ def main() -> int:
 
     print()
     bad += check(VO, OBS, OBS_CASES)
+    zero = _coerce_dates(patched(OBS, fig(value=0)))["figures"][0]
+    if zero.get("value") != 0 or zero["value"] is None:
+        bad += 1
+        print(f"[FAIL] a candidate with value 0 lost its 0: {zero}")
+    else:
+        print("[ ok ] a candidate with value 0 keeps 0")
 
     # The act_kind conditional produces jsonschema's worst error message; validate.py rewrites it.
     print()
@@ -521,7 +530,7 @@ def main() -> int:
 
     bad += test_fictional_not_in_coverage()
 
-    total = 1 + len(CASES) + len(REVIEW_CASES) + len(CELL_CASES) + len(READING_CASES) + len(OBS_CASES) + len(TREE_CASES) + 2
+    total = 1 + len(CASES) + len(REVIEW_CASES) + len(CELL_CASES) + len(READING_CASES) + len(OBS_CASES) + len(TREE_CASES) + 3
     print(f"\n{total} case(s), {bad} failed.")
     return 1 if bad else 0
 

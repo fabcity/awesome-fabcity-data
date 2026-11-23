@@ -27,12 +27,17 @@ What goes out, and what stays in Airtable:
     sent_by (the person's name)   never; the file carries `sent_by_role`, or `not given`
     state `needs a fix`           nothing
 
+A `held` or `not-held` answer with no year is the answer for the year it was sent. A figure with a
+value needs its year. A figure with a value and empty terms is written with terms `not stated`. A
+held or not-held answer gives way to a figure with a value sent later for the same year and district.
+
 A record is skipped, with a reason printed, when its place is in neither places.yaml nor
 fictional.yaml, when the `fictional` box disagrees with the place, when its reading is not one of
 R1 to R14, when any text that would be published (unit, district, source name, terms, role, checked
 by), or the sender's name, looks like an email address or phone number, when a value comes with no
 source, or when the figure would not pass schema/observation.schema.json. Reasons name the
-Airtable record and the field, never what the person typed.
+Airtable record and the field, never what the person typed, and never a place that looks like an
+email address or a phone number.
 
 --records takes a JSON list of records in Airtable's REST shape, keyed by field name:
 [{"id": "rec…", "createdTime": "…", "fields": {"place": "bali", "reading_id": ["R1"], …}}].
@@ -42,7 +47,7 @@ year, district and unit replaces the earlier one here, and Airtable keeps both.
 
 --file-sources goes with --write or --check, never with --plan; with --check it files nothing when
 observations/ is behind. It opens a `source: <id>` issue, with `gh`, for each published figure
-whose source_url no entry in data/ holds as `url` or `api`, unless an issue with that title already
+that survives the merge and the withdrawals, whose source_url no entry in data/ holds as `url` or `api`, unless an issue with that title already
 exists (open or closed), so a daily run never files a source twice. source-to-pr.yml turns the
 issue into a `candidate` entry. A fictional place never files a source.
 """
@@ -104,6 +109,16 @@ def _consents(f: dict) -> bool:
     return _text(f.get("may_publish")).lower() == "yes"
 
 
+def _year_of(rec: dict):
+    """The record's year. An answer with no number (held or not-held) and no year is the answer for
+    the year it was sent; a figure with a value keeps no year and is skipped for it."""
+    f, sent = rec.get("fields", {}), str(rec.get("createdTime", ""))[:4]
+    year = _year(f.get("year"))
+    if year is None and (not _consents(f) or f.get("not_held")) and sent.isdigit():
+        return int(sent)
+    return year
+
+
 def _key_of(rec: dict, places: set[str], fictional: set[str], readings: set[str]):
     """(file, year, district) a record speaks for; a withdrawal ignores unit, so unit is not in it, or None when its place or reading is not known."""
     f = rec.get("fields", {})
@@ -111,7 +126,7 @@ def _key_of(rec: dict, places: set[str], fictional: set[str], readings: set[str]
     ids = f.get("reading_id") or []
     ids = [_text(i) for i in (ids if isinstance(ids, list) else [ids])]
     if (place in places or place in fictional) and len(ids) == 1 and ids[0] in readings:
-        return f"observations/{place}/{ids[0]}.yaml", _year(f.get("year")), _text(f.get("district"))
+        return f"observations/{place}/{ids[0]}.yaml", _year_of(rec), _text(f.get("district"))
     return None
 
 
@@ -121,11 +136,14 @@ def figure(rec: dict, places: set[str], fictional: set[str], readings: set[str])
     place = _text(f.get("place")).lower()
     ids = f.get("reading_id") or []
     ids = [_text(i) for i in (ids if isinstance(ids, list) else [ids])]
-    who = f"{rec.get('id', 'a record')} ({place if SLUG.match(place) else 'place?'} {'/'.join(ids) or 'reading?'} {f.get('year', 'year?')})"
+    # The reason is printed in a public pull request: a place that looks like contact details is never repeated.
+    shown = place if SLUG.match(place) and not CONTACT.search(place) else "place?"
+    who = f"{rec.get('id', 'a record')} ({shown} {'/'.join(ids) or 'reading?'} {f.get('year', 'year?')})"
 
     if place not in places and place not in fictional:
-        named = repr(place) if SLUG.match(place) else "that is not a slug"
-        return f"{who}: place {named} is in neither places.yaml nor fictional.yaml"
+        if shown == "place?":
+            return f"{who}: a record with an unknown place, in neither places.yaml nor fictional.yaml"
+        return f"{who}: place {place!r} is in neither places.yaml nor fictional.yaml"
     if bool(f.get("fictional")) != (place in fictional):
         return f"{who}: the `fictional` box is {'ticked' if f.get('fictional') else 'empty'}, and {place} " \
                f"{'is' if place in fictional else 'is not'} in fictional.yaml"
@@ -137,7 +155,7 @@ def figure(rec: dict, places: set[str], fictional: set[str], readings: set[str])
     if state not in ("sent", "copied", "checked"):
         return f"{who}: state {state!r} is not one of sent, needs a fix, copied, checked"
     # The form does not require a role and the schema does, so an empty one is said to be empty.
-    fig = {"year": _year(f.get("year")), "district": _text(f.get("district")),
+    fig = {"year": _year_of(rec), "district": _text(f.get("district")),
            "sent_by_role": _text(f.get("sent_by_role")) or "not given",
            "sent_on": str(rec.get("createdTime", ""))[:10]}
     if not _consents(f):
@@ -152,7 +170,7 @@ def figure(rec: dict, places: set[str], fictional: set[str], readings: set[str])
         live = state == "checked"
         fig.update(state="live" if live else "candidate", value=f["value"], unit=_text(f.get("unit")),
                    source_url=_text(f.get("source_url")), source_name=_text(f.get("source_name")),
-                   terms=str(f.get("terms") or "").strip(),
+                   terms=str(f.get("terms") or "").strip() or "not stated",
                    checked_by=_text(f.get("checked_by")) if live else "",
                    checked_on=_text(f.get("checked_on")) if live else "")
     fig = {k: fig[k] for k in KEYS if fig.get(k) not in (None, "")}
@@ -170,6 +188,18 @@ def figure(rec: dict, places: set[str], fictional: set[str], readings: set[str])
         return f"{who}: does not fit schema/observation.schema.json, " + (
             e.message if e.validator == "required" else f"{at} fails `{e.validator}`")
     return place, ids[0], fig
+
+
+def _drop_answered(figs: list[dict]) -> list[dict]:
+    """A held or not-held answer gives way to a figure with a value for the same year and district,
+    in any unit, sent the same day or later: the city asked, then said yes."""
+    valued: dict[tuple, str] = {}
+    for f in figs:
+        if "value" in f:
+            k = f.get("year"), f.get("district", "")
+            valued[k] = max(valued.get(k, ""), str(f.get("sent_on")))
+    return [f for f in figs
+            if "value" in f or str(f.get("sent_on")) > valued.get((f.get("year"), f.get("district", "")), "")]
 
 
 def to_observations(records: list[dict], places: set[str], fictional: set[str],
@@ -202,6 +232,8 @@ def to_observations(records: list[dict], places: set[str], fictional: set[str],
             "place": place, "reading": reading, **({"fictional": True} if place in fictional else {}),
             "figures": []})
         doc["figures"].append(fig)
+    for doc in docs.values():
+        doc["figures"] = _drop_answered(doc["figures"])
     return docs, skips
 
 
@@ -248,7 +280,7 @@ def apply(docs: dict[str, dict], root: Path, write: bool, taken: dict | None = N
                     figs[_key(f)] = f
             doc = {**(doc or old), "figures": [figs[k] for k in sorted(figs, key=lambda k: (str(k[0]), k[1], k[2]))]}
         if doc and doc["figures"]:
-            want[p] = render(doc)
+            want[p] = render({**doc, "figures": _drop_answered(doc["figures"])})
     add = sorted(set(want) - set(have))
     change = sorted(p for p in want if p in have and have[p] != want[p])
     gone = sorted(set(have) - set(want))
@@ -312,11 +344,16 @@ def held_urls() -> set[str]:
 
 
 def sources(records: list[dict], readings: dict[str, dict]) -> list[tuple[str, str]]:
-    """One issue per new source behind a published figure, first figure first."""
+    """One issue per new source behind a published figure, first figure first. Only a figure that
+    survives the merge and the withdrawals counts: a replaced or taken-back figure files nothing."""
     held, seen, out = held_urls(), set(), []
+    docs, _ = to_observations(records, set(PLACES), set(FICTIONAL), set(readings))
+    kept = {(p, json.dumps(f, sort_keys=True)) for p, d in docs.items() for f in d["figures"]}
     for rec in records:
         got = figure(rec, set(PLACES), set(FICTIONAL), set(readings))
         if isinstance(got, str) or got[2]["state"] not in ("candidate", "live"):
+            continue
+        if (f"observations/{got[0]}/{got[1]}.yaml", json.dumps(got[2], sort_keys=True)) not in kept:
             continue
         issue = source_issue(rec, readings[got[1]])
         url = _text(rec["fields"].get("source_url")).rstrip("/")

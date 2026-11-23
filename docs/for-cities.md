@@ -43,12 +43,12 @@ For each reading, the page first shows what the registry already holds for your 
 
 1. Review what we already hold. Each source the registry has for your city carries a "Review it" button. A review says whether the source holds figures for your city and whether its terms let us use them.
 2. Add a source. If you know where a figure is published, give us the link. It goes into the registry as a source to check.
-3. Send a figure. A short form asks for the year, the value and its unit, where the figure comes from and its terms of use, your name and role, and whether we may publish it. If your city does not hold the figure, tick the box that says so and leave the value empty.
+3. Send a figure. A short form asks for the year, the value and its unit, where the figure comes from and its terms of use, your name and role, and whether we may publish it. If your city does not hold the figure, tick the box that says so and leave the value empty. For a reading your city does not hold, give the latest year you looked.
 4. Look for it with an AI agent. The page gives you a prompt written for your city and that reading, ready to paste into an AI assistant that can search the web. It asks the agent to find a source, read its terms on the publisher's own page, check that it holds figures for your city, and show you the evidence. The agent files nothing. You read what it found, and if it holds up you add it as a source in your own name.
 
 ## What happens to a figure
 
-When you say we may publish a figure, it is copied into the registry within a day and marked as sent (the registry calls it a `candidate`). Then the Fab City team checks it. The unit and the years have to match what we asked, and the source has to support the number, with its terms written down. A figure that passes is marked as checked (`live` in the registry), with who checked it and when. If something does not match, the Fab City team follows up with you. Until it is fixed, the figure comes off the public record.
+When you say we may publish a figure, the Fab City team copies it to the registry, usually within a few days. There it is marked as sent (the registry calls it a `candidate`). Then the Fab City team checks it. The unit and the years have to match what we asked, and the source has to support the number, with its terms written down. A figure that passes is marked as checked (`live` in the registry), with who checked it and when. If something does not match, the Fab City team follows up with you. Until it is fixed, the figure comes off the public record.
 
 Each year goes in as its own figure. A reading with two parts, like the tonnes and the share in R1, goes as two figures, each with its own unit. A figure by district goes as one per district, with the district named. Keep all the years of a series on the same boundary. If 2023 counts the city and 2025 counts the metropolitan area, the change between them tells us nothing.
 
@@ -74,7 +74,7 @@ Each reading on the page shows one of seven states, in words.
 - "figure sent" means a figure arrived with permission to publish and is waiting for the Fab City team's check.
 - "held by the city" means a figure exists and the city has not released it.
 - "not held anywhere" means the city told us that nobody counts it.
-- "checked" means the Fab City team checked the figure, or someone reviewed a source for your city and found it usable.
+- "checked" means the Fab City team checked the figure, or someone reviewed a source for this reading and found it usable.
 
 ## Uqbar
 

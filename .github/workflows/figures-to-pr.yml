@@ -121,7 +121,7 @@ jobs:
           $(head -c 6000 "$RUNNER_TEMP/copy.txt")
           \`\`\`
 
-          The gates ran in the workflow before the push, because a pull request opened with \`GITHUB_TOKEN\` gets no check run of its own. Push any commit to this branch to see the real one.
+          The gates ran in the workflow before the push, because a pull request opened with \`GITHUB_TOKEN\` gets no check run of its own. Changes to a figure belong in Airtable. The next run rewrites this branch, and a commit pushed to it is lost.
 
           🤖 Generated with [Claude Code](https://claude.com/claude-code)
           EOF
