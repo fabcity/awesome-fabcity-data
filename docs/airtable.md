@@ -85,13 +85,13 @@ It asks for place, reading, year, value, unit, district, source link, source nam
 
 When I opened the address above in a browser with no Airtable session it went to the Airtable sign-in page, so the form is not yet open to anyone with the link. The connector can publish a form but cannot turn on "anyone with the link can fill in"; that is a switch in the share settings page above, and someone signed in has to flip it.
 
-For the same reason I could not test prefill. The pattern Airtable documents for shared forms, to be tried once the form is public:
+For the same reason prefill is untested. The page `/operate/city-data` (fci-ingestion-tool, `formUrl` in `js/city-data.js`) prefills the form with the table's field names, `prefill_place` and `prefill_reading`:
 
 ```
-https://airtable.com/appmNQaDGEFE9VcYh/pagsz9HlBft5pJIP8/form?prefill_Place=uqbar&prefill_Reading=R1
+https://airtable.com/appmNQaDGEFE9VcYh/pagsz9HlBft5pJIP8/form?prefill_place=uqbar&prefill_reading=R1
 ```
 
-Add `&hide_Place=true` or `&hide_Reading=true` to hide a field. The page `/operate/city-data` (fci-ingestion-tool, `js/city-data.js` `formUrl`) uses the field names instead, `?prefill_place=<slug>&prefill_reading=<Rn>`, and embeds the form from `https://airtable.com/embed/appmNQaDGEFE9VcYh/pagsz9HlBft5pJIP8/form`. Which of the two Airtable reads is still untested; if it is the labels, `formUrl` is the one place to change. The names after `prefill_` are the labels on the form (`Place`, `Reading`), with spaces written as `+`. A linked-record field is normally prefilled with the linked row's primary field, here `R1`, which is the `id` of the Readings row. Task 7 depends on this, so it needs a real test before it is built: open the address, check that Place reads `uqbar` and Reading reads `R1`. If the page-style form refuses the parameters, the fallback is a form made in Airtable's older Forms view of the grid, which does accept them.
+It embeds the same form from `https://airtable.com/embed/appmNQaDGEFE9VcYh/pagsz9HlBft5pJIP8/form` with the same two parameters. A linked-record field is normally prefilled with the linked row's primary field, here `R1`, the `id` of the Readings row. Once the form is public, open the address above and check that Place reads `uqbar` and Reading reads `R1`. If it does not, try the form's labels instead (`prefill_Place`, `prefill_Reading`); `formUrl` is the one place to change. If the page-style form refuses both, the fallback is a form made in Airtable's older Forms view of the grid, which accepts them.
 
 ## The team view
 
