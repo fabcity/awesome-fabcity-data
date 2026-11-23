@@ -1,0 +1,9 @@
+# Copied from Airtable `City figures` by scripts/copy_figures.py. Change a figure there, not here.
+place: uqbar
+reading: R3
+fictional: true
+figures:
+- year: 2025
+  state: not-held
+  sent_by_role: invented, for the demonstration
+  sent_on: '2026-11-23'

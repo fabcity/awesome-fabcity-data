@@ -10803,7 +10803,283 @@
    "country": "Croatia"
   }
  ],
- "observations": [],
+ "observations": [
+  {
+   "place": "uqbar",
+   "reading": "R1",
+   "fictional": true,
+   "figures": [
+    {
+     "year": 2023,
+     "state": "candidate",
+     "value": 168000,
+     "unit": "t/yr",
+     "source_name": "Uqbar city waste department, annual report",
+     "terms": "Invented for the demonstration",
+     "sent_by_role": "invented, for the demonstration",
+     "sent_on": "2026-11-23"
+    },
+    {
+     "year": 2024,
+     "state": "candidate",
+     "value": 171500,
+     "unit": "t/yr",
+     "source_name": "Uqbar city waste department, annual report",
+     "terms": "Invented for the demonstration",
+     "sent_by_role": "invented, for the demonstration",
+     "sent_on": "2026-11-23"
+    },
+    {
+     "year": 2025,
+     "state": "live",
+     "value": 169200,
+     "unit": "t/yr",
+     "source_name": "Uqbar city waste department, annual report",
+     "terms": "Invented for the demonstration",
+     "sent_by_role": "invented, for the demonstration",
+     "sent_on": "2026-11-23",
+     "checked_by": "Fab City team (demonstration)",
+     "checked_on": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "place": "uqbar",
+   "reading": "R10",
+   "fictional": true,
+   "figures": [
+    {
+     "year": 2025,
+     "state": "candidate",
+     "value": 1,
+     "unit": "yes/no (1 = yes)",
+     "source_name": "Uqbar city hall, powers questionnaire",
+     "terms": "Invented for the demonstration",
+     "sent_by_role": "invented, for the demonstration",
+     "sent_on": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "place": "uqbar",
+   "reading": "R11",
+   "fictional": true,
+   "figures": [
+    {
+     "year": 2025,
+     "state": "held",
+     "sent_by_role": "invented, for the demonstration",
+     "sent_on": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "place": "uqbar",
+   "reading": "R13",
+   "fictional": true,
+   "figures": [
+    {
+     "year": 2023,
+     "state": "candidate",
+     "value": 3910000,
+     "unit": "t/yr",
+     "source_name": "Uqbar port and logistics authority, freight report",
+     "terms": "Invented for the demonstration",
+     "sent_by_role": "invented, for the demonstration",
+     "sent_on": "2026-11-23"
+    },
+    {
+     "year": 2024,
+     "state": "candidate",
+     "value": 3980000,
+     "unit": "t/yr",
+     "source_name": "Uqbar port and logistics authority, freight report",
+     "terms": "Invented for the demonstration",
+     "sent_by_role": "invented, for the demonstration",
+     "sent_on": "2026-11-23"
+    },
+    {
+     "year": 2025,
+     "state": "candidate",
+     "value": 3950000,
+     "unit": "t/yr",
+     "source_name": "Uqbar port and logistics authority, freight report",
+     "terms": "Invented for the demonstration",
+     "sent_by_role": "invented, for the demonstration",
+     "sent_on": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "place": "uqbar",
+   "reading": "R14",
+   "fictional": true,
+   "figures": [
+    {
+     "year": 2025,
+     "state": "candidate",
+     "value": 5,
+     "unit": "count",
+     "source_name": "Uqbar lab network register",
+     "terms": "Invented for the demonstration",
+     "sent_by_role": "invented, for the demonstration",
+     "sent_on": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "place": "uqbar",
+   "reading": "R2",
+   "fictional": true,
+   "figures": [
+    {
+     "year": 2023,
+     "state": "candidate",
+     "value": 6420000,
+     "unit": "MWh/yr",
+     "source_name": "Uqbar city energy office, energy balance",
+     "terms": "Invented for the demonstration",
+     "sent_by_role": "invented, for the demonstration",
+     "sent_on": "2026-11-23"
+    },
+    {
+     "year": 2024,
+     "state": "candidate",
+     "value": 6380000,
+     "unit": "MWh/yr",
+     "source_name": "Uqbar city energy office, energy balance",
+     "terms": "Invented for the demonstration",
+     "sent_by_role": "invented, for the demonstration",
+     "sent_on": "2026-11-23"
+    },
+    {
+     "year": 2025,
+     "state": "candidate",
+     "value": 6310000,
+     "unit": "MWh/yr",
+     "source_name": "Uqbar city energy office, energy balance",
+     "terms": "Invented for the demonstration",
+     "sent_by_role": "invented, for the demonstration",
+     "sent_on": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "place": "uqbar",
+   "reading": "R3",
+   "fictional": true,
+   "figures": [
+    {
+     "year": 2025,
+     "state": "not-held",
+     "sent_by_role": "invented, for the demonstration",
+     "sent_on": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "place": "uqbar",
+   "reading": "R4",
+   "fictional": true,
+   "figures": [
+    {
+     "year": 2025,
+     "state": "candidate",
+     "value": 11.8,
+     "unit": "t/person/yr",
+     "source_name": "Uqbar regional statistics office, material account",
+     "terms": "Invented for the demonstration",
+     "sent_by_role": "invented, for the demonstration",
+     "sent_on": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "place": "uqbar",
+   "reading": "R5",
+   "fictional": true,
+   "figures": [
+    {
+     "year": 2025,
+     "state": "candidate",
+     "value": 5400000000,
+     "unit": "UQD/yr",
+     "source_name": "Statistics office of Uqbar, trade by kind",
+     "terms": "© the statistics office of Uqbar, reuse with attribution",
+     "sent_by_role": "invented, for the demonstration",
+     "sent_on": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "place": "uqbar",
+   "reading": "R6",
+   "fictional": true,
+   "figures": [
+    {
+     "year": 2025,
+     "state": "candidate",
+     "value": 31200,
+     "unit": "count",
+     "source_name": "Uqbar business register, statistics office",
+     "terms": "Invented for the demonstration",
+     "sent_by_role": "invented, for the demonstration",
+     "sent_on": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "place": "uqbar",
+   "reading": "R7",
+   "fictional": true,
+   "figures": [
+    {
+     "year": 2025,
+     "state": "candidate",
+     "value": 86,
+     "unit": "count/yr",
+     "source_name": "Uqbar city environment department, repair register",
+     "terms": "Invented for the demonstration",
+     "sent_by_role": "invented, for the demonstration",
+     "sent_on": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "place": "uqbar",
+   "reading": "R8",
+   "fictional": true,
+   "figures": [
+    {
+     "year": 2025,
+     "state": "candidate",
+     "value": 7,
+     "unit": "count",
+     "source_name": "Uqbar lab network register",
+     "terms": "Invented for the demonstration",
+     "sent_by_role": "invented, for the demonstration",
+     "sent_on": "2026-11-23"
+    }
+   ]
+  },
+  {
+   "place": "uqbar",
+   "reading": "R9",
+   "fictional": true,
+   "figures": [
+    {
+     "year": 2025,
+     "state": "candidate",
+     "value": 940000000,
+     "unit": "UQD/yr",
+     "source_name": "Uqbar city procurement office, contracts register",
+     "terms": "Invented for the demonstration",
+     "sent_by_role": "invented, for the demonstration",
+     "sent_on": "2026-11-23"
+    }
+   ]
+  }
+ ],
  "fictional": [
   {
    "slug": "uqbar",

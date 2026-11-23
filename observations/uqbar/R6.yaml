@@ -1,0 +1,13 @@
+# Copied from Airtable `City figures` by scripts/copy_figures.py. Change a figure there, not here.
+place: uqbar
+reading: R6
+fictional: true
+figures:
+- year: 2025
+  state: candidate
+  value: 31200
+  unit: count
+  source_name: Uqbar business register, statistics office
+  terms: Invented for the demonstration
+  sent_by_role: invented, for the demonstration
+  sent_on: '2026-11-23'

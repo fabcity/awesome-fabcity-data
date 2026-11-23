@@ -1,0 +1,29 @@
+# Copied from Airtable `City figures` by scripts/copy_figures.py. Change a figure there, not here.
+place: uqbar
+reading: R2
+fictional: true
+figures:
+- year: 2023
+  state: candidate
+  value: 6420000
+  unit: MWh/yr
+  source_name: Uqbar city energy office, energy balance
+  terms: Invented for the demonstration
+  sent_by_role: invented, for the demonstration
+  sent_on: '2026-11-23'
+- year: 2024
+  state: candidate
+  value: 6380000
+  unit: MWh/yr
+  source_name: Uqbar city energy office, energy balance
+  terms: Invented for the demonstration
+  sent_by_role: invented, for the demonstration
+  sent_on: '2026-11-23'
+- year: 2025
+  state: candidate
+  value: 6310000
+  unit: MWh/yr
+  source_name: Uqbar city energy office, energy balance
+  terms: Invented for the demonstration
+  sent_by_role: invented, for the demonstration
+  sent_on: '2026-11-23'
