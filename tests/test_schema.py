@@ -242,6 +242,11 @@ OBS_CASES = [
     ("observation district with @",        fig(district="North, ana@city.go.id"), False),
     ("observation unit a phone",           fig(unit="+62 812 3456 7890"), False),
     ("observation terms a licence name",   fig(terms="Open Government Licence v3.0"), True),
+    # A phone number is 9 or more digits; a year range or a publication code is not one.
+    ("observation source_name a year range", fig(source_name="Waste statistics 2015-2024"), True),
+    ("observation terms a publication code", fig(terms="CC-BY-4.0, Eurostat KS-GQ-18-006-EN-N"), True),
+    ("observation role +62 812 3456 7890",   fig(sent_by_role="lead, +62 812 3456 7890"), False),
+    ("observation role 0300-1234567",        fig(sent_by_role="lead, 0300-1234567"), False),
     ("observation district plain",         fig(district="Denpasar Selatan"), True),
     ("observation reading R15",            {"reading": "R15"}, False),
 ]
