@@ -138,9 +138,10 @@ def test_contact_phone_in_source_name_refused():
 
 def test_year_ranges_are_not_phone_numbers():
     """A phone number is 9 or more digits. Statistics titles carry year ranges and codes."""
-    fig = only_figure(copy(rec(source_name="Waste statistics 2015-2024", terms="CC-BY-4.0, Eurostat KS-GQ-18-006-EN-N"))[0])
-    assert fig["source_name"] == "Waste statistics 2015-2024", fig
-    for phone in ("+62 812 3456 7890", "0300-1234567"):
+    for title in ("Waste statistics 2015-2024", "Waste statistics 2015 - 2024"):
+        fig = only_figure(copy(rec(source_name=title, terms="CC-BY-4.0, Eurostat KS-GQ-18-006-EN-N"))[0])
+        assert fig["source_name"] == title, fig
+    for phone in ("+62 812 3456 7890", "0300-1234567", "(0361) 222-3333"):
         docs, skips = copy(rec(sent_by_role=f"lead, {phone}"))
         assert docs == {} and len(skips) == 1 and "`sent_by_role`" in skips[0], (phone, docs, skips)
 

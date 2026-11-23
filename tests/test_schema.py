@@ -247,6 +247,8 @@ OBS_CASES = [
     ("observation terms a publication code", fig(terms="CC-BY-4.0, Eurostat KS-GQ-18-006-EN-N"), True),
     ("observation role +62 812 3456 7890",   fig(sent_by_role="lead, +62 812 3456 7890"), False),
     ("observation role 0300-1234567",        fig(sent_by_role="lead, 0300-1234567"), False),
+    ("observation role (0361) 222-3333",     fig(sent_by_role="lead, (0361) 222-3333"), False),
+    ("observation source_name 2015 - 2024",  fig(source_name="Waste statistics 2015 - 2024"), True),
     ("observation district plain",         fig(district="Denpasar Selatan"), True),
     ("observation reading R15",            {"reading": "R15"}, False),
 ]
