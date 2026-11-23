@@ -69,7 +69,7 @@ The registry lists open sources, meaning data that anyone may reuse and share, u
 Each reading on the page shows one of seven states, in words.
 
 - "not looked for yet" means nothing has been sent and the registry holds nothing for it.
-- "in the registry, to review" means the registry holds a source that may carry this reading for your city, and nobody has reviewed it for your city yet.
+- "in the registry, to review" means the registry holds a source for your city that nobody has yet checked for this reading.
 - "source sent" means someone added a source for this reading and your city.
 - "figure sent" means a figure arrived with permission to publish and is waiting for the Fab City team's check.
 - "held by the city" means a figure exists and the city has not released it.

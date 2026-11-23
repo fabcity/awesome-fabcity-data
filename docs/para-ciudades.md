@@ -69,7 +69,7 @@ El registro reúne fuentes abiertas, es decir, datos que cualquiera puede reutil
 En la página, cada lectura muestra uno de siete estados, escritos en palabras.
 
 - "todavía sin buscar" quiere decir que nadie ha enviado nada y el registro no tiene nada para esa lectura.
-- "en el registro, por revisar" quiere decir que el registro tiene una fuente que puede servir para esta lectura en tu ciudad, y nadie la ha revisado todavía para tu ciudad.
+- "en el registro, por revisar" quiere decir que el registro tiene una fuente para tu ciudad que nadie ha comprobado todavía para esta lectura.
 - "fuente enviada" quiere decir que alguien añadió una fuente para esta lectura y tu ciudad.
 - "cifra enviada" quiere decir que llegó una cifra con permiso para publicarla y espera la revisión del equipo de Fab City.
 - "en manos de la ciudad" quiere decir que la cifra existe y la ciudad no la ha hecho pública.
