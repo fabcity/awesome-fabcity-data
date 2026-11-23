@@ -45,8 +45,11 @@ Copied one way from `readings.yaml` by `scripts/sync_airtable.py --write`. Only 
 | copied_on | fldfPQcrpYa0tQXff | date |
 | fictional | fldFw3FQhjjZhxXjg | checkbox |
 | reading_id | fldhPl2VRiyugO4eJ | lookup of Readings.id |
+| sender_note | fld4FMryaJZu7kw43 | long text |
 
 `state` has no default, so a row from the form arrives with `state` empty, and the copy reads empty as `sent`.
+
+`sender_note` (added 23 November 2026) holds anything the sender wants to tell the Fab City team, in any language. It stays in Airtable. `scripts/copy_figures.py` never copies it.
 
 `scripts/copy_figures.py` copies this table one way into `observations/`, and its docstring says what goes out and what stays here. It only reads Airtable. `.github/workflows/figures-to-pr.yml` runs it daily once the repository secret `AIRTABLE_TOKEN` is set; until then it runs by hand on a listing of the rows: `python3 scripts/copy_figures.py --records rows.json --write`.
 
@@ -76,7 +79,7 @@ Page `pagsz9HlBft5pJIP8`, a standalone form on `City figures`, published.
 - Share settings: `https://airtable.com/appmNQaDGEFE9VcYh/pagsz9HlBft5pJIP8/form?share=show`
 - Editor: `https://airtable.com/appmNQaDGEFE9VcYh/pagsz9HlBft5pJIP8/edit`
 
-It asks for place, reading, year, value, unit, district, source link, source name, terms of use, "my city does not hold this figure", name, role and "may we publish it". Place, reading, name and "may we publish it" are required. The internal fields (`state`, `team_note`, `checked_by`, `checked_on`, `copied_on`, `fictional`) are not on the form.
+It asks for place, reading, year, value, unit, district, source link, source name, terms of use, "my city does not hold this figure", name, role and "may we publish it". The last question, "Anything you want to tell us, in any language", fills `sender_note`; it is in the form's working draft and reaches the live form the next time someone publishes it (the connector can publish, but publishing is Tomas's call). Place, reading, name and "may we publish it" are required. The internal fields (`state`, `team_note`, `checked_by`, `checked_on`, `copied_on`, `fictional`) are not on the form.
 
 ### Open point: public access and prefill, not yet confirmed
 
@@ -88,7 +91,7 @@ For the same reason I could not test prefill. The pattern Airtable documents for
 https://airtable.com/appmNQaDGEFE9VcYh/pagsz9HlBft5pJIP8/form?prefill_Place=uqbar&prefill_Reading=R1
 ```
 
-Add `&hide_Place=true` or `&hide_Reading=true` to hide a field. The names after `prefill_` are the labels on the form (`Place`, `Reading`), with spaces written as `+`. A linked-record field is normally prefilled with the linked row's primary field, here `R1`, which is the `id` of the Readings row. Task 7 depends on this, so it needs a real test before it is built: open the address, check that Place reads `uqbar` and Reading reads `R1`. If the page-style form refuses the parameters, the fallback is a form made in Airtable's older Forms view of the grid, which does accept them.
+Add `&hide_Place=true` or `&hide_Reading=true` to hide a field. The page `/operate/city-data` (fci-ingestion-tool, `js/city-data.js` `formUrl`) uses the field names instead, `?prefill_place=<slug>&prefill_reading=<Rn>`, and embeds the form from `https://airtable.com/embed/appmNQaDGEFE9VcYh/pagsz9HlBft5pJIP8/form`. Which of the two Airtable reads is still untested; if it is the labels, `formUrl` is the one place to change. The names after `prefill_` are the labels on the form (`Place`, `Reading`), with spaces written as `+`. A linked-record field is normally prefilled with the linked row's primary field, here `R1`, which is the `id` of the Readings row. Task 7 depends on this, so it needs a real test before it is built: open the address, check that Place reads `uqbar` and Reading reads `R1`. If the page-style form refuses the parameters, the fallback is a form made in Airtable's older Forms view of the grid, which does accept them.
 
 ## The team view
 
