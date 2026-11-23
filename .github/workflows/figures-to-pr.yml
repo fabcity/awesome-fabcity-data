@@ -1,0 +1,124 @@
+# City figures in Airtable become one pull request, once a day.
+#
+# People in cities send figures through the Airtable form "Send a figure" into the table `City figures`
+# (docs/airtable.md). This copies them one way into observations/{place}/{reading}.yaml with
+# scripts/copy_figures.py, files each source the registry does not hold as a `source: <id>` issue, runs
+# the gates, and opens or updates one pull request from the branch `figures/auto`. Nothing here writes to
+# Airtable, and nothing reaches main until a maintainer merges.
+#
+# It needs the repository secret AIRTABLE_TOKEN, a personal access token that can read records in base
+# appmNQaDGEFE9VcYh. Without it the job stops and says so, and the copy runs by hand:
+#     python scripts/copy_figures.py --records rows.json --write
+# on the rows listed through the Airtable connector.
+#
+# The traps of source-to-pr.yml apply here too:
+# 1. A pull request or an issue opened with GITHUB_TOKEN starts no other workflow. The pull request gets no
+#    check run, so the gates run below, before the push. A `source:` issue filed with GITHUB_TOKEN does not
+#    start source-to-pr.yml either: set the secret SOURCES_TOKEN (a token that can open issues in this
+#    repository) and the issues are filed with it. Without it, a maintainer adds the `source-submission`
+#    label to each issue by hand.
+# 2. Actions → General → "Allow GitHub Actions to create and approve pull requests" has to be on.
+name: City figures to PR
+
+on:
+  schedule:
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: figures-to-pr
+  cancel-in-progress: false
+
+jobs:
+  token:
+    runs-on: ubuntu-latest
+    outputs:
+      ok: ${{ steps.check.outputs.ok }}
+    steps:
+      - id: check
+        env:
+          AIRTABLE_TOKEN: ${{ secrets.AIRTABLE_TOKEN }}
+        run: |
+          if [ -z "$AIRTABLE_TOKEN" ]; then
+            echo "::notice::The secret AIRTABLE_TOKEN is not set, so the copy runs by hand until it is: python scripts/copy_figures.py --records rows.json --write"
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          fi
+
+  figures:
+    needs: token
+    if: needs.token.outputs.ok == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install validation deps
+        run: pip install -r requirements.txt
+
+      - name: Copy the figures and file their new sources
+        env:
+          AIRTABLE_TOKEN: ${{ secrets.AIRTABLE_TOKEN }}
+          GH_TOKEN: ${{ secrets.SOURCES_TOKEN || secrets.GITHUB_TOKEN }}
+        run: python scripts/copy_figures.py --write --file-sources | tee "$RUNNER_TEMP/copy.txt"
+
+      # This list must follow validate.yml's.
+      - name: The gates, before the push rather than after
+        run: |
+          python scripts/build_index.py
+          python scripts/build_readme.py
+          python tests/test_schema.py
+          python tests/test_copy_figures.py
+          python tests/test_source_from_issue.py
+          python scripts/review_from_issue.py --selftest
+          python scripts/validate.py
+          python scripts/check_review.py
+          python scripts/build_index.py --check
+
+      - name: Commit, push, and open or update the PR
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Only observations/ decides: index.json carries today's date in `generated`, so it differs every day.
+          if [ -z "$(git status --porcelain -- observations)" ]; then
+            echo "::notice::observations/ already matches Airtable. Nothing to commit."
+            exit 0
+          fi
+          git add -A observations index.json README.md
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B figures/auto
+          git commit -m "figures: copy city figures from Airtable"
+          git push --force -u origin figures/auto
+
+          body="$(cat <<EOF
+          The figures cities sent through the form "Send a figure", copied from Airtable \`City figures\` into \`observations/\` by \`scripts/copy_figures.py\`.
+
+          A figure that may be published goes in as \`candidate\`, or \`live\` once the team has marked it checked in Airtable. A figure the city has not cleared goes in as \`held\`, with no number. Skipped records are listed below with the reason; fix them in Airtable and the next run picks them up.
+
+          \`\`\`
+          $(head -c 6000 "$RUNNER_TEMP/copy.txt")
+          \`\`\`
+
+          The gates ran in the workflow before the push, because a pull request opened with \`GITHUB_TOKEN\` gets no check run of its own. Push any commit to this branch to see the real one.
+
+          🤖 Generated with [Claude Code](https://claude.com/claude-code)
+          EOF
+          )"
+
+          existing="$(gh pr list --head figures/auto --state open --json url --jq '.[0].url // empty')"
+          if [ -n "$existing" ]; then
+            gh pr edit "$existing" --body "$body"
+            echo "::notice::Updated $existing"
+          else
+            gh pr create --base main --head figures/auto --title "figures: city figures from Airtable" --body "$body"
+          fi

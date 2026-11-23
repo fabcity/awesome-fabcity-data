@@ -6,7 +6,7 @@ Existing tables, left as they were: `Observations` (`tbl8VZoGMr6kdE4QX`, 0 recor
 
 ## Readings (`tblQTZ5xv3Cx1RXBm`)
 
-Copied one way from `readings.yaml` by the Task 4 sync. Only the row `R1` exists so far (`recXEOmoelK9Vtm20`, id and name only), made to test the form.
+Copied one way from `readings.yaml` by `scripts/sync_airtable.py --write`. Only the row `R1` exists so far (`recXEOmoelK9Vtm20`, id and name only), made to test the form.
 
 | field | id | type |
 |---|---|---|
@@ -46,7 +46,9 @@ Copied one way from `readings.yaml` by the Task 4 sync. Only the row `R1` exists
 | fictional | fldFw3FQhjjZhxXjg | checkbox |
 | reading_id | fldhPl2VRiyugO4eJ | lookup of Readings.id |
 
-`state` has no default, so a row from the form arrives with `state` empty. Task 4 should treat empty as `sent`.
+`state` has no default, so a row from the form arrives with `state` empty, and the copy reads empty as `sent`.
+
+`scripts/copy_figures.py` copies this table one way into `observations/`, and its docstring says what goes out and what stays here. It only reads Airtable. `.github/workflows/figures-to-pr.yml` runs it daily once the repository secret `AIRTABLE_TOKEN` is set; until then it runs by hand on a listing of the rows: `python3 scripts/copy_figures.py --records rows.json --write`.
 
 ## Cohort (`tblefySK5wVdZWnHu`)
 

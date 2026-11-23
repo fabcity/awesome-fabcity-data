@@ -106,6 +106,7 @@ jobs:
         run: |
           python tests/test_schema.py
           python tests/test_source_from_issue.py
+          python tests/test_copy_figures.py
           python scripts/review_from_issue.py --selftest
           python scripts/validate.py
           python scripts/check_review.py
