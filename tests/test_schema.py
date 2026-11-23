@@ -110,6 +110,14 @@ CASES = [
     ("assisted_by empty",               {"assisted_by": ""}, False),
     ("assisted_by as a list",           {"assisted_by": ["Claude Code"]}, False),
 
+    # --- tags: lowercase, except the reading a city-sent source answers -----------------------
+    ("tags lowercase",                  {"tags": ["air-quality", "city-sent"]}, True),
+    ("tags reading-R1",                 {"tags": ["city-sent", "reading-R1"]}, True),
+    ("tags reading-R14",                {"tags": ["reading-R14"]}, True),
+    ("tags reading-R15",                {"tags": ["reading-R15"]}, False),
+    ("tags Reading-R1",                 {"tags": ["Reading-R1"]}, False),
+    ("tags any other capital",          {"tags": ["Air-quality"]}, False),
+
     # --- the closed door ----------------------------------------------------------------------
     ("an invented key",                 {"adapters": "core:ckan"}, False),
 
