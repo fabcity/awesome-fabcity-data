@@ -102,9 +102,9 @@
       "uniqueItems": true,
       "items": {
         "type": "string",
-        "pattern": "^([a-z0-9-]+|reading-R([1-9]|1[0-4]))$"
+        "pattern": "^[a-z0-9-]+$"
       },
-      "description": "Free-form lowercase-hyphenated tags. Examples: air-quality, citizen-science, open-hardware, material-flow, procurement. One exception to lowercase: reading-R1 to reading-R14, the reading a city-sent source answers, spelled as readings.yaml spells the id."
+      "description": "Free-form lowercase-hyphenated tags. Examples: air-quality, citizen-science, open-hardware, material-flow, procurement."
     },
     "added": {
       "type": "string",
