@@ -414,7 +414,7 @@ readings:
   why: The Index counts the machines local people use and fix themselves, and a lab that builds its own
     machines no longer has to import its tools.
   unit: count
-  years: [2023, 2024, 2025]
+  years: latest
   held_by: The lead and the lab network
   tests: DIDO
   cells: [Economic|Community, Economic|City]

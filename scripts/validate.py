@@ -278,10 +278,10 @@ def pass_readings() -> tuple[int, dict[str, dict]]:
     The request a city answers is fourteen readings, R1 to R14, and a figure is filed against one
     by id, so an id that repeats sends two cities' answers to one place. Every `cells` value has to
     name a file in cells/ (pass 3 holds filename and key together, so the filenames are the keys).
-    No readings.yaml in a tree means nothing to check here; build_index.py fails without one."""
+    The readings are part of the registry, so a missing readings.yaml is a failure."""
     if not READINGS_PATH.is_file():
-        print("[warn] no readings.yaml, so no readings checked")
-        return 0, {}
+        print(f"[FAIL] {READINGS_PATH.name}: not found, and the registry needs its {READINGS_ASKED} readings")
+        return 1, {}
     rel = READINGS_PATH.relative_to(ROOT)
     doc, why = _read(READINGS_PATH, rel)
     if why or not isinstance(doc.get("readings"), list):

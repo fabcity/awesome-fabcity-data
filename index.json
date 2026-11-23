@@ -10341,11 +10341,7 @@
    "plain": "How many fab labs and open workshops the city has, how many machines they have in use, and how many of those machines were built in a lab.",
    "why": "The Index counts the machines local people use and fix themselves, and a lab that builds its own machines no longer has to import its tools.",
    "unit": "count",
-   "years": [
-    2023,
-    2024,
-    2025
-   ],
+   "years": "latest",
    "held_by": "The lead and the lab network",
    "tests": "DIDO",
    "cells": [

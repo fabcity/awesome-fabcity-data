@@ -291,19 +291,27 @@ TREE_CASES = [
      {ENTRY_AT: CANDIDATE,
       "readings.yaml": yaml.safe_dump({"readings": [{**READING, "id": "R3"}, {**READING, "id": "R3"}]},
                                       allow_unicode=True)}, False, "duplicate reading R3"),
+    ("tree: readings.yaml missing",
+     {ENTRY_AT: CANDIDATE, "readings.yaml": None}, False, "readings.yaml: not found"),
 ]
 
 
 def run_tree(files: dict) -> tuple[int, str]:
-    """Run scripts/validate.py against a throwaway repo holding exactly `files`. schema/ and
-    scripts/ are copied rather than symlinked: validate.py resolves its ROOT from __file__, and a
-    symlink would point it back at this repository and validate the real 217 entries."""
+    """Run scripts/validate.py against a throwaway repo holding `files`. schema/ and scripts/ are
+    copied rather than symlinked: validate.py resolves its ROOT from __file__, and a symlink would
+    point it back at this repository and validate the real 217 entries. readings.yaml is required,
+    so the real one is copied too, with cells/ for the cells its readings name. A file given as
+    None is removed, the way to say 'missing'."""
     with tempfile.TemporaryDirectory() as td:
         root = Path(td)
-        for sub in ("schema", "scripts"):
+        for sub in ("schema", "scripts", "cells"):
             shutil.copytree(ROOT / sub, root / sub)
+        shutil.copy(ROOT / "readings.yaml", root / "readings.yaml")
         for rel, text in files.items():
             f = root / rel
+            if text is None:
+                f.unlink()
+                continue
             f.parent.mkdir(parents=True, exist_ok=True)
             f.write_text(text, encoding="utf-8")
         for sub in ("reviews", "cells"):
