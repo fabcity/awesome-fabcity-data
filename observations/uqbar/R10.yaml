@@ -5,6 +5,14 @@ fictional: true
 figures:
 - year: 2025
   state: candidate
+  value: 3
+  unit: powers held, of 4
+  source_name: Uqbar city hall, powers questionnaire
+  terms: Invented for the demonstration
+  sent_by_role: invented, for the demonstration
+  sent_on: '2026-11-23'
+- year: 2025
+  state: candidate
   value: 1
   unit: yes/no (1 = yes)
   source_name: Uqbar city hall, powers questionnaire

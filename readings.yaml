@@ -527,7 +527,7 @@ readings:
     the land it owns, the utilities it runs and the rules for its own purchasing.
   why: Cities hold different powers from one country to the next, so the Index has to know what yours
     can decide before it reads what it did.
-  unit: yes/no and notes
+  unit: powers held, of 4
   years: latest
   held_by: City representative
   tests: DIDO

@@ -10388,7 +10388,7 @@
    "name": "The city's powers: a short questionnaire (taxes it can levy, land it owns, utilities it runs, rules it sets for its own purchasing)",
    "plain": "A short questionnaire on what your city can decide for itself, such as the taxes it can set, the land it owns, the utilities it runs and the rules for its own purchasing.",
    "why": "Cities hold different powers from one country to the next, so the Index has to know what yours can decide before it reads what it did.",
-   "unit": "yes/no and notes",
+   "unit": "powers held, of 4",
    "years": "latest",
    "held_by": "City representative",
    "tests": "DIDO",
@@ -10812,8 +10812,28 @@
     {
      "year": 2023,
      "state": "candidate",
+     "value": 31.5,
+     "unit": "%",
+     "source_name": "Uqbar city waste department, annual report",
+     "terms": "Invented for the demonstration",
+     "sent_by_role": "invented, for the demonstration",
+     "sent_on": "2026-11-23"
+    },
+    {
+     "year": 2023,
+     "state": "candidate",
      "value": 168000,
      "unit": "t/yr",
+     "source_name": "Uqbar city waste department, annual report",
+     "terms": "Invented for the demonstration",
+     "sent_by_role": "invented, for the demonstration",
+     "sent_on": "2026-11-23"
+    },
+    {
+     "year": 2024,
+     "state": "candidate",
+     "value": 33.8,
+     "unit": "%",
      "source_name": "Uqbar city waste department, annual report",
      "terms": "Invented for the demonstration",
      "sent_by_role": "invented, for the demonstration",
@@ -10828,6 +10848,18 @@
      "terms": "Invented for the demonstration",
      "sent_by_role": "invented, for the demonstration",
      "sent_on": "2026-11-23"
+    },
+    {
+     "year": 2025,
+     "state": "live",
+     "value": 36.2,
+     "unit": "%",
+     "source_name": "Uqbar city waste department, annual report",
+     "terms": "Invented for the demonstration",
+     "sent_by_role": "invented, for the demonstration",
+     "sent_on": "2026-11-23",
+     "checked_by": "Fab City team (demonstration)",
+     "checked_on": "2026-11-23"
     },
     {
      "year": 2025,
@@ -10848,6 +10880,16 @@
    "reading": "R10",
    "fictional": true,
    "figures": [
+    {
+     "year": 2025,
+     "state": "candidate",
+     "value": 3,
+     "unit": "powers held, of 4",
+     "source_name": "Uqbar city hall, powers questionnaire",
+     "terms": "Invented for the demonstration",
+     "sent_by_role": "invented, for the demonstration",
+     "sent_on": "2026-11-23"
+    },
     {
      "year": 2025,
      "state": "candidate",
