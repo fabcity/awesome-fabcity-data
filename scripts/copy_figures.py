@@ -105,13 +105,13 @@ def _consents(f: dict) -> bool:
 
 
 def _key_of(rec: dict, places: set[str], fictional: set[str], readings: set[str]):
-    """(file, year, district, unit) a record speaks for, or None when its place or reading is not known."""
+    """(file, year, district) a record speaks for; a withdrawal ignores unit, so unit is not in it, or None when its place or reading is not known."""
     f = rec.get("fields", {})
     place = _text(f.get("place")).lower()
     ids = f.get("reading_id") or []
     ids = [_text(i) for i in (ids if isinstance(ids, list) else [ids])]
     if (place in places or place in fictional) and len(ids) == 1 and ids[0] in readings:
-        return f"observations/{place}/{ids[0]}.yaml", _year(f.get("year")), _text(f.get("district")), _text(f.get("unit"))
+        return f"observations/{place}/{ids[0]}.yaml", _year(f.get("year")), _text(f.get("district"))
     return None
 
 
@@ -179,12 +179,14 @@ def to_observations(records: list[dict], places: set[str], fictional: set[str],
     for rec in records:
         sent = str(rec.get("createdTime", ""))
         got = figure(rec, places, fictional, readings)
+        # Skipped or not, a record without a yes, or marked `needs a fix`, takes back what was
+        # published before it, whatever its unit.
+        key = _key_of(rec, places, fictional, readings)
+        f = rec.get("fields", {})
+        if key and (not _consents(f) or _text(f.get("state")).lower() == "needs a fix"):
+            withdrawn[key] = max(withdrawn.get(key, ""), sent)
         if isinstance(got, str):
             skips.append(got)
-            # Skipped or not, a record without a yes takes back what was published before it.
-            key = _key_of(rec, places, fictional, readings)
-            if key and not _consents(rec.get("fields", {})):
-                withdrawn[key] = max(withdrawn.get(key, ""), sent)
             continue
         place, reading, fig = got
         key = (f"observations/{place}/{reading}.yaml", fig["year"], fig.get("district", ""), fig.get("unit", ""))
@@ -194,7 +196,7 @@ def to_observations(records: list[dict], places: set[str], fictional: set[str],
     docs: dict[str, dict] = {}
     for key in sorted(latest, key=lambda k: (k[0], str(k[1]), k[2], k[3])):
         sent, place, reading, fig = latest[key]
-        if "value" in fig and key in withdrawn and withdrawn[key] >= sent:
+        if "value" in fig and key[:3] in withdrawn and withdrawn[key[:3]] >= sent:
             continue
         doc = docs.setdefault(key[0], {
             "place": place, "reading": reading, **({"fictional": True} if place in fictional else {}),
@@ -209,7 +211,7 @@ def render(doc: dict) -> str:
 
 def taken_back(records: list[dict], places: set[str], fictional: set[str],
                readings: set[str]) -> dict[tuple, str]:
-    """{(file, year, district, unit): date} for each record in the listing that takes a figure back: the
+    """{(file, year, district): date} for each record in the listing that takes a figure back: the
     team marked it `needs a fix` (ruling 1), or the city has not said yes to publishing it. The date
     is the latest such record's; apply() drops a figure on disk sent on or before it."""
     out: dict[tuple, str] = {}
@@ -240,7 +242,7 @@ def apply(docs: dict[str, dict], root: Path, write: bool, taken: dict | None = N
         doc = docs.get(p)
         if p in have and not prune:
             old = yaml.safe_load(have[p]) or {}
-            figs = {_key(f): f for f in old.get("figures", []) if str(f.get("sent_on")) > taken.get((p, *_key(f)), "")}
+            figs = {_key(f): f for f in old.get("figures", []) if str(f.get("sent_on")) > taken.get((p, *_key(f)[:2]), "")}
             for f in (doc or {}).get("figures", []):
                 if _key(f) not in figs or f["sent_on"] >= str(figs[_key(f)].get("sent_on")):
                     figs[_key(f)] = f

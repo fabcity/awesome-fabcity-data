@@ -236,6 +236,45 @@ def test_two_parts_of_one_reading_are_kept():
     assert sorted((f["unit"], f["value"]) for f in figs) == [("%", 40), ("t/yr", 412.5)], figs
 
 
+def test_withdrawal_with_blank_unit_takes_back_published_figure():
+    """A record that takes a figure back ignores unit: one with a blank or different unit still
+    removes the published figure for that place, reading, year and district."""
+    published = rec(rid="recA", created="2027-01-10T08:00:00.000Z", unit="t/yr")
+    for unit in (None, "kg/yr"):
+        withdrawn = rec(rid="recB", created="2027-02-01T08:00:00.000Z", may_publish="ask", unit=unit)
+        fixed = rec(rid="recB", created="2027-02-01T08:00:00.000Z", state="needs a fix", unit=unit)
+        for taker in (withdrawn, fixed):
+            with tempfile.TemporaryDirectory() as td:
+                root = Path(td)
+                cf.apply(copy(published)[0], root, write=True)
+                docs, _ = copy(published, taker)
+                cf.apply(docs, root, write=True, taken=fixes(published, taker))
+                path = root / BALI
+                left = yaml.safe_load(path.read_text(encoding="utf-8"))["figures"] if path.exists() else []
+                assert not [f for f in left if "value" in f], (unit, taker["fields"].get("state"), left)
+
+
+def test_withdrawal_keeps_a_newer_good_figure_in_another_unit():
+    """The withdrawal removes the old t/yr figure, and a newer publishable % figure stays."""
+    published = rec(rid="recA", created="2027-01-10T08:00:00.000Z", unit="t/yr")
+    withdrawn = rec(rid="recB", created="2027-02-01T08:00:00.000Z", may_publish="ask", unit=None)
+    share = rec(rid="recC", created="2027-03-01T08:00:00.000Z", value=38, unit="%")
+    with tempfile.TemporaryDirectory() as td:
+        root = Path(td)
+        cf.apply(copy(published)[0], root, write=True)
+        docs, _ = copy(published, withdrawn, share)
+        cf.apply(docs, root, write=True, taken=fixes(published, withdrawn, share))
+        figs = [f for f in yaml.safe_load((root / BALI).read_text(encoding="utf-8"))["figures"] if "value" in f]
+    assert [(f["unit"], f["value"]) for f in figs] == [("%", 38)], figs
+    # Listing alone, with the old figure already on disk and the % one newer than the withdrawal.
+    with tempfile.TemporaryDirectory() as td:
+        root = Path(td)
+        cf.apply(copy(published)[0], root, write=True)
+        cf.apply(copy(share)[0], root, write=True, taken=fixes(withdrawn))
+        figs = [f for f in yaml.safe_load((root / BALI).read_text(encoding="utf-8"))["figures"] if "value" in f]
+    assert [(f["unit"], f["value"]) for f in figs] == [("%", 38)], figs
+
+
 def test_partial_listing_removes_nothing():
     """Concern 5: --write with a partial --records listing and no --prune removes nothing; --prune does."""
     full = [rec(rid="recA", year=2024, value=398), rec(rid="recB", year=2025),
