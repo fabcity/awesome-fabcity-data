@@ -47,7 +47,7 @@ readings:
     ### Places
     {place_slug}
     ### Tags
-    city-sent, reading-R1
+    city-sent, reading-r1
     ### Assisted by
     <your name, e.g. Claude>
     ### Notes
@@ -103,7 +103,7 @@ readings:
     ### Places
     {place_slug}
     ### Tags
-    city-sent, reading-R2
+    city-sent, reading-r2
     ### Assisted by
     <your name, e.g. Claude>
     ### Notes
@@ -160,7 +160,7 @@ readings:
     ### Places
     {place_slug}
     ### Tags
-    city-sent, reading-R3
+    city-sent, reading-r3
     ### Assisted by
     <your name, e.g. Claude>
     ### Notes
@@ -216,7 +216,7 @@ readings:
     ### Places
     {place_slug}
     ### Tags
-    city-sent, reading-R4
+    city-sent, reading-r4
     ### Assisted by
     <your name, e.g. Claude>
     ### Notes
@@ -273,7 +273,7 @@ readings:
     ### Places
     {place_slug}
     ### Tags
-    city-sent, reading-R5
+    city-sent, reading-r5
     ### Assisted by
     <your name, e.g. Claude>
     ### Notes
@@ -330,7 +330,7 @@ readings:
     ### Places
     {place_slug}
     ### Tags
-    city-sent, reading-R6
+    city-sent, reading-r6
     ### Assisted by
     <your name, e.g. Claude>
     ### Notes
@@ -387,7 +387,7 @@ readings:
     ### Places
     {place_slug}
     ### Tags
-    city-sent, reading-R7
+    city-sent, reading-r7
     ### Assisted by
     <your name, e.g. Claude>
     ### Notes
@@ -444,7 +444,7 @@ readings:
     ### Places
     {place_slug}
     ### Tags
-    city-sent, reading-R8
+    city-sent, reading-r8
     ### Assisted by
     <your name, e.g. Claude>
     ### Notes
@@ -500,7 +500,7 @@ readings:
     ### Places
     {place_slug}
     ### Tags
-    city-sent, reading-R9
+    city-sent, reading-r9
     ### Assisted by
     <your name, e.g. Claude>
     ### Notes
@@ -558,7 +558,7 @@ readings:
     ### Places
     {place_slug}
     ### Tags
-    city-sent, reading-R10
+    city-sent, reading-r10
     ### Assisted by
     <your name, e.g. Claude>
     ### Notes
@@ -617,7 +617,7 @@ readings:
     ### Places
     {place_slug}
     ### Tags
-    city-sent, reading-R11
+    city-sent, reading-r11
     ### Assisted by
     <your name, e.g. Claude>
     ### Notes
@@ -678,7 +678,7 @@ readings:
     ### Places
     {place_slug}
     ### Tags
-    city-sent, reading-R12
+    city-sent, reading-r12
     ### Assisted by
     <your name, e.g. Claude>
     ### Notes
@@ -736,7 +736,7 @@ readings:
     ### Places
     {place_slug}
     ### Tags
-    city-sent, reading-R13
+    city-sent, reading-r13
     ### Assisted by
     <your name, e.g. Claude>
     ### Notes
@@ -795,7 +795,7 @@ readings:
     ### Places
     {place_slug}
     ### Tags
-    city-sent, reading-R14
+    city-sent, reading-r14
     ### Assisted by
     <your name, e.g. Claude>
     ### Notes

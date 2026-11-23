@@ -8,7 +8,11 @@ Airtable or GitHub. Every file the copy produces is also checked against
 schema/observation.schema.json: a test that passes on a document the schema would refuse still fails.
 Not pytest, for the reason tests/test_schema.py gives.
 """
+import contextlib
+import io
 import json
+import re
+import shutil
 import sys
 import tempfile
 from pathlib import Path
@@ -149,6 +153,10 @@ def test_source_issue_parses():
 
 
 # --- the controller's rulings -------------------------------------------------------------------
+def fixes(*records):
+    return cf.needs_fix(list(records), PLACES, FICTIONAL, set(READINGS))
+
+
 def test_needs_a_fix_is_not_written_and_removed():
     """Ruling 1: an earlier run wrote the figure, then the team marked it `needs a fix`."""
     with tempfile.TemporaryDirectory() as td:
@@ -157,8 +165,57 @@ def test_needs_a_fix_is_not_written_and_removed():
         assert cf.apply(docs, root, write=True) == ([BALI], [], [])
         docs, skips = copy(rec(state="needs a fix"))
         assert docs == {} and len(skips) == 1 and "needs a fix" in skips[0], (docs, skips)
-        assert cf.apply(docs, root, write=True) == ([], [], [BALI])
+        assert cf.apply(docs, root, write=True, fixes=fixes(rec(state="needs a fix"))) == ([], [], [BALI])
         assert not (root / BALI).exists() and not (root / BALI).parent.exists()
+
+
+def test_needs_a_fix_leaves_the_rest_of_the_file():
+    """Ruling 1, one figure of two: the other year stays in the file."""
+    with tempfile.TemporaryDirectory() as td:
+        root = Path(td)
+        both = (rec(rid="recA", year=2024, value=398), rec(rid="recB", year=2025))
+        cf.apply(copy(*both)[0], root, write=True)
+        listing = (rec(rid="recB", year=2025, state="needs a fix"),)
+        assert cf.apply(copy(*listing)[0], root, write=True, fixes=fixes(*listing)) == ([], [BALI], [])
+        left = yaml.safe_load((root / BALI).read_text(encoding="utf-8"))["figures"]
+        assert [(f["year"], f["value"]) for f in left] == [(2024, 398)], left
+
+
+def test_partial_listing_removes_nothing():
+    """Concern 5: --write with a partial --records listing and no --prune removes nothing; --prune does."""
+    full = [rec(rid="recA", year=2024, value=398), rec(rid="recB", year=2025),
+            rec(rid="recC", reading_id=["R2"], value=3.1)]
+    with tempfile.TemporaryDirectory() as td:
+        root, real = Path(td), cf.ROOT
+        shutil.copy(ROOT / "readings.yaml", root / "readings.yaml")
+
+        def run(records, *flags):
+            (root / "rows.json").write_text(json.dumps(records), encoding="utf-8")
+            with contextlib.redirect_stdout(io.StringIO()):
+                return cf.main(["--write", "--records", str(root / "rows.json"), *flags])
+
+        try:
+            cf.ROOT = root
+            run(full)
+            before = {p: p.read_text(encoding="utf-8") for p in (root / "observations").rglob("*.yaml")}
+            assert len(before) == 2, before
+            run(full[1:2])
+            after = {p: p.read_text(encoding="utf-8") for p in (root / "observations").rglob("*.yaml")}
+            assert after == before, "a partial listing changed observations/ without --prune"
+            run(full[1:2], "--prune")
+            left = sorted(p.relative_to(root).as_posix() for p in (root / "observations").rglob("*.yaml"))
+            assert left == [BALI], left
+            assert len(yaml.safe_load((root / BALI).read_text(encoding="utf-8"))["figures"]) == 1
+        finally:
+            cf.ROOT = real
+
+
+def test_missing_role_is_not_given():
+    """Concern 4: the form does not require a role, so an empty one is written as `not given`."""
+    fig = only_figure(copy(rec(sent_by_role=None))[0])
+    assert (fig["state"], fig["sent_by_role"]) == ("candidate", "not given"), fig
+    code, out, _ = parse_issue(cf.source_issue(rec(sent_by_role=None), READINGS["R1"])[1])
+    assert code == 0, out
 
 
 def test_rerun_writes_nothing():
@@ -178,9 +235,9 @@ def test_empty_state_is_sent():
 def test_cited_figure_tag():
     """Ruling 4: terms that are not a known open licence tag the source `cited-figure`."""
     tags = lambda terms: sfi.csv(sfi.parse_body(cf.source_issue(rec(terms=terms), READINGS["R1"])[1])["Tags"])
-    assert tags("© the statistics office of Bali, reuse with attribution") == ["city-sent", "reading-R1", "cited-figure"]
-    assert tags("CC BY 4.0") == ["city-sent", "reading-R1"]
-    assert tags("Open Government Licence v3.0") == ["city-sent", "reading-R1"]
+    assert tags("© the statistics office of Bali, reuse with attribution") == ["city-sent", "reading-r1", "cited-figure"]
+    assert tags("CC BY 4.0") == ["city-sent", "reading-r1"]
+    assert tags("Open Government Licence v3.0") == ["city-sent", "reading-r1"]
     code, out, _ = parse_issue(cf.source_issue(rec(terms="reuse with attribution"), READINGS["R1"])[1])
     assert code == 0, out
 
@@ -207,6 +264,16 @@ def test_reading_is_the_lookup_not_the_link():
     assert list(docs) == [BALI], docs
     docs, skips = copy(rec(reading_id=None))
     assert docs == {} and len(skips) == 1, (docs, skips)
+
+
+def test_prompt_tags_pass_the_schema():
+    """The tags each prompt asks an agent to file are the ones the copy files, and the schema takes them."""
+    pattern = re.compile(json.loads((ROOT / "schema" / "dataset.schema.json").read_text(encoding="utf-8"))
+                         ["properties"]["tags"]["items"]["pattern"])
+    for rid, r in READINGS.items():
+        line = r["prompt"].split("### Tags\n", 1)[1].splitlines()[0].strip()
+        assert line == f"city-sent, reading-{rid.lower()}", (rid, line)
+        assert all(pattern.match(t) for t in sfi.csv(line)), (rid, line)
 
 
 def test_build_readings():

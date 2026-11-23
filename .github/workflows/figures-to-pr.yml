@@ -4,7 +4,8 @@
 # (docs/airtable.md). This copies them one way into observations/{place}/{reading}.yaml with
 # scripts/copy_figures.py, files each source the registry does not hold as a `source: <id>` issue, runs
 # the gates, and opens or updates one pull request from the branch `figures/auto`. Nothing here writes to
-# Airtable, and nothing reaches main until a maintainer merges.
+# Airtable, and nothing reaches main until a maintainer merges. It runs without --prune: a figure leaves
+# observations/ only when the team marks its record `needs a fix`.
 #
 # It needs the repository secret AIRTABLE_TOKEN, a personal access token that can read records in base
 # appmNQaDGEFE9VcYh. Without it the job stops and says so, and the copy runs by hand:

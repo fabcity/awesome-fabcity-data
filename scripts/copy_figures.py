@@ -5,19 +5,24 @@
     python scripts/copy_figures.py --check                    # exit 1 when observations/ differs from Airtable
     python scripts/copy_figures.py --write [--file-sources]   # write the files; file each new source as an issue
     python scripts/copy_figures.py --plan --records rows.json # records from a file, no network
+    python scripts/copy_figures.py --write --prune            # also drop figures whose record is not in the listing
 
 A figure's home is the Airtable table `City figures`, filled through the form "Send a figure"
-(docs/airtable.md). This reads that table and nothing else, and never writes to it. observations/ is
-a mirror of it: every *.yaml there is rewritten from Airtable on each run, and a file Airtable no
-longer produces is removed, so a figure the team marks `needs a fix` leaves the public record on
-the next run. Change a figure in Airtable, never in the file.
+(docs/airtable.md). This reads that table and nothing else, and never writes to it. Change a figure
+in Airtable, never in the file.
+
+A run adds figures and replaces them (same place, reading, year and district). It takes one out of
+observations/ only when its record is in the listing marked `needs a fix`, so a figure the team
+sends back leaves the public record on the next run. A figure whose record is not in the listing
+stays where it is, so a partial --records listing cannot empty the folder. --prune is the explicit
+exception: observations/ then holds exactly what the listing produces.
 
 What goes out, and what stays in Airtable:
 
     may_publish yes, a value      `candidate`, or `live` once the team sets state `checked`
     may_publish no or ask         `held`, with no value, no source and no terms
     not_held ticked               `not-held`, with no value
-    sent_by (the person's name)   never; the file carries `sent_by_role`
+    sent_by (the person's name)   never; the file carries `sent_by_role`, or `not given`
     state `needs a fix`           nothing
 
 A record is skipped, with a reason printed, when its place is in neither places.yaml nor
@@ -86,6 +91,10 @@ def _text(v) -> str:
     return " ".join(str(v or "").split())
 
 
+def _year(v):
+    return int(v) if isinstance(v, float) and v.is_integer() else v
+
+
 def figure(rec: dict, places: set[str], fictional: set[str], readings: set[str]):
     """(place, reading, figure) for one Airtable record, or the reason it is skipped."""
     f = rec.get("fields", {})
@@ -111,9 +120,9 @@ def figure(rec: dict, places: set[str], fictional: set[str], readings: set[str])
         if CONTACT.search(_text(f.get(key))):
             return f"{who}: `{key}` looks like it holds an email address or a phone number"
 
-    year = f.get("year")
-    fig = {"year": int(year) if isinstance(year, float) and year.is_integer() else year,
-           "district": _text(f.get("district")), "sent_by_role": _text(f.get("sent_by_role")),
+    # The form does not require a role and the schema does, so an empty one is said to be empty.
+    fig = {"year": _year(f.get("year")), "district": _text(f.get("district")),
+           "sent_by_role": _text(f.get("sent_by_role")) or "not given",
            "sent_on": str(rec.get("createdTime", ""))[:10]}
     if f.get("not_held"):
         fig["state"] = "not-held"
@@ -172,11 +181,43 @@ def render(doc: dict) -> str:
     return HEADER + yaml.safe_dump(doc, sort_keys=False, allow_unicode=True, width=1000)
 
 
-def apply(docs: dict[str, dict], root: Path, write: bool) -> tuple[list[str], list[str], list[str]]:
-    """Files to add, change and remove under root/observations/; with write, make it so."""
-    want = {p: render(d) for p, d in docs.items()}
+def needs_fix(records: list[dict], places: set[str], fictional: set[str],
+              readings: set[str]) -> set[tuple[str, object, str]]:
+    """(file, year, district) of each figure in the listing the team marked `needs a fix`."""
+    out = set()
+    for rec in records:
+        f = rec.get("fields", {})
+        place = _text(f.get("place")).lower()
+        ids = f.get("reading_id") or []
+        ids = [_text(i) for i in (ids if isinstance(ids, list) else [ids])]
+        if (_text(f.get("state")).lower() == "needs a fix" and (place in places or place in fictional)
+                and len(ids) == 1 and ids[0] in readings):
+            out.add((f"observations/{place}/{ids[0]}.yaml", _year(f.get("year")), _text(f.get("district"))))
+    return out
+
+
+def _key(fig: dict) -> tuple:
+    return fig.get("year"), fig.get("district", "")
+
+
+def apply(docs: dict[str, dict], root: Path, write: bool, fixes=frozenset(),
+          prune: bool = False) -> tuple[list[str], list[str], list[str]]:
+    """Files to add, change and remove under root/observations/; with write, make it so.
+
+    Without prune, each file keeps the figures on disk that the listing does not replace, except
+    those in `fixes`. A file goes only when every figure in it is in `fixes`."""
     have = {p.relative_to(root).as_posix(): p.read_text(encoding="utf-8")
             for p in (root / "observations").rglob("*.yaml")}
+    want = {}
+    for p in sorted(set(docs) | set(have)):
+        doc = docs.get(p)
+        if p in have and not prune:
+            old = yaml.safe_load(have[p]) or {}
+            figs = {_key(f): f for f in old.get("figures", []) if (p, *_key(f)) not in fixes}
+            figs.update({_key(f): f for f in (doc or {}).get("figures", [])})
+            doc = {**(doc or old), "figures": [figs[k] for k in sorted(figs, key=lambda k: (str(k[0]), k[1]))]}
+        if doc and doc["figures"]:
+            want[p] = render(doc)
     add = sorted(set(want) - set(have))
     change = sorted(p for p in want if p in have and have[p] != want[p])
     gone = sorted(set(have) - set(want))
@@ -210,7 +251,7 @@ def source_issue(record: dict, reading: dict) -> tuple[str, str] | None:
     name = (_text(f.get("source_name")) or f"{reading['name']}, {where}")[:120]
     terms = _text(f.get("terms")) or "not stated"
     pillar, scale = (p.lower() for p in reading["cells"][0].split("|"))
-    tags = ["city-sent", f"reading-{rid}"] + ([] if is_open(terms) else ["cited-figure"])
+    tags = ["city-sent", f"reading-{rid.lower()}"] + ([] if is_open(terms) else ["cited-figure"])
     answers = {
         "name": name,
         "url": url,
@@ -220,7 +261,7 @@ def source_issue(record: dict, reading: dict) -> tuple[str, str] | None:
         "license": terms,
         "places": place,
         "tags": ", ".join(tags),
-        "by": _text(f.get("sent_by_role")),
+        "by": _text(f.get("sent_by_role")) or "role not given",
         "org": where,
         "notes": f"Filed from a figure sent through index.fab.city: {where}, reading {rid}, "
                  f"{f.get('year', 'no year given')}. Not yet verified by the Fab City team. Nobody has "
@@ -288,6 +329,8 @@ def main(argv: list[str]) -> int:
         mode.add_argument(m, action="store_true")
     ap.add_argument("--records", help="a JSON list of records in Airtable's REST shape, read instead of Airtable")
     ap.add_argument("--file-sources", action="store_true", help="open a `source:` issue for each new source")
+    ap.add_argument("--prune", action="store_true",
+                    help="also remove figures whose record is not in the listing; observations/ then matches it exactly")
     a = ap.parse_args(argv)
     if a.file_sources and not a.write:
         ap.error("--file-sources goes with --write: a plan or a check files nothing")
@@ -299,12 +342,13 @@ def main(argv: list[str]) -> int:
         records = fetch_records()
     readings = {r["id"]: r for r in yaml.safe_load((ROOT / "readings.yaml").read_text(encoding="utf-8"))["readings"]}
     docs, skips = to_observations(records, set(PLACES), set(FICTIONAL), set(readings))
-    add, change, gone = apply(docs, ROOT, write=a.write)
+    fixes = needs_fix(records, set(PLACES), set(FICTIONAL), set(readings))
+    add, change, gone = apply(docs, ROOT, write=a.write, fixes=fixes, prune=a.prune)
 
     figures = sum(len(d["figures"]) for d in docs.values())
     print(f"{len(records)} records in City figures -> {figures} figures in {len(docs)} files under observations/")
-    print(f"  {len(add)} to add, {len(change)} to change, {len(gone)} to remove, "
-          f"{len(docs) - len(add) - len(change)} already current.")
+    print(f"  {len(add)} to add, {len(change)} to change, {len(gone)} to remove"
+          f"{' (--prune)' if a.prune else ''}.")
     for sign, paths in (("+", add), ("~", change), ("-", gone)):
         for p in paths:
             print(f"      {sign} {p}")
