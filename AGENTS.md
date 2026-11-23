@@ -16,6 +16,7 @@ with your name in `assisted_by`.
 | "is this source usable for our place?", "review it" | `REVIEWING.md`, *Reviewing with an agent* | A review is an issue titled `review: <pillar>/<scale>/<slug>`, filed from the person's account with their name and yours in `Assisted by`. A workflow writes the file under `reviews/` and opens the pull request; do not write review files by hand. |
 | "this link is dead", "the licence changed", "it moved" | `CONTRIBUTING.md`, *Updating an existing entry* | Edit the one YAML file, say in `notes` what you read and when, regenerate (below). `python3 scripts/linkcheck.py` finds the rest of the drift. |
 | "does a node read this source?" | `CONTRIBUTING.md` §2b | `adapter` names the code (`core:<fn>` or `pack:<id>`) in planetai-node. Set it when the code exists on the node's `main`, or lands in the same node PR as the re-pin: planetai-node's `make lint` checks it against its pin. |
+| "send a figure for my city", "our city has data for the Index" | `docs/for-cities.md` (Spanish: `docs/para-ciudades.md`) | Send the person to `https://index.fab.city/operate/city-data?place=<slug>`. A figure goes through the form there into Airtable, and `scripts/copy_figures.py` writes `observations/` from it; never write a figure into `observations/` by hand. To look for a source, use the reading's `prompt` in `readings.yaml`, show the person what you found, and let them file it in their own name. |
 | "add our city" | `places.yaml`'s header | Places come from the Index's coverage tracker, not from this repository. Ask a maintainer; do not add a slug here. |
 
 ## Before you open a pull request
@@ -42,6 +43,9 @@ it by hand: git merges it line by line and a clean merge can still be wrong.
   terms page, never from a portal's label. If you could not read something, `notes` says so.
 - **Open means open.** Non-commercial, no-derivatives, all-rights-reserved or revocable terms do not go in as a source;
   stop and tell the person. `CONTRIBUTING.md` *When you cannot read the licence* covers the grey cases.
+  The one exception is a source that carries a city's figure for one of the readings in `readings.yaml`. Its terms go
+  in `license` as the publisher states them, the entry carries the tag `cited-figure`, and the figure is shown cited
+  (`CONTRIBUTING.md` *Cities sending their data*). Every other source stays open.
 - **`places` names only places whose data you checked in the source itself.** A national dataset is not automatically
   data for every city in that country.
 - **`pillar` and `scale` are where the source's strongest signal is**; `feeds_cells` is which Index cells a node fills

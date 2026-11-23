@@ -1,0 +1,29 @@
+# Copied from Airtable `City figures` by scripts/copy_figures.py. Change a figure there, not here.
+place: uqbar
+reading: R13
+fictional: true
+figures:
+- year: 2023
+  state: candidate
+  value: 3910000
+  unit: t/yr
+  source_name: Uqbar port and logistics authority, freight report
+  terms: Invented for the demonstration
+  sent_by_role: invented, for the demonstration
+  sent_on: '2026-11-23'
+- year: 2024
+  state: candidate
+  value: 3980000
+  unit: t/yr
+  source_name: Uqbar port and logistics authority, freight report
+  terms: Invented for the demonstration
+  sent_by_role: invented, for the demonstration
+  sent_on: '2026-11-23'
+- year: 2025
+  state: candidate
+  value: 3950000
+  unit: t/yr
+  source_name: Uqbar port and logistics authority, freight report
+  terms: Invented for the demonstration
+  sent_by_role: invented, for the demonstration
+  sent_on: '2026-11-23'

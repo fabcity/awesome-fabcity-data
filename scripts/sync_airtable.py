@@ -5,10 +5,11 @@
     python scripts/sync_airtable.py --check    # compare against Airtable; exit 1 if stale
     python scripts/sync_airtable.py --write    # upsert, keyed on slug / on name
 
-Two tables, both one-way:
+Three tables, all one-way:
 
     data/{pillar}/{scale}/{slug}.yaml  ->  Data Sources   keyed on `slug`
     REVIEWERS.md                       ->  Reviewers      keyed on `name`
+    readings.yaml                      ->  Readings       keyed on `id`, the rows the form "Send a figure" links to
 
 Both directions are deliberate. The reason is the one `wired_in_planetai` taught: a hand-typed
 claim in one system about another drifts, and by September 2026 sixteen of thirty-two flags were
@@ -31,10 +32,12 @@ carried a `wired` checkbox. CONTRIBUTING 2b made this script the gate on deletin
 Standard library only, deliberately: the repo's dependencies are pyyaml and jsonschema, and one
 more for an HTTP POST is not a trade worth making. PyYAML is already here.
 
-    AIRTABLE_API_KEY          required for --check and --write (a personal access token)
+    AIRTABLE_TOKEN            required for --check and --write (a personal access token);
+                              AIRTABLE_API_KEY, its old name, still works
     AIRTABLE_BASE             default appmNQaDGEFE9VcYh  (FCI Observations)
     AIRTABLE_TABLE            default Data Sources
     AIRTABLE_REVIEWERS_TABLE  default Reviewers
+    AIRTABLE_READINGS_TABLE   default Readings
 """
 from __future__ import annotations
 
@@ -57,10 +60,12 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 REVIEWS = ROOT / "reviews"
 REVIEWERS_MD = ROOT / "REVIEWERS.md"
+READINGS_YAML = ROOT / "readings.yaml"
 
 BASE = os.environ.get("AIRTABLE_BASE", "appmNQaDGEFE9VcYh")
 TABLE = os.environ.get("AIRTABLE_TABLE", "Data Sources")
 REVIEWERS_TABLE = os.environ.get("AIRTABLE_REVIEWERS_TABLE", "Reviewers")
+READINGS_TABLE = os.environ.get("AIRTABLE_READINGS_TABLE", "Readings")
 API = "https://api.airtable.com/v0"
 USABLE = ("usable", "usable-with-caveats")
 BATCH = 10          # Airtable's per-request record limit
@@ -177,13 +182,32 @@ def build_reviewers() -> list[dict]:
     return rows
 
 
+def build_readings() -> list[dict]:
+    """readings.yaml, one record per reading, in the fields docs/airtable.md lists for `Readings`.
+    `years` and `cells` go as text, since the table holds them as single line text."""
+    today = date.today().isoformat()
+    doc = yaml.safe_load(READINGS_YAML.read_text(encoding="utf-8")) or {}
+    return [{
+        "id": r["id"],
+        "name": r["name"],
+        "plain": " ".join(r["plain"].split()),
+        "unit": r["unit"],
+        "years": r["years"] if isinstance(r["years"], str) else ", ".join(map(str, r["years"])),
+        "held_by": r["held_by"],
+        "tests": r["tests"],
+        "cells": ", ".join(r["cells"]),
+        "last_synced": today,
+    } for r in doc.get("readings", [])]
+
+
 # ---------------------------------------------------------------- Airtable
 def _req(method: str, url: str, payload: dict | None = None) -> dict:
-    key = os.environ.get("AIRTABLE_API_KEY")
+    key = os.environ.get("AIRTABLE_TOKEN") or os.environ.get("AIRTABLE_API_KEY")
     if not key:
         sys.stderr.write(
-            "AIRTABLE_API_KEY is not set, so this cannot reach Airtable.\n"
-            "  --plan needs no key and shows exactly what would be written.\n")
+            "AIRTABLE_TOKEN is not set, so this cannot reach Airtable.\n"
+            "  sync_airtable.py --plan needs no key and shows exactly what would be written;\n"
+            "  copy_figures.py reads a listing of City figures from --records <file.json> instead.\n")
         sys.exit(2)
     body = json.dumps(payload).encode() if payload is not None else None
     req = urllib.request.Request(url, data=body, method=method, headers={
@@ -319,6 +343,7 @@ def push(table: str, rows: list[dict], key: str, argv: list[str]) -> int:
 def main(argv: list[str]) -> int:
     rows = build()
     people = build_reviewers()
+    readings = build_readings()
 
     if "--plan" in argv:
         print(f"{len(rows)} records from {DATA.relative_to(ROOT)}/ -> base {BASE}, table {TABLE!r}\n")
@@ -352,6 +377,9 @@ def main(argv: list[str]) -> int:
             print(f"      {p['name']:18} {p['org'] or '—'}")
             print(f"      {'':18} territories: {', '.join(p['territories']) or 'not declared'}"
                   f" · will not review: {p['will_not_review'] or 'not declared'}")
+        print(f"\n{len(readings)} readings from readings.yaml -> table {READINGS_TABLE!r}")
+        for r in readings:
+            print(f"      {r['id']:4} {r['name']}")
         print(f"\n  sample record:\n{json.dumps(rows[0], indent=4, ensure_ascii=False)}")
         return 0
 
@@ -370,6 +398,7 @@ def main(argv: list[str]) -> int:
 
     code = push(TABLE, rows, "slug", argv)
     code = max(code, push(REVIEWERS_TABLE, people, "name", argv))
+    code = max(code, push(READINGS_TABLE, readings, "id", argv))
 
     if "--check" not in argv and "--write" not in argv:
         print("\n  nothing written. Pass --write to upsert, or --plan to see the records offline.")

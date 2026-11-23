@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/fabcity/awesome-fabcity-data/blob/main/schema/observation.schema.json",
+  "title": "Fab City Index Observation",
+  "description": "The figures a place has sent for one reading, at observations/{place}/{reading}.yaml. scripts/validate.py also checks that the place is in places.yaml or fictional.yaml, that `fictional` matches, that the reading is in readings.yaml, and that the path matches `place` and `reading`.",
+  "type": "object",
+  "required": ["place", "reading", "figures"],
+  "additionalProperties": false,
+  "properties": {
+    "place": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "reading": { "type": "string", "pattern": "^R([1-9]|1[0-4])$" },
+    "fictional": { "type": "boolean", "description": "Required true when the place is in fictional.yaml (validate.py)." },
+    "figures": { "type": "array", "items": { "$ref": "#/$defs/figure" } }
+  },
+  "$defs": {
+    "plain": { "type": "string", "minLength": 1, "not": { "pattern": "@|\\+?\\d(?:[\\s().-]{0,2}\\d){8,}" },
+      "description": "No contact details: no @, and no phone number, which is 9 or more digits with at most two spaces, dots, dashes or brackets between two of them, as in (0361) 222-3333. A year range such as 2015-2024 has 8 digits and passes. scripts/copy_figures.py reads this pattern." },
+    "date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "figure": {
+      "type": "object",
+      "required": ["year", "state", "sent_by_role", "sent_on"],
+      "additionalProperties": false,
+      "properties": {
+        "year": { "type": "integer", "minimum": 2000, "maximum": 2100 },
+        "state": { "enum": ["candidate", "live", "held", "not-held"] },
+        "value": { "type": "number" },
+        "unit": { "$ref": "#/$defs/plain" },
+        "district": { "$ref": "#/$defs/plain" },
+        "source_url": { "type": "string", "pattern": "^https?://" },
+        "source_name": { "$ref": "#/$defs/plain" },
+        "terms": { "$ref": "#/$defs/plain", "description": "The terms the figure is shared under. Required when there is a value. Like every published text here, no email address or phone number." },
+        "sent_by_role": { "$ref": "#/$defs/plain", "description": "A role, never a name, email or phone number." },
+        "sent_on": { "$ref": "#/$defs/date" },
+        "checked_by": { "$ref": "#/$defs/plain" },
+        "checked_on": { "$ref": "#/$defs/date" }
+      },
+      "allOf": [
+        { "if": { "properties": { "state": { "enum": ["candidate", "live"] } } },
+          "then": { "required": ["value"] },
+          "else": { "not": { "required": ["value"] } } },
+        { "if": { "required": ["value"] },
+          "then": { "required": ["terms"], "anyOf": [{ "required": ["source_url"] }, { "required": ["source_name"] }] } },
+        { "if": { "properties": { "state": { "const": "live" } } },
+          "then": { "required": ["checked_by", "checked_on"] } }
+      ]
+    }
+  }
+}

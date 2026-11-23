@@ -1,0 +1,57 @@
+# Copied from Airtable `City figures` by scripts/copy_figures.py. Change a figure there, not here.
+place: uqbar
+reading: R1
+fictional: true
+figures:
+- year: 2023
+  state: candidate
+  value: 31.5
+  unit: '%'
+  source_name: Uqbar city waste department, annual report
+  terms: Invented for the demonstration
+  sent_by_role: invented, for the demonstration
+  sent_on: '2026-11-23'
+- year: 2023
+  state: candidate
+  value: 168000
+  unit: t/yr
+  source_name: Uqbar city waste department, annual report
+  terms: Invented for the demonstration
+  sent_by_role: invented, for the demonstration
+  sent_on: '2026-11-23'
+- year: 2024
+  state: candidate
+  value: 33.8
+  unit: '%'
+  source_name: Uqbar city waste department, annual report
+  terms: Invented for the demonstration
+  sent_by_role: invented, for the demonstration
+  sent_on: '2026-11-23'
+- year: 2024
+  state: candidate
+  value: 171500
+  unit: t/yr
+  source_name: Uqbar city waste department, annual report
+  terms: Invented for the demonstration
+  sent_by_role: invented, for the demonstration
+  sent_on: '2026-11-23'
+- year: 2025
+  state: live
+  value: 36.2
+  unit: '%'
+  source_name: Uqbar city waste department, annual report
+  terms: Invented for the demonstration
+  sent_by_role: invented, for the demonstration
+  sent_on: '2026-11-23'
+  checked_by: Fab City team (demonstration)
+  checked_on: '2026-11-23'
+- year: 2025
+  state: live
+  value: 169200
+  unit: t/yr
+  source_name: Uqbar city waste department, annual report
+  terms: Invented for the demonstration
+  sent_by_role: invented, for the demonstration
+  sent_on: '2026-11-23'
+  checked_by: Fab City team (demonstration)
+  checked_on: '2026-11-23'

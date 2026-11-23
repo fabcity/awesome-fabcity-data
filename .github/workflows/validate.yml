@@ -33,6 +33,11 @@ jobs:
       - name: Source-from-issue selftest
         run: python tests/test_source_from_issue.py
 
+      # The third writer: figures cities send through Airtable become observations/ files. The tests
+      # build every record in code: what is published, what is held, what is skipped and why.
+      - name: Copy-figures tests
+        run: python tests/test_copy_figures.py
+
       - name: Validate entries against schema
         run: python scripts/validate.py
 

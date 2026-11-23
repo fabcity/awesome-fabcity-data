@@ -1,0 +1,13 @@
+# Copied from Airtable `City figures` by scripts/copy_figures.py. Change a figure there, not here.
+place: uqbar
+reading: R10
+fictional: true
+figures:
+- year: 2025
+  state: candidate
+  value: 3
+  unit: powers held, of 4
+  source_name: Uqbar city hall, powers questionnaire
+  terms: Invented for the demonstration
+  sent_by_role: invented, for the demonstration
+  sent_on: '2026-11-23'

@@ -11,6 +11,11 @@ If your contribution doesn't fit that frame — e.g. you found a generic dataset
 A source belongs in this list if **all three** are true:
 
 1. **It carries an open license** (CC-BY-4.0, CC0, ODbL, MIT, public domain, or equivalent). Paywalled-tier APIs with a free quota are acceptable if the free tier is non-trivial; full paywalls are not.
+   The one exception is a source that carries a city's figure for one of the readings in
+   [`readings.yaml`](readings.yaml). Its terms need not be open. They are written in
+   `license` as the publisher states them, the entry carries the tag `cited-figure`, and the figure
+   is shown cited. Every other source keeps this criterion unchanged. See
+   [Cities sending their data](#cities-sending-their-data).
 2. **It maps cleanly onto a Fab City pillar × scale.** If you can't pick a pillar (environmental / social / economic / governance) and a scale (planet / bioregion / region / city / community) without contortion, the source probably doesn't fit our framing.
 3. **Somebody has read it, or something reads it — and the entry says which.** This is two states, not
    one, and `status` is where the difference lives.
@@ -78,6 +83,29 @@ Two traps, both of which this list has walked into:
 Entries added before this convention (September 2026) carry a descriptive sentence in `license:`
 instead — `"No licence published — …"`. Both say the same thing; new entries use the short string,
 because it is greppable.
+
+## Cities sending their data
+
+Any Fab City place can send data for the fourteen readings in [`readings.yaml`](readings.yaml) from
+[index.fab.city/operate/city-data](https://index.fab.city/operate/city-data). The guide for the
+people doing it is [`docs/for-cities.md`](docs/for-cities.md), and in Spanish
+[`docs/para-ciudades.md`](docs/para-ciudades.md).
+
+A source sent from that page is filed as a `candidate`, tagged `city-sent` and `reading-r<n>`. It
+arrives unverified, and its notes say so: nobody has opened it or read its terms yet. It counts in
+the place's coverage from the moment its pull request merges, so whoever merges it opens the source
+and reads its terms first. A figure goes through the Airtable form "Send a figure", and
+`scripts/copy_figures.py` copies it one way into `observations/<place>/<reading>.yaml`. It is
+`candidate` when it arrives and `live` once the Fab City team has checked it. A figure the city has
+not agreed to publish is written as `held`. An answer that nobody holds it is written as `not-held`
+only when the city said yes to publishing that answer; with `ask` or `no` it stays `held`. Neither
+carries a value. Change a figure in Airtable, never in `observations/`.
+
+A source that carries a city's figure keeps its terms even when they are not open, under the
+exception to criterion 1. The terms go in `license`, the entry carries the tag `cited-figure`, and
+the figure is shown with its source named and its terms beside it. `copy_figures.py` adds the tag
+itself when the terms are not a known open licence; a source filed by hand or by an agent needs it
+added. [`docs/uqbar.md`](docs/uqbar.md) shows the whole path on an invented city.
 
 ## Filing a source with an agent
 

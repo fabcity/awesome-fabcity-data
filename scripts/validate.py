@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Validate this repository's three kinds of file, and then the one join between them.
+Validate this repository's four kinds of file, and then the joins between them.
 
 Run from repo root:
     python scripts/validate.py
@@ -9,6 +9,8 @@ Run from repo root:
     pass 1  data/**/*.yaml      dataset entries, against schema/dataset.schema.json
     pass 2  reviews/**/*.yaml   source reviews, against schema/review.schema.json
     pass 3  cells/*.yaml        Index cells,    against schema/cell.schema.json
+    pass 4  readings.yaml       the fourteen readings asked of a city, against schema/reading.schema.json
+    pass 5  observations/**     the figures a place sent for a reading, against schema/observation.schema.json
     join    every `status: live` entry must carry a usable review or an `adapter`
 
 The join is the point of the whole thing, and today it is a warning. 189 of the 203 live entries
@@ -48,6 +50,11 @@ ROOT = Path(__file__).resolve().parent.parent
 SCHEMA_PATH = ROOT / "schema" / "dataset.schema.json"
 REVIEW_SCHEMA_PATH = ROOT / "schema" / "review.schema.json"
 CELL_SCHEMA_PATH = ROOT / "schema" / "cell.schema.json"
+READING_SCHEMA_PATH = ROOT / "schema" / "reading.schema.json"
+OBSERVATION_SCHEMA_PATH = ROOT / "schema" / "observation.schema.json"
+READINGS_PATH = ROOT / "readings.yaml"
+FICTIONAL_PATH = ROOT / "fictional.yaml"
+OBSERVATIONS_DIR = ROOT / "observations"
 DATA_DIR = ROOT / "data"
 REVIEWS_DIR = ROOT / "reviews"
 CELLS_DIR = ROOT / "cells"
@@ -124,6 +131,11 @@ KNOWN_PLACES = ({p["slug"] for p in (yaml.safe_load(PLACES_PATH.read_text(encodi
                 if PLACES_PATH.is_file() else set())
 
 
+# Invented places (fictional.yaml). They are never real places: no source may name one.
+FICTIONAL = ({p["slug"] for p in (yaml.safe_load(FICTIONAL_PATH.read_text(encoding="utf-8")) or {}).get("places", [])}
+             if FICTIONAL_PATH.is_file() else set())
+
+
 def pass_entries() -> tuple[int, dict]:
     """Pass 1: data/**/*.yaml. Returns (failures, {registry id: entry})."""
     validator = _validator(SCHEMA_PATH)
@@ -171,7 +183,11 @@ def pass_entries() -> tuple[int, dict]:
         seen_slugs[key] = rel
 
         # `places` must name places the Index tracks (places.yaml), or the site counts nothing for them.
-        unknown = [p for p in entry.get("places") or [] if p not in KNOWN_PLACES]
+        for p in entry.get("places") or []:
+            if p in FICTIONAL:
+                print(f"[FAIL] {rel}: {p} is fictional and cannot be a source's place")
+                failures += 1
+        unknown = [p for p in entry.get("places") or [] if p not in KNOWN_PLACES and p not in FICTIONAL]
         if unknown:
             print(f"[FAIL] {rel}: places {unknown} are not in places.yaml")
             failures += 1
@@ -264,6 +280,96 @@ def pass_cells() -> tuple[int, dict]:
     print(f"\n{len(files)} cell{'' if len(files) == 1 else 's'} checked "
           f"of the {len(PILLARS) * len(SCALES)} in the matrix.")
     return failures, cells
+
+
+READINGS_ASKED = 14
+
+
+def pass_readings() -> tuple[int, dict[str, dict]]:
+    """Pass 4: readings.yaml. Returns (failures, {reading id: reading}).
+
+    The request a city answers is fourteen readings, R1 to R14, and a figure is filed against one
+    by id, so an id that repeats sends two cities' answers to one place. Every `cells` value has to
+    name a file in cells/ (pass 3 holds filename and key together, so the filenames are the keys).
+    The readings are part of the registry, so a missing readings.yaml is a failure."""
+    if not READINGS_PATH.is_file():
+        print(f"[FAIL] {READINGS_PATH.name}: not found, and the registry needs its {READINGS_ASKED} readings")
+        return 1, {}
+    rel = READINGS_PATH.relative_to(ROOT)
+    doc, why = _read(READINGS_PATH, rel)
+    if why or not isinstance(doc.get("readings"), list):
+        print(f"[FAIL] {rel}: {why or 'needs a `readings:` list'}")
+        return 1, {}
+
+    validator = _validator(READING_SCHEMA_PATH)
+    known_cells = {"|".join(w.capitalize() for w in p.stem.split("-")) for p in CELLS_DIR.glob("*.yaml")}
+    failures, readings, seen = 0, {}, set()
+    for i, reading in enumerate(doc["readings"]):
+        if not isinstance(reading, dict):
+            print(f"[FAIL] {rel} :: readings.{i} — must be a mapping")
+            failures += 1
+            continue
+        if _schema_errors(validator, reading, f"{rel} :: readings.{i}"):
+            failures += 1
+            continue
+        rid = reading["id"]
+        if rid in seen:
+            print(f"[FAIL] {rel}: duplicate reading {rid}")
+            failures += 1
+            continue
+        seen.add(rid)
+        unknown = [c for c in reading["cells"] if c not in known_cells]
+        if unknown:
+            print(f"[FAIL] {rel}: {rid} names cells {unknown}, and cells/ has no such cell")
+            failures += 1
+            continue
+        readings[rid] = reading
+        print(f"[ ok ] {rel} :: {rid} — {reading['tests']}, {', '.join(reading['cells'])}")
+
+    if len(doc["readings"]) != READINGS_ASKED:
+        print(f"[FAIL] {rel}: has {len(doc['readings'])} readings, and the Index asks for {READINGS_ASKED}")
+        failures += 1
+    print(f"\n{len(readings)} of {READINGS_ASKED} readings checked.")
+    return failures, readings
+
+
+def pass_observations(readings: dict[str, dict]) -> int:
+    """Pass 5: observations/{place}/{reading}.yaml, the figures a place has sent for one reading.
+    The place must be in places.yaml or fictional.yaml, `fictional: true` must be there exactly
+    when it is in fictional.yaml, the reading must be in readings.yaml, and the path must say the
+    same place and reading the file does. Returns the number of failing files."""
+    validator = _validator(OBSERVATION_SCHEMA_PATH)
+    failures = n = 0
+    for path in sorted(OBSERVATIONS_DIR.rglob("*.yaml")):
+        rel = path.relative_to(ROOT)
+        n += 1
+        doc, why = _read(path, rel)
+        if why:
+            print(f"[FAIL] {rel}: {why}")
+            failures += 1
+            continue
+        if _schema_errors(validator, doc, rel):
+            failures += 1
+            continue
+        place, reading = doc["place"], doc["reading"]
+        problems = []
+        if place not in KNOWN_PLACES and place not in FICTIONAL:
+            problems.append(f"unknown place {place}: it is in neither places.yaml nor fictional.yaml")
+        elif (place in FICTIONAL) != (doc.get("fictional") is True):
+            problems.append(f"{place} {'is' if place in FICTIONAL else 'is not'} in fictional.yaml, "
+                            f"so `fictional` must be {'true' if place in FICTIONAL else 'absent or false'}")
+        if reading not in readings:
+            problems.append(f"reading {reading} is not in readings.yaml")
+        if path.relative_to(OBSERVATIONS_DIR).as_posix() != f"{place}/{reading}.yaml":
+            problems.append(f"path must be observations/{place}/{reading}.yaml")
+        for m in problems:
+            print(f"[FAIL] {rel}: {m}")
+        if problems:
+            failures += 1
+        else:
+            print(f"[ ok ] {rel} :: {len(doc['figures'])} figure(s)")
+    print(f"\n{n - failures} of {n} observation files checked.")
+    return failures
 
 
 def cell_join(entries: dict, cells: dict, strict: bool) -> int:
@@ -379,6 +485,13 @@ def main(argv: list[str]) -> int:
     f3, cells = pass_cells()
     failures += f3
 
+    print("\n== pass 4: readings.yaml — what the Index asks of a city")
+    f4, readings = pass_readings()
+    failures += f4
+
+    print("\n== pass 5: observations/ — what places have sent")
+    failures += pass_observations(readings)
+
     print("\n== join: does `live` mean anything on each entry that claims it")
     failures += join(entries, reviews, strict)
 
@@ -389,7 +502,7 @@ def main(argv: list[str]) -> int:
         print(f"\n{failures} file(s) failed validation.", file=sys.stderr)
         return 1
     print(f"\n{len(entries)} entries, {sum(len(v) for v in reviews.values())} reviews, "
-          f"{len(sorted(CELLS_DIR.glob('*.yaml')))} cells: all passed.")
+          f"{len(sorted(CELLS_DIR.glob('*.yaml')))} cells, {len(readings)} readings: all passed.")
     return 0
 
 

@@ -1,0 +1,7 @@
+# Invented places, kept apart from places.yaml on purpose: a simulated city must never be counted
+# as one of the real places the Index tracks. Observations for them carry `fictional: true`, and an
+# entry in data/ may not name them in `places`.
+places:
+  - slug: uqbar
+    name: "Uqbar"
+    note: "An invented city. Every figure for it is made up, to show how the Index reads a city."
