@@ -1,0 +1,93 @@
+# Where the data track lives in Airtable
+
+Base `appmNQaDGEFE9VcYh` ("FCI Observations", Fab City Foundation workspace). Made 23 November 2026. No token is kept here.
+
+Existing tables, left as they were: `Observations` (`tbl8VZoGMr6kdE4QX`, 0 records), `Data Sources`, `Reviewers`, `FCI Coverage Tracker` (`tbl9tfpEsxoxQAh0w`). The only change to the tracker is a reverse link field `Cohort` (`fldMwBgyzM8e6fmFh`).
+
+## Readings (`tblQTZ5xv3Cx1RXBm`)
+
+Copied one way from `readings.yaml` by the Task 4 sync. Only the row `R1` exists so far (`recXEOmoelK9Vtm20`, id and name only), made to test the form.
+
+| field | id | type |
+|---|---|---|
+| id (primary) | fldeWFhpmIbqQkdjr | single line text |
+| name | fldDfi1JudpcaGLBh | single line text |
+| plain | fldIlZadaUAuEaMob | long text |
+| unit | fldu3Mo5mTKf43cmq | single line text |
+| years | fld9EewRpKfxa2ahE | single line text |
+| held_by | fldqKJnKOo8Qa78v0 | single line text |
+| tests | fldZNRiUbghqBXArK | single line text |
+| cells | fldCFfGqjMSBY0qbu | single line text |
+| last_synced | fld1l51sgtwBoe2Nx | date |
+| City figures (reverse link) | fldDGM2GYlKpCwp6A | link |
+
+## City figures (`tblgsmFzzFYy0iCbC`)
+
+| field | id | type |
+|---|---|---|
+| place (primary) | fldYu2PYEOJfMXTcW | single line text |
+| reading | fldjIuwBpGS0CGzDV | link to Readings |
+| year | fldQMCOKb45uHo0Zx | number, 0 decimals |
+| value | fldzf6ud2USILM7Sm | number, 4 decimals |
+| unit | fldBASPkx0l99UI9b | single line text |
+| district | fldBUmgLkfQvkYD6i | single line text |
+| source_url | fldnVgM4SbFf6L9j7 | url |
+| source_name | fldWwZcOJPSSzU95q | single line text |
+| terms | fldqwDMvQX1Vf3IXT | long text |
+| not_held | fldMjrXBz04NwcHfm | checkbox |
+| sent_by | fld0uT1cAzMeXcts0 | single line text |
+| sent_by_role | fldf66ckr3ro5U7Qv | single line text |
+| may_publish | fldBeBOpR3znY6liQ | single select: yes, no, ask |
+| state | fldtmxmNwwmFgr4mX | single select: sent, needs a fix, copied, checked |
+| team_note | fld24Kk9UKKN53Isz | long text |
+| checked_by | fldP7Zz0m3i3yZkLc | single line text |
+| checked_on | fldjLVF1zZN6B81Fs | date |
+| copied_on | fldfPQcrpYa0tQXff | date |
+| fictional | fldFw3FQhjjZhxXjg | checkbox |
+| reading_id | fldhPl2VRiyugO4eJ | lookup of Readings.id |
+
+`state` has no default, so a row from the form arrives with `state` empty. Task 4 should treat empty as `sent`.
+
+## Cohort (`tblefySK5wVdZWnHu`)
+
+| field | id | type |
+|---|---|---|
+| place (primary) | fld3uvJZYQcOeaXPA | single line text, the place slug |
+| name | fldV21oNP6IQAoM9h | single line text |
+| followed | fldFv97quuX8ysidg | single select: core, optional |
+| lead_name | fldrwVPBTDoztko9d | single line text |
+| lead_role | fldtqL9zSR5KOtvhS | single line text |
+| city_rep_name | fldUYHphOO25hflbD | single line text |
+| city_rep_role | fldFyNqDvN2jCVPzo | single line text |
+| request_sent_on | fldHzTB7iVP8uvb0k | date |
+| next_follow_up | fld786iSF9U9ZnJaF | date |
+| follow_up_by | fldtPmeWx0xiWXAEd | single line text, `Lars` on all fifteen rows |
+| FCI Coverage Tracker | fldoP3DT7CXIrFXTe | link to the tracker row with the same Locality |
+
+The connector cannot set a default value, so `follow_up_by` is typed on each row; a new row needs it typed. Fifteen rows: ten core (barcelona, bali, boston, charlotte, santiago-de-chile, hamburg, montreal, paris, amsterdam, oulu) and five optional (kamakura, seoul, shenzhen, goa, kerala). Every one is linked to its tracker row. No contact details are held.
+
+## The form "Send a figure"
+
+Page `pagsz9HlBft5pJIP8`, a standalone form on `City figures`, published.
+
+- Form address: `https://airtable.com/appmNQaDGEFE9VcYh/pagsz9HlBft5pJIP8/form`
+- Share settings: `https://airtable.com/appmNQaDGEFE9VcYh/pagsz9HlBft5pJIP8/form?share=show`
+- Editor: `https://airtable.com/appmNQaDGEFE9VcYh/pagsz9HlBft5pJIP8/edit`
+
+It asks for place, reading, year, value, unit, district, source link, source name, terms of use, "my city does not hold this figure", name, role and "may we publish it". Place, reading, name and "may we publish it" are required. The internal fields (`state`, `team_note`, `checked_by`, `checked_on`, `copied_on`, `fictional`) are not on the form.
+
+### Open point: public access and prefill, not yet confirmed
+
+When I opened the address above in a browser with no Airtable session it went to the Airtable sign-in page, so the form is not yet open to anyone with the link. The connector can publish a form but cannot turn on "anyone with the link can fill in"; that is a switch in the share settings page above, and someone signed in has to flip it.
+
+For the same reason I could not test prefill. The pattern Airtable documents for shared forms, to be tried once the form is public:
+
+```
+https://airtable.com/appmNQaDGEFE9VcYh/pagsz9HlBft5pJIP8/form?prefill_Place=uqbar&prefill_Reading=R1
+```
+
+Add `&hide_Place=true` or `&hide_Reading=true` to hide a field. The names after `prefill_` are the labels on the form (`Place`, `Reading`), with spaces written as `+`. A linked-record field is normally prefilled with the linked row's primary field, here `R1`, which is the `id` of the Readings row. Task 7 depends on this, so it needs a real test before it is built: open the address, check that Place reads `uqbar` and Reading reads `R1`. If the page-style form refuses the parameters, the fallback is a form made in Airtable's older Forms view of the grid, which does accept them.
+
+## The team view
+
+Grid view `viw66ZB5HWVZc3FEk` on `City figures`, named "By place and reading", grouped by `place` then `reading`, both ascending. It does not put followed places first, because `City figures` has no field that says whether a place is followed. Task 4 can add a lookup from `Cohort.followed` if that matters.
