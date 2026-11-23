@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Validate this repository's three kinds of file, and then the one join between them.
+Validate this repository's four kinds of file, and then the joins between them.
 
 Run from repo root:
     python scripts/validate.py
@@ -9,6 +9,7 @@ Run from repo root:
     pass 1  data/**/*.yaml      dataset entries, against schema/dataset.schema.json
     pass 2  reviews/**/*.yaml   source reviews, against schema/review.schema.json
     pass 3  cells/*.yaml        Index cells,    against schema/cell.schema.json
+    pass 4  readings.yaml       the fourteen readings asked of a city, against schema/reading.schema.json
     join    every `status: live` entry must carry a usable review or an `adapter`
 
 The join is the point of the whole thing, and today it is a warning. 189 of the 203 live entries
@@ -48,6 +49,8 @@ ROOT = Path(__file__).resolve().parent.parent
 SCHEMA_PATH = ROOT / "schema" / "dataset.schema.json"
 REVIEW_SCHEMA_PATH = ROOT / "schema" / "review.schema.json"
 CELL_SCHEMA_PATH = ROOT / "schema" / "cell.schema.json"
+READING_SCHEMA_PATH = ROOT / "schema" / "reading.schema.json"
+READINGS_PATH = ROOT / "readings.yaml"
 DATA_DIR = ROOT / "data"
 REVIEWS_DIR = ROOT / "reviews"
 CELLS_DIR = ROOT / "cells"
@@ -266,6 +269,57 @@ def pass_cells() -> tuple[int, dict]:
     return failures, cells
 
 
+READINGS_ASKED = 14
+
+
+def pass_readings() -> tuple[int, dict[str, dict]]:
+    """Pass 4: readings.yaml. Returns (failures, {reading id: reading}).
+
+    The request a city answers is fourteen readings, R1 to R14, and a figure is filed against one
+    by id, so an id that repeats sends two cities' answers to one place. Every `cells` value has to
+    name a file in cells/ (pass 3 holds filename and key together, so the filenames are the keys).
+    No readings.yaml in a tree means nothing to check here; build_index.py fails without one."""
+    if not READINGS_PATH.is_file():
+        print("[warn] no readings.yaml, so no readings checked")
+        return 0, {}
+    rel = READINGS_PATH.relative_to(ROOT)
+    doc, why = _read(READINGS_PATH, rel)
+    if why or not isinstance(doc.get("readings"), list):
+        print(f"[FAIL] {rel}: {why or 'needs a `readings:` list'}")
+        return 1, {}
+
+    validator = _validator(READING_SCHEMA_PATH)
+    known_cells = {"|".join(w.capitalize() for w in p.stem.split("-")) for p in CELLS_DIR.glob("*.yaml")}
+    failures, readings, seen = 0, {}, set()
+    for i, reading in enumerate(doc["readings"]):
+        if not isinstance(reading, dict):
+            print(f"[FAIL] {rel} :: readings.{i} — must be a mapping")
+            failures += 1
+            continue
+        if _schema_errors(validator, reading, f"{rel} :: readings.{i}"):
+            failures += 1
+            continue
+        rid = reading["id"]
+        if rid in seen:
+            print(f"[FAIL] {rel}: duplicate reading {rid}")
+            failures += 1
+            continue
+        seen.add(rid)
+        unknown = [c for c in reading["cells"] if c not in known_cells]
+        if unknown:
+            print(f"[FAIL] {rel}: {rid} names cells {unknown}, and cells/ has no such cell")
+            failures += 1
+            continue
+        readings[rid] = reading
+        print(f"[ ok ] {rel} :: {rid} — {reading['tests']}, {', '.join(reading['cells'])}")
+
+    if len(doc["readings"]) != READINGS_ASKED:
+        print(f"[FAIL] {rel}: has {len(doc['readings'])} readings, and the Index asks for {READINGS_ASKED}")
+        failures += 1
+    print(f"\n{len(readings)} of {READINGS_ASKED} readings checked.")
+    return failures, readings
+
+
 def cell_join(entries: dict, cells: dict, strict: bool) -> int:
     """Does the map close? `feeds_cells` and `cells/` are two halves of one claim — the entry says
     it can fill a cell, the cell says what filling it means — and nothing has been checking that
@@ -379,6 +433,10 @@ def main(argv: list[str]) -> int:
     f3, cells = pass_cells()
     failures += f3
 
+    print("\n== pass 4: readings.yaml — what the Index asks of a city")
+    f4, readings = pass_readings()
+    failures += f4
+
     print("\n== join: does `live` mean anything on each entry that claims it")
     failures += join(entries, reviews, strict)
 
@@ -389,7 +447,7 @@ def main(argv: list[str]) -> int:
         print(f"\n{failures} file(s) failed validation.", file=sys.stderr)
         return 1
     print(f"\n{len(entries)} entries, {sum(len(v) for v in reviews.values())} reviews, "
-          f"{len(sorted(CELLS_DIR.glob('*.yaml')))} cells: all passed.")
+          f"{len(sorted(CELLS_DIR.glob('*.yaml')))} cells, {len(readings)} readings: all passed.")
     return 0
 
 

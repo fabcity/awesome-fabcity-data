@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/fabcity/awesome-fabcity-data/blob/main/schema/reading.schema.json",
+  "title": "Fab City Index Reading",
+  "description": "One of the fourteen readings the Index asks of a city, as the position paper of November 2026 defines them. They live as a list under `readings:` in readings.yaml; scripts/validate.py checks each one against this schema, that no id repeats, that there are exactly fourteen, and that every `cells` value names a file in cells/.",
+  "type": "object",
+  "required": ["id", "name", "plain", "why", "unit", "years", "held_by", "tests", "cells", "not_held", "prompt", "es"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^R([1-9]|1[0-4])$",
+      "description": "R1 to R14. The number is the reading's place in the request and never changes once a city has answered it."
+    },
+    "name": { "type": "string", "minLength": 3, "description": "The reading as the design's request table names it." },
+    "plain": { "type": "string", "minLength": 20, "maxLength": 400, "description": "One sentence a city lead understands: what we ask for." },
+    "why": { "type": "string", "minLength": 20, "maxLength": 400, "description": "One sentence from the position paper on why the Index asks for it." },
+    "unit": { "type": "string", "minLength": 1, "description": "The unit or units the figure is sent in, e.g. 't/yr and %'." },
+    "years": {
+      "description": "The years asked for, or `latest` where the reading asks for the latest years a city holds.",
+      "oneOf": [
+        { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "integer", "minimum": 2000, "maximum": 2100 } },
+        { "const": "latest" }
+      ]
+    },
+    "held_by": { "type": "string", "minLength": 3, "description": "Who in a city usually holds it." },
+    "tests": {
+      "enum": ["PITO", "DIDO", "rho", "floor", "ceiling"],
+      "description": "Which part of the Index the reading tests: a term of FCI = DIDO · (1 − PITO) · ρ, or the floor or the ceiling read beside the score."
+    },
+    "cells": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^(Environmental|Social|Economic|Governance)\\|(Planet|Bioregion|Region|City|Community)$"
+      },
+      "description": "The Index cells the reading belongs to, in the spelling of cells/*.yaml and `feeds_cells`."
+    },
+    "not_held": { "type": "string", "minLength": 20, "maxLength": 400, "description": "What to send when the city does not hold it." },
+    "prompt": {
+      "type": "string",
+      "description": "The brief a person gives an AI agent to look for this reading. The city-data page fills its five placeholders, so it carries all five and no other braces.",
+      "allOf": [
+        { "pattern": "\\{place_name\\}" },
+        { "pattern": "\\{place_slug\\}" },
+        { "pattern": "\\{years\\}" },
+        { "pattern": "\\{reading_name\\}" },
+        { "pattern": "\\{unit\\}" },
+        { "pattern": "^([^{}]|\\{(place_name|place_slug|years|reading_name|unit)\\})*$" }
+      ]
+    },
+    "es": {
+      "type": "object",
+      "required": ["name", "plain", "why", "not_held"],
+      "additionalProperties": false,
+      "description": "The Spanish copies of the four texts a person reads.",
+      "properties": {
+        "name": { "type": "string", "minLength": 3 },
+        "plain": { "type": "string", "minLength": 20, "maxLength": 400 },
+        "why": { "type": "string", "minLength": 20, "maxLength": 400 },
+        "not_held": { "type": "string", "minLength": 20, "maxLength": 400 }
+      }
+    }
+  }
+}

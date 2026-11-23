@@ -41,6 +41,7 @@ SCHEMA = json.loads((ROOT / "schema" / "dataset.schema.json").read_text(encoding
 V = _v("dataset")
 VR = _v("review")
 VC = _v("cell")
+VRD = _v("reading")
 
 # A minimal entry that satisfies every `required` key, so each case below tests exactly one thing.
 BASE = yaml.safe_load("""
@@ -180,6 +181,46 @@ CELL_CASES = [
     ("cell an invented key",            {"cells": "Environmental|City"}, False),
 ]
 
+# A minimal reading, one of the fourteen the Index asks of a city (readings.yaml). The prompt is a
+# template the city-data page fills, so it must carry every placeholder and no other braces.
+READING = yaml.safe_load("""
+id: R1
+name: Waste generated, and the share collected separately
+plain: How many tonnes of waste the city produced each year, and the share collected separately.
+why: The waste a city sends out is one of the two figures that show what passes straight through it.
+unit: t/yr and %
+years: [2023, 2024, 2025]
+held_by: City waste department
+tests: PITO
+cells: [Environmental|City]
+not_held: Tell us who you asked and what they said.
+prompt: Find {reading_name} for {place_name} ({place_slug}), for {years}, in {unit}.
+es:
+  name: Residuos generados, y la parte recogida por separado
+  plain: Cuántas toneladas de residuos produjo la ciudad cada año, y qué parte se recogió por separado.
+  why: Los residuos que salen son una de las dos cifras que muestran lo que atraviesa la ciudad.
+  not_held: Cuéntanos a quién preguntaste y qué te dijeron.
+""")
+
+READING_CASES = [
+    ("reading minimal valid",           {}, True),
+    ("reading R14",                     {"id": "R14"}, True),
+    ("reading years latest",            {"years": "latest"}, True),
+    ("reading id R15",                  {"id": "R15"}, False),
+    ("reading id R0",                   {"id": "R0"}, False),
+    ("reading tests score",             {"tests": "score"}, False),
+    ("reading cells Economic|Town",     {"cells": ["Economic|Town"]}, False),
+    ("reading no cells",                {"cells": []}, False),
+    ("reading years recent",            {"years": "recent"}, False),
+    ("reading years as strings",        {"years": ["2023"]}, False),
+    ("reading prompt without {place_name}",
+     {"prompt": "Find {reading_name} for {place_slug}, for {years}, in {unit}."}, False),
+    ("reading prompt with an unknown placeholder",
+     {"prompt": "Find {reading_name} for {place_name} ({place_slug}) in {city}, for {years}, in {unit}."}, False),
+    ("reading es without not_held",     {"es": {k: v for k, v in READING["es"].items() if k != "not_held"}}, False),
+    ("reading an invented key",         {"source": "x"}, False),
+]
+
 
 # --- the rules that are in no schema ----------------------------------------------------------
 # `candidate` requires `notes`, and a cell's filename must match its `cell` key. Both live in
@@ -246,6 +287,10 @@ TREE_CASES = [
     ("tree: review of an entry that does not exist",
      {"reviews/environmental/city/temp-tree-source/2026-09-18-a-reviewer.yaml": GOOD_REVIEW,
       "data/environmental/city/something-else.yaml": CANDIDATE}, False, "has no file at data/"),
+    ("tree: two readings share an id",
+     {ENTRY_AT: CANDIDATE,
+      "readings.yaml": yaml.safe_dump({"readings": [{**READING, "id": "R3"}, {**READING, "id": "R3"}]},
+                                      allow_unicode=True)}, False, "duplicate reading R3"),
 ]
 
 
@@ -300,6 +345,9 @@ def main() -> int:
     print()
     bad += check(VC, CELL, CELL_CASES)
 
+    print()
+    bad += check(VRD, READING, READING_CASES)
+
     # The act_kind conditional produces jsonschema's worst error message; validate.py rewrites it.
     print()
     err = next(e for e in V.iter_errors({**BASE, "act_kind": "facility"}))
@@ -335,7 +383,7 @@ def main() -> int:
         else:
             print(f"[ ok ] {label}")
 
-    total = len(CASES) + len(REVIEW_CASES) + len(CELL_CASES) + len(TREE_CASES) + 2
+    total = len(CASES) + len(REVIEW_CASES) + len(CELL_CASES) + len(READING_CASES) + len(TREE_CASES) + 2
     print(f"\n{total} case(s), {bad} failed.")
     return 1 if bad else 0
 
