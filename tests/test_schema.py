@@ -235,6 +235,14 @@ OBS_CASES = [
     ("observation sent_by_role with @",    fig(sent_by_role="lead@example.org"), False),
     ("observation sent_by_role a phone",   fig(sent_by_role="call +34 600 123 456"), False),
     ("observation checked_by with @",      fig(state="live", checked_by="a@b.org", checked_on="2026-11-22"), False),
+    # Every free-text field that is published refuses contact details, not only the role.
+    ("observation terms with @",           fig(terms="Reuse allowed; ask ana@city.go.id"), False),
+    ("observation terms a phone",          fig(terms="Reuse allowed; call +62 812 3456 7890"), False),
+    ("observation source_name a phone",    fig(source_name="Waste office, call +62 361 222 333"), False),
+    ("observation district with @",        fig(district="North, ana@city.go.id"), False),
+    ("observation unit a phone",           fig(unit="+62 812 3456 7890"), False),
+    ("observation terms a licence name",   fig(terms="Open Government Licence v3.0"), True),
+    ("observation district plain",         fig(district="Denpasar Selatan"), True),
     ("observation reading R15",            {"reading": "R15"}, False),
 ]
 
