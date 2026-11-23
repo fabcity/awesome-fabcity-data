@@ -10,7 +10,7 @@ license: "No named licence. US federal work, no domestic copyright; the Bureau n
 api: https://www2.census.gov/programs-surveys/cbp/datasets/2023/cbp23co.zip
 pilot_relevance: []
 places: [charlotte]
-tags: [establishments, employment, manufacturing, naics, county, united-states]
+tags: [establishments, employment, manufacturing, naics, county, united-states, reading-r6]
 auth: none
 feeds_cells: [Economic|Region]
 added: 2026-11-05

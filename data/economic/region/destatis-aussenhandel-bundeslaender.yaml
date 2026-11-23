@@ -11,7 +11,7 @@ license: "Destatis: reproduction and distribution, also in extracts, permitted w
 api: null
 pilot_relevance: []
 places: [hamburg]
-tags: [trade, imports, exports, value, lander, germany, hamburg, xlsx]
+tags: [trade, imports, exports, value, lander, germany, hamburg, xlsx, reading-r5]
 added: 2026-09-26
 auth: none
 feeds_cells: [Economic|Region]

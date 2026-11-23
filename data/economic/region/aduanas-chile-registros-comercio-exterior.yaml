@@ -11,7 +11,7 @@ license: ODC-By-1.0 (2019+ and most imports); ODbL-1.0 for some 2009–2018 year
 api: https://datos.gob.cl/api/3/action/package_show?id=registro-de-exportacion-2026
 pilot_relevance: [santiago]
 places: [santiago-de-chile]
-tags: [trade, imports, exports, ports, customs, material-flow, tonnes, chile]
+tags: [trade, imports, exports, ports, customs, material-flow, tonnes, chile, reading-r5]
 added: 2026-09-26
 auth: none
 feeds_cells: [Economic|Bioregion]

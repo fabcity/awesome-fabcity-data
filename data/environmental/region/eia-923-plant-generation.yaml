@@ -11,7 +11,7 @@ license: "US public domain: EIA states US government publications are in the pub
 api: https://www.eia.gov/electricity/data/eia923/xls/f923_2025.zip
 pilot_relevance: []
 places: [charlotte]
-tags: [electricity, renewable-energy, power-plants, united-states, eia]
+tags: [electricity, renewable-energy, power-plants, united-states, eia, reading-r2]
 auth: none
 feeds_cells: [Environmental|Region]
 added: 2026-11-05

@@ -11,7 +11,7 @@ license: CC-BY-4.0
 api: null
 pilot_relevance: [global]
 places: [charlotte]
-tags: [land-cover, forest-cover, raster-10m, cog, sentinel, geospatial]
+tags: [land-cover, forest-cover, raster-10m, cog, sentinel, geospatial, reading-r12]
 added: 2026-09-09
 feeds_cells: [Environmental|Bioregion]
 upstream_listed_in: []

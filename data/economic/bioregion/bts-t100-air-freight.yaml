@@ -11,7 +11,7 @@ license: "US public domain: data.bts.gov, BTS's own catalogue, lists it as Publi
 api: https://data.bts.gov/resource/r495-tyji.json
 pilot_relevance: []
 places: [charlotte]
-tags: [air-freight, airports, trade-flows, united-states, bts]
+tags: [air-freight, airports, trade-flows, united-states, bts, reading-r13]
 auth: none
 feeds_cells: [Economic|Bioregion]
 added: 2026-11-05

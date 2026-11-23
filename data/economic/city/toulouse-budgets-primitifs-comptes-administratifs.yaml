@@ -11,7 +11,7 @@ license: Licence Ouverte v2.0 (Etalab)
 api: https://data.toulouse-metropole.fr/api/explore/v2.1/catalog/datasets?where=theme%3D%22Finance%22
 pilot_relevance: []
 places: [toulouse]
-tags: [public-budget, municipal-finance, budget-execution, open-budget, france]
+tags: [public-budget, municipal-finance, budget-execution, open-budget, france, reading-r9]
 added: 2026-09-09
 feeds_cells: [Economic|City]
 upstream_listed_in: []

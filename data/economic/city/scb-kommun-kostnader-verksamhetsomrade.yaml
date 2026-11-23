@@ -11,7 +11,7 @@ license: CC0-1.0
 api: https://api.scb.se/OV0104/v1/doris/sv/ssd/OE/OE0107/OE0107B/KostnDR
 pilot_relevance: []
 places: [veberod]
-tags: [budget, expenditure-by-function, municipal-finance, sweden, pxweb, scb]
+tags: [budget, expenditure-by-function, municipal-finance, sweden, pxweb, scb, reading-r9]
 added: 2026-09-11
 feeds_cells: [Economic|City]
 updated: 2026-09-11

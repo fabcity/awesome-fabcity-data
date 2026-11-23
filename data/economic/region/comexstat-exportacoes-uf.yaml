@@ -11,7 +11,7 @@ license: "Open government data under Decreto 8.777/2016 (reuse limited to credit
 api: https://api-comexstat.mdic.gov.br/general?language=en
 pilot_relevance: []
 places: [recife, sao-paulo]
-tags: [trade, exports, imports, value, brazil, sao-paulo, pernambuco, recife, isic, open-api]
+tags: [trade, exports, imports, value, brazil, sao-paulo, pernambuco, recife, isic, open-api, reading-r5]
 added: 2026-09-27
 auth: none
 feeds_cells: [Economic|Region]

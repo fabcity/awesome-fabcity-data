@@ -384,6 +384,10 @@ TREE_CASES = [
       "readings.yaml": yaml.safe_dump({"readings": [r for r in yaml.safe_load((ROOT / "readings.yaml").read_text(encoding="utf-8"))["readings"]
                                                     if r["id"] != "R9"]}, allow_unicode=True)},
      False, "not in readings.yaml"),
+    ("tree: a source tagged with a reading that does not exist",
+     {ENTRY_AT: CANDIDATE + "tags: [reading-r15]\n"}, False, "reading-r15"),
+    ("tree: a source tagged with a real reading",
+     {ENTRY_AT: CANDIDATE + "tags: [reading-r1, city-sent]\n"}, True, None),
     ("tree: observation path does not match its place",
      {ENTRY_AT: CANDIDATE, "observations/accra/R1.yaml": OBS_FILE.format(place="lima"),
       "places.yaml": "places:\n  - slug: accra\n    name: Accra\n    country: Ghana\n  - slug: lima\n    name: Lima\n    country: Peru\n"},

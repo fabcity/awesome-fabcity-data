@@ -12,7 +12,7 @@ license: "Idescat reuse conditions: reuse allowed if the source is cited, the co
 api: https://www.idescat.cat/indicadors/?id=aec&n=15464&lang=en&f=csv&t=201900
 pilot_relevance: [barcelona]
 places: [barcelona]
-tags: [manufacturing, production, turnover, exports, sales-destination, catalonia, csv]
+tags: [manufacturing, production, turnover, exports, sales-destination, catalonia, csv, reading-r5]
 added: 2026-09-27
 auth: none
 feeds_cells: [Economic|Region]

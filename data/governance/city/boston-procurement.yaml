@@ -11,7 +11,7 @@ license: Open Data Commons Public Domain Dedication and License (PDDL)
 api: null
 pilot_relevance: [boston]
 places: [boston]
-tags: [procurement, contracts, transparency, united-states]
+tags: [procurement, contracts, transparency, united-states, reading-r9]
 added: 2026-09-09
 feeds_cells: [Governance|City]
 upstream_listed_in: []

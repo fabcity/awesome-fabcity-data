@@ -24,7 +24,8 @@
     "airports",
     "trade-flows",
     "united-states",
-    "bts"
+    "bts",
+    "reading-r13"
    ],
    "pilot_relevance": [],
    "feeds_cells": [
@@ -430,7 +431,8 @@
     "business-registry",
     "local-economy",
     "business-density",
-    "spain"
+    "spain",
+    "reading-r6"
    ],
    "pilot_relevance": [
     "barcelona"
@@ -460,7 +462,8 @@
     "municipal-finance",
     "budget-execution",
     "open-budget",
-    "spain"
+    "spain",
+    "reading-r9"
    ],
    "pilot_relevance": [
     "barcelona"
@@ -544,7 +547,8 @@
     "budget-execution",
     "municipal-finance",
     "spending",
-    "united-states"
+    "united-states",
+    "reading-r9"
    ],
    "pilot_relevance": [
     "boston"
@@ -762,7 +766,8 @@
     "employment-by-sector",
     "census",
     "japan",
-    "e-stat"
+    "e-stat",
+    "reading-r6"
    ],
    "pilot_relevance": [],
    "feeds_cells": [
@@ -823,7 +828,8 @@
     "denue",
     "economic-census",
     "geocoded",
-    "establishments"
+    "establishments",
+    "reading-r6"
    ],
    "pilot_relevance": [],
    "feeds_cells": [
@@ -887,7 +893,8 @@
     "csv",
     "japan",
     "kamakura",
-    "timeseries"
+    "timeseries",
+    "reading-r9"
    ],
    "pilot_relevance": [],
    "feeds_cells": [
@@ -943,7 +950,8 @@
     "municipal-finance",
     "montreal",
     "quebec",
-    "xlsx"
+    "xlsx",
+    "reading-r9"
    ],
    "pilot_relevance": [],
    "feeds_cells": [
@@ -998,7 +1006,8 @@
     "municipal-finance",
     "budget-execution",
     "open-budget",
-    "france"
+    "france",
+    "reading-r9"
    ],
    "pilot_relevance": [],
    "feeds_cells": [
@@ -1054,7 +1063,8 @@
     "municipal-budget",
     "expenditure",
     "chile",
-    "comuna"
+    "comuna",
+    "reading-r9"
    ],
    "pilot_relevance": [
     "santiago"
@@ -1086,7 +1096,8 @@
     "municipal-finance",
     "budget-execution",
     "open-budget",
-    "germany"
+    "germany",
+    "reading-r9"
    ],
    "pilot_relevance": [],
    "feeds_cells": [
@@ -1116,7 +1127,8 @@
     "municipal-finance",
     "budget-execution",
     "open-budget",
-    "france"
+    "france",
+    "reading-r9"
    ],
    "pilot_relevance": [],
    "feeds_cells": [
@@ -1145,7 +1157,8 @@
     "municipal-finance",
     "sweden",
     "pxweb",
-    "scb"
+    "scb",
+    "reading-r9"
    ],
    "pilot_relevance": [],
    "feeds_cells": [
@@ -1203,7 +1216,8 @@
     "firms",
     "municipality",
     "ajpes",
-    "slovenia"
+    "slovenia",
+    "reading-r6"
    ],
    "pilot_relevance": [],
    "feeds_cells": [
@@ -1234,7 +1248,8 @@
     "siconfi",
     "budget-execution",
     "cofog-adjacent",
-    "ibge"
+    "ibge",
+    "reading-r9"
    ],
    "pilot_relevance": [],
    "feeds_cells": [
@@ -1322,7 +1337,8 @@
     "municipal-finance",
     "budget-execution",
     "open-budget",
-    "france"
+    "france",
+    "reading-r9"
    ],
    "pilot_relevance": [],
    "feeds_cells": [
@@ -1654,7 +1670,8 @@
     "amenities",
     "geoparquet",
     "overture",
-    "gers"
+    "gers",
+    "reading-r7"
    ],
    "pilot_relevance": [
     "global"
@@ -2184,7 +2201,8 @@
     "customs",
     "material-flow",
     "tonnes",
-    "chile"
+    "chile",
+    "reading-r5"
    ],
    "pilot_relevance": [
     "santiago"
@@ -2265,7 +2283,8 @@
     "bali",
     "indonesia",
     "bps",
-    "hs"
+    "hs",
+    "reading-r5"
    ],
    "pilot_relevance": [
     "bali"
@@ -2423,7 +2442,8 @@
     "cbs",
     "statline",
     "odata",
-    "iv3"
+    "iv3",
+    "reading-r9"
    ],
    "pilot_relevance": [],
    "feeds_cells": [
@@ -2455,7 +2475,8 @@
     "manufacturing",
     "naics",
     "county",
-    "united-states"
+    "united-states",
+    "reading-r6"
    ],
    "pilot_relevance": [],
    "feeds_cells": [
@@ -2487,7 +2508,8 @@
     "msa",
     "boston",
     "census",
-    "xlsx"
+    "xlsx",
+    "reading-r5"
    ],
    "pilot_relevance": [
     "boston"
@@ -2524,7 +2546,8 @@
     "pernambuco",
     "recife",
     "isic",
-    "open-api"
+    "open-api",
+    "reading-r5"
    ],
    "pilot_relevance": [],
    "feeds_cells": [
@@ -2556,7 +2579,8 @@
     "lander",
     "germany",
     "hamburg",
-    "xlsx"
+    "xlsx",
+    "reading-r5"
    ],
    "pilot_relevance": [],
    "feeds_cells": [
@@ -2587,7 +2611,8 @@
     "regions",
     "departements",
     "france",
-    "paris"
+    "paris",
+    "reading-r5"
    ],
    "pilot_relevance": [],
    "feeds_cells": [
@@ -2647,7 +2672,8 @@
     "tonnes",
     "eurostat",
     "europe-only",
-    "open-api"
+    "open-api",
+    "reading-r13"
    ],
    "pilot_relevance": [
     "barcelona"
@@ -2682,7 +2708,8 @@
     "maritime",
     "material-flow",
     "tonnes",
-    "eurostat"
+    "eurostat",
+    "reading-r13"
    ],
    "pilot_relevance": [
     "barcelona"
@@ -2715,7 +2742,8 @@
     "manufacturing",
     "enterprises",
     "employment",
-    "nuts"
+    "nuts",
+    "reading-r6"
    ],
    "pilot_relevance": [
     "barcelona",
@@ -2848,7 +2876,8 @@
     "value",
     "provinces",
     "catalonia",
-    "open-api"
+    "open-api",
+    "reading-r5"
    ],
    "pilot_relevance": [
     "barcelona"
@@ -2893,7 +2922,8 @@
     "interregional-trade",
     "tonnes",
     "catalonia",
-    "csv"
+    "csv",
+    "reading-r4"
    ],
    "pilot_relevance": [
     "barcelona"
@@ -2926,7 +2956,8 @@
     "exports",
     "sales-destination",
     "catalonia",
-    "csv"
+    "csv",
+    "reading-r5"
    ],
    "pilot_relevance": [
     "barcelona"
@@ -3249,7 +3280,8 @@
     "occitanie",
     "france",
     "region",
-    "m57"
+    "m57",
+    "reading-r9"
    ],
    "pilot_relevance": [],
    "feeds_cells": [
@@ -3400,7 +3432,8 @@
     "mrc",
     "region-administrative",
     "quebec",
-    "bas-saint-laurent"
+    "bas-saint-laurent",
+    "reading-r9"
    ],
    "pilot_relevance": [],
    "feeds_cells": [
@@ -3430,7 +3463,8 @@
     "mamh",
     "cod-geo",
     "quebec",
-    "all-municipalities"
+    "all-municipalities",
+    "reading-r9"
    ],
    "pilot_relevance": [],
    "feeds_cells": [
@@ -3460,7 +3494,8 @@
     "brazil",
     "siconfi",
     "regional-accounts",
-    "ibge"
+    "ibge",
+    "reading-r9"
    ],
    "pilot_relevance": [],
    "feeds_cells": [
@@ -3580,7 +3615,8 @@
     "partner-countries",
     "hamburg",
     "xlsx",
-    "ckan"
+    "ckan",
+    "reading-r5"
    ],
    "pilot_relevance": [],
    "feeds_cells": [
@@ -3669,7 +3705,8 @@
     "airports",
     "material-flow",
     "tonnes",
-    "census"
+    "census",
+    "reading-r5"
    ],
    "pilot_relevance": [
     "boston"
@@ -3724,7 +3761,8 @@
     "mexico",
     "budget-execution",
     "cuenta-publica",
-    "state-government"
+    "state-government",
+    "reading-r9"
    ],
    "pilot_relevance": [],
    "feeds_cells": [
@@ -3819,7 +3857,8 @@
     "raster-10m",
     "cog",
     "sentinel",
-    "geospatial"
+    "geospatial",
+    "reading-r12"
    ],
    "pilot_relevance": [
     "global"
@@ -4389,7 +4428,8 @@
     "ademe",
     "sinoe",
     "france",
-    "departement"
+    "departement",
+    "reading-r1"
    ],
    "pilot_relevance": [],
    "feeds_cells": [
@@ -4479,7 +4519,8 @@
     "retc",
     "sinader",
     "comuna",
-    "ckan"
+    "ckan",
+    "reading-r1"
    ],
    "pilot_relevance": [
     "santiago"
@@ -4542,7 +4583,8 @@
     "eurostat",
     "urban-audit",
     "europe-only",
-    "open-api"
+    "open-api",
+    "reading-r1"
    ],
    "pilot_relevance": [],
    "feeds_cells": [
@@ -4574,7 +4616,8 @@
     "landfill",
     "catalonia",
     "municipal",
-    "socrata"
+    "socrata",
+    "reading-r1"
    ],
    "pilot_relevance": [
     "barcelona"
@@ -4634,7 +4677,8 @@
     "csv",
     "japan",
     "kamakura",
-    "timeseries"
+    "timeseries",
+    "reading-r1"
    ],
    "pilot_relevance": [],
    "feeds_cells": [
@@ -4828,7 +4872,8 @@
     "recycling",
     "paris",
     "france",
-    "opendatasoft"
+    "opendatasoft",
+    "reading-r1"
    ],
    "pilot_relevance": [],
    "feeds_cells": [
@@ -5011,7 +5056,8 @@
     "germany",
     "statistikamt-nord",
     "transparenzportal",
-    "xlsx"
+    "xlsx",
+    "reading-r1"
    ],
    "pilot_relevance": [],
    "feeds_cells": [
@@ -5071,7 +5117,8 @@
     "ods",
     "annual",
     "defra",
-    "england"
+    "england",
+    "reading-r1"
    ],
    "pilot_relevance": [],
    "feeds_cells": [
@@ -5754,7 +5801,8 @@
     "arcgis",
     "nsdi",
     "bhutan",
-    "sentinel-2"
+    "sentinel-2",
+    "reading-r12"
    ],
    "pilot_relevance": [],
    "feeds_cells": [
@@ -5906,7 +5954,8 @@
     "copernicus",
     "vector",
     "raster-100m",
-    "raster-10m"
+    "raster-10m",
+    "reading-r12"
    ],
    "pilot_relevance": [
     "barcelona"
@@ -5970,7 +6019,8 @@
     "renewable-energy",
     "power-plants",
     "united-states",
-    "eia"
+    "eia",
+    "reading-r2"
    ],
    "pilot_relevance": [],
    "feeds_cells": [
@@ -6069,7 +6119,8 @@
     "generation",
     "geospatial",
     "point-data",
-    "wri"
+    "wri",
+    "reading-r2"
    ],
    "pilot_relevance": [
     "barcelona",
@@ -6107,7 +6158,8 @@
     "occitanie",
     "france",
     "region",
-    "energy-mix"
+    "energy-mix",
+    "reading-r2"
    ],
    "pilot_relevance": [],
    "feeds_cells": [
@@ -6137,7 +6189,8 @@
     "landsat",
     "raster-30m",
     "united-states",
-    "usgs"
+    "usgs",
+    "reading-r12"
    ],
    "pilot_relevance": [],
    "feeds_cells": [
@@ -6412,7 +6465,8 @@
     "procurement",
     "tenders",
     "transparency",
-    "spain"
+    "spain",
+    "reading-r9"
    ],
    "pilot_relevance": [
     "barcelona"
@@ -6440,7 +6494,8 @@
     "procurement",
     "contracts",
     "transparency",
-    "united-states"
+    "united-states",
+    "reading-r9"
    ],
    "pilot_relevance": [
     "boston"
@@ -7049,7 +7104,8 @@
     "procurement",
     "transparency",
     "public-contracts",
-    "france"
+    "france",
+    "reading-r9"
    ],
    "pilot_relevance": [],
    "feeds_cells": [
@@ -8301,7 +8357,8 @@
     "cbs",
     "statline",
     "odata",
-    "neighbourhood"
+    "neighbourhood",
+    "reading-r11"
    ],
    "pilot_relevance": [],
    "feeds_cells": [
@@ -8333,7 +8390,8 @@
     "population",
     "city-statistics",
     "lau",
-    "sdmx"
+    "sdmx",
+    "reading-r11"
    ],
    "pilot_relevance": [
     "barcelona",
@@ -8658,7 +8716,8 @@
     "united-states",
     "fips",
     "demographics",
-    "housing"
+    "housing",
+    "reading-r11"
    ],
    "pilot_relevance": [
     "boston",

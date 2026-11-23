@@ -11,7 +11,7 @@ license: INEGI Terminos de Libre Uso de la Informacion
 api: https://www.inegi.org.mx/app/api/denue/v1/consulta/
 pilot_relevance: []
 places: [guanajuato, mexico-city, monterrey, puebla, yucatan]
-tags: [business-registry, mexico, inegi, denue, economic-census, geocoded, establishments]
+tags: [business-registry, mexico, inegi, denue, economic-census, geocoded, establishments, reading-r6]
 added: 2026-09-10
 updated: 2026-09-10
 auth: api-key

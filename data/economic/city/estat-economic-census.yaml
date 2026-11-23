@@ -17,6 +17,7 @@ tags:
 - census
 - japan
 - e-stat
+- reading-r6
 added: '2026-09-11'
 feeds_cells: [Economic|City]
 updated: '2026-09-11'

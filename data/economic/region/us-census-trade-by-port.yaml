@@ -11,7 +11,7 @@ license: US public domain (Census Bureau work; API terms require a no-endorsemen
 api: https://api.census.gov/data/timeseries/intltrade/imports/porths
 pilot_relevance: [boston]
 places: [boston]
-tags: [trade, imports, exports, ports, airports, material-flow, tonnes, census]
+tags: [trade, imports, exports, ports, airports, material-flow, tonnes, census, reading-r5]
 added: 2026-09-26
 auth: api-key
 feeds_cells: [Economic|Bioregion]

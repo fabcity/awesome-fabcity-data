@@ -94,7 +94,11 @@ people doing it is [`docs/for-cities.md`](docs/for-cities.md), and in Spanish
 A source sent from that page is filed as a `candidate`, tagged `city-sent` and `reading-r<n>`. It
 arrives unverified, and its notes say so: nobody has opened it or read its terms yet. It counts in
 the place's coverage from the moment its pull request merges, so whoever merges it opens the source
-and reads its terms first. A figure goes through the Airtable form "Send a figure", and
+and reads its terms first. Any source can carry a `reading-r<n>` tag: it says the source holds that
+reading's figure for the places it names, at the reading's scale or finer. The city page shows a
+source under a reading only when it carries that tag, so a city portal, a national series, or a
+source that measures something else carries none. `scripts/validate.py` checks that each tag names
+a reading in `readings.yaml`. A figure goes through the Airtable form "Send a figure", and
 `scripts/copy_figures.py` copies it one way into `observations/<place>/<reading>.yaml`. It is
 `candidate` when it arrives and `live` once the Fab City team has checked it. A figure the city has
 not agreed to publish is written as `held`. An answer that nobody holds it is written as `not-held`

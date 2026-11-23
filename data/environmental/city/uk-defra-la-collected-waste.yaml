@@ -11,7 +11,7 @@ license: Open Government Licence v3.0
 api: null
 pilot_relevance: []
 places: [plymouth]
-tags: [waste, recycling, wastedataflow, ods, annual, defra, england]
+tags: [waste, recycling, wastedataflow, ods, annual, defra, england, reading-r1]
 added: 2026-09-11
 feeds_cells: [Environmental|City]
 updated: 2026-09-11

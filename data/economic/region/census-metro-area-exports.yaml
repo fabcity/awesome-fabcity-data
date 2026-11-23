@@ -11,7 +11,7 @@ license: US public domain (Census Bureau work, 17 USC 105)
 api: null
 pilot_relevance: [boston]
 places: [boston, charlotte]
-tags: [trade, exports, value, metro, msa, boston, census, xlsx]
+tags: [trade, exports, value, metro, msa, boston, census, xlsx, reading-r5]
 added: 2026-09-26
 auth: none
 feeds_cells: [Economic|Region]

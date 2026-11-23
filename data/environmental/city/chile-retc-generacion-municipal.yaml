@@ -11,7 +11,7 @@ license: CC-BY-4.0
 api: https://datosretc.mma.gob.cl/api/3/action/package_show?id=generacion-municipal-de-residuos-no-peligrosos
 pilot_relevance: [santiago]
 places: [santiago-de-chile]
-tags: [waste, msw, landfill, chile, retc, sinader, comuna, ckan]
+tags: [waste, msw, landfill, chile, retc, sinader, comuna, ckan, reading-r1]
 added: 2026-09-26
 auth: none
 feeds_cells: [Environmental|City, Environmental|Region]
