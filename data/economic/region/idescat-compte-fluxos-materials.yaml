@@ -12,7 +12,7 @@ license: "Idescat reuse conditions: reuse allowed if the source is cited, the co
 api: https://www.idescat.cat/indicadors/?id=aec&n=16006&lang=en&f=csv&t=201900
 pilot_relevance: [barcelona]
 places: [barcelona]
-tags: [material-flow, dmc, domestic-extraction, imports, exports, interregional-trade, tonnes, catalonia, csv]
+tags: [material-flow, dmc, domestic-extraction, imports, exports, interregional-trade, tonnes, catalonia, csv, reading-r4]
 added: 2026-09-27
 auth: none
 feeds_cells: [Economic|Bioregion]

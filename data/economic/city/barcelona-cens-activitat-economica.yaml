@@ -11,7 +11,7 @@ license: CC-BY-4.0
 api: https://opendata-ajuntament.barcelona.cat/data/api/action/package_search
 pilot_relevance: [barcelona]
 places: [barcelona]
-tags: [business-registry, local-economy, business-density, spain]
+tags: [business-registry, local-economy, business-density, spain, reading-r6]
 added: 2026-09-09
 feeds_cells: [Economic|City]
 upstream_listed_in: []

@@ -11,7 +11,7 @@ license: Llicència oberta d'ús d'informació – Catalunya (reuse, redistribut
 api: https://analisi.transparenciacatalunya.cat/resource/69zu-w48s.json
 pilot_relevance: [barcelona]
 places: [barcelona]
-tags: [waste, msw, recycling, landfill, catalonia, municipal, socrata]
+tags: [waste, msw, recycling, landfill, catalonia, municipal, socrata, reading-r1]
 added: 2026-09-26
 auth: none
 feeds_cells: [Environmental|City, Environmental|Region]

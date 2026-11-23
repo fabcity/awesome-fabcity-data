@@ -10,7 +10,7 @@ license: "BPS website terms (bps.go.id/id/term-of-use): free, worldwide, perpetu
 api: null
 pilot_relevance: [bali]
 places: [bali]
-tags: [trade, exports, value, tonnes, bali, indonesia, bps, hs]
+tags: [trade, exports, value, tonnes, bali, indonesia, bps, hs, reading-r5]
 added: 2026-09-27
 auth: none
 feeds_cells: [Economic|Region]

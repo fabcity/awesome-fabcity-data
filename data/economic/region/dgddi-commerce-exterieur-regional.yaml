@@ -11,7 +11,7 @@ license: "DGDDI: reuse allowed with the integrity of the data respected and the 
 api: null
 pilot_relevance: []
 places: [paris]
-tags: [trade, imports, exports, value, regions, departements, france, paris]
+tags: [trade, imports, exports, value, regions, departements, france, paris, reading-r5]
 added: 2026-09-26
 auth: none
 feeds_cells: [Economic|Region]

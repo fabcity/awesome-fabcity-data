@@ -10,7 +10,7 @@ license: 'Copernicus, Delegated Regulation (EU) 1159/2013: "free, full and open"
 api: https://image.discomap.eea.europa.eu/arcgis/rest/services/Corine/CLC2018_WM/MapServer
 pilot_relevance: [barcelona]
 places: [barcelona]
-tags: [land-cover, land-use, europe, eea, copernicus, vector, raster-100m, raster-10m]
+tags: [land-cover, land-use, europe, eea, copernicus, vector, raster-100m, raster-10m, reading-r12]
 added: 2026-11-21
 assisted_by: Claude Code
 feeds_cells: [Environmental|Region]

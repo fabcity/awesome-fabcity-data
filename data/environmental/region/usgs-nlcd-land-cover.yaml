@@ -11,7 +11,7 @@ license: "US public domain: MRLC describes NLCD as public domain information on 
 api: https://www.mrlc.gov/geoserver/mrlc_download/wcs
 pilot_relevance: []
 places: [charlotte]
-tags: [land-cover, landsat, raster-30m, united-states, usgs]
+tags: [land-cover, landsat, raster-30m, united-states, usgs, reading-r12]
 auth: none
 feeds_cells: [Environmental|Region]
 added: 2026-11-05

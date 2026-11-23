@@ -431,6 +431,20 @@ def cell_join(entries: dict, cells: dict, strict: bool) -> int:
     return len(dangling)
 
 
+def reading_tags(entries: dict, readings: dict[str, dict]) -> int:
+    """A `reading-r<n>` tag says the source holds that reading's figure for its places, and the city
+    page shows the source under that reading only. The tag has to name a reading in readings.yaml."""
+    failures = 0
+    for rid, e in sorted(entries.items()):
+        bad = [t for t in e.get("tags") or [] if t.startswith("reading-") and t[len("reading-"):].upper() not in readings]
+        if bad:
+            failures += 1
+            print(f"  FAIL  data/{rid}.yaml: {', '.join(bad)} names no reading in readings.yaml")
+    if not failures:
+        print("  ok    every reading tag names a reading")
+    return failures
+
+
 def join(entries: dict, reviews: dict, strict: bool) -> int:
     """The join: `status: live` has to be backed by something. Either a named person read this
     source for a real territory and said it was usable, or code reads it and `adapter` says where.
@@ -491,6 +505,9 @@ def main(argv: list[str]) -> int:
 
     print("\n== pass 5: observations/ — what places have sent")
     failures += pass_observations(readings)
+
+    print("\n== join: reading tags name readings")
+    failures += reading_tags(entries, readings)
 
     print("\n== join: does `live` mean anything on each entry that claims it")
     failures += join(entries, reviews, strict)

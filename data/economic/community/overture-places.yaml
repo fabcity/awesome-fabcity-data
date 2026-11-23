@@ -10,7 +10,7 @@ license: "CDLA-Permissive-2.0 AND Apache-2.0 AND CC0-1.0, per source; see notes"
 api: https://stac.overturemaps.org/catalog.json
 pilot_relevance: [global]
 places: [barcelona, bali, charlotte]
-tags: [places, poi, businesses, premises, repair, amenities, geoparquet, overture, gers]
+tags: [places, poi, businesses, premises, repair, amenities, geoparquet, overture, gers, reading-r7]
 added: 2026-10-23
 assisted_by: Claude Code
 feeds_cells: [Economic|Community]
