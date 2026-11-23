@@ -2,10 +2,11 @@
 #
 # People in cities send figures through the Airtable form "Send a figure" into the table `City figures`
 # (docs/airtable.md). This copies them one way into observations/{place}/{reading}.yaml with
-# scripts/copy_figures.py, files each source the registry does not hold as a `source: <id>` issue, runs
-# the gates, and opens or updates one pull request from the branch `figures/auto`. Nothing here writes to
-# Airtable, and nothing reaches main until a maintainer merges. It runs without --prune: a figure leaves
-# observations/ only when the team marks its record `needs a fix`.
+# scripts/copy_figures.py, runs the gates, files each source the registry does not hold as a
+# `source: <id>` issue once they pass, and opens or updates one pull request from the branch
+# `figures/auto`. Nothing here writes to Airtable, and nothing reaches main until a maintainer merges.
+# It runs without --prune: a figure leaves observations/ only when a record takes it back, marked
+# `needs a fix` or sent without a yes to publishing.
 #
 # It needs the repository secret AIRTABLE_TOKEN, a personal access token that can read records in base
 # appmNQaDGEFE9VcYh. Without it the job stops and says so, and the copy runs by hand:
@@ -66,11 +67,13 @@ jobs:
       - name: Install validation deps
         run: pip install -r requirements.txt
 
-      - name: Copy the figures and file their new sources
+      # pipefail, or tee's exit 0 would hide a failed Airtable read and the job would go green.
+      - name: Copy the figures
         env:
           AIRTABLE_TOKEN: ${{ secrets.AIRTABLE_TOKEN }}
-          GH_TOKEN: ${{ secrets.SOURCES_TOKEN || secrets.GITHUB_TOKEN }}
-        run: python scripts/copy_figures.py --write --file-sources | tee "$RUNNER_TEMP/copy.txt"
+        run: |
+          set -o pipefail
+          python scripts/copy_figures.py --write | tee "$RUNNER_TEMP/copy.txt"
 
       # This list must follow validate.yml's.
       - name: The gates, before the push rather than after
@@ -84,6 +87,14 @@ jobs:
           python scripts/validate.py
           python scripts/check_review.py
           python scripts/build_index.py --check
+
+      # Only now is a source made public. --check reads Airtable again and files nothing if a figure
+      # arrived after the copy above: that run fails here, and the next one picks the figure up.
+      - name: File the new sources
+        env:
+          AIRTABLE_TOKEN: ${{ secrets.AIRTABLE_TOKEN }}
+          GH_TOKEN: ${{ secrets.SOURCES_TOKEN || secrets.GITHUB_TOKEN }}
+        run: python scripts/copy_figures.py --check --file-sources
 
       - name: Commit, push, and open or update the PR
         env:
