@@ -2,15 +2,15 @@
 
 In English: [for-cities.md](for-cities.md).
 
-En 2014 el alcalde de Barcelona retó a las ciudades a producir casi todo lo que consumen para 2054. Fab City es la red de ciudades y regiones que aceptaron ese reto. Una ciudad entra en la red cuando asume el compromiso Fab City de trabajar hacia esa meta, y el Índice Fab City le sirve para ver cuánto ha avanzado.
+En 2014 el alcalde de Barcelona retó a las ciudades a producir casi todo lo que consumen para 2054. Fab City es la red de ciudades y regiones que aceptaron ese reto. Una ciudad entra en la red cuando asume el compromiso Fab City de trabajar hacia esa meta. El Índice Fab City le sirve para ver cuánto ha avanzado.
 
-Hoy la mayor parte de lo que usa una ciudad se fabrica en otro lugar. La comida, la energía, la ropa y los materiales de construcción llegan de fuera, y lo que sobra sale como basura. A este modelo lo llamamos Products In, Trash Out (entran productos, sale basura), o PITO. El modelo hacia el que trabajamos se llama Data In, Data Out (entran datos, salen datos), o DIDO. En él la ciudad produce la mayor parte de lo que consume cerca de donde lo consume, y lo que viaja entre ciudades es sobre todo conocimiento, los diseños y el código para hacer las cosas. El Índice lee dónde está tu ciudad entre los dos modelos, y cómo se mueve de un año al siguiente.
+Hoy la mayor parte de lo que usa una ciudad se fabrica en otro lugar. La comida, la energía, la ropa y los materiales de construcción llegan de fuera, y lo que sobra sale como basura. A este modelo lo llamamos Products In, Trash Out (entran productos, sale basura), o PITO. El modelo hacia el que trabajamos se llama Data In, Data Out (entran datos, salen datos), o DIDO. En él la ciudad produce la mayor parte de lo que consume cerca de donde lo consume. Lo que viaja entre ciudades es sobre todo conocimiento, los diseños y el código para hacer las cosas. El Índice lee dónde está tu ciudad entre los dos modelos, y cómo se mueve de un año al siguiente.
 
 El Índice lee a cada ciudad frente a su propio compromiso. No publica ningún ranking de ciudades.
 
-Para leer una ciudad necesitamos cifras de la propia ciudad. A todos los lugares Fab City les pedimos las mismas catorce lecturas, para 2023, 2024 y 2025 donde existan, y puedes enviarlas desde una sola página, [index.fab.city/operate/city-data](https://index.fab.city/operate/city-data). Elige ahí tu ciudad. Si tu ciudad no está en la lista, escribe a Fab City Science a science@fab.city.
+Para leer una ciudad necesitamos cifras de la propia ciudad. A todos los lugares Fab City les pedimos las mismas catorce lecturas, cada una algo que el Índice mide en una ciudad. Las pedimos para 2023, 2024 y 2025 donde existan. Puedes enviarlas todas desde una sola página, [index.fab.city/operate/city-data](https://index.fab.city/operate/city-data). Elige ahí tu ciudad. Si tu ciudad no está en la lista, escribe a Fab City Science a science@fab.city.
 
-Cualquier persona de un lugar Fab City puede participar, y el equipo de Fab City hace un seguimiento directo con algunas ciudades. En la mayoría de los lugares el trabajo recae en dos personas. Quien coordina Fab City en la ciudad reúne al grupo local de labs y socios que asumió el compromiso junto con la ciudad. La persona que representa a la ciudad lo asumió en su nombre, y puede abrir los datos que guarda la propia ciudad.
+Cualquier lugar Fab City puede participar. El equipo de Fab City lo forman las personas de Fab City que revisan las cifras y hacen el seguimiento con las ciudades. En la mayoría de los lugares el trabajo recae en dos personas. Quien coordina Fab City en la ciudad reúne al grupo local de labs y socios que asumió el compromiso junto con la ciudad. La persona que representa a la ciudad lo asumió en su nombre, y puede abrir los datos que guarda la propia ciudad.
 
 ## Qué pedimos, y quién lo suele tener
 
@@ -35,34 +35,34 @@ Muchas de estas cifras ya existen en alguna oficina de la ciudad o de la región
 
 R3, R8, R10, R11, R12 y R14 piden solo el último año que tengas.
 
-Es mucho pedir, y una respuesta parcial ya sirve. "Lo buscamos y nadie lo cuenta" también es una respuesta, porque nos muestra dónde están los vacíos, y el formulario tiene una casilla para eso.
+Es mucho pedir, y una respuesta parcial ya sirve. "Lo buscamos y nadie lo cuenta" también es una respuesta, porque nos muestra dónde están los vacíos. El formulario tiene una casilla para eso.
 
 ## Qué puedes hacer en la página
 
 Para cada lectura, la página muestra primero lo que el registro ya tiene para tu ciudad. El registro es la lista abierta en GitHub donde el Índice guarda cada fuente y cada cifra que lee, [fabcity/awesome-fabcity-data](https://github.com/fabcity/awesome-fabcity-data). Una fuente es un conjunto de datos o un informe que alguien publica, con su enlace. En la página puedes hacer cuatro cosas.
 
 1. Revisar lo que ya tenemos. Cada fuente que el registro tiene para tu ciudad lleva un botón para revisarla. Una revisión dice si la fuente tiene cifras de tu ciudad y si sus condiciones nos permiten usarlas.
-2. Añadir una fuente. Si sabes dónde se publica una cifra, mándanos el enlace. Entra en el registro como una fuente por comprobar, y no necesitas una cuenta de GitHub.
+2. Añadir una fuente. Si sabes dónde se publica una cifra, mándanos el enlace. Entra en el registro como una fuente por comprobar.
 3. Enviar una cifra. Un formulario corto te pregunta el año, el valor y su unidad, de dónde viene la cifra y sus condiciones de uso, tu nombre y tu cargo, y si podemos publicarla. Si tu ciudad no tiene la cifra, marca la casilla que lo dice y deja el valor vacío.
 4. Buscarla con un agente de IA. La página te da las instrucciones ya escritas para tu ciudad y esa lectura (un prompt), listas para pegar en un asistente de IA que pueda buscar en la web. Le piden al agente que encuentre una fuente, que lea sus condiciones en la página de quien la publica, que compruebe que tiene cifras de tu ciudad y que te muestre la evidencia. El agente no envía nada. Tú lees lo que encontró y, si se sostiene, lo añades como fuente con tu nombre.
 
 ## Qué pasa con una cifra
 
-Cuando dices que podemos publicar una cifra, se copia al registro en menos de un día y queda marcada como enviada (en el registro se llama `candidate`). Después el equipo de Fab City la revisa. La unidad y los años tienen que coincidir con lo que pedimos, y la fuente tiene que respaldar el número, con sus condiciones escritas. Una cifra que pasa queda marcada como comprobada (`live` en el registro), con quién la comprobó y cuándo. Si algo no coincide, el equipo de Fab City se pone en contacto contigo, y la cifra sale del registro público hasta que se corrija.
+Cuando dices que podemos publicar una cifra, se copia al registro en menos de un día y queda marcada como enviada (en el registro se llama `candidate`). Después el equipo de Fab City la revisa. La unidad y los años tienen que coincidir con lo que pedimos, y la fuente tiene que respaldar el número, con sus condiciones escritas. Una cifra que pasa queda marcada como comprobada (`live` en el registro), con quién la comprobó y cuándo. Si algo no coincide, el equipo de Fab City se pone en contacto contigo. Hasta que se corrija, la cifra sale del registro público.
 
-Cada año va como una cifra aparte. Una lectura con dos partes, como las toneladas y el porcentaje de R1, va como dos cifras, cada una con su unidad, y una cifra por distrito va como una por distrito, con el nombre del distrito. Mantén todos los años de una serie sobre el mismo territorio. Si 2023 cuenta la ciudad y 2025 el área metropolitana, el cambio entre los dos no nos dice nada.
+Cada año va como una cifra aparte. Una lectura con dos partes, como las toneladas y el porcentaje de R1, va como dos cifras, cada una con su unidad. Una cifra por distrito va como una por distrito, con el nombre del distrito. Mantén todos los años de una serie sobre el mismo territorio. Si 2023 cuenta la ciudad y 2025 el área metropolitana, el cambio entre los dos no nos dice nada.
 
 ## ¿Podemos publicarla?
 
-Quien envía una cifra decide si podemos publicarla. Cuando la cifra viene de los datos de la propia ciudad, consúltalo con la persona que representa a la ciudad antes de decir que sí. El formulario está en inglés y tiene tres respuestas. Solo "yes" (sí) manda la cifra al registro público. Con "no" se queda con nosotros, y "ask" (preguntar) quiere decir que todavía tienes que consultarlo, así que se queda con nosotros hasta que la vuelvas a enviar con un "yes".
+Quien envía una cifra decide si podemos publicarla. Cuando la cifra viene de los datos de la propia ciudad, consúltalo con la persona que representa a la ciudad antes de decir que sí. La página está en español y en inglés. El formulario está solo en inglés y tiene tres respuestas. Solo "yes" (sí) manda la cifra al registro público. Con "no" se queda con nosotros. Un "ask" (preguntar) quiere decir que todavía tienes que consultarlo, y la cifra se queda con nosotros hasta que la vuelvas a enviar con un "yes".
 
-Una cifra que no podemos publicar se queda en nuestra propia tabla y nunca llega al registro. La página muestra esa lectura como "en manos de la ciudad", sin el número, para que cualquiera vea que la cifra existe y que la ciudad la guarda.
+El número de una cifra que no podemos publicar nunca sale de nuestra propia tabla. El registro solo anota que la ciudad lo tiene. La página muestra esa lectura como "en manos de la ciudad", sin número.
 
-En el caso de una cifra, tu nombre también se queda con nosotros. El registro público solo lleva tu cargo, por ejemplo "responsable de energía". Una fuente que añades y una revisión que escribes salen con tu nombre. Por favor, no escribas un correo electrónico ni un número de teléfono en ningún campo del formulario. Una cifra que lleve alguno se queda retenida, para que los datos de contacto nunca lleguen al registro público.
+En el caso de una cifra, tu nombre también se queda con nosotros. El registro público solo lleva tu cargo, por ejemplo "responsable de energía". Una fuente que añades o una revisión que escribes es pública. La página la sube a GitHub como un issue, una página pública que cualquiera puede leer, con tu nombre y tu organización, aunque no tengas cuenta de GitHub. Por favor, no escribas un correo electrónico ni un número de teléfono en ningún campo del formulario. Una cifra que lleve alguno se queda retenida, para que los datos de contacto nunca lleguen al registro público.
 
 ## Fuentes que no son abiertas
 
-El registro reúne fuentes abiertas, es decir, datos que cualquiera puede reutilizar y compartir, con una licencia como Creative Commons Atribución (CC BY). Muchas cifras de una ciudad vienen de una oficina de estadística o de una empresa de servicios públicos cuyas condiciones no son abiertas, y aun así permiten citar la cifra con su fuente. Esas también nos sirven. La cifra se muestra con su fuente nombrada y sus condiciones al lado, y la fuente entra en el registro marcada como cifra citada. En el formulario, escribe las condiciones tal como las da quien publica, por ejemplo "© Oficina de estadística, reutilización con atribución".
+El registro reúne fuentes abiertas, es decir, datos que cualquiera puede reutilizar y compartir, con una licencia como Creative Commons Atribución (CC BY). Muchas cifras de una ciudad vienen de una oficina de estadística o de una empresa de servicios públicos cuyas condiciones no son abiertas, y aun así permiten citar la cifra con su fuente. Esas también nos sirven. La cifra se muestra con su fuente nombrada y sus condiciones al lado. La fuente entra en el registro marcada como cifra citada. En el formulario, escribe las condiciones tal como las da quien publica, por ejemplo "© Oficina de estadística, reutilización con atribución".
 
 ## Dónde está tu ciudad
 
@@ -76,8 +76,6 @@ En la página, cada lectura muestra uno de siete estados, escritos en palabras.
 - "nadie la tiene" quiere decir que la ciudad nos dijo que nadie la cuenta.
 - "comprobada" quiere decir que el equipo de Fab City comprobó la cifra, o que alguien revisó una fuente para tu ciudad y vio que sirve.
 
-La página lee todo esto del registro, así que lo que ves ahí es lo mismo que puede ver cualquiera.
-
 ## Uqbar
 
-Uqbar es una ciudad que inventamos. Su nombre viene del país que Jorge Luis Borges imaginó en uno de sus cuentos. Todas sus cifras son inventadas, y también las oficinas y las fuentes que hay detrás. Hicimos con ella todo el recorrido antes de pedirle datos a ninguna ciudad real, y su página muestra cada estado en que puede estar una cifra. Abre [index.fab.city/operate/city-data?place=uqbar](https://index.fab.city/operate/city-data?place=uqbar) para ver una ciudad con casi todas sus lecturas respondidas. Uqbar nunca cuenta en nada de lo que el Índice dice sobre lugares reales.
+Uqbar es una ciudad que inventamos. Su nombre viene del país que Jorge Luis Borges imaginó en uno de sus cuentos. Todas sus cifras son inventadas, y también las oficinas y las fuentes que hay detrás. Hicimos con ella todo el recorrido antes de pedirle datos a ninguna ciudad real. Su página muestra cada estado en que puede estar una cifra. Abre [index.fab.city/operate/city-data?place=uqbar](https://index.fab.city/operate/city-data?place=uqbar) para ver una ciudad con casi todas sus lecturas respondidas. Uqbar nunca cuenta en nada de lo que el Índice dice sobre lugares reales.

@@ -2,15 +2,15 @@
 
 En español: [para-ciudades.md](para-ciudades.md).
 
-In 2014 the mayor of Barcelona challenged cities to produce almost everything they consume by 2054. Fab City is the network of cities and regions that took up the challenge. A city joins by taking the Fab City pledge, its commitment to work toward that goal, and the Fab City Index lets it see how far it has come.
+In 2014 the mayor of Barcelona challenged cities to produce almost everything they consume by 2054. Fab City is the network of cities and regions that took up the challenge. A city joins by taking the Fab City pledge, its commitment to work toward that goal. The Fab City Index lets it see how far it has come.
 
-Most of what a city uses today is made somewhere else. Food, energy, clothes and building materials arrive from outside, and what is left over leaves as waste. We call this Products In, Trash Out, or PITO. The model we work toward is Data In, Data Out, or DIDO. In DIDO a city makes most of what it consumes close to where it is consumed, and what travels between cities is mostly knowledge, the designs and code to make things. The Index reads where your city stands between the two, and how it moves from one year to the next.
+Most of what a city uses today is made somewhere else. Food, energy, clothes and building materials arrive from outside, and what is left over leaves as waste. We call this Products In, Trash Out, or PITO. The model we work toward is Data In, Data Out, or DIDO. In DIDO a city makes most of what it consumes close to where it is consumed. What travels between cities is mostly knowledge, the designs and code to make things. The Index reads where your city stands between the two, and how it moves from one year to the next.
 
 The Index reads each city against its own pledge. It publishes no ranking of cities.
 
-To read a city we need figures from the city itself. We ask every Fab City place for the same fourteen readings, for 2023, 2024 and 2025 where they exist, and you can send them from one page, [index.fab.city/operate/city-data](https://index.fab.city/operate/city-data). Pick your city there. If your city is not on the list, write to Fab City Science at science@fab.city.
+To read a city we need figures from the city itself. We ask every Fab City place for the same fourteen readings, each one a thing the Index measures in a city. We ask for 2023, 2024 and 2025 where they exist. You can send them all from one page, [index.fab.city/operate/city-data](https://index.fab.city/operate/city-data). Pick your city there. If your city is not on the list, write to Fab City Science at science@fab.city.
 
-Anyone in a Fab City place can take part, and the Fab City team follows up with some cities directly. In most places two people carry the work. The Fab City lead coordinates the local group of labs and partners that took the pledge with the city. The city representative took it on the city's behalf and can open its records.
+Any Fab City place can take part. The Fab City team is the people at Fab City who check the figures and follow up with cities. In most places two people carry the work. The Fab City lead coordinates the local group of labs and partners that took the pledge with the city. The city representative took it on the city's behalf and can open its records.
 
 ## What we ask, and who usually holds it
 
@@ -35,34 +35,34 @@ Many of these figures already exist in some office of the city or the region, co
 
 R3, R8, R10, R11, R12 and R14 ask only for the latest year you have.
 
-It is a lot to ask, and a partial answer is still useful. "We looked and nobody counts this" is an answer too. It shows us where the gaps are, and the form has a box for it.
+It is a lot to ask, and a partial answer is still useful. "We looked and nobody counts this" is an answer too. It shows us where the gaps are. The form has a box for it.
 
 ## What you can do on the page
 
 For each reading, the page first shows what the registry already holds for your city. The registry is the open list on GitHub where the Index keeps every source and every figure it reads, [fabcity/awesome-fabcity-data](https://github.com/fabcity/awesome-fabcity-data). A source there is a dataset or a report someone publishes, with its link. On the page you can do four things.
 
 1. Review what we already hold. Each source the registry has for your city carries a "Review it" button. A review says whether the source holds figures for your city and whether its terms let us use them.
-2. Add a source. If you know where a figure is published, give us the link. It goes into the registry as a source to check, and you need no GitHub account for it.
+2. Add a source. If you know where a figure is published, give us the link. It goes into the registry as a source to check.
 3. Send a figure. A short form asks for the year, the value and its unit, where the figure comes from and its terms of use, your name and role, and whether we may publish it. If your city does not hold the figure, tick the box that says so and leave the value empty.
 4. Look for it with an AI agent. The page gives you a prompt written for your city and that reading, ready to paste into an AI assistant that can search the web. It asks the agent to find a source, read its terms on the publisher's own page, check that it holds figures for your city, and show you the evidence. The agent files nothing. You read what it found, and if it holds up you add it as a source in your own name.
 
 ## What happens to a figure
 
-When you say we may publish a figure, it is copied into the registry within a day and marked as sent (the registry calls it a `candidate`). Then the Fab City team checks it. The unit and the years have to match what we asked, and the source has to support the number, with its terms written down. A figure that passes is marked as checked (`live` in the registry), with who checked it and when. If something does not match, the Fab City team follows up with you, and the figure comes off the public record until it is fixed.
+When you say we may publish a figure, it is copied into the registry within a day and marked as sent (the registry calls it a `candidate`). Then the Fab City team checks it. The unit and the years have to match what we asked, and the source has to support the number, with its terms written down. A figure that passes is marked as checked (`live` in the registry), with who checked it and when. If something does not match, the Fab City team follows up with you. Until it is fixed, the figure comes off the public record.
 
-Each year goes in as its own figure. A reading with two parts, like the tonnes and the share in R1, goes as two figures, each with its own unit, and a figure by district goes as one per district, with the district named. Keep all the years of a series on the same boundary. If 2023 counts the city and 2025 counts the metropolitan area, the change between them tells us nothing.
+Each year goes in as its own figure. A reading with two parts, like the tonnes and the share in R1, goes as two figures, each with its own unit. A figure by district goes as one per district, with the district named. Keep all the years of a series on the same boundary. If 2023 counts the city and 2025 counts the metropolitan area, the change between them tells us nothing.
 
 ## May we publish it?
 
-The person who sends a figure decides whether we may publish it. When the figure comes from the city's own records, check with the city representative before you say yes. The form has three answers. Only "yes" sends the figure to the public record. With "no" it stays with us, and "ask" means you still have to check, so it stays with us until you send it again with a yes.
+The person who sends a figure decides whether we may publish it. When the figure comes from the city's own records, check with the city representative before you say yes. The form has three answers. Only "yes" sends the figure to the public record. With "no" it stays with us. An "ask" means you still have to check, and the figure stays with us until you send it again with a yes.
 
-A figure we may not publish stays in our own table and never reaches the registry. The page shows that reading as "held by the city", without the number, so anyone can see that the figure exists and that the city keeps it.
+The number of a figure we may not publish never leaves our own table. The registry records only that the city holds it. The page shows that reading as "held by the city", with no number.
 
-For a figure, your name stays with us as well. The public record carries only your role, such as "energy officer". A source you add and a review you write go out in your name. Please do not write an email address or a phone number in any field of the form. A figure that carries one is held back, so contact details never reach the public record.
+For a figure, your name stays with us as well. The public record carries only your role, such as "energy officer". A source you add or a review you write is public. The site files it on GitHub as an issue, a public page anyone can read, with your name and your organisation in it, even if you have no GitHub account. Please do not write an email address or a phone number in any field of the form. A figure that carries one is held back, so contact details never reach the public record.
 
 ## Sources that are not open
 
-The registry lists open sources, meaning data that anyone may reuse and share, under a licence such as Creative Commons Attribution. Many city figures come from a statistics office or a utility whose terms are not open, yet allow the figure to be quoted with its source. We can use those. The figure is shown with its source named and its terms beside it, and the source goes into the registry marked as a cited figure. In the form, write the terms as the publisher states them, for example "© Statistics office, reuse with attribution".
+The registry lists open sources, meaning data that anyone may reuse and share, under a licence such as Creative Commons Attribution. Many city figures come from a statistics office or a utility whose terms are not open, yet allow the figure to be quoted with its source. We can use those. The figure is shown with its source named and its terms beside it. The source goes into the registry marked as a cited figure. In the form, write the terms as the publisher states them, for example "© Statistics office, reuse with attribution".
 
 ## Seeing where your city stands
 
@@ -76,8 +76,6 @@ Each reading on the page shows one of seven states, in words.
 - "not held anywhere" means the city told us that nobody counts it.
 - "checked" means the Fab City team checked the figure, or someone reviewed a source for your city and found it usable.
 
-The page reads all of this from the registry, so what you see there is what anyone can see.
-
 ## Uqbar
 
-Uqbar is a city we invented, named after the country Jorge Luis Borges made up in one of his stories. Every figure for it is made up, and so are the offices and sources behind them. We ran it through the whole path before asking any real city, and its page shows every state a figure can be in. Open [index.fab.city/operate/city-data?place=uqbar](https://index.fab.city/operate/city-data?place=uqbar) to see a city with most of its readings answered. Uqbar never counts in anything the Index says about real places.
+Uqbar is a city we invented, named after the country Jorge Luis Borges made up in one of his stories. Every figure for it is made up, and so are the offices and sources behind them. We ran it through the whole path before asking any real city. Its page shows every state a figure can be in. Open [index.fab.city/operate/city-data?place=uqbar](https://index.fab.city/operate/city-data?place=uqbar) to see a city with most of its readings answered. Uqbar never counts in anything the Index says about real places.
