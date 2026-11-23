@@ -219,6 +219,23 @@ def test_needs_a_fix_leaves_the_rest_of_the_file():
         assert [(f["year"], f["value"]) for f in left] == [(2024, 398)], left
 
 
+def test_two_parts_of_one_reading_are_kept():
+    """R1 asks for tonnes and a share. Both for 2025 survive, in the listing and on disk, and a
+    later figure in one unit replaces only its own unit."""
+    tonnes = rec(rid="recA", value=412.5, unit="t/yr")
+    share = rec(rid="recB", value=38, unit="%")
+    docs, _ = copy(tonnes, share)
+    units = sorted(f["unit"] for f in docs[BALI]["figures"])
+    assert units == ["%", "t/yr"], units
+    newer = rec(rid="recC", created="2027-02-01T08:00:00.000Z", value=40, unit="%")
+    with tempfile.TemporaryDirectory() as td:
+        root = Path(td)
+        cf.apply(docs, root, write=True)
+        cf.apply(copy(newer)[0], root, write=True)
+        figs = yaml.safe_load((root / BALI).read_text(encoding="utf-8"))["figures"]
+    assert sorted((f["unit"], f["value"]) for f in figs) == [("%", 40), ("t/yr", 412.5)], figs
+
+
 def test_partial_listing_removes_nothing():
     """Concern 5: --write with a partial --records listing and no --prune removes nothing; --prune does."""
     full = [rec(rid="recA", year=2024, value=398), rec(rid="recB", year=2025),

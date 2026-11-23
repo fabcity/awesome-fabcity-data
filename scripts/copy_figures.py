@@ -12,7 +12,7 @@ A figure's home is the Airtable table `City figures`, filled through the form "S
 (docs/airtable.md). This reads that table and nothing else, and never writes to it. Change a figure
 in Airtable, never in the file.
 
-A run adds figures and replaces them (same place, reading, year and district; the later one wins).
+A run adds figures and replaces them (same place, reading, year, district and unit, so the two parts of a reading both stay; the later one wins).
 It takes a figure out of observations/ only when a record in the listing takes it back: the team
 marked the record `needs a fix`, or the city has not said yes to publishing it, even when that
 record is skipped for another reason. A figure sent after that record stays. A figure whose record
@@ -38,7 +38,7 @@ Airtable record and the field, never what the person typed.
 [{"id": "rec…", "createdTime": "…", "fields": {"place": "bali", "reading_id": ["R1"], …}}].
 Without it the table is read over the REST API with the token in AIRTABLE_TOKEN (sync_airtable._req).
 `createdTime` is the day a figure was sent; the later of two figures for the same place, reading,
-year and district replaces the earlier one here, and Airtable keeps both.
+year, district and unit replaces the earlier one here, and Airtable keeps both.
 
 --file-sources goes with --write or --check, never with --plan; with --check it files nothing when
 observations/ is behind. It opens a `source: <id>` issue, with `gh`, for each published figure
@@ -105,13 +105,13 @@ def _consents(f: dict) -> bool:
 
 
 def _key_of(rec: dict, places: set[str], fictional: set[str], readings: set[str]):
-    """(file, year, district) a record speaks for, or None when its place or reading is not known."""
+    """(file, year, district, unit) a record speaks for, or None when its place or reading is not known."""
     f = rec.get("fields", {})
     place = _text(f.get("place")).lower()
     ids = f.get("reading_id") or []
     ids = [_text(i) for i in (ids if isinstance(ids, list) else [ids])]
     if (place in places or place in fictional) and len(ids) == 1 and ids[0] in readings:
-        return f"observations/{place}/{ids[0]}.yaml", _year(f.get("year")), _text(f.get("district"))
+        return f"observations/{place}/{ids[0]}.yaml", _year(f.get("year")), _text(f.get("district")), _text(f.get("unit"))
     return None
 
 
@@ -187,12 +187,12 @@ def to_observations(records: list[dict], places: set[str], fictional: set[str],
                 withdrawn[key] = max(withdrawn.get(key, ""), sent)
             continue
         place, reading, fig = got
-        key = (f"observations/{place}/{reading}.yaml", fig["year"], fig.get("district", ""))
+        key = (f"observations/{place}/{reading}.yaml", fig["year"], fig.get("district", ""), fig.get("unit", ""))
         if key not in latest or sent >= latest[key][0]:
             latest[key] = (sent, place, reading, fig)
 
     docs: dict[str, dict] = {}
-    for key in sorted(latest, key=lambda k: (k[0], str(k[1]), k[2])):
+    for key in sorted(latest, key=lambda k: (k[0], str(k[1]), k[2], k[3])):
         sent, place, reading, fig = latest[key]
         if "value" in fig and key in withdrawn and withdrawn[key] >= sent:
             continue
@@ -209,7 +209,7 @@ def render(doc: dict) -> str:
 
 def taken_back(records: list[dict], places: set[str], fictional: set[str],
                readings: set[str]) -> dict[tuple, str]:
-    """{(file, year, district): date} for each record in the listing that takes a figure back: the
+    """{(file, year, district, unit): date} for each record in the listing that takes a figure back: the
     team marked it `needs a fix` (ruling 1), or the city has not said yes to publishing it. The date
     is the latest such record's; apply() drops a figure on disk sent on or before it."""
     out: dict[tuple, str] = {}
@@ -222,7 +222,7 @@ def taken_back(records: list[dict], places: set[str], fictional: set[str],
 
 
 def _key(fig: dict) -> tuple:
-    return fig.get("year"), fig.get("district", "")
+    return fig.get("year"), fig.get("district", ""), fig.get("unit", "")
 
 
 def apply(docs: dict[str, dict], root: Path, write: bool, taken: dict | None = None,
@@ -244,7 +244,7 @@ def apply(docs: dict[str, dict], root: Path, write: bool, taken: dict | None = N
             for f in (doc or {}).get("figures", []):
                 if _key(f) not in figs or f["sent_on"] >= str(figs[_key(f)].get("sent_on")):
                     figs[_key(f)] = f
-            doc = {**(doc or old), "figures": [figs[k] for k in sorted(figs, key=lambda k: (str(k[0]), k[1]))]}
+            doc = {**(doc or old), "figures": [figs[k] for k in sorted(figs, key=lambda k: (str(k[0]), k[1], k[2]))]}
         if doc and doc["figures"]:
             want[p] = render(doc)
     add = sorted(set(want) - set(have))
