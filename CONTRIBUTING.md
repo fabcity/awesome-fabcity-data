@@ -91,12 +91,15 @@ Any Fab City place can send data for the fourteen readings in [`readings.yaml`](
 people doing it is [`docs/for-cities.md`](docs/for-cities.md), and in Spanish
 [`docs/para-ciudades.md`](docs/para-ciudades.md).
 
-A source sent from that page is filed like any other, as a `candidate`, tagged `city-sent` and
-`reading-r<n>`. A figure goes through the Airtable form "Send a figure", and
+A source sent from that page is filed as a `candidate`, tagged `city-sent` and `reading-r<n>`. It
+arrives unverified, and its notes say so: nobody has opened it or read its terms yet. It counts in
+the place's coverage from the moment its pull request merges, so whoever merges it opens the source
+and reads its terms first. A figure goes through the Airtable form "Send a figure", and
 `scripts/copy_figures.py` copies it one way into `observations/<place>/<reading>.yaml`. It is
 `candidate` when it arrives and `live` once the Fab City team has checked it. A figure the city has
-not agreed to publish is written as `held`, and an answer that nobody holds it as `not-held`, both
-with no value. Change a figure in Airtable, never in `observations/`.
+not agreed to publish is written as `held`. An answer that nobody holds it is written as `not-held`
+only when the city said yes to publishing that answer; with `ask` or `no` it stays `held`. Neither
+carries a value. Change a figure in Airtable, never in `observations/`.
 
 A source that carries a city's figure keeps its terms even when they are not open, under the
 exception to criterion 1. The terms go in `license`, the entry carries the tag `cited-figure`, and

@@ -232,6 +232,9 @@ OBS_CASES = [
     ("observation live without checked_on", fig(state="live", checked_by="Index reviewer"), False),
     ("observation not-held with a value",  fig(state="not-held"), False),
     ("observation candidate without terms", fig(terms=None), False),
+    ("observation value with no source",   fig(source_url=None, source_name=None), False),
+    ("observation value, a source name only", fig(source_url=None), True),
+    ("observation held, no source",        fig(state="held", value=None, unit=None, terms=None, source_url=None, source_name=None), True),
     ("observation sent_by_role with @",    fig(sent_by_role="lead@example.org"), False),
     ("observation sent_by_role a phone",   fig(sent_by_role="call +34 600 123 456"), False),
     ("observation checked_by with @",      fig(state="live", checked_by="a@b.org", checked_on="2026-11-22"), False),
@@ -323,6 +326,7 @@ figures:
     state: candidate
     value: 120000
     unit: t/yr
+    source_name: City waste report
     terms: CC-BY-4.0
     sent_by_role: City waste department lead
     sent_on: 2026-11-20
@@ -428,9 +432,12 @@ def test_fictional_not_in_coverage() -> int:
         root = Path(td)
         for sub in ("scripts", "cells"):
             shutil.copytree(ROOT / sub, root / sub)
-        for name in ("readings.yaml", "fictional.yaml"):
+        for name in ("readings.yaml", "fictional.yaml", "places.yaml"):
             shutil.copy(ROOT / name, root / name)
-        for rel, text in files.items():
+        # A real place beside Uqbar, so a build that counts nobody fails too.
+        real = {"data/environmental/city/temp-tree-real.yaml": CANDIDATE.replace("Temp Tree Source", "Temp Tree Real")
+                .replace("status: candidate", "status: live") + "places: [accra]\nfeeds_cells: [\"Governance|City\"]\n"}
+        for rel, text in {**files, **real}.items():
             (root / rel).parent.mkdir(parents=True, exist_ok=True)
             (root / rel).write_text(text, encoding="utf-8")
         proc = subprocess.run([sys.executable, "-c",
@@ -442,7 +449,7 @@ def test_fictional_not_in_coverage() -> int:
         print(f"[FAIL] fictional not in coverage: build() raised {proc.stderr[-200:]}")
         return 1
     cov, served, obs, fic = json.loads(proc.stdout)
-    if "uqbar" in cov or served != 0 or obs != ["uqbar"] or fic != ["uqbar"]:
+    if "uqbar" in cov or "accra" not in cov or served != 1 or obs != ["uqbar"] or fic != ["uqbar"]:
         print(f"[FAIL] fictional not in coverage: {proc.stdout}")
         return 1
     print("[ ok ] fictional not in coverage")

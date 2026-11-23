@@ -202,7 +202,7 @@ readings:
 
     1. Search for a dataset that holds this figure for {place_name}. Prefer the publisher's own site or API.
     2. Read the licence or terms on the publisher's own page. Quote the URL and the sentence that says what may be done with the data. If the terms are not open, say so and quote them, since a public source can still be cited with its terms.
-    3. Fetch the data and check that it holds figures for {place_name} itself, for {years}. Write down the place's official name or code as the data gives it, and two or three real figures with their year. Never invent a figure. If you could not read something, say so.
+    3. Fetch the data and check that it holds figures for the region {place_name} sits in, or for {place_name} itself where the region is not counted, for {years}. Write down the region's official name or code as the data gives it, and two or three real figures with their year. Never invent a figure. If you could not read something, say so.
     4. Write it in exactly this shape, one answer under each heading, with yourself in Assisted by. If the terms are not open, add cited-figure to Tags.
 
     ### Name
@@ -260,7 +260,7 @@ readings:
 
     1. Search for a dataset that holds this figure for {place_name}. Prefer the publisher's own site or API.
     2. Read the licence or terms on the publisher's own page. Quote the URL and the sentence that says what may be done with the data. If the terms are not open, say so and quote them, since a public source can still be cited with its terms.
-    3. Fetch the data and check that it holds figures for {place_name} itself, for {years}. Write down the place's official name or code as the data gives it, and two or three real figures with their year. Never invent a figure. If you could not read something, say so.
+    3. Fetch the data and check that it holds figures for the region {place_name} sits in, or for {place_name} itself where the region is not counted, for {years}. Write down the region's official name or code as the data gives it, and two or three real figures with their year. Never invent a figure. If you could not read something, say so.
     4. Write it in exactly this shape, one answer under each heading, with yourself in Assisted by. If the terms are not open, add cited-figure to Tags.
 
     ### Name
@@ -550,7 +550,7 @@ readings:
 
     1. Search for a dataset that holds this figure for {place_name}. Prefer the publisher's own site or API.
     2. Read the licence or terms on the publisher's own page. Quote the URL and the sentence that says what may be done with the data. If the terms are not open, say so and quote them, since a public source can still be cited with its terms.
-    3. Fetch the data and check that it holds figures for {place_name} itself, for {years}. Write down the place's official name or code as the data gives it, and two or three real figures with their year. Never invent a figure. If you could not read something, say so.
+    3. Read the laws, charter or official pages that set what {place_name} may decide. For each of the four powers (taxes it can levy, land it owns, utilities it runs, rules for its own purchasing) quote the evidence and say held, not held, or not found. Count the powers the evidence confirms. Never invent an answer. If you could not read something, say so.
     4. Write it in exactly this shape, one answer under each heading, with yourself in Assisted by. If the terms are not open, add cited-figure to Tags.
 
     ### Name
@@ -573,7 +573,7 @@ readings:
     ### Notes
     VERIFIED: <date, and what you opened>
     LICENCE: <URL and the sentence that says what may be done with the data>
-    ENDPOINT: <URL, what it returned, two or three real figures with their year>
+    ENDPOINT: <URL, what it says, and for each of the four powers: held, not held or not found, with the evidence>
     WHY THIS CELL: reading R10, <what the figure measures>
     WHAT IT DOES NOT CLAIM: <the limits>
 
@@ -596,7 +596,7 @@ readings:
     space, by district where you have it.
   why: Making things locally is a means to a better life, so the Index also asks whether everyone has
     enough to live on and whether makers can still afford a place to work.
-  unit: '% or count'
+  unit: '% or count, naming the measure (as in % of households on food aid), and currency per m² per month for workshop rent'
   years: latest
   held_by: City social services, statistics office, economic development
   tests: floor
@@ -672,7 +672,7 @@ readings:
 
     1. Search for a dataset that holds this figure for {place_name}. Prefer the publisher's own site or API.
     2. Read the licence or terms on the publisher's own page. Quote the URL and the sentence that says what may be done with the data. If the terms are not open, say so and quote them, since a public source can still be cited with its terms.
-    3. Fetch the data and check that it holds figures for {place_name} itself, for {years}. Write down the place's official name or code as the data gives it, and two or three real figures with their year. Never invent a figure. If you could not read something, say so.
+    3. Find the flood, wetland and recharge maps that cover {place_name}. Write down each map layer, the area it covers, its date and its terms, and any area totals the source itself reports. A map with no totals is enough: the Fab City team works the areas out. Never invent a figure. If you could not read something, say so.
     4. Write it in exactly this shape, one answer under each heading, with yourself in Assisted by. If the terms are not open, add cited-figure to Tags.
 
     ### Name
@@ -695,7 +695,7 @@ readings:
     ### Notes
     VERIFIED: <date, and what you opened>
     LICENCE: <URL and the sentence that says what may be done with the data>
-    ENDPOINT: <URL, what it returned, two or three real figures with their year>
+    ENDPOINT: <URL, the map layers it holds, the area they cover and their date, and any totals the source reports>
     WHY THIS CELL: reading R12, <what the figure measures>
     WHAT IT DOES NOT CLAIM: <the limits>
 

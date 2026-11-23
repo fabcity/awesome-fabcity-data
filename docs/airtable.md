@@ -51,9 +51,9 @@ Copied one way from `readings.yaml` by `scripts/sync_airtable.py --write`. All f
 
 `sender_note` (added 23 November 2026) holds anything the sender wants to tell the Fab City team, in any language. It stays in Airtable. `scripts/copy_figures.py` never copies it.
 
-`scripts/copy_figures.py` copies this table one way into `observations/`, and its docstring says what goes out and what stays here. It only reads Airtable. `.github/workflows/figures-to-pr.yml` runs it daily once the repository secret `AIRTABLE_TOKEN` is set; until then it runs by hand on a listing of the rows: `python3 scripts/copy_figures.py --records rows.json --write`.
+`scripts/copy_figures.py` copies this table one way into `observations/`, and its docstring says what goes out and what stays here. It only reads Airtable. `.github/workflows/figures-to-pr.yml` runs it daily once the repository secret `AIRTABLE_TOKEN` is set; until then it runs by hand on an export of the whole table: `python3 scripts/copy_figures.py --records rows.json --write`. Export every row, not a selection: a withdrawal only counts while its row is in the listing.
 
-The team reads the skipped list in each daily figures pull request. A skipped record is fixed in Airtable, and the next run picks it up.
+The team reads the skipped list in each daily figures pull request. When every record is skipped and `observations/` has nothing new, no pull request opens, and the list is only in the log of the workflow's step "Copy the figures". A skipped record is fixed in Airtable, and the next run picks it up.
 
 ## Cohort (`tblefySK5wVdZWnHu`)
 

@@ -38,7 +38,8 @@
         { "if": { "properties": { "state": { "enum": ["candidate", "live"] } } },
           "then": { "required": ["value"] },
           "else": { "not": { "required": ["value"] } } },
-        { "if": { "required": ["value"] }, "then": { "required": ["terms"] } },
+        { "if": { "required": ["value"] },
+          "then": { "required": ["terms"], "anyOf": [{ "required": ["source_url"] }, { "required": ["source_name"] }] } },
         { "if": { "properties": { "state": { "const": "live" } } },
           "then": { "required": ["checked_by", "checked_on"] } }
       ]

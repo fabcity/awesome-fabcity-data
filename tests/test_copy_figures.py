@@ -466,6 +466,79 @@ def test_withdrawn_figure_files_no_source():
     assert len(issues) == 1 and "https://new.example.org/waste" in issues[0][1], issues
 
 
+# --- CodeRabbit on #118 ------------------------------------------------------------------------
+def test_contact_in_source_url_refused():
+    """An email address or a phone number in a URL's login, query or fragment reaches no file and no issue."""
+    for url in ("https://data.example.org/waste?contact=ana@city.go.id",
+                "https://ana:secret@data.example.org/waste",
+                "https://data.example.org/waste#tel=%2B62%20361%20222%203333"):
+        r = rec(source_url=url)
+        docs, skips = copy(r)
+        assert docs == {} and len(skips) == 1 and "`source_url`" in skips[0], (url, skips)
+        assert "city.go.id" not in skips[0] and "secret" not in skips[0] and "222" not in skips[0], skips
+        assert cf.source_issue(r, READINGS["R1"]) is None, url
+    # A long number in the path is a dataset id, not a phone number.
+    docs, skips = copy(rec(source_url="https://data.example.org/datasets/123456789012/download"))
+    assert skips == [] and only_figure(docs)["source_url"].endswith("/download"), skips
+
+
+def test_skip_reason_never_echoes_raw_year_or_state():
+    """A malformed --records row can carry contact details in year or state: the reason names the field only."""
+    for r in (rec(year="ana@city.go.id"), rec(state="call +62 361 222 3333"),
+              rec(place="atlantis", year="+62 361 222 3333")):
+        _, skips = copy(r)
+        assert len(skips) == 1 and "@" not in skips[0] and "222" not in skips[0], skips
+
+
+def test_tied_figures_do_not_depend_on_order():
+    """Two figures for one key sent at the same instant: the record id decides, not the listing order."""
+    a, b = rec(rid="recA", value=1), rec(rid="recB", value=2)
+    assert only_figure(copy(a, b)[0])["value"] == only_figure(copy(b, a)[0])["value"] == 2
+
+
+def test_records_file_without_a_list_is_refused():
+    """An error object saved as rows.json is not an empty listing, which --prune would turn into an empty folder."""
+    with tempfile.TemporaryDirectory() as td:
+        p = Path(td) / "rows.json"
+        p.write_text('{"error": {"type": "AUTHENTICATION_REQUIRED"}}', encoding="utf-8")
+        try:
+            with contextlib.redirect_stderr(io.StringIO()), contextlib.redirect_stdout(io.StringIO()):
+                cf.main(["--plan", "--records", str(p)])
+        except SystemExit as ex:
+            assert ex.code == 2, ex.code
+        else:
+            raise AssertionError("an error object was read as an empty listing")
+
+
+def test_one_issue_per_source_url():
+    """Two figures citing one URL under two names file one source."""
+    a = rec(rid="recA", source_name="Waste report")
+    b = rec(rid="recB", created="2027-01-11T08:00:00.000Z", reading_id=["R2"], unit="MWh/yr",
+            source_name="The waste report, 2025")
+    assert len(cf.sources([a, b], READINGS)) == 1
+
+
+def test_two_places_naming_a_source_alike_get_two_titles():
+    a = rec(rid="recA", source_name="National census", source_url="https://a.example.org/census")
+    b = rec(rid="recB", place="barcelona", source_name="National census", source_url="https://b.example.org/census")
+    ta, tb = cf.source_issue(a, READINGS["R1"])[0], cf.source_issue(b, READINGS["R1"])[0]
+    assert ta != tb, ta
+
+
+def test_zero_value_is_copied():
+    fig = only_figure(copy(rec(value=0))[0])
+    assert fig["value"] == 0 and "value: 0\n" in cf.render({"place": "bali", "reading": "R1", "figures": [fig]}), fig
+
+
+def test_workflow_closes_a_stale_pr_and_hides_no_failure():
+    """A figure corrected back to what main holds leaves no open PR with the old one, and no step's failure is ignored."""
+    wf = yaml.safe_load((ROOT / ".github" / "workflows" / "figures-to-pr.yml").read_text(encoding="utf-8"))
+    job = wf["jobs"]["figures"]
+    assert not job.get("continue-on-error") and not any(s.get("continue-on-error") for s in job["steps"])
+    commit = next(s["run"] for s in job["steps"] if "--head figures/auto" in s.get("run", ""))
+    assert "gh pr close" in commit.split("exit 0")[0], commit
+
+
 def test_build_readings():
     rows = build_readings()
     assert [r["id"] for r in rows] == [f"R{i}" for i in range(1, 15)], rows

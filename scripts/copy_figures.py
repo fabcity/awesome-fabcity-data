@@ -34,7 +34,8 @@ held or not-held answer gives way to a figure with a value sent later for the sa
 A record is skipped, with a reason printed, when its place is in neither places.yaml nor
 fictional.yaml, when the `fictional` box disagrees with the place, when its reading is not one of
 R1 to R14, when any text that would be published (unit, district, source name, terms, role, checked
-by), or the sender's name, looks like an email address or phone number, when a value comes with no
+by, and the login, query or fragment of the source URL), or the sender's name, looks like an email
+address or phone number, when a value comes with no
 source, or when the figure would not pass schema/observation.schema.json. Reasons name the
 Airtable record and the field, never what the person typed, and never a place that looks like an
 email address or a phone number.
@@ -43,7 +44,10 @@ email address or a phone number.
 [{"id": "rec…", "createdTime": "…", "fields": {"place": "bali", "reading_id": ["R1"], …}}].
 Without it the table is read over the REST API with the token in AIRTABLE_TOKEN (sync_airtable._req).
 `createdTime` is the day a figure was sent; the later of two figures for the same place, reading,
-year, district and unit replaces the earlier one here, and Airtable keeps both.
+year, district and unit replaces the earlier one here, and Airtable keeps both. Two sent at the same
+instant are ordered by record id. A run by hand reads an export of the whole table: a withdrawal
+counts only while its record is in the listing, and the file keeps the day a figure was sent, not
+the hour.
 
 --file-sources goes with --write or --check, never with --plan; with --check it files nothing when
 observations/ is behind. It opens a `source: <id>` issue, with `gh`, for each published figure
@@ -62,6 +66,7 @@ import subprocess
 import sys
 import time
 from pathlib import Path
+from urllib.parse import unquote, urlsplit
 
 import jsonschema
 import yaml
@@ -105,6 +110,13 @@ def _year(v):
     return int(v) if isinstance(v, float) and v.is_integer() else v
 
 
+def _url_has_contact(url: str) -> bool:
+    """Contact details in a URL's login, query or fragment. The path is not read: a long number there
+    is a dataset id. ponytail: a query holding a 9-digit id is refused too; the reason says which field."""
+    u = urlsplit(url)
+    return "@" in u.netloc or bool(CONTACT.search(unquote(f"{u.query} {u.fragment}")))
+
+
 def _consents(f: dict) -> bool:
     return _text(f.get("may_publish")).lower() == "yes"
 
@@ -138,7 +150,8 @@ def figure(rec: dict, places: set[str], fictional: set[str], readings: set[str])
     ids = [_text(i) for i in (ids if isinstance(ids, list) else [ids])]
     # The reason is printed in a public pull request: a place that looks like contact details is never repeated.
     shown = place if SLUG.match(place) and not CONTACT.search(place) else "place?"
-    who = f"{rec.get('id', 'a record')} ({shown} {'/'.join(ids) or 'reading?'} {f.get('year', 'year?')})"
+    year = _year(f.get("year"))
+    who = f"{rec.get('id', 'a record')} ({shown} {'/'.join(ids) or 'reading?'} {year if isinstance(year, int) else 'year?'})"
 
     if place not in places and place not in fictional:
         if shown == "place?":
@@ -153,7 +166,7 @@ def figure(rec: dict, places: set[str], fictional: set[str], readings: set[str])
     if state == "needs a fix":
         return f"{who}: the team marked it `needs a fix`"
     if state not in ("sent", "copied", "checked"):
-        return f"{who}: state {state!r} is not one of sent, needs a fix, copied, checked"
+        return f"{who}: `state` is not one of sent, needs a fix, copied, checked"
     # The form does not require a role and the schema does, so an empty one is said to be empty.
     fig = {"year": _year_of(rec), "district": _text(f.get("district")),
            "sent_by_role": _text(f.get("sent_by_role")) or "not given",
@@ -178,6 +191,8 @@ def figure(rec: dict, places: set[str], fictional: set[str], readings: set[str])
     for key in ("sent_by", *TEXT):
         if CONTACT.search(_text(f.get(key) if key == "sent_by" else fig.get(key))):
             return f"{who}: `{key}` looks like it holds an email address or a phone number"
+    if _url_has_contact(fig.get("source_url", "")):
+        return f"{who}: `source_url` looks like it holds an email address or a phone number"
 
     doc = {"place": place, "reading": ids[0], "figures": [fig]}
     errors = sorted(SCHEMA.iter_errors(doc), key=lambda e: list(e.path))
@@ -220,12 +235,13 @@ def to_observations(records: list[dict], places: set[str], fictional: set[str],
             continue
         place, reading, fig = got
         key = (f"observations/{place}/{reading}.yaml", fig["year"], fig.get("district", ""), fig.get("unit", ""))
-        if key not in latest or sent >= latest[key][0]:
-            latest[key] = (sent, place, reading, fig)
+        order = (sent, str(rec.get("id", "")))     # sent at the same instant: the record id decides
+        if key not in latest or order >= latest[key][0]:
+            latest[key] = (order, place, reading, fig)
 
     docs: dict[str, dict] = {}
     for key in sorted(latest, key=lambda k: (k[0], str(k[1]), k[2], k[3])):
-        sent, place, reading, fig = latest[key]
+        (sent, _), place, reading, fig = latest[key]
         if "value" in fig and key[:3] in withdrawn and withdrawn[key[:3]] >= sent:
             continue
         doc = docs.setdefault(key[0], {
@@ -307,11 +323,15 @@ def source_issue(record: dict, reading: dict) -> tuple[str, str] | None:
     f = record.get("fields", {})
     place, url = _text(f.get("place")).lower(), _text(f.get("source_url"))
     if (place in FICTIONAL or f.get("fictional") or place not in PLACES or not url or f.get("not_held")
-            or not _consents(f) or any(CONTACT.search(_text(f.get(k))) for k in ("source_name", "terms", "sent_by_role"))):
+            or not _consents(f) or any(CONTACT.search(_text(f.get(k))) for k in ("source_name", "terms", "sent_by_role"))
+            or _url_has_contact(url)):
         return None
     where, rid = PLACES[place], reading["id"]
     reading_name = reading["name"][0].lower() + reading["name"][1:]
-    name = (_text(f.get("source_name")) or f"{reading['name']}, {where}")[:120]
+    name = _text(f.get("source_name")) or reading["name"]
+    if where.lower() not in name.lower():    # two places that name a source alike file two entries
+        name = f"{name[:118 - len(where)]}, {where}"
+    name = name[:120]
     terms = _text(f.get("terms")) or "not stated"
     pillar, scale = (p.lower() for p in reading["cells"][0].split("|"))
     tags = ["city-sent", f"reading-{rid.lower()}"] + ([] if is_open(terms) else ["cited-figure"])
@@ -357,8 +377,8 @@ def sources(records: list[dict], readings: dict[str, dict]) -> list[tuple[str, s
             continue
         issue = source_issue(rec, readings[got[1]])
         url = _text(rec["fields"].get("source_url")).rstrip("/")
-        if issue and url not in held and issue[0] not in seen:
-            seen.add(issue[0])
+        if issue and url not in held and issue[0] not in seen and url not in seen:
+            seen |= {issue[0], url}
             out.append(issue)
     return out
 
@@ -405,7 +425,10 @@ def main(argv: list[str]) -> int:
 
     if a.records:
         records = json.loads(Path(a.records).read_text(encoding="utf-8"))
-        records = records.get("records", []) if isinstance(records, dict) else records
+        if isinstance(records, dict):
+            records = records.get("records")
+        if not isinstance(records, list):     # an error object is not an empty listing
+            ap.error("--records must hold a list of records, or an object whose `records` is a list")
     else:
         records = fetch_records()
     readings = {r["id"]: r for r in yaml.safe_load((ROOT / "readings.yaml").read_text(encoding="utf-8"))["readings"]}

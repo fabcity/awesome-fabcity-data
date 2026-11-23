@@ -102,6 +102,11 @@ jobs:
         run: |
           # Only observations/ decides: index.json carries today's date in `generated`, so it differs every day.
           if [ -z "$(git status --porcelain -- observations)" ]; then
+            # A figure corrected back to what main holds leaves the last PR with the old one: close it.
+            stale="$(gh pr list --head figures/auto --state open --json number --jq '.[0].number // empty')"
+            if [ -n "$stale" ]; then
+              gh pr close "$stale" --delete-branch --comment "observations/ on main already matches Airtable, so this copy is out of date."
+            fi
             echo "::notice::observations/ already matches Airtable. Nothing to commit."
             exit 0
           fi
