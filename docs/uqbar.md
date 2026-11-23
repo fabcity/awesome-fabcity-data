@@ -1,6 +1,6 @@
 # Uqbar
 
-Uqbar is an invented city, named after the country Borges made up. Every figure for it is made up, and so are its sources, its offices and the person who sent them. It exists only in `fictional.yaml` and `observations/uqbar/`. It is not in `places.yaml`, so no count of places includes it and it never appears in the `coverage` of `index.json`.
+Uqbar is an invented city, named after the country Borges made up. Every figure for it is made up, and the offices and sources behind the figures are made up too. It exists only in `fictional.yaml` and `observations/uqbar/`. It is not in `places.yaml`, so no count of places includes it and it never appears in the `coverage` of `index.json`.
 
 I made it to run one city through the whole path. A figure starts as a row in the Airtable table `City figures`, `scripts/copy_figures.py` copies it, and it ends up as a file in `observations/`. Every state a figure can be in shows up at least once. The city has about 400,000 people. Each row says `sent_by` is "Uqbar demonstration" and `sent_by_role` is "invented, for the demonstration". The source names read like what they are, for example "Uqbar city waste department, annual report", and the terms say "Invented for the demonstration". I entered the rows on 23 November 2026 and copied them the same day.
 
