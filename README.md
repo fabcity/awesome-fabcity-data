@@ -86,6 +86,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
 
 #### Candidates — verified, not yet reviewed by anyone in the network
 
+- **[Copernicus Climate Pulse (daily ERA5 global temperature and Niño indices)](https://pulse.climate.copernicus.eu/)** — 🌱 `candidate` · `CC-BY-4.0 (ERA5, Copernicus Climate Data Store); attribution to the Copernicus programme required` · _★_
+  Daily global 2 m air temperature from 1940 and sea surface temperature from 1979 (60S-60N ocean and the Niño 1+2, 3, 3.4 and 4 boxes), from the ERA5 reanalysis, two days behind real time. Each chart downloads as a CSV with the 1991-2020 climatology and anomaly.
 - **[Copernicus DEM GLO-30 (global 30 m surface elevation)](https://registry.opendata.aws/copernicus-dem/)** — 🌱 `candidate` · `Copernicus WorldDEM-30 licence (COP-DEM-GLO-30-F): reproduction, distribution and adaptation, free, worldwide, with a © notice and a no-liability sentence that pass to every later user. An open permission, not a named licence. See notes.` · 🔌 `pack:terrain`
   Heights of the Earth's land surface every 30 m, buildings and trees included, from the TanDEM-X radar mission. Published by the Copernicus programme as one-degree Cloud-Optimized GeoTIFFs on AWS. A node reads its own square to see where rain runs and where it stands.
 - **[EDGAR non-CO2 greenhouse gases (CH4, N2O, F-gases)](https://edgar.jrc.ec.europa.eu/dataset_ghg2024)** — 🌱 `candidate` · `CC-BY-4.0` · _★_
