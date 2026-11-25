@@ -6,7 +6,7 @@ En 2014 el alcalde de Barcelona retó a las ciudades a producir casi todo lo que
 
 Hoy la mayor parte de lo que usa una ciudad se fabrica en otro lugar. La comida, la energía, la ropa y los materiales de construcción llegan de fuera, y lo que sobra sale como basura. A este modelo lo llamamos Products In, Trash Out (entran productos, sale basura), o PITO. El modelo hacia el que trabajamos se llama Data In, Data Out (entran datos, salen datos), o DIDO. En él la ciudad produce la mayor parte de lo que consume cerca de donde lo consume. Lo que viaja entre ciudades es sobre todo conocimiento, los diseños y el código para hacer las cosas. El Índice lee dónde está tu ciudad entre los dos modelos, y cómo se mueve de un año al siguiente.
 
-El Índice lee a cada ciudad frente a su propio compromiso. No publica ningún ranking de ciudades.
+El Índice lee a cada ciudad frente a su propio compromiso. La única clasificación es la de los datos que cada lugar ha compartido.
 
 Para leer una ciudad necesitamos cifras de la propia ciudad. A todos los lugares Fab City les pedimos las mismas catorce lecturas, cada una algo que el Índice mide en una ciudad. Las pedimos para 2023, 2024 y 2025 donde existan. Puedes enviarlas todas desde una sola página, [index.fab.city/operate/city-data](https://index.fab.city/operate/city-data). Elige ahí tu ciudad. Si tu ciudad no está en la lista, escribe a Fab City Science a science@fab.city.
 

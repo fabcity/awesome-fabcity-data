@@ -6,7 +6,7 @@ In 2014 the mayor of Barcelona challenged cities to produce almost everything th
 
 Most of what a city uses today is made somewhere else. Food, energy, clothes and building materials arrive from outside, and what is left over leaves as waste. We call this Products In, Trash Out, or PITO. The model we work toward is Data In, Data Out, or DIDO. In DIDO a city makes most of what it consumes close to where it is consumed. What travels between cities is mostly knowledge, the designs and code to make things. The Index reads where your city stands between the two, and how it moves from one year to the next.
 
-The Index reads each city against its own pledge. It publishes no ranking of cities.
+The Index reads each city against its own pledge. The only ranking is of the data each place has shared.
 
 To read a city we need figures from the city itself. We ask every Fab City place for the same fourteen readings, each one a thing the Index measures in a city. We ask for 2023, 2024 and 2025 where they exist. You can send them all from one page, [index.fab.city/operate/city-data](https://index.fab.city/operate/city-data). Pick your city there. If your city is not on the list, write to Fab City Science at science@fab.city.
 
