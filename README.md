@@ -28,7 +28,7 @@ Entries live as YAML files under `data/{pillar}/{scale}/{slug}.yaml` — that's 
 
 ## The taxonomy
 
-The four pillars × five scales come from the **Full Stack Metrics Framework** [Vivanco 2024, 2025], which operationalises *The Fab City Full Stack* [Diez, Niaros, Ferro 2024]. They are not a replacement for ESG, SDG, or doughnut economics — they are a way to organise *where measurement happens* in a distributed-production network.
+The four pillars × five scales come from the **Full Stack Metrics Framework** [Vivanco 2024, 2025], which operationalises *The Fab City Full Stack* [Diez, Niaros, Ferro 2024]. They are a way to organise *where measurement happens* in a distributed-production network.
 
 ```
                               ┌──────────────┐
