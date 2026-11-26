@@ -1,0 +1,46 @@
+name: Copernicus Climate Pulse (daily ERA5 global temperature and Niño indices)
+url: https://pulse.climate.copernicus.eu/
+description: |
+  Daily global 2 m air temperature from 1940 and sea surface temperature from 1979 (60S-60N ocean and the
+  Niño 1+2, 3, 3.4 and 4 boxes), from the ERA5 reanalysis, two days behind real time. Each chart downloads
+  as a CSV with the 1991-2020 climatology and anomaly.
+pillar: environmental
+scale: planet
+status: candidate
+license: CC-BY-4.0 (ERA5, Copernicus Climate Data Store); attribution to the Copernicus programme required
+api: null
+pilot_relevance: [global]
+places: []
+tags: [temperature-anomaly, sea-surface-temperature, enso, climate, era5, daily, csv, copernicus, c3s]
+added: 2026-11-25
+assisted_by: Claude Code
+feeds_cells: [Environmental|Planet]
+auth: none
+upstream_listed_in: []
+notes: |
+  VERIFIED 2026-11-25 (files, licence, update times). NOT READ for any place.
+
+  FILES. FAQ 16 on the site says each chart downloads as a CSV from the button above it. The files sit
+  at sites.ecmwf.int/data/climatepulse/timeseries/csv/{daily,monthly,annual}/, named
+  timeseries_era5_{t2m,sst}_{agg}_{region}.csv. 2 m temperature has one region, `global`. Sea surface
+  temperature has `60S-60N_ocean`, `nino12`, `nino3`, `nino34` and `nino4`. There is no directory
+  listing. Each file opens with a `#` header giving the region, the averaging (area-weighted by cosine
+  of latitude), units and columns: the value, the 1991-2020 climatology and the anomaly against it.
+  The t2m files add an anomaly against 1850-1900, estimated by adding a fixed offset (0.88 degC for
+  2025). The Niño files add a relative index. Daily files end in a status column, FINAL or
+  PRELIMINARY. status/climpulse_status.json gives the latest day, month and year.
+
+  UPDATES. FAQ 8: once a day, usually before 06:00 UTC, with data up to 2 days behind; the previous
+  month on the 3rd, the previous year on 3 January. On 25 Nov 2026 the daily files ran to 23 Nov,
+  written at 04:20 UTC, and only the last day was PRELIMINARY. Monthly ran to October 2026, annual to
+  2025.
+
+  LICENCE. The site states no licence of its own. The CDS catalogue record of its source dataset,
+  ERA5 hourly data on single levels (api/catalogue/v1/collections/reanalysis-era5-single-levels, DOI
+  10.24381/cds.adbb2d47), gives CC-BY-4.0. The credits page asks every user for clear and visible
+  attribution to the Copernicus programme and lists the DOIs to cite.
+
+  WHAT IT DOES NOT CARRY. No grid and no place: one global air temperature mean, one 60S-60N ocean
+  mean and four Niño boxes. The maps are rendered images (PNG and WebP) and carry no values. The
+  anomalies are against 1991-2020, and this cell's minimum indicator names 1951-1980. Gridded ERA5
+  comes from the CDS with an account, 6 days behind (FAQ 17).
