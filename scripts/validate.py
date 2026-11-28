@@ -27,6 +27,7 @@ Dependencies (install once):
 
 import datetime as _dt
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -127,8 +128,10 @@ def candidate_needs_notes(entry: dict) -> str | None:
 
 PLACES_PATH = ROOT / "places.yaml"
 # No places.yaml means no known places: an entry without `places` still passes, one naming a place fails.
-KNOWN_PLACES = ({p["slug"] for p in (yaml.safe_load(PLACES_PATH.read_text(encoding="utf-8")) or {}).get("places", [])}
-                if PLACES_PATH.is_file() else set())
+_PLACES = ((yaml.safe_load(PLACES_PATH.read_text(encoding="utf-8")) or {}).get("places", [])
+           if PLACES_PATH.is_file() else [])
+KNOWN_PLACES = {p["slug"] for p in _PLACES}
+PLACES_ISO3 = {p["slug"]: p.get("iso3") for p in _PLACES}
 
 
 # Invented places (fictional.yaml). They are never real places: no source may name one.
@@ -485,11 +488,31 @@ def join(entries: dict, reviews: dict, strict: bool) -> int:
     return 0
 
 
+def pass_places() -> int:
+    """Every place carries `iso3` (three capitals), and one country has one code."""
+    failures, by_country = 0, {}
+    for p in _PLACES:
+        iso3 = p.get("iso3")
+        if not isinstance(iso3, str) or not re.fullmatch(r"[A-Z]{3}", iso3):
+            print(f"  [FAIL] places.yaml: {p['slug']} `iso3` must be three capital letters, got {iso3!r}")
+            failures += 1
+        elif by_country.setdefault(p["country"], (iso3, p["slug"]))[0] != iso3:
+            first = by_country[p["country"]]
+            print(f"  [FAIL] places.yaml: {p['slug']} `iso3` {iso3} differs from {first[0]} on {first[1]}, same country")
+            failures += 1
+    print(f"\n{len(_PLACES)} places checked.")
+    return failures
+
+
 def main(argv: list[str]) -> int:
     strict = "--strict" in argv
 
-    print("== pass 1: data/ — dataset entries")
-    failures, entries = pass_entries()
+    print("== places.yaml: the places the Index tracks")
+    failures = pass_places()
+
+    print("\n== pass 1: data/ — dataset entries")
+    f1, entries = pass_entries()
+    failures += f1
 
     print("\n== pass 2: reviews/ — who read what, for where")
     f2, reviews = pass_reviews(set(entries))

@@ -99,7 +99,7 @@ def build() -> dict:
         c = yaml.safe_load(p.read_text(encoding="utf-8")) or {}
         cells.append(c)
 
-    places = [{k: p[k] for k in ("slug", "name", "country")}
+    places = [{k: p[k] for k in ("slug", "name", "country", "iso3")}
               for p in (yaml.safe_load(PLACES.read_text(encoding="utf-8")) or {}).get("places", [])] if PLACES.is_file() else []
     observations = [_j2(yaml.safe_load(p.read_text(encoding="utf-8")))
                     for p in sorted(OBSERVATIONS.rglob("*.yaml"))] if OBSERVATIONS.is_dir() else []

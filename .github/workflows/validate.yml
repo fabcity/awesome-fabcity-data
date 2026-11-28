@@ -38,6 +38,9 @@ jobs:
       - name: Copy-figures tests
         run: python tests/test_copy_figures.py
 
+      - name: Systems and profiles tests
+        run: python tests/test_systems.py
+
       - name: Validate entries against schema
         run: python scripts/validate.py
 

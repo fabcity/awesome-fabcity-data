@@ -2,6 +2,7 @@
 # (the source of record for the list). An entry's `places` must use these slugs. Snapshot taken
 # 2026-09-27 from index.fab.city/api/coverage.json; add a place here when the tracker gains one.
 #
+# `iso3`: the ISO 3166-1 alpha-3 code of `country`, and what a national system is matched by.
 # `nuts2` / `nuts3` (NUTS 2024, from Eurostat's GISCO code list, read 2026-10-13): the statistical region a
 # European place sits in, which is what a Eurostat regional table needs. `+` joins the units a place spans.
 # `kind`: traits that say whether a national figure may be split down to the place. fci-index's downscaling
@@ -14,11 +15,13 @@ places:
   - slug: accra
     name: "Accra"
     country: "Ghana"
+    iso3: GHA
     kind: [national-capital]
     kind_note: "national capital; Tema port is outside the territory"
   - slug: amsterdam
     name: "Amsterdam"
     country: "Netherlands"
+    iso3: NLD
     nuts2: NL32
     nuts3: NL32B
     kind: [national-capital, seaport]
@@ -26,6 +29,7 @@ places:
   - slug: augsburg
     name: "Augsburg"
     country: "Germany"
+    iso3: DEU
     nuts2: DE27
     nuts3: DE271
     kind: []
@@ -33,6 +37,7 @@ places:
   - slug: auvergne-rhone-alpes
     name: "Auvergne-Rhône-Alpes"
     country: "France"
+    iso3: FRA
     nuts2: FRK1+FRK2
     nuts_note: "a French région is NUTS1 (FRK); its two NUTS2 are listed, and a NUTS2 key must be summed over them"
     kind: []
@@ -40,11 +45,13 @@ places:
   - slug: bali
     name: "Bali"
     country: "Indonesia"
+    iso3: IDN
     kind: []
     kind_note: "Benoa is small against the 10 Mt mark"
   - slug: barcelona
     name: "Barcelona"
     country: "Spain"
+    iso3: ESP
     nuts2: ES51
     nuts3: ES511
     kind: [seaport]
@@ -52,16 +59,19 @@ places:
   - slug: bas-saint-laurent
     name: "Bas-Saint-Laurent"
     country: "Canada"
+    iso3: CAN
     kind: []
     kind_note: "no national capital and no seaport of that size in the territory, from the admin chain and general knowledge; nothing read today"
   - slug: belo-horizonte
     name: "Belo Horizonte"
     country: "Brazil"
+    iso3: BRA
     kind: []
     kind_note: "no national capital and no seaport of that size in the territory, from the admin chain and general knowledge; nothing read today"
   - slug: bergisches
     name: "Bergisches"
     country: "Germany"
+    iso3: DEU
     nuts2: DEA1
     nuts3: DEA1A+DEA19+DEA18
     nuts_note: "no unit of its own: Wuppertal, Solingen and Remscheid, three NUTS3 inside DEA1"
@@ -70,16 +80,19 @@ places:
   - slug: bhutan
     name: "Bhutan"
     country: "Bhutan"
+    iso3: BTN
     kind: [country]
     kind_note: "a country row"
   - slug: boston
     name: "Boston"
     country: "United States of America"
+    iso3: USA
     kind: [seaport]
     kind_note: "Port of Boston (Conley container terminal and fuel terminals); size against the 10 Mt mark not read today"
   - slug: brest
     name: "Brest"
     country: "France"
+    iso3: FRA
     nuts2: FRH0
     nuts3: FRH02
     kind: []
@@ -87,56 +100,67 @@ places:
   - slug: cambridge
     name: "Cambridge"
     country: "United States of America"
+    iso3: USA
     kind: []
     kind_note: "no national capital and no seaport of that size in the territory, from the admin chain and general knowledge; nothing read today"
   - slug: cape-town
     name: "Cape Town"
     country: "South Africa"
+    iso3: ZAF
     kind: [national-capital, seaport]
     kind_note: "legislative capital of South Africa (seat of Parliament); Port of Cape Town (Transnet); tonnage not read today"
   - slug: charlotte
     name: "Charlotte"
     country: "United States of America"
+    iso3: USA
     kind: []
     kind_note: "no national capital and no seaport of that size in the territory, from the admin chain and general knowledge; nothing read today"
   - slug: cordoba
     name: "Cordoba"
     country: "Argentina"
+    iso3: ARG
     kind: []
     kind_note: "no national capital and no seaport of that size in the territory, from the admin chain and general knowledge; nothing read today"
   - slug: curitiba
     name: "Curitiba"
     country: "Brazil"
+    iso3: BRA
     kind: []
     kind_note: "Paranaguá is outside the territory"
   - slug: detroit
     name: "Detroit"
     country: "United States of America"
+    iso3: USA
     kind: []
     kind_note: "a Great Lakes port, small against the 10 Mt mark"
   - slug: ekurhuleni
     name: "Ekurhuleni"
     country: "South Africa"
+    iso3: ZAF
     kind: []
     kind_note: "inland; O.R. Tambo airport is a cargo hub, which this flag does not yet cover"
   - slug: georgia
     name: "Georgia"
     country: "Georgia"
+    iso3: GEO
     kind: [country]
     kind_note: "a country row"
   - slug: goa
     name: "Goa"
     country: "India"
+    iso3: IND
     kind: [seaport]
     kind_note: "Mormugao Port is in the state; tonnage not read today"
   - slug: guanajuato
     name: "Guanajuato"
     country: "Mexico"
+    iso3: MEX
     kind: []
     kind_note: "no national capital and no seaport of that size in the territory, from the admin chain and general knowledge; nothing read today"
   - slug: hamburg
     name: "Hamburg"
     country: "Germany"
+    iso3: DEU
     nuts2: DE60
     nuts3: DE600
     kind: [seaport]
@@ -144,21 +168,25 @@ places:
   - slug: kamakura
     name: "Kamakura"
     country: "Japan"
+    iso3: JPN
     kind: []
     kind_note: "Yokohama is outside the territory"
   - slug: kerala
     name: "Kerala"
     country: "India"
+    iso3: IND
     kind: [seaport]
     kind_note: "Cochin Port and Vizhinjam are in the state; tonnage not read today"
   - slug: kumasi
     name: "Kumasi"
     country: "Ghana"
+    iso3: GHA
     kind: []
     kind_note: "no national capital and no seaport of that size in the territory, from the admin chain and general knowledge; nothing read today"
   - slug: linz
     name: "Linz"
     country: "Austria"
+    iso3: AUT
     nuts2: AT31
     nuts3: AT312
     kind: []
@@ -166,6 +194,7 @@ places:
   - slug: ljubljana
     name: "Ljubljana"
     country: "Slovenia"
+    iso3: SVN
     nuts2: SI04
     nuts3: SI041
     kind: [national-capital]
@@ -173,16 +202,19 @@ places:
   - slug: mexico-city
     name: "Mexico City"
     country: "Mexico"
+    iso3: MEX
     kind: [national-capital]
     kind_note: "national capital"
   - slug: monterrey
     name: "Monterrey"
     country: "Mexico"
+    iso3: MEX
     kind: []
     kind_note: "no national capital and no seaport of that size in the territory, from the admin chain and general knowledge; nothing read today"
   - slug: montpellier
     name: "Montpellier"
     country: "France"
+    iso3: FRA
     nuts2: FRJ1
     nuts3: FRJ13
     kind: []
@@ -190,16 +222,19 @@ places:
   - slug: montreal
     name: "Montreal"
     country: "Canada"
+    iso3: CAN
     kind: [seaport]
     kind_note: "Port of Montreal, Canada's second container port; tonnage not read today"
   - slug: oakland
     name: "Oakland"
     country: "United States of America"
+    iso3: USA
     kind: [seaport]
     kind_note: "Port of Oakland, a major US West Coast container port; tonnage not read today"
   - slug: occitanie
     name: "Occitanie"
     country: "France"
+    iso3: FRA
     nuts2: FRJ1+FRJ2
     nuts_note: "a French région is NUTS1 (FRJ); its two NUTS2 are listed, and a NUTS2 key must be summed over them"
     kind: []
@@ -207,6 +242,7 @@ places:
   - slug: oulu
     name: "Oulu"
     country: "Finland"
+    iso3: FIN
     nuts2: FI1D
     nuts3: FI1D9
     kind: []
@@ -214,16 +250,19 @@ places:
   - slug: papua
     name: "Papua"
     country: "Indonesia"
+    iso3: IDN
     kind: []
     kind_note: "no national capital and no seaport of that size in the territory, from the admin chain and general knowledge; nothing read today"
   - slug: parepare
     name: "Parepare"
     country: "Indonesia"
+    iso3: IDN
     kind: []
     kind_note: "the port is small against the 10 Mt mark"
   - slug: paris
     name: "Paris"
     country: "France"
+    iso3: FRA
     nuts2: FR10
     nuts3: FR101
     kind: [national-capital]
@@ -231,32 +270,38 @@ places:
   - slug: pemkab-bangka-tengah
     name: "Pemkab Bangka Tengah"
     country: "Indonesia"
+    iso3: IDN
     kind: []
     kind_note: "no national capital and no seaport of that size in the territory, from the admin chain and general knowledge; nothing read today"
   - slug: plymouth
     name: "Plymouth"
     country: "United Kingdom"
+    iso3: GBR
     nuts_note: "the UK left NUTS; ITL 2021 code TLK41 (Plymouth), inside TLK4 (Devon); Eurostat's regional tables carry no UK rows after 2020"
     kind: []
     kind_note: "the port is small against the 10 Mt mark"
   - slug: puebla
     name: "Puebla"
     country: "Mexico"
+    iso3: MEX
     kind: []
     kind_note: "no national capital and no seaport of that size in the territory, from the admin chain and general knowledge; nothing read today"
   - slug: recife
     name: "Recife"
     country: "Brazil"
+    iso3: BRA
     kind: []
     kind_note: "Suape is in Ipojuca, outside the territory; Porto do Recife is small"
   - slug: renca
     name: "Renca"
     country: "Chile"
+    iso3: CHL
     kind: []
     kind_note: "no national capital and no seaport of that size in the territory, from the admin chain and general knowledge; nothing read today"
   - slug: rennes
     name: "Rennes"
     country: "France"
+    iso3: FRA
     nuts2: FRH0
     nuts3: FRH03
     kind: []
@@ -264,41 +309,49 @@ places:
   - slug: sacramento
     name: "Sacramento"
     country: "United States of America"
+    iso3: USA
     kind: []
     kind_note: "a river port, small"
   - slug: santiago-de-chile
     name: "Santiago de Chile"
     country: "Chile"
+    iso3: CHL
     kind: [national-capital]
     kind_note: "the comuna holds the seat of national government"
   - slug: sao-paulo
     name: "Sao Paulo"
     country: "Brazil"
+    iso3: BRA
     kind: []
     kind_note: "Santos is outside the territory"
   - slug: seoul
     name: "Seoul"
     country: "Korea, South"
+    iso3: KOR
     kind: [national-capital]
     kind_note: "national capital; Incheon is outside the territory"
   - slug: shenzhen
     name: "Shenzhen"
     country: "China"
+    iso3: CHN
     kind: [seaport]
     kind_note: "Port of Shenzhen, among the world's largest container ports; tonnage not read today"
   - slug: somerville
     name: "Somerville"
     country: "United States of America"
+    iso3: USA
     kind: []
     kind_note: "no national capital and no seaport of that size in the territory, from the admin chain and general knowledge; nothing read today"
   - slug: sorocaba
     name: "Sorocaba"
     country: "Brazil"
+    iso3: BRA
     kind: []
     kind_note: "no national capital and no seaport of that size in the territory, from the admin chain and general knowledge; nothing read today"
   - slug: sudburgenland
     name: "Sudburgenland"
     country: "Austria"
+    iso3: AUT
     nuts2: AT11
     nuts3: AT113
     nuts_note: "the tracker's admin chain says AT112, which is Nordburgenland in NUTS 2016 and 2024; Südburgenland is AT113"
@@ -307,16 +360,19 @@ places:
   - slug: sumedang
     name: "Sumedang"
     country: "Indonesia"
+    iso3: IDN
     kind: []
     kind_note: "no national capital and no seaport of that size in the territory, from the admin chain and general knowledge; nothing read today"
   - slug: tanga
     name: "Tanga"
     country: "Tanzania"
+    iso3: TZA
     kind: []
     kind_note: "the port is small against the 10 Mt mark"
   - slug: toulouse
     name: "Toulouse"
     country: "France"
+    iso3: FRA
     nuts2: FRJ2
     nuts3: FRJ23
     kind: []
@@ -324,6 +380,7 @@ places:
   - slug: valence-romans-agglo
     name: "Valence Romans Agglo"
     country: "France"
+    iso3: FRA
     nuts2: FRK2
     nuts3: FRK23
     nuts_note: "the agglomeration sits in Drôme (FRK23)"
@@ -332,6 +389,7 @@ places:
   - slug: veberod
     name: "Veberod"
     country: "Sweden"
+    iso3: SWE
     nuts2: SE22
     nuts3: SE224
     nuts_note: "Lund municipality sits in Skåne län (SE224); the tätort has no code"
@@ -340,6 +398,7 @@ places:
   - slug: velsen
     name: "Velsen"
     country: "Netherlands"
+    iso3: NLD
     nuts2: NL32
     nuts3: NL323
     nuts_note: "IJmond (NL323), the NUTS3 that holds the municipality"
@@ -348,11 +407,13 @@ places:
   - slug: yucatan
     name: "Yucatan"
     country: "Mexico"
+    iso3: MEX
     kind: []
     kind_note: "Progreso port is small against the 10 Mt mark"
   - slug: zadar
     name: "Zadar"
     country: "Croatia"
+    iso3: HRV
     nuts2: HR03
     nuts3: HR033
     kind: []
@@ -360,6 +421,7 @@ places:
   - slug: zagreb
     name: "Zagreb"
     country: "Croatia"
+    iso3: HRV
     nuts2: HR05
     nuts3: HR050
     kind: [national-capital]
