@@ -170,6 +170,19 @@ for name, change in PCASES:
 
 check(run_validate(copy_tree()).returncode == 0, "profiles: the real tree passes")
 
+print("== index.json carries systems and profiles")
+idx = build_in(copy_tree())
+ids = [s["id"] for s in idx["systems"]["energy"]]
+check({"bali", "balearic", "idn"} <= set(ids), "systems.energy holds bali, balearic and idn")
+hand = [s["id"] for s in idx["systems"]["energy"] if s["mix"]["kind"] != "national"]
+check(ids[:len(hand)] == sorted(hand) and ids[len(hand):] == sorted(ids[len(hand):]),
+      "hand-written systems first, then national, each sorted by id")
+check(idx["profiles"][0]["place"] == "bali", "profiles[0] is bali")
+check(all(k in idx for k in "generated source note counts entries cells coverage readings places observations fictional".split()),
+      "every earlier top-level key is still there")
+check(list(idx["counts"]) == ["entries", "cells", "places_served", "reviews"], "counts keeps its keys")
+check("systems/" in idx["note"] and "profiles/" in idx["note"], "the note names systems/ and profiles/")
+
 if FAILS:
     print(f"\n{FAILS} check(s) failed.", file=sys.stderr)
     sys.exit(1)

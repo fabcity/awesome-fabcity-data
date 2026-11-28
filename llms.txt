@@ -19,6 +19,9 @@ checks CI runs, and the rules an entry or a review must keep. You file as the pe
 
 - [index.json](https://raw.githubusercontent.com/fabcity/awesome-fabcity-data/main/index.json): every entry as one JSON array, generated; read this rather than hundreds of YAML files.
 - [places.yaml](https://raw.githubusercontent.com/fabcity/awesome-fabcity-data/main/places.yaml): the 61 places the Index tracks, and their slugs.
+- [systems/energy/](https://github.com/fabcity/awesome-fabcity-data/tree/main/systems/energy): one file per power system, with a national line for the country of every place; in index.json under `systems.energy`.
+- [profiles/](https://github.com/fabcity/awesome-fabcity-data/tree/main/profiles): one file per place, naming its system and its water utilities; in index.json under `profiles`.
+- [schema/system.schema.json](https://raw.githubusercontent.com/fabcity/awesome-fabcity-data/main/schema/system.schema.json) and [schema/profile.schema.json](https://raw.githubusercontent.com/fabcity/awesome-fabcity-data/main/schema/profile.schema.json): what a system and a profile may say.
 - [schema/dataset.schema.json](https://raw.githubusercontent.com/fabcity/awesome-fabcity-data/main/schema/dataset.schema.json): what an entry may say.
 - [schema/review.schema.json](https://raw.githubusercontent.com/fabcity/awesome-fabcity-data/main/schema/review.schema.json): what a review may say.
 - [schema/cell.schema.json](https://raw.githubusercontent.com/fabcity/awesome-fabcity-data/main/schema/cell.schema.json): what an Index cell definition may say; the cells are in `cells/`.

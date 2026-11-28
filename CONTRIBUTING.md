@@ -418,6 +418,72 @@ Validated by `scripts/validate.py` against `schema/cell.schema.json`; worked exa
 [`docs/cell.example.yaml`](docs/cell.example.yaml). The map is empty on purpose — what each cell
 claims is the network's decision, not a thing to be inferred from whatever sources happen to exist.
 
+## Your city's power system and water utility
+
+Two kinds of file describe the place a node sits in. Both are read by the node, and neither is a data source, so they live
+beside `data/` and not in it.
+
+A **system file** describes one power system: a grid, an island system or a country's mix. It is
+`systems/energy/<id>.yaml`, checked against [`schema/system.schema.json`](schema/system.schema.json). It holds a `name`,
+the `polygon` the system serves, the `mix` (how much of the power is fossil, and how we know), `links` to other systems,
+the `readings` it serves, the `sources` and `attribution` it relies on, and `notes`. This is Bali's, shortened:
+
+```yaml
+id: bali
+name: PLN Bali system
+polygon: [[114.42, -8.05], [115.72, -8.05], [115.72, -8.58], [115.4, -8.65], [115.3, -8.88], [114.42, -8.88], [114.42, -8.05]]
+rings:
+  city: [[115.08, -8.55], [115.28, -8.55], [115.28, -8.86], [115.08, -8.86], [115.08, -8.55]]
+mix: {kind: estimated, method: capacity-factors}
+capacity_factors: {coal: 0.7, gas: 0.35, oil: 0.26, solar: 0.18, wind: 0.25}
+links:
+  - {name: Java–Bali cable, at: Cable Head Gilimanuk, rated_mw: null, fossil_share: 0.8419, ring: beyond, source: "Ember Indonesia 2025, CC BY 4.0"}
+demand_mw: null
+readings: [R2]
+sources: [economic/community/openstreetmap]
+attribution: ["© OpenStreetMap contributors, ODbL, via Overpass", "Ember Yearly Electricity Data, CC BY 4.0"]
+notes: The polygon covers the main island of Bali. ...
+```
+
+A **profile** describes one place: the system it sits on and the water utilities that serve it. It is
+`profiles/<place>.yaml`, named for the place's slug in [`places.yaml`](places.yaml), and checked against
+[`schema/profile.schema.json`](schema/profile.schema.json). It needs `notes` and at least one of `energy` and `water`.
+`energy` names a hand-written system by its `id`. `water` lists utilities, each with an `id`, a `name`, what it `serves`,
+its `kind` (`public`, `private` or `community`), the `readings` it serves and `notes`. A utility can carry `match`, the
+name its works have on the public map, so the node looks them up and the registry holds no points. This is Bali's:
+
+```yaml
+place: bali
+energy:
+  system: bali
+water:
+  utilities:
+    - id: pdam-tirta-mangutama
+      name: PDAM Tirta Mangutama
+      serves: Badung regency
+      kind: public
+      match: PDAM Tirta Mangutama
+      readings: [R10, R11]
+      notes: Read on 28 Nov 2026. ...
+notes: Bali's power system and the water utility of Badung regency. ...
+```
+
+A node finds its system by where it is: the system whose `polygon` holds the node. It finds its profile by the Index place
+it belongs to. You do not need a system file for the country. `systems/energy/<iso3 in lower case>.yaml` already holds a
+national line for the country of every place, and its `mix.kind` says `national`, so a reader can tell it from a grid we
+described by hand. A profile does not name a national system.
+
+To add your city's grid or water utility, open a pull request that adds or edits the file. A maintainer merges it. Every
+figure in `notes` is one you read, with where and the date, and if something could not be read, `notes` says so. Then run:
+
+```bash
+python3 scripts/validate.py
+python3 scripts/build_index.py
+python3 scripts/build_readme.py
+```
+
+and commit what the last two write.
+
 ## What we won't accept
 
 - Mirrors of upstream lists with no added curation.

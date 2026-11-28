@@ -26,6 +26,8 @@ Every entry carries:
 
 Entries live as YAML files under `data/{pillar}/{scale}/{slug}.yaml` — that's the source of truth. This README is generated from them by `scripts/build_readme.py`.
 
+Two more folders describe the place a node sits in. `systems/energy/` holds power systems (a grid, an island system or a country's mix) and `profiles/` holds one file per place, naming its system and its water utilities. A national line already covers the country of every place. [CONTRIBUTING](CONTRIBUTING.md#your-citys-power-system-and-water-utility) says how a city adds its own.
+
 ## The taxonomy
 
 The four pillars × five scales come from the **Full Stack Metrics Framework** [Vivanco 2024, 2025], which operationalises *The Fab City Full Stack* [Diez, Niaros, Ferro 2024]. They are a way to organise *where measurement happens* in a distributed-production network.
