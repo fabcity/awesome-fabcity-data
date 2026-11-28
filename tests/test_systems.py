@@ -103,6 +103,48 @@ for name, change, ok in [("a valid national system passes", lambda d: None, True
 
 check(run_validate(copy_tree()).returncode == 0, "systems: the real tree passes")
 
+print("== the national line")
+sys.path.insert(0, str(ROOT / "scripts"))
+import national_energy  # noqa: E402
+
+HEADER = ("Area,ISO 3 code,Year,Area type,Electricity source,Is aggregated source,Generation (TWh),"
+          "Generation YoY change (TWh),Generation YoY change (%),Share of generation (%),"
+          "Share of generation YoY change (% points),Capacity (GW),Emissions (MtCO2e),"
+          "Emissions YoY change (MtCO2e),Emissions YoY change (%),Share of emissions (%),"
+          "Emissions intensity (gCO2e/kWh),Continent,Ember region,EU member,OECD member,G20 member,"
+          "G7 member,ASEAN member")
+
+
+def ember_row(area, iso, year, source, aggregated, share, kind="Country or economy"):
+    cells = [area, iso, year, kind, source, aggregated, "1.0", "", "", share] + [""] * 14
+    return ",".join(str(c) for c in cells)
+
+
+fx = Path(tempfile.mkdtemp())
+(fx / "t.csv").write_text("\n".join([
+    HEADER,
+    ember_row("Indonesia", "IDN", 2023, "Fossil", "True", "84.905"),
+    ember_row("Indonesia", "IDN", 2024, "Fossil", "True", "80.0"),
+    ember_row("Indonesia", "IDN", 2024, "Coal", "False", "50.0"),
+    ember_row("Spain", "ESP", 2023, "Fossil", "True", "28.111"),
+    ember_row("Spain", "ESP", 2024, "Fossil", "True", "23.2564"),
+    ember_row("France", "FRA", 2024, "Fossil", "True", ""),
+    ember_row("ASEAN", "", 2024, "Fossil", "True", "70.0", kind="Region"),
+]) + "\n", encoding="utf-8")
+rows = national_energy.rows(fx / "t.csv")
+check(rows["IDN"] == (2024, 0.8) and rows["ESP"] == (2024, 0.2326), "the latest year with a figure wins, as a share 0 to 1")
+check("FRA" not in rows and "BTN" not in rows and "" not in rows, "no figure, no row: never a zero")
+out = fx / "out"
+written, skipped = national_energy.write(rows, {"IDN", "ESP", "FRA", "BTN"}, out)
+check(sorted(written) == ["esp", "idn"] and sorted(skipped) == ["BTN", "FRA"], "skipped countries are reported")
+d = yaml.safe_load((out / "idn.yaml").read_text())
+check(d["mix"] == {"kind": "national", "fossil_share": 0.8, "year": 2024} and d["country"] == "IDN"
+      and "polygon" not in d and d["readings"] == ["R2"], "a national system has a country and no polygon")
+(out / "esp.yaml").write_text("id: esp\nmix: {kind: estimated, method: capacity-factors}\n")
+written, skipped = national_energy.write(rows, {"ESP"}, out)
+check(written == [] and skipped == ["ESP"] and "estimated" in (out / "esp.yaml").read_text(),
+      "a file that is not national is never overwritten")
+
 print("== place profiles")
 PCASES = [
     ("a place that is not in places.yaml", lambda d: d.__setitem__("place", "nowhere")),

@@ -92,6 +92,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Heights of the Earth's land surface every 30 m, buildings and trees included, from the TanDEM-X radar mission. Published by the Copernicus programme as one-degree Cloud-Optimized GeoTIFFs on AWS. A node reads its own square to see where rain runs and where it stands.
 - **[EDGAR non-CO2 greenhouse gases (CH4, N2O, F-gases)](https://edgar.jrc.ec.europa.eu/dataset_ghg2024)** — 🌱 `candidate` · `CC-BY-4.0` · _★_
   The JRC's global inventory of methane, nitrous oxide and fluorinated gases by country and sector, 1970–2023, plus 0.1° gridded maps. Scoped deliberately to the gases the European Union owns and licenses openly.
+- **[Ember Yearly Electricity Data (generation, capacity, emissions and demand by country)](https://ember-energy.org/data/yearly-electricity-data/)** — 🌱 `candidate` · `CC-BY-4.0 (Ember states "released under a Creative Commons Attribution Licence (CC-BY-4.0)"); credit Ember` · _★_
+  Yearly electricity generation, capacity, emissions and demand for over 200 geographies, from 2000, one row per area, year and electricity source (fuels, aggregates such as Fossil, and demand).
 - **[Natural Earth](https://www.naturalearthdata.com)** — 🌱 `candidate` · `Public domain (Natural Earth terms of use)` · _★_
   Public-domain world base map at 1:10m, 1:50m and 1:110m: coastlines, land, countries, admin-1 units, rivers, lakes, populated places and relief. Run by NACIS volunteers.
 

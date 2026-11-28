@@ -1,0 +1,47 @@
+name: Ember Yearly Electricity Data (generation, capacity, emissions and demand by country)
+url: https://ember-energy.org/data/yearly-electricity-data/
+description: |
+  Yearly electricity generation, capacity, emissions and demand for over 200 geographies, from 2000, one row
+  per area, year and electricity source (fuels, aggregates such as Fossil, and demand).
+pillar: environmental
+scale: planet
+status: candidate
+license: CC-BY-4.0 (Ember states "released under a Creative Commons Attribution Licence (CC-BY-4.0)"); credit Ember
+api: https://files.ember-energy.org/public-downloads/generation/outputs/release_generation_yearly_global.csv
+pilot_relevance: [global]
+places: []
+tags: [energy, electricity, generation, fossil-share, emissions, csv, ember, reading-r2]
+added: 2026-11-28
+assisted_by: Claude Code
+feeds_cells: [Environmental|Planet]
+auth: none
+upstream_listed_in: []
+notes: |
+  VERIFIED 2026-11-28 (dataset page, file, licence, header). NOT READ for any city: it is a country table.
+
+  PAGE. ember-energy.org/data/yearly-electricity-data/, read 28 Nov 2026, says "Last Updated: 17 Nov 2026"
+  and that the data is updated twice a month, in the first and third weeks. It links the global CSV and a
+  Europe-only CSV, and the methodology PDF at files.ember-energy.org/public-downloads/ember_electricity_data_methodology.pdf.
+
+  FILE. files.ember-energy.org/public-downloads/generation/outputs/release_generation_yearly_global.csv
+  answered 200 on 28 Nov 2026 with no key, last-modified 17 Nov 2026, 16,149,377 bytes, 104,170 lines.
+  Header: Area, ISO 3 code, Year, Area type, Electricity source, Is aggregated source, Generation (TWh),
+  Generation YoY change (TWh), Generation YoY change (%), Share of generation (%), Share of generation YoY
+  change (% points), Capacity (GW), Emissions (MtCO2e), Emissions YoY change (MtCO2e), Emissions YoY change
+  (%), Share of emissions (%), Emissions intensity (gCO2e/kWh), Continent, Ember region, EU member, OECD
+  member, G20 member, G7 member, ASEAN member. Area type is "Country or economy" or "Region"; regions have
+  an empty ISO 3 code.
+
+  FOSSIL SHARE. The rows with Electricity source "Fossil" and Is aggregated source True carry the share of
+  generation from fossil fuels in "Share of generation (%)", in percent (0 to 100, three decimals). Read on
+  28 Nov 2026: Indonesia 84.193 in 2025 (444.713 TWh), Spain 25.389 in 2025, France 5.107 in 2025. Ember's
+  dataset page says its July 2026 format update made metrics columns and flagged aggregates in "Is aggregated
+  source"; its sentence "one row per area, month and electricity source" is the page's own and the file is yearly.
+
+  LICENCE. ember-energy.org/creative-commons/, read 28 Nov 2026: "Ember content is released under a Creative
+  Commons Attribution Licence (CC-BY-4.0)", and the site footer says the same of all content. The dataset page
+  states no other terms.
+
+  WHAT IT DOES NOT CLAIM. A national figure for the country's whole generation, not for any city or grid inside
+  it. The latest year differs by country. scripts/national_energy.py reads this file and writes
+  systems/energy/<iso3>.yaml.
