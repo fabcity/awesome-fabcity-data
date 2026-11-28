@@ -14,6 +14,8 @@ import sys
 import tempfile
 from pathlib import Path
 
+import yaml
+
 ROOT = Path(__file__).resolve().parent.parent
 FAILS = 0
 
@@ -65,6 +67,41 @@ check(out.returncode != 0 and "iso3" in out.stdout + out.stderr, "one country, t
 check(run_validate(copy_tree()).returncode == 0, "the real tree passes")
 idx = build_in(copy_tree())
 check(all(len(p.get("iso3", "")) == 3 for p in idx["places"]), "index.json places carry iso3")
+
+print("== power systems")
+CASES = [
+    ("an open polygon",              lambda d: d["polygon"].pop()),
+    ("a polygon of three points",    lambda d: d.__setitem__("polygon", d["polygon"][:3])),
+    ("an id that is not the file",   lambda d: d.__setitem__("id", "java")),
+    ("estimated with no factors",    lambda d: d.pop("capacity_factors")),
+    ("a reading that does not exist",lambda d: d.__setitem__("readings", ["R15"])),
+    ("a source that does not exist", lambda d: d.__setitem__("sources", ["economic/community/nope"])),
+    ("no attribution",               lambda d: d.pop("attribution")),
+    ("an unknown key",               lambda d: d.__setitem__("colour", "blue")),
+    ("national with a polygon",      lambda d: d.__setitem__("mix", {"kind": "national", "fossil_share": 0.5, "year": 2024})),
+    ("an open ring",                 lambda d: d["rings"]["city"].pop()),
+    ("a list where a mapping goes",  lambda d: d.__setitem__("rings", [])),
+]
+for name, change in CASES:
+    tree = copy_tree(); p = tree / "systems/energy/bali.yaml"
+    d = yaml.safe_load(p.read_text()); change(d); p.write_text(yaml.safe_dump(d, allow_unicode=True))
+    out = run_validate(tree)
+    check(out.returncode != 0 and "systems/energy/bali.yaml" in out.stdout and "Traceback" not in out.stderr,
+          f"systems: {name} fails")
+
+NATIONAL = {"id": "idn", "name": "Indonesia, national mix", "country": "IDN",
+            "mix": {"kind": "national", "fossil_share": 0.84, "year": 2025},
+            "readings": ["R2"], "attribution": ["Ember Yearly Electricity Data, CC BY 4.0"],
+            "notes": "National fossil share of generation, as Ember publishes it."}
+for name, change, ok in [("a valid national system passes", lambda d: None, True),
+                         ("a national system with no country fails", lambda d: d.pop("country"), False),
+                         ("a national system with an unknown country fails", lambda d: d.__setitem__("country", "XXX"), False)]:
+    tree = copy_tree(); d = dict(NATIONAL); change(d)
+    (tree / "systems/energy/idn.yaml").write_text(yaml.safe_dump(d, allow_unicode=True))
+    out = run_validate(tree)
+    check((out.returncode == 0) == ok and "Traceback" not in out.stderr, f"systems: {name}")
+
+check(run_validate(copy_tree()).returncode == 0, "systems: the real tree passes")
 
 if FAILS:
     print(f"\n{FAILS} check(s) failed.", file=sys.stderr)

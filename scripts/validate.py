@@ -11,6 +11,7 @@ Run from repo root:
     pass 3  cells/*.yaml        Index cells,    against schema/cell.schema.json
     pass 4  readings.yaml       the fourteen readings asked of a city, against schema/reading.schema.json
     pass 5  observations/**     the figures a place sent for a reading, against schema/observation.schema.json
+    pass 6  systems/energy/*    the power systems places sit on, against schema/system.schema.json
     join    every `status: live` entry must carry a usable review or an `adapter`
 
 The join is the point of the whole thing, and today it is a warning. 189 of the 203 live entries
@@ -53,6 +54,8 @@ REVIEW_SCHEMA_PATH = ROOT / "schema" / "review.schema.json"
 CELL_SCHEMA_PATH = ROOT / "schema" / "cell.schema.json"
 READING_SCHEMA_PATH = ROOT / "schema" / "reading.schema.json"
 OBSERVATION_SCHEMA_PATH = ROOT / "schema" / "observation.schema.json"
+SYSTEM_SCHEMA_PATH = ROOT / "schema" / "system.schema.json"
+SYSTEMS_DIR = ROOT / "systems"
 READINGS_PATH = ROOT / "readings.yaml"
 FICTIONAL_PATH = ROOT / "fictional.yaml"
 OBSERVATIONS_DIR = ROOT / "observations"
@@ -504,6 +507,55 @@ def pass_places() -> int:
     return failures
 
 
+def pass_systems(entry_ids: set[str], readings: dict) -> tuple[int, dict[str, dict]]:
+    """Pass 6: systems/energy/<id>.yaml, the power systems places sit on. Returns (failures, {id: system}).
+
+    Beyond the schema: the file is named for its id; a national system has `country` (one a place in
+    places.yaml carries) and no polygon, any other has a polygon; every polygon and ring is closed; an
+    estimated mix has capacity_factors; every `sources` id is an entry and every `readings` id a reading."""
+    validator = _validator(SYSTEM_SCHEMA_PATH)
+    failures, systems = 0, {}
+    for path in sorted(SYSTEMS_DIR.glob("energy/*.yaml")):
+        rel = path.relative_to(ROOT)
+        doc, why = _read(path, rel)
+        if why:
+            print(f"[FAIL] {rel}: {why}")
+            failures += 1
+            continue
+        if _schema_errors(validator, doc, rel):
+            failures += 1
+            continue
+        problems = []
+        if doc["id"] != path.stem:
+            problems.append(f"id {doc['id']!r} is not the file name {path.stem!r}")
+        kind = doc["mix"]["kind"]
+        if kind == "national":
+            if "country" not in doc:
+                problems.append("a national system needs `country`")
+            elif doc["country"] not in set(PLACES_ISO3.values()):
+                problems.append(f"country {doc['country']} is no place's iso3 in places.yaml")
+            if "polygon" in doc:
+                problems.append("a national system has no polygon")
+        elif "polygon" not in doc:
+            problems.append("needs a `polygon`")
+        if kind == "estimated" and "capacity_factors" not in doc:
+            problems.append("an estimated mix needs `capacity_factors`")
+        rings = [("polygon", doc["polygon"])] if "polygon" in doc else []
+        rings += [(f"rings.{k}", v) for k, v in doc.get("rings", {}).items()]
+        problems += [f"{name} is not closed (first point differs from last)" for name, pts in rings if pts[0] != pts[-1]]
+        problems += [f"source {s} is not an entry in data/" for s in doc.get("sources", []) if s not in entry_ids]
+        problems += [f"reading {r} is not in readings.yaml" for r in doc["readings"] if r not in readings]
+        for pr in problems:
+            print(f"[FAIL] {rel}: {pr}")
+        if problems:
+            failures += 1
+            continue
+        systems[doc["id"]] = doc
+        print(f"[ ok ] {rel} :: {kind}, {', '.join(doc['readings'])}")
+    print(f"\n{len(systems)} systems checked.")
+    return failures, systems
+
+
 def main(argv: list[str]) -> int:
     strict = "--strict" in argv
 
@@ -529,6 +581,10 @@ def main(argv: list[str]) -> int:
     print("\n== pass 5: observations/ — what places have sent")
     failures += pass_observations(readings)
 
+    print("\n== pass 6: systems/ — the power systems places sit on")
+    f6, systems = pass_systems(set(entries), readings)
+    failures += f6
+
     print("\n== join: reading tags name readings")
     failures += reading_tags(entries, readings)
 
@@ -542,7 +598,7 @@ def main(argv: list[str]) -> int:
         print(f"\n{failures} file(s) failed validation.", file=sys.stderr)
         return 1
     print(f"\n{len(entries)} entries, {sum(len(v) for v in reviews.values())} reviews, "
-          f"{len(sorted(CELLS_DIR.glob('*.yaml')))} cells, {len(readings)} readings: all passed.")
+          f"{len(sorted(CELLS_DIR.glob('*.yaml')))} cells, {len(readings)} readings, {len(systems)} systems: all passed.")
     return 0
 
 
