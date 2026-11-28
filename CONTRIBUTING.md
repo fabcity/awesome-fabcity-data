@@ -468,15 +468,16 @@ water:
 notes: Bali's power system and the water utility of Badung regency. ...
 ```
 
-Once a node reads these files, it will find its system by where it is, as the system whose `polygon` holds the node, and its
-profile by the Index place it belongs to. You do not need a system file for the country. `systems/energy/<iso3 in lower case>.yaml` already holds a
-national line for the country of every place, and its `mix.kind` says `national`, so a reader can tell it from a grid we
-described by hand. A profile does not name a national system.
+Once a node reads these files, it will find its system by where it is: the system whose `polygon` holds the node. It
+will find its profile by the Index place it belongs to. You do not need a system file for the country.
+`systems/energy/<iso3 in lower case>.yaml` already holds a national line for the country of every place, and its
+`mix.kind` says `national`, so a reader can tell it from a grid we described by hand. A profile does not name a
+national system.
 
-Four things a contributor will hit. The `mix` has three kinds: `estimated` (from `capacity_factors`), `measured` (read from
+The `mix` has three kinds: `estimated` (from `capacity_factors`), `measured` (read from
 a feed, which works only with a feed the node ships, and that is `ree` today) and `national` (a share and a year). Points
 are `[lon, lat]`, longitude first. The polygons of two hand-written systems must not overlap, and nothing checks that
-yet. A profile's own `rings` are used before the system's.
+yet, so look at the ones already there. A profile's own `rings` are used before the system's.
 
 To add your city's grid or water utility, open a pull request that adds or edits the file. A maintainer merges it. Every
 figure in `notes` is one you read, with where and the date, and if something could not be read, `notes` says so. Then run:

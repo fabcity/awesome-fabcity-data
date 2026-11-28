@@ -524,9 +524,10 @@ def _open_rings(polygon, rings: dict) -> list[str]:
 def pass_systems(entry_ids: set[str], readings: dict) -> tuple[int, dict[str, dict]]:
     """Pass 6: systems/energy/<id>.yaml, the power systems places sit on. Returns (failures, {id: system}).
 
-    Beyond the schema: the file is named for its id; a national system has `country` (one a place in
-    places.yaml carries), no polygon and the lower-case country as its id; no other system's id is a country's code, any other has a polygon; every polygon and ring is closed; an
-    estimated mix has capacity_factors; every `sources` id is an entry and every `readings` id a reading."""
+    Beyond the schema: the file is named for its id. A national system has `country` (one a place in
+    places.yaml carries), no polygon, and the lower-case country as its id. Any other system has a polygon,
+    and its id is never a country's code. Every polygon and ring is closed, an estimated mix has
+    capacity_factors, every `sources` id is an entry and every `readings` id a reading."""
     validator = _validator(SYSTEM_SCHEMA_PATH)
     failures, systems = 0, {}
     for path in sorted(SYSTEMS_DIR.glob("energy/*.yaml")):

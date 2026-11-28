@@ -5,8 +5,9 @@
 
 Reads the rows whose "Electricity source" is "Fossil" and whose "Is aggregated source" is True: their
 "Share of generation (%)" is the share of a country's generation from fossil fuels, in percent. The latest
-year with a figure wins, per country, and the script prints the countries whose year is older than the newest written. A country with no figure gets no file, never a zero. A file whose
-mix.kind is not national is never overwritten. No network: the CSV is a path the person gives.
+year with a figure wins, per country, and the script prints the countries whose year is older than the
+newest written. A country with no figure gets no file, never a zero. A file whose mix.kind is not national
+is never overwritten. No network: the CSV is a path the person gives.
 """
 import csv
 import sys
