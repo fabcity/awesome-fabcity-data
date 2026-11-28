@@ -1,0 +1,20 @@
+place: bali
+energy:
+  system: bali
+water:
+  utilities:
+    - id: pdam-tirta-mangutama
+      name: PDAM Tirta Mangutama
+      serves: Badung regency
+      kind: public
+      match: PDAM Tirta Mangutama
+      readings: [R10, R11]
+      notes: |
+        Read on 28 Nov 2026. A query of OpenStreetMap through Overpass (man_made=water_works, name
+        "PDAM Tirta Mangutama", south Badung) returned 2 mapped works. The Badung regency website
+        (www.badungkab.go.id) lists "Perusahaan Umum Daerah Air Minum Tirta Mangutama" among the
+        regency's own bodies. The utility's own website could not be read on that day, so what it
+        serves is taken from the regency's listing and the map, and no figure of its own is given here.
+notes: |
+  Bali's power system and the water utility of Badung regency. The island's other regencies have their own
+  utilities, which are not listed yet.

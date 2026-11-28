@@ -56,6 +56,8 @@ READING_SCHEMA_PATH = ROOT / "schema" / "reading.schema.json"
 OBSERVATION_SCHEMA_PATH = ROOT / "schema" / "observation.schema.json"
 SYSTEM_SCHEMA_PATH = ROOT / "schema" / "system.schema.json"
 SYSTEMS_DIR = ROOT / "systems"
+PROFILE_SCHEMA_PATH = ROOT / "schema" / "profile.schema.json"
+PROFILES_DIR = ROOT / "profiles"
 READINGS_PATH = ROOT / "readings.yaml"
 FICTIONAL_PATH = ROOT / "fictional.yaml"
 OBSERVATIONS_DIR = ROOT / "observations"
@@ -507,6 +509,13 @@ def pass_places() -> int:
     return failures
 
 
+def _open_rings(polygon, rings: dict) -> list[str]:
+    """Problems for each ring (the polygon, and the named rings) whose first point differs from its last."""
+    named = [("polygon", polygon)] if polygon else []
+    named += [(f"rings.{k}", v) for k, v in rings.items()]
+    return [f"{name} is not closed (first point differs from last)" for name, pts in named if pts[0] != pts[-1]]
+
+
 def pass_systems(entry_ids: set[str], readings: dict) -> tuple[int, dict[str, dict]]:
     """Pass 6: systems/energy/<id>.yaml, the power systems places sit on. Returns (failures, {id: system}).
 
@@ -540,9 +549,7 @@ def pass_systems(entry_ids: set[str], readings: dict) -> tuple[int, dict[str, di
             problems.append("needs a `polygon`")
         if kind == "estimated" and "capacity_factors" not in doc:
             problems.append("an estimated mix needs `capacity_factors`")
-        rings = [("polygon", doc["polygon"])] if "polygon" in doc else []
-        rings += [(f"rings.{k}", v) for k, v in doc.get("rings", {}).items()]
-        problems += [f"{name} is not closed (first point differs from last)" for name, pts in rings if pts[0] != pts[-1]]
+        problems += _open_rings(doc.get("polygon"), doc.get("rings", {}))
         problems += [f"source {s} is not an entry in data/" for s in doc.get("sources", []) if s not in entry_ids]
         problems += [f"reading {r} is not in readings.yaml" for r in doc["readings"] if r not in readings]
         for pr in problems:
@@ -554,6 +561,58 @@ def pass_systems(entry_ids: set[str], readings: dict) -> tuple[int, dict[str, di
         print(f"[ ok ] {rel} :: {kind}, {', '.join(doc['readings'])}")
     print(f"\n{len(systems)} systems checked.")
     return failures, systems
+
+
+def pass_profiles(systems: dict, entry_ids: set[str], readings: dict) -> tuple[int, dict[str, dict]]:
+    """Pass 7: profiles/<place>.yaml, what a place knows about itself. Returns (failures, {place: profile}).
+
+    Beyond the schema: the file is named for its place; the place is a real one in places.yaml (a fictional
+    place has no profile); `energy.system` is a hand-written system, not a national one; rings are closed;
+    utility ids are unique in the profile; every `sources` id is an entry and every `readings` id a reading."""
+    validator = _validator(PROFILE_SCHEMA_PATH)
+    failures, profiles = 0, {}
+    for path in sorted(PROFILES_DIR.glob("*.yaml")):
+        rel = path.relative_to(ROOT)
+        doc, why = _read(path, rel)
+        if why:
+            print(f"[FAIL] {rel}: {why}")
+            failures += 1
+            continue
+        if _schema_errors(validator, doc, rel):
+            failures += 1
+            continue
+        problems = []
+        if doc["place"] != path.stem:
+            problems.append(f"place {doc['place']!r} is not the file name {path.stem!r}")
+        if doc["place"] in FICTIONAL:
+            problems.append(f"{doc['place']} is in fictional.yaml; profiles are for real places")
+        elif doc["place"] not in KNOWN_PLACES:
+            problems.append(f"place {doc['place']} is not in places.yaml")
+        energy = doc.get("energy")
+        if energy:
+            system = systems.get(energy["system"])
+            if system is None:
+                problems.append(f"energy.system {energy['system']!r} is not a system in systems/energy/")
+            elif system["mix"]["kind"] == "national":
+                problems.append(f"energy.system {energy['system']!r} is a national system; "
+                                f"a place with none of its own leaves `energy` out and falls to its country's")
+            problems += _open_rings(None, energy.get("rings", {}))
+        utilities = (doc.get("water") or {}).get("utilities", [])
+        ids = [u["id"] for u in utilities]
+        problems += [f"utility id {i} repeats" for i in sorted({i for i in ids if ids.count(i) > 1})]
+        for u in utilities:
+            problems += [f"{u['id']}: source {s} is not an entry in data/" for s in u.get("sources", []) if s not in entry_ids]
+            problems += [f"{u['id']}: reading {r} is not in readings.yaml" for r in u["readings"] if r not in readings]
+        for pr in problems:
+            print(f"[FAIL] {rel}: {pr}")
+        if problems:
+            failures += 1
+            continue
+        profiles[doc["place"]] = doc
+        print(f"[ ok ] {rel} :: {'energy' if energy else ''}{' + ' if energy and utilities else ''}"
+              f"{str(len(utilities)) + ' utilities' if utilities else ''}")
+    print(f"\n{len(profiles)} profiles checked.")
+    return failures, profiles
 
 
 def main(argv: list[str]) -> int:
@@ -585,6 +644,10 @@ def main(argv: list[str]) -> int:
     f6, systems = pass_systems(set(entries), readings)
     failures += f6
 
+    print("\n== pass 7: profiles/ — what a place knows about itself")
+    f7, profiles = pass_profiles(systems, set(entries), readings)
+    failures += f7
+
     print("\n== join: reading tags name readings")
     failures += reading_tags(entries, readings)
 
@@ -598,7 +661,7 @@ def main(argv: list[str]) -> int:
         print(f"\n{failures} file(s) failed validation.", file=sys.stderr)
         return 1
     print(f"\n{len(entries)} entries, {sum(len(v) for v in reviews.values())} reviews, "
-          f"{len(sorted(CELLS_DIR.glob('*.yaml')))} cells, {len(readings)} readings, {len(systems)} systems: all passed.")
+          f"{len(sorted(CELLS_DIR.glob('*.yaml')))} cells, {len(readings)} readings, {len(systems)} systems, {len(profiles)} profiles: all passed.")
     return 0
 
 

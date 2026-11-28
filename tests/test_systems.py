@@ -103,6 +103,31 @@ for name, change, ok in [("a valid national system passes", lambda d: None, True
 
 check(run_validate(copy_tree()).returncode == 0, "systems: the real tree passes")
 
+print("== place profiles")
+PCASES = [
+    ("a place that is not in places.yaml", lambda d: d.__setitem__("place", "nowhere")),
+    ("a fictional place",                  lambda d: d.__setitem__("place", "uqbar")),
+    ("a place that is not the file name",  lambda d: d.__setitem__("place", "barcelona")),
+    ("a system that does not exist",       lambda d: d["energy"].__setitem__("system", "nowhere")),
+    ("a national system",                  lambda d: d["energy"].__setitem__("system", "idn")),
+    ("a repeated utility id",              lambda d: d["water"]["utilities"].append(dict(d["water"]["utilities"][0]))),
+    ("a reading that does not exist",      lambda d: d["water"]["utilities"][0].__setitem__("readings", ["R15"])),
+    ("a source that does not exist",       lambda d: d["water"]["utilities"][0].__setitem__("sources", ["economic/community/nope"])),
+    ("an open ring",                       lambda d: d["energy"].__setitem__("rings", {"city": [[0, 0], [1, 0], [1, 1], [0, 1]]})),
+    ("neither energy nor water",           lambda d: (d.pop("energy"), d.pop("water"))),
+    ("a utility of no kind",               lambda d: d["water"]["utilities"][0].pop("kind")),
+    ("an unknown key",                     lambda d: d.__setitem__("colour", "blue")),
+]
+for name, change in PCASES:
+    tree = copy_tree(); p = tree / "profiles/bali.yaml"
+    (tree / "systems/energy/idn.yaml").write_text(yaml.safe_dump(NATIONAL, allow_unicode=True))
+    d = yaml.safe_load(p.read_text()); change(d); p.write_text(yaml.safe_dump(d, allow_unicode=True))
+    out = run_validate(tree)
+    check(out.returncode != 0 and "profiles/bali.yaml" in out.stdout and "Traceback" not in out.stderr,
+          f"profiles: {name} fails")
+
+check(run_validate(copy_tree()).returncode == 0, "profiles: the real tree passes")
+
 if FAILS:
     print(f"\n{FAILS} check(s) failed.", file=sys.stderr)
     sys.exit(1)
