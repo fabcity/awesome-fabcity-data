@@ -32,7 +32,7 @@ attribution:
 - © OpenStreetMap contributors, ODbL, via Overpass
 - Red Eléctrica de España (REE), apidatos.ree.es
 notes: The polygon covers Mallorca, Menorca, Ibiza and Formentera. The city ring is the island of Menorca and the
-  region ring is the Balearic Islands. The mix is read from REE with geo_limit baleares and geo_ids 8743, the Balearic
-  system in REE's own selector (ree.js); geo_ids 8 answers 502 with geo_limit baleares. The link to the peninsula
-  reads the mix on the far side from REE with geo_limit peninsular and geo_ids 8741. Moved from planetai-node packs/energy/grids.yml
-  on 2026-11-28.
+  region ring is the Balearic Islands. The mix is read from REE with geo_limit baleares and geo_id 8743, the Balearic
+  system. The link to the peninsula reads the mix on the far side from REE with geo_limit peninsular and geo_id 8741.
+  The two ids are carried over from the node's file as it stood and were not read again on the move. Moved from
+  planetai-node packs/energy/grids.yml on 2026-11-28.

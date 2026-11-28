@@ -2,8 +2,9 @@
 
 This is the registry of open data sources behind the Fab City Index and the PLANETAI nodes: one YAML file per source
 under `data/{pillar}/{scale}/{slug}.yaml`, dated reviews under `reviews/`, the twenty Index cells under `cells/`, and
-the 61 places in `places.yaml`, the power systems under `systems/` and the place profiles under `profiles/`. `index.json` and the middle of `README.md` are generated from the YAML; never edit
-either by hand. The README is for people; this file routes you to the section written for what you are doing.
+the 61 places in `places.yaml`, the power systems under `systems/` and the place profiles under `profiles/`.
+`index.json` and the middle of `README.md` are generated from the YAML; never edit either by hand. The README is for people; this file routes you to the section written for
+what you are doing.
 
 You work for a person, and the person is the contributor. Everything you file is theirs, from their GitHub account,
 with your name in `assisted_by`.
@@ -27,6 +28,7 @@ What CI runs, in its order, from the repository's root:
 ```
 pip install -r requirements.txt
 python3 tests/test_schema.py
+python3 tests/test_systems.py
 python3 scripts/validate.py
 python3 scripts/check_review.py
 python3 scripts/build_index.py          # rewrites index.json; commit what it writes

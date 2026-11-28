@@ -5,7 +5,7 @@
 
 Reads the rows whose "Electricity source" is "Fossil" and whose "Is aggregated source" is True: their
 "Share of generation (%)" is the share of a country's generation from fossil fuels, in percent. The latest
-year with a figure wins, per country. A country with no figure gets no file, never a zero. A file whose
+year with a figure wins, per country, and the script prints the countries whose year is older than the newest written. A country with no figure gets no file, never a zero. A file whose
 mix.kind is not national is never overwritten. No network: the CSV is a path the person gives.
 """
 import csv
@@ -51,13 +51,13 @@ def write(table: dict[str, tuple[int, float]], wanted: dict | set, out_dir) -> t
         country = names.get(iso, iso)
         doc = {
             "id": iso.lower(),
-            "name": f"{country}, national grid",
+            "name": f"National electricity mix, {country}",
             "country": iso,
             "mix": {"kind": "national", "fossil_share": share, "year": year},
             "readings": ["R2"],
             "sources": ["environmental/planet/ember-yearly-electricity"],
             "attribution": ["Ember Yearly Electricity Data, CC BY 4.0"],
-            "notes": (f"The share of {country}'s electricity generation from fossil fuels in {year}, from Ember's "
+            "notes": (f"Share of electricity generation from fossil fuels in {country}, {year}, from Ember's "
                       f"Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py "
                       f"on {date.today().isoformat()}."),
         }
@@ -66,15 +66,25 @@ def write(table: dict[str, tuple[int, float]], wanted: dict | set, out_dir) -> t
     return written, skipped
 
 
+def older(table: dict[str, tuple[int, float]], written: list[str]) -> str:
+    """One line naming the written countries whose year is older than the newest year among them."""
+    years = {i.upper(): table[i.upper()][0] for i in written}
+    newest = max(years.values(), default=0)
+    behind = [f"{i} {y}" for i, y in sorted(years.items()) if y < newest]
+    return "older year: " + (", ".join(behind) if behind else "none")
+
+
 def main(argv) -> int:
     if len(argv) != 2:
         print(__doc__)
         return 2
     places = yaml.safe_load((ROOT / "places.yaml").read_text(encoding="utf-8"))["places"]
     wanted = {p["iso3"]: p["country"] for p in places}
-    written, skipped = write(rows(argv[1]), wanted, ROOT / "systems" / "energy")
+    table = rows(argv[1])
+    written, skipped = write(table, wanted, ROOT / "systems" / "energy")
     print(f"wrote {len(written)}: {' '.join(written)}")
     print(f"skipped {len(skipped)} (no figure, or not a national file): {' '.join(skipped)}")
+    print(older(table, written))
     return 0
 
 

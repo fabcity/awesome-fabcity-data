@@ -420,8 +420,8 @@ claims is the network's decision, not a thing to be inferred from whatever sourc
 
 ## Your city's power system and water utility
 
-Two kinds of file describe the place a node sits in. Both are read by the node, and neither is a data source, so they live
-beside `data/` and not in it.
+Two kinds of file describe the place a node sits in. Neither is a data source, so they live beside `data/`. A node will
+read them from a later release; today it reads its own copy of the grids.
 
 A **system file** describes one power system: a grid, an island system or a country's mix. It is
 `systems/energy/<id>.yaml`, checked against [`schema/system.schema.json`](schema/system.schema.json). It holds a `name`,
@@ -450,7 +450,7 @@ A **profile** describes one place: the system it sits on and the water utilities
 [`schema/profile.schema.json`](schema/profile.schema.json). It needs `notes` and at least one of `energy` and `water`.
 `energy` names a hand-written system by its `id`. `water` lists utilities, each with an `id`, a `name`, what it `serves`,
 its `kind` (`public`, `private` or `community`), the `readings` it serves and `notes`. A utility can carry `match`, the
-name its works have on the public map, so the node looks them up and the registry holds no points. This is Bali's:
+name its works have on the public map, so a node can look them up and the registry holds no points. This is Bali's:
 
 ```yaml
 place: bali
@@ -468,15 +468,21 @@ water:
 notes: Bali's power system and the water utility of Badung regency. ...
 ```
 
-A node finds its system by where it is: the system whose `polygon` holds the node. It finds its profile by the Index place
-it belongs to. You do not need a system file for the country. `systems/energy/<iso3 in lower case>.yaml` already holds a
+Once a node reads these files, it will find its system by where it is, as the system whose `polygon` holds the node, and its
+profile by the Index place it belongs to. You do not need a system file for the country. `systems/energy/<iso3 in lower case>.yaml` already holds a
 national line for the country of every place, and its `mix.kind` says `national`, so a reader can tell it from a grid we
 described by hand. A profile does not name a national system.
+
+Four things a contributor will hit. The `mix` has three kinds: `estimated` (from `capacity_factors`), `measured` (read from
+a feed, which works only with a feed the node ships, and that is `ree` today) and `national` (a share and a year). Points
+are `[lon, lat]`, longitude first. The polygons of two hand-written systems must not overlap, and nothing checks that
+yet. A profile's own `rings` are used before the system's.
 
 To add your city's grid or water utility, open a pull request that adds or edits the file. A maintainer merges it. Every
 figure in `notes` is one you read, with where and the date, and if something could not be read, `notes` says so. Then run:
 
 ```bash
+python3 tests/test_systems.py
 python3 scripts/validate.py
 python3 scripts/build_index.py
 python3 scripts/build_readme.py

@@ -29,14 +29,17 @@ readings:
 - R2
 sources:
 - economic/community/openstreetmap
+- environmental/planet/ember-yearly-electricity
 attribution:
 - © OpenStreetMap contributors, ODbL, via Overpass
 - Ember Yearly Electricity Data, CC BY 4.0
-notes: The polygon covers the main island of Bali. Nusa Penida (115.43 to 115.63 E, 8.66 to 8.82 S) is an isolated
-  island microgrid with no submarine link to Bali's 150 kV grid, and Ketapang (114.40 E, 8.15 S) is on the Java
-  shore, so both sit outside it. Coal, gas and oil capacity factors come from Indonesia 2024 generation divided
-  by capacity in Ember Yearly Electricity Data (CC BY 4.0); solar and wind are assumed from typical utility-scale
-  factors. The fossil_share on the Java-Bali cable is Indonesia's 2025 fossil generation share (444.713 of 528.207
-  TWh, 0.8419), used for Java. No open-licensed table stating the rated transfer of the 150 kV Ketapang-Gilimanuk
-  cable was found, and none for Bali's average demand, so rated_mw and demand_mw are empty. Moved from planetai-node
-  packs/energy/grids.yml on 2026-11-28.
+notes: The polygon covers the main island of Bali. The city ring is Denpasar and south Badung. Nusa Penida (115.43
+  to 115.63 E, 8.66 to 8.82 S) is an isolated island microgrid with no submarine link to Bali's 150 kV grid, and Ketapang
+  (114.40 E, 8.15 S) is on the Java shore, so both sit outside it. Read on 28 Nov 2026 in Ember Yearly Electricity Data
+  (CC BY 4.0), Indonesia 2025 Fossil, 444.713 TWh of 528.207 TWh total generation, a share of 84.193 percent, which is
+  the 0.8419 on the Java-Bali cable, used for Java. Also read on 28 Nov 2026, Indonesia 2024, coal 347.086 TWh on 56.69
+  GW and gas 71.681 TWh on 23.58 GW, which give the 0.7 and 0.35 below. The oil, solar and wind capacity factors
+  (0.26, 0.18, 0.25) are carried over from the node's file as it stood and were not read again on the move; the solar and
+  wind ones are assumed from typical utility-scale factors, with no source. No open-licensed table stating the rated
+  transfer of the 150 kV Ketapang-Gilimanuk cable was found, and none for Bali's average demand, so rated_mw and
+  demand_mw are empty. Moved from planetai-node packs/energy/grids.yml on 2026-11-28.

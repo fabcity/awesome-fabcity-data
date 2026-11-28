@@ -135,8 +135,8 @@ PLACES_PATH = ROOT / "places.yaml"
 # No places.yaml means no known places: an entry without `places` still passes, one naming a place fails.
 _PLACES = ((yaml.safe_load(PLACES_PATH.read_text(encoding="utf-8")) or {}).get("places", [])
            if PLACES_PATH.is_file() else [])
-KNOWN_PLACES = {p["slug"] for p in _PLACES}
-PLACES_ISO3 = {p["slug"]: p.get("iso3") for p in _PLACES}
+KNOWN_PLACES = {p["slug"] for p in _PLACES if "slug" in p}
+PLACES_ISO3 = {p["slug"]: p.get("iso3") for p in _PLACES if "slug" in p}
 
 
 # Invented places (fictional.yaml). They are never real places: no source may name one.
@@ -497,6 +497,11 @@ def pass_places() -> int:
     """Every place carries `iso3` (three capitals), and one country has one code."""
     failures, by_country = 0, {}
     for p in _PLACES:
+        missing = [k for k in ("slug", "country") if k not in p]
+        if missing:
+            print(f"  [FAIL] places.yaml: {p.get('slug') or p.get('name') or p} has no {' or '.join(missing)}")
+            failures += 1
+            continue
         iso3 = p.get("iso3")
         if not isinstance(iso3, str) or not re.fullmatch(r"[A-Z]{3}", iso3):
             print(f"  [FAIL] places.yaml: {p['slug']} `iso3` must be three capital letters, got {iso3!r}")
@@ -520,7 +525,7 @@ def pass_systems(entry_ids: set[str], readings: dict) -> tuple[int, dict[str, di
     """Pass 6: systems/energy/<id>.yaml, the power systems places sit on. Returns (failures, {id: system}).
 
     Beyond the schema: the file is named for its id; a national system has `country` (one a place in
-    places.yaml carries) and no polygon, any other has a polygon; every polygon and ring is closed; an
+    places.yaml carries), no polygon and the lower-case country as its id; no other system's id is a country's code, any other has a polygon; every polygon and ring is closed; an
     estimated mix has capacity_factors; every `sources` id is an entry and every `readings` id a reading."""
     validator = _validator(SYSTEM_SCHEMA_PATH)
     failures, systems = 0, {}
@@ -538,15 +543,20 @@ def pass_systems(entry_ids: set[str], readings: dict) -> tuple[int, dict[str, di
         if doc["id"] != path.stem:
             problems.append(f"id {doc['id']!r} is not the file name {path.stem!r}")
         kind = doc["mix"]["kind"]
+        codes = {c.lower() for c in PLACES_ISO3.values() if c}
         if kind == "national":
             if "country" not in doc:
                 problems.append("a national system needs `country`")
             elif doc["country"] not in set(PLACES_ISO3.values()):
                 problems.append(f"country {doc['country']} is no place's iso3 in places.yaml")
+            elif doc["id"] != doc["country"].lower():
+                problems.append(f"a national system's id must be its country in lower case ({doc['country'].lower()!r})")
             if "polygon" in doc:
                 problems.append("a national system has no polygon")
         elif "polygon" not in doc:
             problems.append("needs a `polygon`")
+        if kind != "national" and doc["id"] in codes:
+            problems.append(f"id {doc['id']!r} is the code of a country; a hand-written system may not use it")
         if kind == "estimated" and "capacity_factors" not in doc:
             problems.append("an estimated mix needs `capacity_factors`")
         problems += _open_rings(doc.get("polygon"), doc.get("rings", {}))

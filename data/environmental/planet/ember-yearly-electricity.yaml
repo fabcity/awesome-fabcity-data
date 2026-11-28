@@ -10,10 +10,9 @@ license: CC-BY-4.0 (Ember states "released under a Creative Commons Attribution 
 api: https://files.ember-energy.org/public-downloads/generation/outputs/release_generation_yearly_global.csv
 pilot_relevance: [global]
 places: []
-tags: [energy, electricity, generation, fossil-share, emissions, csv, ember, reading-r2]
+tags: [energy, electricity, generation, fossil-share, emissions, csv, ember]
 added: 2026-11-28
 assisted_by: Claude Code
-feeds_cells: [Environmental|Planet]
 auth: none
 upstream_listed_in: []
 notes: |

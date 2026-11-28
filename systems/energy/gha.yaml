@@ -1,5 +1,5 @@
 id: gha
-name: Ghana, national grid
+name: National electricity mix, Ghana
 country: GHA
 mix:
   kind: national
@@ -11,5 +11,5 @@ sources:
 - environmental/planet/ember-yearly-electricity
 attribution:
 - Ember Yearly Electricity Data, CC BY 4.0
-notes: The share of Ghana's electricity generation from fossil fuels in 2024, from Ember's Yearly Electricity Data
-  (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28.
+notes: Share of electricity generation from fossil fuels in Ghana, 2024, from Ember's Yearly Electricity Data (Fossil,
+  share of generation). Written by scripts/national_energy.py on 2026-11-28.

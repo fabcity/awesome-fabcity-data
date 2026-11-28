@@ -5560,14 +5560,10 @@
     "fossil-share",
     "emissions",
     "csv",
-    "ember",
-    "reading-r2"
+    "ember"
    ],
    "pilot_relevance": [
     "global"
-   ],
-   "feeds_cells": [
-    "Environmental|Planet"
    ],
    "added": "2026-11-28",
    "description": "Yearly electricity generation, capacity, emissions and demand for over 200 geographies, from 2000, one row\nper area, year and electricity source (fuels, aggregates such as Fossil, and demand).\n",
@@ -11419,7 +11415,7 @@
      "© OpenStreetMap contributors, ODbL, via Overpass",
      "Red Eléctrica de España (REE), apidatos.ree.es"
     ],
-    "notes": "The polygon covers Mallorca, Menorca, Ibiza and Formentera. The city ring is the island of Menorca and the region ring is the Balearic Islands. The mix is read from REE with geo_limit baleares and geo_ids 8743, the Balearic system in REE's own selector (ree.js); geo_ids 8 answers 502 with geo_limit baleares. The link to the peninsula reads the mix on the far side from REE with geo_limit peninsular and geo_ids 8741. Moved from planetai-node packs/energy/grids.yml on 2026-11-28."
+    "notes": "The polygon covers Mallorca, Menorca, Ibiza and Formentera. The city ring is the island of Menorca and the region ring is the Balearic Islands. The mix is read from REE with geo_limit baleares and geo_id 8743, the Balearic system. The link to the peninsula reads the mix on the far side from REE with geo_limit peninsular and geo_id 8741. The two ids are carried over from the node's file as it stood and were not read again on the move. Moved from planetai-node packs/energy/grids.yml on 2026-11-28."
    },
    {
     "id": "bali",
@@ -11504,17 +11500,18 @@
      "R2"
     ],
     "sources": [
-     "economic/community/openstreetmap"
+     "economic/community/openstreetmap",
+     "environmental/planet/ember-yearly-electricity"
     ],
     "attribution": [
      "© OpenStreetMap contributors, ODbL, via Overpass",
      "Ember Yearly Electricity Data, CC BY 4.0"
     ],
-    "notes": "The polygon covers the main island of Bali. Nusa Penida (115.43 to 115.63 E, 8.66 to 8.82 S) is an isolated island microgrid with no submarine link to Bali's 150 kV grid, and Ketapang (114.40 E, 8.15 S) is on the Java shore, so both sit outside it. Coal, gas and oil capacity factors come from Indonesia 2024 generation divided by capacity in Ember Yearly Electricity Data (CC BY 4.0); solar and wind are assumed from typical utility-scale factors. The fossil_share on the Java-Bali cable is Indonesia's 2025 fossil generation share (444.713 of 528.207 TWh, 0.8419), used for Java. No open-licensed table stating the rated transfer of the 150 kV Ketapang-Gilimanuk cable was found, and none for Bali's average demand, so rated_mw and demand_mw are empty. Moved from planetai-node packs/energy/grids.yml on 2026-11-28."
+    "notes": "The polygon covers the main island of Bali. The city ring is Denpasar and south Badung. Nusa Penida (115.43 to 115.63 E, 8.66 to 8.82 S) is an isolated island microgrid with no submarine link to Bali's 150 kV grid, and Ketapang (114.40 E, 8.15 S) is on the Java shore, so both sit outside it. Read on 28 Nov 2026 in Ember Yearly Electricity Data (CC BY 4.0), Indonesia 2025 Fossil, 444.713 TWh of 528.207 TWh total generation, a share of 84.193 percent, which is the 0.8419 on the Java-Bali cable, used for Java. Also read on 28 Nov 2026, Indonesia 2024, coal 347.086 TWh on 56.69 GW and gas 71.681 TWh on 23.58 GW, which give the 0.7 and 0.35 below. The oil, solar and wind capacity factors (0.26, 0.18, 0.25) are carried over from the node's file as it stood and were not read again on the move; the solar and wind ones are assumed from typical utility-scale factors, with no source. No open-licensed table stating the rated transfer of the 150 kV Ketapang-Gilimanuk cable was found, and none for Bali's average demand, so rated_mw and demand_mw are empty. Moved from planetai-node packs/energy/grids.yml on 2026-11-28."
    },
    {
     "id": "arg",
-    "name": "Argentina, national grid",
+    "name": "National electricity mix, Argentina",
     "country": "ARG",
     "mix": {
      "kind": "national",
@@ -11530,11 +11527,11 @@
     "attribution": [
      "Ember Yearly Electricity Data, CC BY 4.0"
     ],
-    "notes": "The share of Argentina's electricity generation from fossil fuels in 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
+    "notes": "Share of electricity generation from fossil fuels in Argentina, 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
    },
    {
     "id": "aut",
-    "name": "Austria, national grid",
+    "name": "National electricity mix, Austria",
     "country": "AUT",
     "mix": {
      "kind": "national",
@@ -11550,11 +11547,11 @@
     "attribution": [
      "Ember Yearly Electricity Data, CC BY 4.0"
     ],
-    "notes": "The share of Austria's electricity generation from fossil fuels in 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
+    "notes": "Share of electricity generation from fossil fuels in Austria, 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
    },
    {
     "id": "bra",
-    "name": "Brazil, national grid",
+    "name": "National electricity mix, Brazil",
     "country": "BRA",
     "mix": {
      "kind": "national",
@@ -11570,11 +11567,11 @@
     "attribution": [
      "Ember Yearly Electricity Data, CC BY 4.0"
     ],
-    "notes": "The share of Brazil's electricity generation from fossil fuels in 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
+    "notes": "Share of electricity generation from fossil fuels in Brazil, 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
    },
    {
     "id": "btn",
-    "name": "Bhutan, national grid",
+    "name": "National electricity mix, Bhutan",
     "country": "BTN",
     "mix": {
      "kind": "national",
@@ -11590,11 +11587,11 @@
     "attribution": [
      "Ember Yearly Electricity Data, CC BY 4.0"
     ],
-    "notes": "The share of Bhutan's electricity generation from fossil fuels in 2024, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
+    "notes": "Share of electricity generation from fossil fuels in Bhutan, 2024, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
    },
    {
     "id": "can",
-    "name": "Canada, national grid",
+    "name": "National electricity mix, Canada",
     "country": "CAN",
     "mix": {
      "kind": "national",
@@ -11610,11 +11607,11 @@
     "attribution": [
      "Ember Yearly Electricity Data, CC BY 4.0"
     ],
-    "notes": "The share of Canada's electricity generation from fossil fuels in 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
+    "notes": "Share of electricity generation from fossil fuels in Canada, 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
    },
    {
     "id": "chl",
-    "name": "Chile, national grid",
+    "name": "National electricity mix, Chile",
     "country": "CHL",
     "mix": {
      "kind": "national",
@@ -11630,11 +11627,11 @@
     "attribution": [
      "Ember Yearly Electricity Data, CC BY 4.0"
     ],
-    "notes": "The share of Chile's electricity generation from fossil fuels in 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
+    "notes": "Share of electricity generation from fossil fuels in Chile, 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
    },
    {
     "id": "chn",
-    "name": "China, national grid",
+    "name": "National electricity mix, China",
     "country": "CHN",
     "mix": {
      "kind": "national",
@@ -11650,11 +11647,11 @@
     "attribution": [
      "Ember Yearly Electricity Data, CC BY 4.0"
     ],
-    "notes": "The share of China's electricity generation from fossil fuels in 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
+    "notes": "Share of electricity generation from fossil fuels in China, 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
    },
    {
     "id": "deu",
-    "name": "Germany, national grid",
+    "name": "National electricity mix, Germany",
     "country": "DEU",
     "mix": {
      "kind": "national",
@@ -11670,11 +11667,11 @@
     "attribution": [
      "Ember Yearly Electricity Data, CC BY 4.0"
     ],
-    "notes": "The share of Germany's electricity generation from fossil fuels in 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
+    "notes": "Share of electricity generation from fossil fuels in Germany, 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
    },
    {
     "id": "esp",
-    "name": "Spain, national grid",
+    "name": "National electricity mix, Spain",
     "country": "ESP",
     "mix": {
      "kind": "national",
@@ -11690,11 +11687,11 @@
     "attribution": [
      "Ember Yearly Electricity Data, CC BY 4.0"
     ],
-    "notes": "The share of Spain's electricity generation from fossil fuels in 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
+    "notes": "Share of electricity generation from fossil fuels in Spain, 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
    },
    {
     "id": "fin",
-    "name": "Finland, national grid",
+    "name": "National electricity mix, Finland",
     "country": "FIN",
     "mix": {
      "kind": "national",
@@ -11710,11 +11707,11 @@
     "attribution": [
      "Ember Yearly Electricity Data, CC BY 4.0"
     ],
-    "notes": "The share of Finland's electricity generation from fossil fuels in 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
+    "notes": "Share of electricity generation from fossil fuels in Finland, 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
    },
    {
     "id": "fra",
-    "name": "France, national grid",
+    "name": "National electricity mix, France",
     "country": "FRA",
     "mix": {
      "kind": "national",
@@ -11730,11 +11727,11 @@
     "attribution": [
      "Ember Yearly Electricity Data, CC BY 4.0"
     ],
-    "notes": "The share of France's electricity generation from fossil fuels in 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
+    "notes": "Share of electricity generation from fossil fuels in France, 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
    },
    {
     "id": "gbr",
-    "name": "United Kingdom, national grid",
+    "name": "National electricity mix, United Kingdom",
     "country": "GBR",
     "mix": {
      "kind": "national",
@@ -11750,11 +11747,11 @@
     "attribution": [
      "Ember Yearly Electricity Data, CC BY 4.0"
     ],
-    "notes": "The share of United Kingdom's electricity generation from fossil fuels in 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
+    "notes": "Share of electricity generation from fossil fuels in United Kingdom, 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
    },
    {
     "id": "geo",
-    "name": "Georgia, national grid",
+    "name": "National electricity mix, Georgia",
     "country": "GEO",
     "mix": {
      "kind": "national",
@@ -11770,11 +11767,11 @@
     "attribution": [
      "Ember Yearly Electricity Data, CC BY 4.0"
     ],
-    "notes": "The share of Georgia's electricity generation from fossil fuels in 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
+    "notes": "Share of electricity generation from fossil fuels in Georgia, 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
    },
    {
     "id": "gha",
-    "name": "Ghana, national grid",
+    "name": "National electricity mix, Ghana",
     "country": "GHA",
     "mix": {
      "kind": "national",
@@ -11790,11 +11787,11 @@
     "attribution": [
      "Ember Yearly Electricity Data, CC BY 4.0"
     ],
-    "notes": "The share of Ghana's electricity generation from fossil fuels in 2024, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
+    "notes": "Share of electricity generation from fossil fuels in Ghana, 2024, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
    },
    {
     "id": "hrv",
-    "name": "Croatia, national grid",
+    "name": "National electricity mix, Croatia",
     "country": "HRV",
     "mix": {
      "kind": "national",
@@ -11810,11 +11807,11 @@
     "attribution": [
      "Ember Yearly Electricity Data, CC BY 4.0"
     ],
-    "notes": "The share of Croatia's electricity generation from fossil fuels in 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
+    "notes": "Share of electricity generation from fossil fuels in Croatia, 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
    },
    {
     "id": "idn",
-    "name": "Indonesia, national grid",
+    "name": "National electricity mix, Indonesia",
     "country": "IDN",
     "mix": {
      "kind": "national",
@@ -11830,11 +11827,11 @@
     "attribution": [
      "Ember Yearly Electricity Data, CC BY 4.0"
     ],
-    "notes": "The share of Indonesia's electricity generation from fossil fuels in 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
+    "notes": "Share of electricity generation from fossil fuels in Indonesia, 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
    },
    {
     "id": "ind",
-    "name": "India, national grid",
+    "name": "National electricity mix, India",
     "country": "IND",
     "mix": {
      "kind": "national",
@@ -11850,11 +11847,11 @@
     "attribution": [
      "Ember Yearly Electricity Data, CC BY 4.0"
     ],
-    "notes": "The share of India's electricity generation from fossil fuels in 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
+    "notes": "Share of electricity generation from fossil fuels in India, 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
    },
    {
     "id": "jpn",
-    "name": "Japan, national grid",
+    "name": "National electricity mix, Japan",
     "country": "JPN",
     "mix": {
      "kind": "national",
@@ -11870,11 +11867,11 @@
     "attribution": [
      "Ember Yearly Electricity Data, CC BY 4.0"
     ],
-    "notes": "The share of Japan's electricity generation from fossil fuels in 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
+    "notes": "Share of electricity generation from fossil fuels in Japan, 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
    },
    {
     "id": "kor",
-    "name": "Korea, South, national grid",
+    "name": "National electricity mix, Korea, South",
     "country": "KOR",
     "mix": {
      "kind": "national",
@@ -11890,11 +11887,11 @@
     "attribution": [
      "Ember Yearly Electricity Data, CC BY 4.0"
     ],
-    "notes": "The share of Korea, South's electricity generation from fossil fuels in 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
+    "notes": "Share of electricity generation from fossil fuels in Korea, South, 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
    },
    {
     "id": "mex",
-    "name": "Mexico, national grid",
+    "name": "National electricity mix, Mexico",
     "country": "MEX",
     "mix": {
      "kind": "national",
@@ -11910,11 +11907,11 @@
     "attribution": [
      "Ember Yearly Electricity Data, CC BY 4.0"
     ],
-    "notes": "The share of Mexico's electricity generation from fossil fuels in 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
+    "notes": "Share of electricity generation from fossil fuels in Mexico, 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
    },
    {
     "id": "nld",
-    "name": "Netherlands, national grid",
+    "name": "National electricity mix, Netherlands",
     "country": "NLD",
     "mix": {
      "kind": "national",
@@ -11930,11 +11927,11 @@
     "attribution": [
      "Ember Yearly Electricity Data, CC BY 4.0"
     ],
-    "notes": "The share of Netherlands's electricity generation from fossil fuels in 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
+    "notes": "Share of electricity generation from fossil fuels in Netherlands, 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
    },
    {
     "id": "svn",
-    "name": "Slovenia, national grid",
+    "name": "National electricity mix, Slovenia",
     "country": "SVN",
     "mix": {
      "kind": "national",
@@ -11950,11 +11947,11 @@
     "attribution": [
      "Ember Yearly Electricity Data, CC BY 4.0"
     ],
-    "notes": "The share of Slovenia's electricity generation from fossil fuels in 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
+    "notes": "Share of electricity generation from fossil fuels in Slovenia, 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
    },
    {
     "id": "swe",
-    "name": "Sweden, national grid",
+    "name": "National electricity mix, Sweden",
     "country": "SWE",
     "mix": {
      "kind": "national",
@@ -11970,11 +11967,11 @@
     "attribution": [
      "Ember Yearly Electricity Data, CC BY 4.0"
     ],
-    "notes": "The share of Sweden's electricity generation from fossil fuels in 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
+    "notes": "Share of electricity generation from fossil fuels in Sweden, 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
    },
    {
     "id": "tza",
-    "name": "Tanzania, national grid",
+    "name": "National electricity mix, Tanzania",
     "country": "TZA",
     "mix": {
      "kind": "national",
@@ -11990,11 +11987,11 @@
     "attribution": [
      "Ember Yearly Electricity Data, CC BY 4.0"
     ],
-    "notes": "The share of Tanzania's electricity generation from fossil fuels in 2024, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
+    "notes": "Share of electricity generation from fossil fuels in Tanzania, 2024, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
    },
    {
     "id": "usa",
-    "name": "United States of America, national grid",
+    "name": "National electricity mix, United States of America",
     "country": "USA",
     "mix": {
      "kind": "national",
@@ -12010,11 +12007,11 @@
     "attribution": [
      "Ember Yearly Electricity Data, CC BY 4.0"
     ],
-    "notes": "The share of United States of America's electricity generation from fossil fuels in 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
+    "notes": "Share of electricity generation from fossil fuels in United States of America, 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
    },
    {
     "id": "zaf",
-    "name": "South Africa, national grid",
+    "name": "National electricity mix, South Africa",
     "country": "ZAF",
     "mix": {
      "kind": "national",
@@ -12030,7 +12027,7 @@
     "attribution": [
      "Ember Yearly Electricity Data, CC BY 4.0"
     ],
-    "notes": "The share of South Africa's electricity generation from fossil fuels in 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
+    "notes": "Share of electricity generation from fossil fuels in South Africa, 2025, from Ember's Yearly Electricity Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28."
    }
   ]
  },

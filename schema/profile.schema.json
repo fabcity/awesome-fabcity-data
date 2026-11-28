@@ -11,7 +11,16 @@
     "polygon": {
       "type": "array",
       "minItems": 4,
-      "items": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "number" } },
+      "items": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 2,
+        "prefixItems": [
+          { "type": "number", "minimum": -180, "maximum": 180 },
+          { "type": "number", "minimum": -90, "maximum": 90 }
+        ],
+        "items": false
+      },
       "description": "A ring of [lon, lat] points. The first point repeats as the last (validate.py checks that)."
     },
     "utility": {
@@ -23,7 +32,7 @@
         "name": { "type": "string", "description": "The utility as it names itself." },
         "serves": { "type": "string", "description": "The area it serves." },
         "kind": { "enum": ["public", "private", "community"] },
-        "match": { "type": "string", "description": "The name a mapped water work carries for this utility on the public map. A node looks works up by it; the registry holds no points." },
+        "match": { "type": "string", "description": "The name a mapped water work carries for this utility on the public map. It is for a node to look works up by; the registry holds no points." },
         "sources": {
           "type": "array",
           "items": { "type": "string", "pattern": "^[a-z]+/[a-z]+/[a-z0-9-]+$" },

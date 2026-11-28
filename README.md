@@ -26,7 +26,7 @@ Every entry carries:
 
 Entries live as YAML files under `data/{pillar}/{scale}/{slug}.yaml` — that's the source of truth. This README is generated from them by `scripts/build_readme.py`.
 
-Two more folders describe the place a node sits in. `systems/energy/` holds power systems (a grid, an island system or a country's mix) and `profiles/` holds one file per place, naming its system and its water utilities. A national line already covers the country of every place. [CONTRIBUTING](CONTRIBUTING.md#your-citys-power-system-and-water-utility) says how a city adds its own.
+Two more folders describe the place a node sits in. `systems/energy/` holds power systems and `profiles/` holds one file per place, naming its system and its water utilities. A national line already covers the country of every place. A node will read these from a later release and reads its own copy today. [CONTRIBUTING](CONTRIBUTING.md#your-citys-power-system-and-water-utility) says how a city adds its own.
 
 ## The taxonomy
 
