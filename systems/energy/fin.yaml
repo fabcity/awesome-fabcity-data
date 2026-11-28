@@ -1,0 +1,15 @@
+id: fin
+name: National electricity mix, Finland
+country: FIN
+mix:
+  kind: national
+  fossil_share: 0.038
+  year: 2025
+readings:
+- R2
+sources:
+- environmental/planet/ember-yearly-electricity
+attribution:
+- Ember Yearly Electricity Data, CC BY 4.0
+notes: Share of electricity generation from fossil fuels in Finland, 2025, from Ember's Yearly Electricity Data
+  (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28.

@@ -1,0 +1,38 @@
+id: balearic
+name: REE Balearic system
+polygon:
+- [1.15, 38.6]
+- [4.4, 38.6]
+- [4.4, 40.15]
+- [1.15, 40.15]
+- [1.15, 38.6]
+rings:
+  city:
+  - [3.75, 39.78]
+  - [4.35, 39.78]
+  - [4.35, 40.1]
+  - [3.75, 40.1]
+  - [3.75, 39.78]
+  region:
+  - [1.15, 38.6]
+  - [4.4, 38.6]
+  - [4.4, 40.15]
+  - [1.15, 40.15]
+  - [1.15, 38.6]
+mix: {kind: measured, source: ree, geo_limit: baleares, geo_id: 8743}
+links:
+- name: Mallorca–peninsula link
+  ring: beyond
+  mix_from: {source: ree, geo_limit: peninsular, geo_id: 8741}
+readings:
+- R2
+sources:
+- economic/community/openstreetmap
+attribution:
+- © OpenStreetMap contributors, ODbL, via Overpass
+- Red Eléctrica de España (REE), apidatos.ree.es
+notes: The polygon covers Mallorca, Menorca, Ibiza and Formentera. The city ring is the island of Menorca and the
+  region ring is the Balearic Islands. The mix is read from REE with geo_limit baleares and geo_id 8743, the Balearic
+  system. The link to the peninsula reads the mix on the far side from REE with geo_limit peninsular and geo_id 8741.
+  The two ids are carried over from the node's file as it stood and were not read again on the move. Moved from
+  planetai-node packs/energy/grids.yml on 2026-11-28.

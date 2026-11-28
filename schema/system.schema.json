@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/fabcity/awesome-fabcity-data/blob/main/schema/system.schema.json",
+  "title": "Power system",
+  "description": "One power system a place can sit on: the grid, island system or national mix whose fossil share is for a node to read. One file per system at systems/energy/<id>.yaml; scripts/validate.py checks each against this schema, that the file is named for its id, that every polygon is closed, and that every `sources` and `readings` id exists.",
+  "type": "object",
+  "required": ["id", "name", "mix", "readings", "attribution", "notes"],
+  "additionalProperties": false,
+  "$defs": {
+    "polygon": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 2,
+        "prefixItems": [
+          { "type": "number", "minimum": -180, "maximum": 180 },
+          { "type": "number", "minimum": -90, "maximum": 90 }
+        ],
+        "items": false
+      },
+      "description": "A ring of [lon, lat] points. The first point repeats as the last (validate.py checks that)."
+    },
+    "share": { "type": "number", "minimum": 0, "maximum": 1 },
+    "feed": {
+      "type": "object",
+      "required": ["source", "geo_limit", "geo_id"],
+      "additionalProperties": false,
+      "properties": {
+        "source": { "type": "string", "description": "The feed's name as the node knows it, e.g. ree." },
+        "geo_limit": { "type": "string", "description": "The feed's own name for the area." },
+        "geo_id": { "type": "integer", "description": "The feed's own id for the area." }
+      }
+    }
+  },
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9-]+$", "description": "The system's id, and the name of its file." },
+    "name": { "type": "string", "description": "The system as its operator names it." },
+    "polygon": { "$ref": "#/$defs/polygon", "description": "The area the system serves. Required unless the mix is national." },
+    "rings": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": { "city": { "$ref": "#/$defs/polygon" }, "region": { "$ref": "#/$defs/polygon" } },
+      "description": "Nested areas inside the system, for a city and a region, each a closed polygon."
+    },
+    "country": { "type": "string", "pattern": "^[A-Z]{3}$", "description": "ISO 3166-1 alpha-3 code. Required for a national system, which has no polygon." },
+    "mix": {
+      "description": "How the system's generation mix is known.",
+      "oneOf": [
+        {
+          "type": "object", "required": ["kind", "method"], "additionalProperties": false,
+          "properties": { "kind": { "const": "estimated" }, "method": { "const": "capacity-factors" } }
+        },
+        {
+          "type": "object", "required": ["kind", "source", "geo_limit", "geo_id"], "additionalProperties": false,
+          "properties": {
+            "kind": { "const": "measured" },
+            "source": { "type": "string", "description": "The feed the mix is read from." },
+            "geo_limit": { "type": "string", "description": "The feed's own name for the area." },
+            "geo_id": { "type": "integer", "description": "The feed's own id for the area." }
+          }
+        },
+        {
+          "type": "object", "required": ["kind", "fossil_share", "year"], "additionalProperties": false,
+          "properties": {
+            "kind": { "const": "national" },
+            "fossil_share": { "$ref": "#/$defs/share", "description": "Fossil share of the country's generation, 0 to 1." },
+            "year": { "type": "integer", "minimum": 2000, "maximum": 2100, "description": "The year the share is for." }
+          }
+        }
+      ]
+    },
+    "capacity_factors": {
+      "type": "object",
+      "additionalProperties": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 },
+      "description": "Fuel to capacity factor, used when the mix is estimated."
+    },
+    "links": {
+      "type": "array",
+      "description": "Connections to other systems, such as a submarine cable.",
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string", "description": "The link as it is known." },
+          "at": { "type": "string", "description": "Where the link lands." },
+          "rated_mw": { "type": ["number", "null"], "description": "Rated transfer in MW, or null where no open table states it." },
+          "fossil_share": { "$ref": "#/$defs/share", "description": "Fossil share assumed for what the link brings in." },
+          "ring": { "const": "beyond", "description": "The link sits outside the rings." },
+          "source": { "type": "string", "description": "Where the figures on the link were read." },
+          "mix_from": { "$ref": "#/$defs/feed", "description": "The feed that gives the mix on the far side." }
+        }
+      }
+    },
+    "demand_mw": { "type": ["number", "null"], "description": "Average demand in MW, or null where no open table states it." },
+    "readings": {
+      "type": "array", "minItems": 1,
+      "items": { "type": "string", "pattern": "^R([1-9]|1[0-4])$" },
+      "description": "The readings in readings.yaml this system serves."
+    },
+    "sources": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z]+/[a-z]+/[a-z0-9-]+$" },
+      "description": "Registry entries (pillar/scale/slug) the system's figures come from."
+    },
+    "attribution": {
+      "type": "array", "minItems": 1,
+      "items": { "type": "string" },
+      "description": "The credit each licence asks for, in its words."
+    },
+    "notes": { "type": "string", "minLength": 20, "description": "Facts about the system and where each figure was read." }
+  }
+}

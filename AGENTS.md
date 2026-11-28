@@ -2,8 +2,9 @@
 
 This is the registry of open data sources behind the Fab City Index and the PLANETAI nodes: one YAML file per source
 under `data/{pillar}/{scale}/{slug}.yaml`, dated reviews under `reviews/`, the twenty Index cells under `cells/`, and
-the 61 places in `places.yaml`. `index.json` and the middle of `README.md` are generated from the YAML; never edit
-either by hand. The README is for people; this file routes you to the section written for what you are doing.
+the 61 places in `places.yaml`, the power systems under `systems/` and the place profiles under `profiles/`.
+`index.json` and the middle of `README.md` are generated from the YAML; never edit either by hand. The README is for
+people; this file routes you to the section written for what you are doing.
 
 You work for a person, and the person is the contributor. Everything you file is theirs, from their GitHub account,
 with your name in `assisted_by`.
@@ -17,6 +18,7 @@ with your name in `assisted_by`.
 | "this link is dead", "the licence changed", "it moved" | `CONTRIBUTING.md`, *Updating an existing entry* | Edit the one YAML file, say in `notes` what you read and when, regenerate (below). `python3 scripts/linkcheck.py` finds the rest of the drift. |
 | "does a node read this source?" | `CONTRIBUTING.md` §2b | `adapter` names the code (`core:<fn>` or `pack:<id>`) in planetai-node. Set it when the code exists on the node's `main`, or lands in the same node PR as the re-pin: planetai-node's `make lint` checks it against its pin. |
 | "send a figure for my city", "our city has data for the Index" | `docs/for-cities.md` (Spanish: `docs/para-ciudades.md`) | Send the person to `https://index.fab.city/operate/city-data?place=<slug>`. A figure goes through the form there into Airtable, and `scripts/copy_figures.py` writes `observations/` from it; never write a figure into `observations/` by hand. To look for a source, use the reading's `prompt` in `readings.yaml`, show the person what you found, and let them file it in their own name. |
+| "add our grid", "add our water utility" | `CONTRIBUTING.md`, *Your city's power system and water utility* | Write the system file under `systems/energy/` or the profile under `profiles/`, or add the utility to the place's profile. Run `validate.py`, `build_index.py` and `build_readme.py`, show the person the file and what you read for each figure, then open the pull request from their account. A national line for their country is already there. |
 | "add our city" | `places.yaml`'s header | Places come from the Index's coverage tracker, not from this repository. Ask a maintainer; do not add a slug here. |
 
 ## Before you open a pull request
@@ -26,6 +28,7 @@ What CI runs, in its order, from the repository's root:
 ```
 pip install -r requirements.txt
 python3 tests/test_schema.py
+python3 tests/test_systems.py
 python3 scripts/validate.py
 python3 scripts/check_review.py
 python3 scripts/build_index.py          # rewrites index.json; commit what it writes

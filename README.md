@@ -26,6 +26,8 @@ Every entry carries:
 
 Entries live as YAML files under `data/{pillar}/{scale}/{slug}.yaml` — that's the source of truth. This README is generated from them by `scripts/build_readme.py`.
 
+Two more folders describe the place a node sits in. `systems/energy/` holds power systems and `profiles/` holds one file per place, naming its system and its water utilities. A national line already covers the country of every place. A node will read these from a later release and reads its own copy today. [CONTRIBUTING](CONTRIBUTING.md#your-citys-power-system-and-water-utility) says how a city adds its own.
+
 ## The taxonomy
 
 The four pillars × five scales come from the **Full Stack Metrics Framework** [Vivanco 2024, 2025], which operationalises *The Fab City Full Stack* [Diez, Niaros, Ferro 2024]. They are a way to organise *where measurement happens* in a distributed-production network.
@@ -92,6 +94,8 @@ Four bioregional pilots run by the [PLANETAI](https://planetai.fab.city/) progra
   Heights of the Earth's land surface every 30 m, buildings and trees included, from the TanDEM-X radar mission. Published by the Copernicus programme as one-degree Cloud-Optimized GeoTIFFs on AWS. A node reads its own square to see where rain runs and where it stands.
 - **[EDGAR non-CO2 greenhouse gases (CH4, N2O, F-gases)](https://edgar.jrc.ec.europa.eu/dataset_ghg2024)** — 🌱 `candidate` · `CC-BY-4.0` · _★_
   The JRC's global inventory of methane, nitrous oxide and fluorinated gases by country and sector, 1970–2023, plus 0.1° gridded maps. Scoped deliberately to the gases the European Union owns and licenses openly.
+- **[Ember Yearly Electricity Data (generation, capacity, emissions and demand by country)](https://ember-energy.org/data/yearly-electricity-data/)** — 🌱 `candidate` · `CC-BY-4.0 (Ember states "released under a Creative Commons Attribution Licence (CC-BY-4.0)"); credit Ember` · _★_
+  Yearly electricity generation, capacity, emissions and demand for over 200 geographies, from 2000, one row per area, year and electricity source (fuels, aggregates such as Fossil, and demand).
 - **[Natural Earth](https://www.naturalearthdata.com)** — 🌱 `candidate` · `Public domain (Natural Earth terms of use)` · _★_
   Public-domain world base map at 1:10m, 1:50m and 1:110m: coastlines, land, countries, admin-1 units, rivers, lakes, populated places and relief. Run by NACIS volunteers.
 

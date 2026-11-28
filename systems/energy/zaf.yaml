@@ -1,0 +1,15 @@
+id: zaf
+name: National electricity mix, South Africa
+country: ZAF
+mix:
+  kind: national
+  fossil_share: 0.8215
+  year: 2025
+readings:
+- R2
+sources:
+- environmental/planet/ember-yearly-electricity
+attribution:
+- Ember Yearly Electricity Data, CC BY 4.0
+notes: Share of electricity generation from fossil fuels in South Africa, 2025, from Ember's Yearly Electricity
+  Data (Fossil, share of generation). Written by scripts/national_energy.py on 2026-11-28.
